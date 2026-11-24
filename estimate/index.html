@@ -7,6 +7,8 @@
 <meta name="description" content="Send photos or drawings for a ballpark, or book a site visit for a written price. Homeowners and builders across the GTA, Hamilton, Kitchener-Cambridge and Muskoka.">
 <meta name="robots" content="noindex, nofollow">
 <link rel="canonical" href="https://ricartidrywall.ca/estimate">
+<link rel="alternate" hreflang="en" href="https://ricartidrywall.ca/estimate">
+<link rel="alternate" hreflang="x-default" href="https://ricartidrywall.ca/estimate">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Ricarti Drywall">
 <meta property="og:title" content="Get an estimate or book a site visit | Ricarti Drywall">
@@ -14,11 +16,13 @@
 <meta property="og:url" content="https://ricartidrywall.ca/estimate">
 <meta property="og:image" content="https://ricartidrywall.ca/images/hero-kent.jpg">
 <meta property="og:locale" content="en_CA">
+<meta name="theme-color" content="#1E3129">
 <link rel="icon" type="image/png" href="/images/monogram-spruce.png">
 <link rel="apple-touch-icon" href="/images/monogram-spruce.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,300;1,7..72,300&amp;family=Hanken+Grotesk:wght@400;500&amp;display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,300;0,7..72,400;1,7..72,300&amp;family=Hanken+Grotesk:wght@400;500;600&amp;display=swap">
+<link rel="stylesheet" href="/assets/site.css">
 <style>
 body{margin:0;background:#F7F5F0}
 a{color:#24272A}a:hover{color:#2E4A3F}
@@ -29,21 +33,7 @@ select.rd-in{appearance:none;-webkit-appearance:none}
 .rd-chk{display:flex;gap:10px;align-items:center;font-size:15px;padding:10px 14px;border:1px solid #DDD7CB;background:#FFFFFF;cursor:pointer;min-height:44px;box-sizing:border-box}
 .rd-chk input{accent-color:#2E4A3F;width:16px;height:16px;margin:0}
 </style>
-<style>
-html{-webkit-text-size-adjust:100%}
-*{box-sizing:border-box}
-img{max-width:100%}
-header{position:relative}
-.rd-mobnav{display:none}
-.rd-mobnav summary{list-style:none;cursor:pointer;font-size:12px;letter-spacing:.14em;font-weight:500;padding:12px 4px;text-transform:uppercase}
-.rd-mobnav summary::-webkit-details-marker{display:none}
-.rd-mobnav ul{position:absolute;left:0;right:0;top:100%;margin:0;padding:8px 20px 20px;list-style:none;background:#F7F5F0;border-bottom:1px solid #DDD7CB;z-index:20}
-.rd-mobnav li a{display:block;padding:14px 0;border-bottom:1px solid #DDD7CB;text-decoration:none;font-size:16px}
-@media (max-width:900px){.rd-mobnav{display:block}}
-a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid #2E4A3F;outline-offset:2px}
-
-.hv0:hover{background:#2E4A3F !important}
-</style>
+<style>.hv0:hover{background:#2E4A3F !important}</style>
 <script type="application/ld+json">
 {
  "@context": "https://schema.org",
@@ -58,6 +48,11 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid #2E
    "telephone": "+1-647-482-1139",
    "email": "cris@ricartidrywall.ca",
    "foundingDate": "2009",
+   "founder": {
+    "@type": "Person",
+    "name": "Cris Ricarti",
+    "jobTitle": "Owner"
+   },
    "description": "Family-owned insulation, steel framing, drywall and finishing contractor for homeowners and builders across the Greater Toronto Area, Hamilton, Kitchener-Cambridge and Muskoka.",
    "address": {
     "@type": "PostalAddress",
@@ -96,6 +91,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid #2E
    "url": "https://ricartidrywall.ca/estimate",
    "name": "Get an estimate or book a site visit | Ricarti Drywall",
    "description": "Send photos or drawings for a ballpark, or book a site visit for a written price. Homeowners and builders across the GTA, Hamilton, Kitchener-Cambridge and Muskoka.",
+   "inLanguage": "en",
    "publisher": {
     "@id": "https://ricartidrywall.ca/#business"
    }
@@ -103,19 +99,32 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid #2E
  ]
 }
 </script>
+<script src="/assets/site.js" defer></script>
 </head>
 <body>
 <div style="font-family: 'Hanken Grotesk', system-ui, sans-serif; font-size: 16px; line-height: 1.55; color: #24272A; background: #F7F5F0; min-height: 100vh">
-<header style="border-bottom: 1px solid #DDD7CB">
-<div style="max-width: 1440px; margin: 0 auto; padding: 22px clamp(20px, 5vw, 80px); display: flex; justify-content: space-between; align-items: center; gap: 20px">
-<a href="/" aria-label="Ricarti Drywall, home" style="display: flex; flex-direction: column; align-items: flex-start; gap: 6px; text-decoration: none">
-<img fetchpriority="high" src="/images/lockup-graphite.png" alt="Ricarti Drywall" style="height: 38px; width: auto; display: block">
-</a>
-<a href="tel:+16474821139" style="font-size: 14px; text-decoration: none">(647) 482-1139</a>
+<a class="rd-skip" href="#main">Skip to content</a>
+<div class="rd-top"><div>
+<span class="rd-hide">Family-owned since 2009 · GTA · Hamilton · Kitchener–Cambridge · Muskoka</span>
+<nav aria-label="Utility"><a class="rd-hide" href="/areas">Service areas</a><span class="rd-langs" aria-label="Language"><a href="/estimate" lang="en" hreflang="en" aria-current="true">EN</a></span><a href="https://www.instagram.com/ricarti_drywall/" aria-label="Instagram @ricarti_drywall" rel="noopener"><svg class="rd-ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r=".6" fill="currentColor"/></svg></a><a href="mailto:cris@ricartidrywall.ca" class="rd-hide">cris@ricartidrywall.ca</a><a href="tel:+16474821139">(647) 482-1139</a></nav>
+</div></div>
+<header class="rd-head"><div>
+<nav aria-label="Main" class="rd-nav"><a href="/">Home</a><a href="/homeowners">For homeowners</a><a href="/builders">For builders</a><a href="/drywall-finishing-toronto">Services</a><a href="/journal">Journal</a><a href="/reviews">Reviews</a></nav>
+<details class="rd-mnav"><summary>Menu</summary><ul><li><a href="/">Home</a></li><li><a href="/homeowners">For homeowners</a></li><li><a href="/builders">For builders</a></li><li><a href="/drywall-finishing-toronto">Services</a></li><li><a href="/journal">Journal</a></li><li><a href="/reviews">Reviews</a></li><li><a href="/areas">Service areas</a></li><li><a href="/estimate" aria-current="page">Get an estimate</a></li><li><a href="tel:+16474821139">(647) 482-1139</a></li><li><a href="https://www.instagram.com/ricarti_drywall/" rel="noopener">Instagram · @ricarti_drywall</a></li><li class="rd-mlangs"><a href="/estimate" lang="en" hreflang="en" aria-current="true">EN</a></li></ul></details>
+<a href="/" class="rd-logo" aria-label="Ricarti Drywall, home"><img src="/images/lockup-graphite.png" alt="Ricarti Drywall" width="180" height="40"></a>
+<div class="rd-right">
+<button type="button" class="rd-sbtn" data-open-search aria-label="Search the site"><svg class="rd-ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21"/></svg><span>Search the site</span><kbd>/</kbd></button>
+<a href="/estimate" class="rd-cta">Get an estimate</a>
 </div>
-</header>
+</div></header>
+<dialog id="rd-search" class="rd-dlg" aria-label="Search the site"><div class="rd-panel">
+<form class="rd-sform" action="/search" role="search"><svg class="rd-ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21"/></svg><input id="rd-q" name="q" type="search" autocomplete="off" placeholder="Search: spray foam, Level 5, soundproofing…" aria-label="Search the site"><button type="button" id="rd-sclose">CLOSE</button></form>
+<div id="rd-sugg" class="rd-sugg">Popular: <a href="/search?q=Level+5+finish">Level 5 finish</a><a href="/search?q=Spray+foam">Spray foam</a><a href="/search?q=Soundproofing">Soundproofing</a><a href="/search?q=Plaster+repair">Plaster repair</a><a href="/search?q=Builders">Builders</a><a href="/search?q=WSIB">WSIB</a></div>
+<ul id="rd-res" class="rd-res" aria-live="polite"></ul>
+</div></dialog>
 
-<main style="max-width: 1440px; margin: 0 auto; padding: clamp(40px, 6vw, 80px) clamp(20px, 5vw, 80px) 96px; display: flex; flex-wrap: wrap; gap: 56px 80px; align-items: flex-start">
+
+<main id="main" style="max-width: 1440px; margin: 0 auto; padding: clamp(40px, 6vw, 80px) clamp(20px, 5vw, 80px) 96px; display: flex; flex-wrap: wrap; gap: 56px 80px; align-items: flex-start">
 <div style="flex: 1 1 340px; max-width: 520px">
 <p style="margin: 0 0 16px; font-size: 11px; letter-spacing: 0.14em; font-weight: 500; color: #2E4A3F">ESTIMATE · SITE VISIT</p>
 <h1 style="margin: 0; font-family: Literata, Georgia, serif; font-weight: 300; font-size: clamp(42px, 5vw, 68px); line-height: 1; letter-spacing: -0.02em">Tell us about the <em style="color: #2E4A3F">job.</em></h1>
@@ -137,7 +146,13 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid #2E
 </div>
 </div>
 <div data-show="form">
-<form id="rd-form" action="#" method="post" style="display: flex; flex-direction: column; gap: 28px">
+<form id="rd-form" action="https://formsubmit.co/cris@ricartidrywall.ca" method="post" enctype="multipart/form-data" style="display: flex; flex-direction: column; gap: 28px">
+<input type="hidden" name="_subject" id="rd-subject" value="Website request">
+<input type="hidden" name="_template" value="table">
+<input type="hidden" name="_captcha" value="false">
+<input type="hidden" name="_next" id="rd-next" value="">
+<input type="hidden" name="I am" id="rd-who" value="Homeowner">
+<input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px">
 <fieldset style="border: 0; margin: 0; padding: 0">
 <legend class="rd-lb" style="margin-bottom: 12px">I AM</legend>
 <div role="group" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0; border: 1px solid #24272A">
@@ -147,39 +162,39 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid #2E
 </fieldset>
 
 <div data-show="builder" hidden>
-<label><span class="rd-lb">COMPANY</span><input class="rd-in" type="text" autocomplete="organization" placeholder="Company name"></label>
+<label><span class="rd-lb">COMPANY</span><input name="Company" class="rd-in" type="text" autocomplete="organization" placeholder="Company name"></label>
 </div>
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 28px 32px">
-<label><span class="rd-lb">YOUR NAME</span><input class="rd-in" type="text" autocomplete="name" required></label>
-<label><span class="rd-lb">PHONE</span><input class="rd-in" type="tel" autocomplete="tel" required></label>
-<label><span class="rd-lb">EMAIL</span><input class="rd-in" type="email" autocomplete="email" required></label>
-<label><span class="rd-lb">PROJECT ADDRESS OR POSTAL CODE</span><input class="rd-in" type="text" autocomplete="postal-code"></label>
+<label><span class="rd-lb">YOUR NAME</span><input name="Name" class="rd-in" type="text" autocomplete="name" required></label>
+<label><span class="rd-lb">PHONE</span><input name="Phone" class="rd-in" type="tel" autocomplete="tel" required></label>
+<label><span class="rd-lb">EMAIL</span><input name="email" class="rd-in" type="email" autocomplete="email" required></label>
+<label><span class="rd-lb">PROJECT ADDRESS OR POSTAL CODE</span><input name="Project address or postal code" class="rd-in" type="text" autocomplete="postal-code"></label>
 </div>
 
 <div data-show="home">
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 28px 32px">
-<label><span class="rd-lb">PROJECT</span><select class="rd-in"><option>New custom home</option><option>Addition</option><option>Basement</option><option>Renovation</option><option>Repair or patch</option></select></label>
-<label><span class="rd-lb">WHEN DO YOU WANT TO START?</span><select class="rd-in"><option>As soon as possible</option><option>In 1–3 months</option><option>In 3–6 months</option><option>Not sure yet</option></select></label>
+<label><span class="rd-lb">PROJECT</span><select name="Project" class="rd-in"><option>New custom home</option><option>Addition</option><option>Basement</option><option>Renovation</option><option>Repair or patch</option></select></label>
+<label><span class="rd-lb">WHEN DO YOU WANT TO START?</span><select name="Start" class="rd-in"><option>As soon as possible</option><option>In 1–3 months</option><option>In 3–6 months</option><option>Not sure yet</option></select></label>
 </div>
 </div>
 <div data-show="builder" hidden>
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 28px 32px">
-<label><span class="rd-lb">HOUSE TYPE</span><select class="rd-in"><option>Detached</option><option>Semi-detached</option><option>Townhouse block</option><option>Mixed</option></select></label>
-<label><span class="rd-lb">UNITS</span><input class="rd-in" type="number" min="1" inputmode="numeric"></label>
-<label><span class="rd-lb">SQ FT PER UNIT</span><input class="rd-in" type="number" min="0" inputmode="numeric"></label>
-<label><span class="rd-lb">BOARD-READY DATE</span><input class="rd-in" type="date"></label>
+<label><span class="rd-lb">HOUSE TYPE</span><select name="House Type" class="rd-in"><option>Detached</option><option>Semi-detached</option><option>Townhouse block</option><option>Mixed</option></select></label>
+<label><span class="rd-lb">UNITS</span><input name="Units" class="rd-in" type="number" min="1" inputmode="numeric"></label>
+<label><span class="rd-lb">SQ FT PER UNIT</span><input name="Sq ft per unit" class="rd-in" type="number" min="0" inputmode="numeric"></label>
+<label><span class="rd-lb">BOARD-READY DATE</span><input name="Board-ready date" class="rd-in" type="date"></label>
 </div>
 </div>
 
 <fieldset style="border: 0; margin: 0; padding: 0">
 <legend class="rd-lb" style="margin-bottom: 12px">SCOPE</legend>
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 8px">
-<label class="rd-chk"><input type="checkbox">Insulation</label>
-<label class="rd-chk"><input type="checkbox">Spray foam</label>
-<label class="rd-chk"><input type="checkbox">Steel framing</label>
-<label class="rd-chk"><input type="checkbox" checked>Drywall board</label>
-<label class="rd-chk"><input type="checkbox" checked>Taping &amp; finishing</label>
-<label class="rd-chk"><input type="checkbox">Level 5 finish</label>
+<label class="rd-chk"><input type="checkbox" name="Scope: Insulation" value="Yes"None>Insulation</label>
+<label class="rd-chk"><input type="checkbox" name="Scope: Spray foam" value="Yes"None>Spray foam</label>
+<label class="rd-chk"><input type="checkbox" name="Scope: Steel framing" value="Yes"None>Steel framing</label>
+<label class="rd-chk"><input type="checkbox" name="Scope: Drywall board" value="Yes" checked>Drywall board</label>
+<label class="rd-chk"><input type="checkbox" name="Scope: Taping & finishing" value="Yes" checked>Taping &amp; finishing</label>
+<label class="rd-chk"><input type="checkbox" name="Scope: Level 5 finish" value="Yes"None>Level 5 finish</label>
 </div>
 </fieldset>
 
@@ -187,34 +202,44 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid #2E
 <fieldset style="border: 0; margin: 0; padding: 0">
 <legend class="rd-lb" style="margin-bottom: 12px">HOW WOULD YOU LIKE TO START?</legend>
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 8px">
-<label class="rd-chk"><input type="radio" name="start" checked value="visit">Site visit — we come to you</label>
-<label class="rd-chk"><input type="radio" name="start" value="photos">Ballpark from photos</label>
+<label class="rd-chk"><input type="radio" name="How to start" checked value="Site visit">Site visit — we come to you</label>
+<label class="rd-chk"><input type="radio" name="How to start" value="Ballpark from photos">Ballpark from photos</label>
 </div>
 </fieldset>
 <div data-show="visit">
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 28px 32px; background: #F7F5F0; padding: 20px; margin-top: -8px">
 <fieldset style="border: 0; margin: 0; padding: 0"><legend class="rd-lb" style="margin-bottom: 10px">DAYS THAT SUIT YOU</legend>
-<div style="display: flex; flex-wrap: wrap; gap: 6px"><label class="rd-chk" style="padding: 8px 12px"><input type="checkbox">Mon</label><label class="rd-chk" style="padding: 8px 12px"><input type="checkbox">Tue</label><label class="rd-chk" style="padding: 8px 12px"><input type="checkbox">Wed</label><label class="rd-chk" style="padding: 8px 12px"><input type="checkbox">Thu</label><label class="rd-chk" style="padding: 8px 12px"><input type="checkbox">Fri</label><label class="rd-chk" style="padding: 8px 12px"><input type="checkbox">Sat</label></div></fieldset>
-<label><span class="rd-lb">TIME OF DAY</span><select class="rd-in"><option>Morning</option><option>Midday</option><option>Late afternoon</option></select><span style="display: block; margin-top: 8px; font-size: 13px; color: #5E615F">We confirm the exact time by phone or text.</span></label>
+<div style="display: flex; flex-wrap: wrap; gap: 6px"><label class="rd-chk" style="padding: 8px 12px"><input type="checkbox" name="Day: Mon" value="Yes"None>Mon</label><label class="rd-chk" style="padding: 8px 12px"><input type="checkbox" name="Day: Tue" value="Yes"None>Tue</label><label class="rd-chk" style="padding: 8px 12px"><input type="checkbox" name="Day: Wed" value="Yes"None>Wed</label><label class="rd-chk" style="padding: 8px 12px"><input type="checkbox" name="Day: Thu" value="Yes"None>Thu</label><label class="rd-chk" style="padding: 8px 12px"><input type="checkbox" name="Day: Fri" value="Yes"None>Fri</label><label class="rd-chk" style="padding: 8px 12px"><input type="checkbox" name="Day: Sat" value="Yes"None>Sat</label></div></fieldset>
+<label><span class="rd-lb">TIME OF DAY</span><select name="Time of day" class="rd-in"><option>Morning</option><option>Midday</option><option>Late afternoon</option></select><span style="display: block; margin-top: 8px; font-size: 13px; color: #5E615F">We confirm the exact time by phone or text.</span></label>
 </div>
 </div>
 </div>
 
-<label><span class="rd-lb" id="rd-upload">PHOTOS OR PLANS (OPTIONAL)</span><input class="rd-in" type="file" multiple accept="image/*,.pdf" style="padding: 12px 0; font-size: 14px"></label>
-<label><span class="rd-lb">ANYTHING ELSE</span><textarea class="rd-in" rows="3" id="rd-notes" placeholder="Ceiling heights, rooms that get strong light, paint you have in mind…" style="resize: vertical"></textarea></label>
+<label><span class="rd-lb" id="rd-upload">PHOTOS OR PLANS (OPTIONAL)</span><input name="attachment" class="rd-in" type="file" multiple accept="image/*,.pdf" style="padding: 12px 0; font-size: 14px"></label>
+<label><span class="rd-lb">ANYTHING ELSE</span><textarea name="Notes" class="rd-in" rows="3" id="rd-notes" placeholder="Ceiling heights, rooms that get strong light, paint you have in mind…" style="resize: vertical"></textarea></label>
 
 <div data-show="builder" hidden>
-<label class="rd-chk" style="background: #F7F5F0"><input type="checkbox" checked>Send our WSIB clearance certificate and certificate of insurance with the quote</label>
+<label class="rd-chk" style="background: #F7F5F0"><input type="checkbox" name="Send WSIB and insurance certificates" value="Yes" checked>Send our WSIB clearance certificate and certificate of insurance with the quote</label>
 </div>
 
 <div style="display: flex; flex-wrap: wrap; gap: 16px 24px; align-items: center">
 <button class="hv0" type="submit" style="background: #24272A; color: #FFFFFF; border: 0; padding: 16px 28px; font-family: inherit; font-size: 15px; font-weight: 500; cursor: pointer" id="rd-submit">Request a site visit</button>
-<span style="font-size: 13px; color: #5E615F">We use your details only to reply. No mailing list.</span>
+<span style="font-size: 13px; color: #5E615F">Goes straight to cris@ricartidrywall.ca. We use your details only to reply. Large drawing sets: email them instead.</span>
 </div>
 </form>
 </div>
 </div>
 </main>
+<footer class="rd-foot"><div class="rd-cols">
+<div><img src="/images/lockup-boxed-graphite.png" alt="Ricarti Drywall" width="200" height="80" loading="lazy" style="width:200px;height:auto;display:block"><p class="rd-muted" style="margin:16px 0 0;max-width:260px">Insulation, steel framing, drywall and finishing for homes across the GTA, Hamilton, Kitchener–Cambridge and Muskoka.</p></div>
+<div><h2>Services</h2><ul><li><a href="/drywall-finishing-toronto">Taping &amp; finishing</a></li><li><a href="/#services">Insulation &amp; spray foam</a></li><li><a href="/#services">Steel stud framing</a></li><li><a href="/#services">Drywall installation</a></li><li><a href="/#services">Small renovations</a></li></ul></div>
+<div><h2>Company</h2><ul><li><a href="/homeowners">For homeowners</a></li><li><a href="/builders">For builders</a></li><li><a href="/areas">Service areas</a></li><li><a href="/journal">Journal</a></li><li><a href="/reviews">Reviews</a></li><li><a href="/estimate">Estimate &amp; site visit</a></li></ul></div>
+<address style="font-style:normal"><h2>Contact</h2><p style="margin:0;line-height:1.7">56 Hartley Ave<br>York, ON M6E 4E8<br><a href="tel:+16474821139">(647) 482-1139</a><br><a href="mailto:cris@ricartidrywall.ca">cris@ricartidrywall.ca</a><br><a href="https://www.instagram.com/ricarti_drywall/" rel="noopener">Instagram</a> · <a href="https://www.facebook.com/ricartidrywall" rel="noopener">Facebook</a> · <a href="https://wa.me/16474821139" rel="noopener">WhatsApp</a><br><span class="rd-muted">[Mon–Fri hours]</span></p></address>
+</div>
+<div class="rd-fine"><span>© 2026 [Legal company name] · WSIB [account no.] · [$X M] liability</span><span>Toronto · North York · Etobicoke · Vaughan · Richmond Hill · Markham · Mississauga · Oakville · Hamilton · Kitchener–Cambridge · Muskoka</span></div>
+<div class="rd-fine" style="border:0;margin-top:0"><nav aria-label="Language"><a href="/" lang="en" hreflang="en">English</a></nav><p>Translations of this site are provided for convenience and have not been professionally reviewed. If a translated page differs from the English, the English version applies. All content is general information, not a quote or contract.</p></div>
+</footer>
+<div class="rd-mbar"><a href="tel:+16474821139">Call</a><a class="rd-dark" href="/estimate">Get an estimate</a></div>
 </div>
 <script>
 (function(){
@@ -222,6 +247,7 @@ var ON="background:#24272A;color:#FFFFFF;border:0;padding:14px 12px;font-family:
 var OFF="background:#FFFFFF;color:#24272A;border:0;padding:14px 12px;font-family:inherit;font-size:15px;font-weight:500;cursor:pointer;min-height:48px";
 var who=/[?&]type=builder/.test(location.search)?"builder":"home", start="visit";
 function show(k,v){document.querySelectorAll('[data-show="'+k+'"]').forEach(function(e){e.hidden=!v;});}
+function syncFields(){document.querySelectorAll('#rd-form input,#rd-form select,#rd-form textarea').forEach(function(el){if(el.type==="hidden"||el.name==="_honey")return;el.disabled=!!el.closest('[hidden]');});}
 function render(){
  var h=who==="home";
  show("home",h); show("builder",!h); show("visit",h&&start==="visit");
@@ -230,13 +256,21 @@ function render(){
  a.setAttribute("aria-pressed",h); b.setAttribute("aria-pressed",!h);
  document.getElementById("rd-upload").textContent=h?"PHOTOS OR PLANS (OPTIONAL)":"DRAWINGS (PDF)";
  document.getElementById("rd-notes").placeholder=h?"Ceiling heights, rooms that get strong light, paint you have in mind…":"Schedule, phase, site access, anything we should price around…";
+ document.getElementById("rd-who").value=h?"Homeowner":"Builder / contractor";
+ syncFields();
  document.getElementById("rd-submit").textContent=h?(start==="visit"?"Request a site visit":"Get a ballpark"):"Request pricing";
 }
 document.getElementById("rd-home").addEventListener("click",function(){who="home";render();});
 document.getElementById("rd-builder").addEventListener("click",function(){who="builder";render();});
-document.querySelectorAll('input[name="start"]').forEach(function(r){r.addEventListener("change",function(){start=r.value;render();});});
-document.getElementById("rd-form").addEventListener("submit",function(e){e.preventDefault();show("form",false);show("sent",true);window.scrollTo(0,0);});
-document.getElementById("rd-reset").addEventListener("click",function(){show("sent",false);show("form",true);});
+document.querySelectorAll('input[name="How to start"]').forEach(function(r){r.addEventListener("change",function(){start=r.value==="Site visit"?"visit":"photos";render();});});
+document.getElementById("rd-form").addEventListener("submit",function(){
+ var f=this,n=(f.Name&&f.Name.value)||"";
+ document.getElementById("rd-subject").value=(who==="home"?(start==="visit"?"Site visit request":"Ballpark request"):"Builder pricing request")+" — "+n;
+ document.getElementById("rd-next").value=location.origin+"/estimate?sent=1"+(who==="builder"?"&type=builder":"");
+ syncFields();
+});
+if(/[?&]sent=1/.test(location.search)){show("form",false);show("sent",true);}
+document.getElementById("rd-reset").addEventListener("click",function(){location.href="/estimate"+(who==="builder"?"?type=builder":"");});
 render();
 })();
 
