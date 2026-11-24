@@ -67,18 +67,45 @@ def header(active='', lang='en', alts=None):
            sph=t['search_ph'], close=t['close'], sugg=t['sugg'],
            sugglinks=''.join('<a href="/search?q=%s">%s</a>' % (s.replace(' ', '+'), s) for s in t['sugg_list']))
 
-IG_TILES = [('brule-04.jpg', 'Brule', 'Arched doorway boarded with corner bead, Brule, Toronto'),
-            ('kent-03.jpg', 'Kent', 'Painted bedroom with a wide window, Kent, Toronto'),
-            ('stanton-02.jpg', 'Stanton', 'Steel channel and mineral wool on a basement wall, Stanton, Toronto'),
-            ('brule-07.jpg', 'Brule', 'Boarded room with French doors, Brule, Toronto'),
-            ('lauther-02.jpg', 'Lauther', 'Plaster ceiling repair around a ceiling medallion, Lauther Ave, Toronto'),
-            ('stanton-04.jpg', 'Stanton', 'Spray foam around a window opening, Stanton, Toronto')]
+# Project album: every photo, grouped by project (street and city only, never house numbers).
+ALBUM = [
+ ('brule-01.jpg', 'Brule, Toronto — arched dormer nook boarded in moisture-resistant drywall'),
+ ('brule-02.jpg', 'Brule, Toronto — the same nook in daylight, ready for tape'),
+ ('brule-04.jpg', 'Brule, Toronto — arched doorway boarded, with corner bead'),
+ ('brule-05.jpg', 'Brule, Toronto — bedroom boarded around a row of three windows'),
+ ('brule-07.jpg', 'Brule, Toronto — room boarded around French doors'),
+ ('brule-08.jpg', 'Brule, Toronto — arched niche and framing before board'),
+ ('brule-03.jpg', 'Brule, Toronto — insulated ceiling on resilient channel, board stocked by type'),
+ ('brule-06.jpg', 'Brule, Toronto — closed-cell spray foam between roof rafters'),
+ ('hero-kent.jpg', 'Kent, Toronto — finished bedroom after paint'),
+ ('kent-01.jpg', 'Kent, Toronto — smooth walls and ceiling, painted'),
+ ('kent-02.jpg', 'Kent, Toronto — the long stair hall, finished before paint'),
+ ('kent-03.jpg', 'Kent, Toronto — painted bedroom under window light'),
+ ('kent-04.jpg', 'Kent, Toronto — kitchen and living area, finished drywall'),
+ ('kent-05.jpg', 'Kent, Toronto — finish coats done, floors protected'),
+ ('kent-06.jpg', 'Kent, Toronto — bedroom ready for paint'),
+ ('kent-07.jpg', 'Kent, Toronto — open main floor during finishing'),
+ ('lauther-01.jpg', 'Lauther Ave, Toronto — old lath-and-plaster ceiling coming down'),
+ ('lauther-02.jpg', 'Lauther Ave, Toronto — new ceiling taped around the original medallion'),
+ ('stanton-01.jpg', 'Stanton, Toronto — open joists before insulation and board'),
+ ('stanton-02.jpg', 'Stanton, Toronto — mineral wool and steel channel on an exterior wall'),
+ ('stanton-03.jpg', 'Stanton, Toronto — mineral wool behind resilient channel, close up'),
+ ('stanton-04.jpg', 'Stanton, Toronto — spray foam around a window opening'),
+ ('stanton-05.jpg', 'Stanton, Toronto — sound insulation under a sloped ceiling'),
+ ('thompson-01.jpg', 'Thompson, Toronto — finisher on stilts, floors covered'),
+]
+TILES = ['brule-04.jpg', 'kent-03.jpg', 'stanton-02.jpg', 'brule-07.jpg', 'lauther-02.jpg', 'stanton-04.jpg']
+T['en'].update(album_k='Project album', album_h='Fresh off the trowel.', album_all='View all %d photos')
 
 def ig_strip(lang='en'):
-    t = T[lang]
-    tiles = ''.join('<a href="%s" rel="noopener" aria-label="%s — on Instagram"><img src="/images/%s" alt="%s" loading="lazy" decoding="async" width="300" height="300"><span>%s</span></a>' % (IG, alt, f, alt, place.upper()) for f, place, alt in IG_TILES)
-    return '''<section class="rd-ig" aria-labelledby="ig-h"><header><div><p class="rd-kicker">%s · @ricarti_drywall</p><h2 id="ig-h">%s</h2></div><a class="rd-btn-o" href="%s" rel="noopener">%s %s</a></header><div class="rd-grid">%s</div></section>
-''' % (t['ig_k'], t['ig_h'], IG, IG_SVG, t['ig_follow'], tiles)
+    t = T[lang]; idx = {f: i for i, (f, _) in enumerate(ALBUM)}
+    tiles = ''.join('<a href="/images/%s" data-lb="%d"><img src="/images/%s" alt="%s" loading="lazy" decoding="async" width="300" height="300"><span>%s</span></a>'
+                    % (f, idx[f], f, ALBUM[idx[f]][1], ALBUM[idx[f]][1].split(',')[0].upper()) for f in TILES)
+    album = ''.join('<li data-src="/images/%s">%s</li>' % (f, c) for f, c in ALBUM)
+    return ('<section class="rd-ig" aria-labelledby="ig-h"><header><div><p class="rd-kicker">%s</p><h2 id="ig-h">%s</h2></div>'
+            '<div style="display:flex;flex-wrap:wrap;gap:12px"><button type="button" class="rd-btn" data-lb="0">%s</button><a class="rd-btn-o" href="%s" rel="noopener">%s %s</a></div></header>'
+            '<div class="rd-grid">%s</div><ul class="rd-album" hidden>%s</ul></section>\n'
+            % (t['album_k'], t['album_h'], t['album_all'] % len(ALBUM), IG, IG_SVG, t['ig_follow'], tiles, album))
 
 def footer(lang='en', alts=None, note=None):
     t = T[lang]; alts = alts or {'en': '/'}
