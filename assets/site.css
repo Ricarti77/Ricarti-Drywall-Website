@@ -42,7 +42,8 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible{o
 .rd-mnav .rd-mlangs{display:flex;gap:18px;padding-top:16px;font-size:14px}
 .rd-mnav .rd-mlangs a{border:0;padding:4px 0;font-size:14px}
 @media (max-width:1320px){.rd-sbtn{min-width:0}.rd-sbtn span,.rd-sbtn kbd{display:none}}
-@media (max-width:1100px){.rd-nav{display:none}.rd-mnav{display:block}}
+@media (max-width:1360px){.rd-nav{display:none}.rd-mnav{display:block}}
+@media (max-width:1300px){.rd-top>div>span.rd-hide{display:none}.rd-top>div{justify-content:flex-end}}
 @media (max-width:900px){
  .rd-cta,.rd-top .rd-hide{display:none}
  .rd-head>div{padding:10px var(--pad);gap:12px}

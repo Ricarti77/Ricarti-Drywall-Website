@@ -5,16 +5,19 @@
   var list = document.getElementById('rd-res');
   var sugg = document.getElementById('rd-sugg');
   var index = null, loading = null;
+  var PT = /^pt/.test(document.documentElement.lang);
+  var L = PT ? { idx: '/pt/search-index.json', page: '/pt/busca', none: 'Nada encontrado para “%s”. Tente “espuma”, “nível 5” ou “acústico”, ou ligue para ' }
+             : { idx: '/search-index.json', page: '/search', none: 'Nothing matched “%s”. Try “spray foam”, “Level 5” or “soundproofing”, or call ' };
 
   function load() {
     if (index) return Promise.resolve(index);
-    if (!loading) loading = fetch('/search-index.json').then(function (r) { return r.json(); }).then(function (j) { index = j; return j; });
+    if (!loading) loading = fetch(L.idx).then(function (r) { return r.json(); }).then(function (j) { index = j; return j; });
     return loading;
   }
   function norm(s) { return (s || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[–—]/g, '-'); }
-  function stem(t) { return t.length > 5 ? t.replace(/(ations?|ing|ion|ers|ed|es|s|e)$/, '') : t; }
+  function stem(t) { return t.length > 5 ? (PT ? t.replace(/(acoes|acao|mente|cos|cas|cao|oes|os|as|es|o|a|e|s)$/, '') : t.replace(/(ations?|ing|ion|ers|ed|es|s|e)$/, '')) : t; }
   function esc(s) { return s.replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
-  var STOP = { the: 1, and: 1, for: 1, you: 1, how: 1, what: 1, does: 1, with: 1, are: 1, can: 1, do: 1, of: 1, to: 1, in: 1, a: 1, my: 1, is: 1, an: 1, or: 1 };
+  var STOP = { de: 1, da: 1, do: 1, das: 1, dos: 1, para: 1, com: 1, um: 1, uma: 1, que: 1, como: 1, em: 1, no: 1, na: 1, e: 1, o: 1, os: 1, as: 1, the: 1, and: 1, for: 1, you: 1, how: 1, what: 1, does: 1, with: 1, are: 1, can: 1, do: 1, of: 1, to: 1, in: 1, a: 1, my: 1, is: 1, an: 1, or: 1 };
 
   function search(q) {
     var terms = norm(q).split(/[^a-z0-9]+/).filter(function (t) { return t && !STOP[t]; }).map(stem);
@@ -46,14 +49,14 @@
     if (empty) empty.hidden = true;
     ul.innerHTML = r.length ? r.map(function (o) {
       return '<li><a href="' + o.p.u + '"><span class="u">' + esc(o.p.k) + '</span><span class="t">' + esc(o.p.t) + '</span><span class="s">' + snippet(o.p, o.terms) + '</span></a></li>';
-    }).join('') : '<li class="rd-sugg">Nothing matched “' + esc(q) + '”. Try “spray foam”, “Level 5” or “soundproofing”, or call <a href="tel:+16474821139">(647) 482-1139</a>.</li>';
+    }).join('') : '<li class="rd-sugg">' + L.none.replace('%s', esc(q)) + '<a href="tel:+16474821139">(647) 482-1139</a>.</li>';
   }
   window.rdSearch = { load: load, render: render };
 
   if (!dlg) return;
   function open(e) {
     if (e) e.preventDefault();
-    if (typeof dlg.showModal === 'function') dlg.showModal(); else { location.href = '/search'; return; }
+    if (typeof dlg.showModal === 'function') dlg.showModal(); else { location.href = L.page; return; }
     input.focus(); input.select(); load().then(function () { render(input.value, list, sugg); });
   }
   document.querySelectorAll('[data-open-search]').forEach(function (b) { b.addEventListener('click', open); });
