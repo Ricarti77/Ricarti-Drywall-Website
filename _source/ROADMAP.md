@@ -1,0 +1,102 @@
+# Ricarti Drywall website — development roadmap
+
+Official cumulative branch: `preview/ricarti-dev` (backup: `preview/ricarti-website-development`).
+Every task builds on the latest version of that branch. Nothing is merged into `main` without the owner's approval.
+The live WordPress site (ricartidrywall.ca), DNS and Vercel security settings are never touched.
+
+## Completed (awaiting approval to merge)
+| Task | What | Status |
+|---|---|---|
+| 001 | Homepage hero: "Perfection Starts Here!", eyebrow, sub-headline, CTAs, vertical photo | Done |
+| 002 | Original logo 30% larger, centred between nav and search | Done |
+| 003 | Our Expertise — six services | Done |
+| 004 | Selected Projects portfolio, filters, per-project galleries, `content/projects.json` | Done |
+| 005 | Premium For Builders landing page | Done, awaiting approval |
+
+---
+
+## A. Advanced website navigation (planned, dedicated task)
+
+**Requirements**
+- Sticky header that stays reachable while scrolling.
+- Elegant dropdown menus.
+- Direct links to each service page and each project category.
+- Section navigation (in-page) on longer pages.
+- Responsive mobile navigation with expandable submenus.
+- Keep the enlarged original logo exactly as it is (lettering, proportions, identity).
+- Keep the existing site search.
+
+**Already in place**
+- Sticky header on every page (since the first build) with the search box and `/` or Ctrl+K shortcut.
+- Mobile menu (single level) and a sticky Call / Estimate bar on phones.
+- Logo enlarged and centred (Task 002).
+
+**Dependencies — do first**
+- Individual service pages. Only one exists today (`/drywall-finishing-toronto`). Needed:
+  Drywall Systems, Insulation & Spray Foam, Architectural Finishing, Acoustic & Soundproofing, Metal Stud Framing
+  (+ Portuguese, Spanish, French versions). The dropdown and the "Explore Service" links on the home page point to them.
+- Project category pages or anchors (`/projects?category=…` or `/projects/<category>`), fed by `content/projects.json`.
+
+**Architecture plan**
+- One navigation definition (single data file) used by the desktop dropdowns, the mobile menu, the footer and every language.
+- Desktop: hover **and** click/keyboard to open (Enter/Space, Escape closes, arrow keys), `aria-expanded`, no hover-only menus.
+- Mobile: expandable sections (`<details>`/buttons with `aria-expanded`), large tap targets, works without JavaScript.
+- Section navigation: generated from each long page's `h2` headings (sticky sub-nav on desktop, collapsed on phones).
+- Header height and the centred-logo rule stay as they are; dropdown panels open below the header without shifting the logo.
+
+---
+
+## B. Multilingual website (planned, dedicated tasks)
+
+**Languages (final list — replaces the earlier five-language plan)**
+| Language | Variant | URL prefix | `hreflang` / `lang` | `og:locale` | Status |
+|---|---|---|---|---|---|
+| English | Canadian English — **default** | `/` | `en-CA` | `en_CA` | Live in preview |
+| Portuguese | Brazilian Portuguese | `/pt/` | `pt-BR` | `pt_BR` | Live in preview |
+| Spanish | Latin American Spanish | `/es/` | `es-419` | `es_LA` | Planned |
+| French | Canadian French | `/fr/` | `fr-CA` | `fr_CA` | Planned |
+
+Italian and Hebrew are no longer planned. `x-default` points to the English page.
+
+**Requirements**
+- Complete content in all four languages: pages, navigation, service pages, forms, buttons, SEO metadata (titles, descriptions, structured data, alt text) and form validation messages.
+- Dedicated language URLs with reciprocal `hreflang` tags on every page.
+- Elegant language selector in the header.
+- Remember the visitor's language preference.
+- Professionally written localized content (not word-for-word translation).
+
+**Already in place**
+- Translation memory system (`_source/i18n.py` + `tm_<lang>.json`): every English sentence is translated once; edits only need the changed sentences translated. Adding a language = adding its URL map, locale codes and `tm_<lang>.json`.
+- Portuguese URLs are localized (e.g. `/pt/construtoras`, `/pt/orcamento`); Spanish and French will follow the same pattern.
+- `hreflang` + `x-default` generated automatically; language links in the top bar, mobile menu and footer.
+- Per-language search index and accent-aware site search.
+- Portuguese form emails tagged `[PT]` so the owner knows which language to reply in.
+
+**Changes needed when implementing**
+- English tags: switch `en` → `en-CA` (and Canadian spelling check across English copy).
+- Language selector: replace the plain "EN · PT" links with a compact selector (current language + menu), visible on desktop and mobile.
+- Language preference: save the visitor's explicit choice (cookie/localStorage, no personal data). On later visits to an English page, offer or apply the saved language. Never auto-redirect search engines or first-time visitors by IP or browser language (Google guidance) — every language stays crawlable at its own URL.
+- Form validation messages: replace the browser's default messages with localized messages for all four languages (required fields, email format, file size/type).
+- Footer translation note: adjust per language; English remains the reference version.
+- Remove the unused `it` and `he` entries from the old language list in `chrome.py`.
+- Localized URL slugs for `/es/` and `/fr/`, localized structured data (`inLanguage`, `areaServed`), and per-language sitemaps at launch.
+- Professional review: each language reviewed by a native speaker before launch (Brazilian Portuguese, Latin American Spanish, Canadian French).
+
+---
+
+## Pending owner confirmations (collected from earlier tasks)
+- Project cities/neighbourhoods, project types, years, services actually performed (Task 004).
+- WSIB registration and insurance amount; or remove those mentions (Tasks 001–005).
+- Builder FAQ figures: capacity, payment terms, deficiency turnaround (Task 005).
+- Crew face permission (Thompson photo held back).
+- Final photo selection — all current photos are provisional.
+- Form activation: first test submission + click the "Activate" email at cris@ricartidrywall.ca.
+- Header/phone-bar button wording ("Get an estimate" vs "Request an Estimate").
+- Known SEO bug to fix: the phone menu is picked up as an FAQ question in structured data.
+
+## Future (mentioned, not scheduled)
+- Full drawing upload (multiple/large files) and CRM integration for builder leads.
+- Content management system for projects and photos (structure ready in `content/projects.json`).
+- Professional photography of finished high-end projects.
+- Old blog posts migration (needs the WordPress export) and 301 redirects at launch.
+- Launch checklist: remove `noindex`, add sitemap, connect domain (only with owner approval).
