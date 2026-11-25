@@ -128,3 +128,13 @@ Spanish (`/es/…`) and French (`/fr/…`) service URLs will use localized slugs
 | 61 old blog posts | matching Journal articles where they exist, otherwise `/journal` — needs the WordPress export to map one by one |
 
 Redirects go in `vercel.json` (`redirects`, permanent) at launch only, with owner approval.
+
+## CRM entry points (prepared in Task 008, not connected)
+- `window.RD_CRM = {provider:'gohighlevel', enabled:false}` in assets/site.js. Nothing is sent externally.
+- CTAs carry `data-cta` (estimate, builder-inquiry, call, email, whatsapp) and `data-cta-loc` (header, menu, footer, mbar…).
+- Clicks push to `window.rdLeadEvents` and dispatch a `rd:lead` CustomEvent; first/last touch, landing page and referrer kept in sessionStorage `rd_lead`.
+- The estimate form (#rd-form) adds hidden fields: lead_type (estimate-request | builder-inquiry | drawing-upload), lead_entry, landing_page, referrer.
+- To connect later: listen for `rd:lead`, set enabled:true and map the hidden fields to the GoHighLevel form/webhook.
+
+## Languages
+- EN-CA and PT-BR live. ES (es-419) and FR (fr-CA) prepared in build/i18n.py (HTML_LANG, PLANNED_LANGS) and hidden until Task 009.

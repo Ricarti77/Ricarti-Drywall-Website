@@ -24,7 +24,7 @@ URLS = {'pt': {
  '/journal/lath-and-plaster-repair-toronto': '/pt/guias/reparo-de-reboco-em-casas-antigas-toronto',
  '/journal/what-a-drywall-subcontractor-needs-to-price-your-project': '/pt/guias/o-que-o-empreiteiro-de-drywall-precisa-para-orcar',
 }}
-HTML_LANG = {'pt': 'pt-BR'}
+HTML_LANG = {'pt': 'pt-BR', 'en': 'en-CA', 'es': 'es-419', 'fr': 'fr-CA'}
 OG_LOCALE = {'pt': 'pt_BR'}
 
 BLOCK = set('html body head div section article aside header footer main nav ul ol li dl dt dd p h1 h2 h3 h4 h5 h6 figure figcaption blockquote table thead tbody tr td th form fieldset legend label select option textarea button details summary address dialog title'.split())

@@ -205,7 +205,7 @@ def home():
 <a href="/estimate"><span class="rd-num">04</span><b>Estimate</b></a>
 </nav>
 
-<section class="rd-practice" aria-labelledby="practice-h">
+<section id="about" class="rd-practice" aria-labelledby="practice-h">
 <div class="rd-wrap">
 <p class="rd-kicker">The practice</p>
 <h2 id="practice-h" class="rd-statement rd-rv">We build the surfaces architecture is judged by: the walls, the ceilings, and the way light falls across them.</h2>
@@ -527,7 +527,7 @@ function go(){rdSearch.load().then(function(){rdSearch.render(i.value,u,s);});}
 i.addEventListener("input",go);if(q)go();else i.focus();});
 </script>'''
     build.write_page('/search', 'Search | Ricarti Drywall', 'Search the Ricarti Drywall site: services, guides, service areas and answers about drywall, insulation and finishing.',
-                     shell('/search', body, ig=False))
+                     shell('/search', body, ig=False), crumbs=[('Home', '/'), ('Search', '/search')])
 
 # ---------------------------------------------------------------- INDEX
 def search_index():

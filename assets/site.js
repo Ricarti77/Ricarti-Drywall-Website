@@ -150,7 +150,7 @@
   });
 })();
 
-/* Concept D: header over hero, full-screen menu, language menu, gentle reveals */
+/* Concept D: header over hero, full-screen menu, services dropdown, language menu, reveals */
 (function () {
   var root = document.documentElement; root.classList.add('js');
   var head = document.querySelector('.rd-head');
@@ -158,33 +158,121 @@
     var solid = function () { head.classList.toggle('is-solid', window.scrollY > 80); };
     solid(); window.addEventListener('scroll', solid, { passive: true });
   }
+  var mq = window.matchMedia('(max-width: 900px)');
+
+  /* full-screen menu: scroll lock with position restore, focus trap, Esc, back button closes it */
   var menu = document.querySelector('.rd-menu');
   if (menu) {
     var panel = menu.querySelector('.rd-panel-m'), sum = menu.querySelector('summary'), bar = document.querySelector('.rd-mbar');
+    var svcd = menu.querySelector('.rd-pm-svcd'), y = 0, locked = false, pushed = false, pending = null;
+    var preY = null; menu.querySelector('summary').addEventListener('click', function () { if (!menu.open) preY = window.scrollY; }, true);
+    function lock() { if (locked) return; locked = true; y = preY != null ? preY : window.scrollY; preY = null; document.documentElement.classList.add('rd-menu-open'); var b = document.body.style; b.position = 'fixed'; b.top = -y + 'px'; b.left = '0'; b.right = '0'; b.width = '100%'; }
+    function unlock() { if (!locked) return; locked = false; document.documentElement.classList.remove('rd-menu-open'); var b = document.body.style; b.position = b.top = b.left = b.right = b.width = ''; window.scrollTo(0, y); }
+    function close(viaHistory) {
+      if (menu.open) menu.open = false;
+      unlock();
+      if (pushed && !viaHistory) { pushed = false; history.back(); } else { pushed = false; }
+    }
     menu.addEventListener('toggle', function () {
-      document.body.style.overflow = menu.open ? 'hidden' : '';
       if (bar) bar.classList.toggle('is-hidden', menu.open);
-      if (menu.open) { var f = panel.querySelector('a,button'); if (f) f.focus(); } else { sum.focus(); }
+      if (menu.open) {
+        try { history.pushState({ rdMenu: 1 }, ''); pushed = true; } catch (e) {}
+        lock();
+        if (svcd) svcd.open = !mq.matches;
+        var f = panel.querySelector('a,button'); if (f) f.focus();
+      } else {
+        close(false); sum.focus({ preventScroll: true });
+      }
     });
-    panel.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', function () { menu.open = false; }); });
-    panel.querySelectorAll('[data-open-search]').forEach(function (b) { b.addEventListener('click', function () { menu.open = false; }, true); });
+    window.addEventListener('popstate', function () {
+      if (pending) { var h = pending; pending = null; if (h.charAt(0) === '#') location.hash = h; else location.href = h; return; }
+      if (menu.open) { pushed = false; menu.open = false; unlock(); }
+    });
+    panel.addEventListener('click', function (e) {
+      var a = e.target.closest('a[href]'); if (!a || e.metaKey || e.ctrlKey || e.shiftKey || a.target) return;
+      var href = a.getAttribute('href');
+      if (/^(tel:|mailto:|https?:)/.test(href)) { return; }
+      e.preventDefault();
+      var wasPushed = pushed; pushed = false; menu.open = false; unlock();
+      var url = new URL(href, location.href), same = url.pathname === location.pathname && url.search === location.search;
+      var target = same && url.hash ? url.hash : url.href;
+      if (wasPushed) { pending = target; history.back(); setTimeout(function () { if (pending) { var p = pending; pending = null; if (p.charAt(0) === '#') location.hash = p; else location.href = p; } }, 400); }
+      else if (target.charAt(0) === '#') location.hash = target; else location.href = target;
+    });
+    panel.querySelectorAll('[data-open-search]').forEach(function (b) { b.addEventListener('click', function () { close(false); }, true); });
     document.addEventListener('keydown', function (e) {
       if (!menu.open) return;
       if (e.key === 'Escape') { e.preventDefault(); menu.open = false; return; }
       if (e.key !== 'Tab') return;
-      var f = [sum].concat([].slice.call(panel.querySelectorAll('a[href],button'))), first = f[0], last = f[f.length - 1];
+      var f = [sum].concat([].slice.call(panel.querySelectorAll('a[href],button,summary'))).filter(function (el) { return el.offsetParent !== null || el === sum; });
+      var first = f[0], last = f[f.length - 1];
       if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
       else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
     });
   }
-  var lang = document.querySelector('.rd-lang');
-  if (lang) {
-    document.addEventListener('click', function (e) { if (lang.open && !lang.contains(e.target)) lang.open = false; });
-    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && lang.open) { lang.open = false; lang.querySelector('summary').focus(); } });
-  }
+
+  /* desktop services dropdown and language menu: one open at a time, close on outside click or Esc */
+  var drops = [].slice.call(document.querySelectorAll('.rd-svcdd,.rd-lang'));
+  drops.forEach(function (d) {
+    d.addEventListener('toggle', function () { if (d.open) drops.forEach(function (o) { if (o !== d) o.open = false; }); });
+    if (d.classList.contains('rd-svcdd') && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+      var t; d.addEventListener('mouseenter', function () { clearTimeout(t); if (!d.open) { d.open = true; d._hov = Date.now(); } });
+      d.querySelector('summary').addEventListener('click', function (e) { if (d.open && d._hov && Date.now() - d._hov < 700) { e.preventDefault(); d._hov = 0; } });
+      d.addEventListener('mouseleave', function () { t = setTimeout(function () { d.open = false; }, 220); });
+    }
+  });
+  document.addEventListener('click', function (e) { drops.forEach(function (d) { if (d.open && !d.contains(e.target)) d.open = false; }); });
+  document.addEventListener('keydown', function (e) { if (e.key !== 'Escape') return; drops.forEach(function (d) { if (d.open) { d.open = false; d.querySelector('summary').focus(); } }); });
+  document.querySelectorAll('.rd-svcdd-p a').forEach(function (a) { a.addEventListener('click', function () { a.closest('details').open = false; }); });
+
   var rv = document.querySelectorAll('.rd-rv');
   if (rv.length && 'IntersectionObserver' in window) {
     var io = new IntersectionObserver(function (es) { es.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('is-in'); io.unobserve(en.target); } }); }, { rootMargin: '0px 0px -10% 0px' });
     rv.forEach(function (el) { io.observe(el); });
   } else { rv.forEach(function (el) { el.classList.add('is-in'); }); }
+})();
+
+/* Lead-source preparation for a future CRM (GoHighLevel). Nothing is sent anywhere:
+   inquiry entry points are only classified, kept in this browser session, and copied into
+   hidden fields of the estimate form so each email says where the inquiry came from. */
+(function () {
+  window.RD_CRM = window.RD_CRM || { provider: 'gohighlevel', enabled: false };
+  var KEY = 'rd_lead';
+  function kind(a) {
+    var h = a.getAttribute('href') || '', d = a.getAttribute('data-cta');
+    if (d) return d === 'estimate' && /type=builder/.test(h) ? 'builder-inquiry' : d;
+    if (/^tel:/.test(h)) return 'call';
+    if (/^mailto:/.test(h)) return 'email';
+    if (/wa\.me/.test(h)) return 'whatsapp';
+    if (/\/(estimate|orcamento)\b[^#]*type=builder/.test(h)) return 'builder-inquiry';
+    if (/\/(estimate|orcamento)\b/.test(h)) return 'estimate';
+    return null;
+  }
+  function where(a) { return a.getAttribute('data-cta-loc') || (a.closest('header,.rd-panel-m,.rd-mbar,footer,.rd-hero,section,main') || {}).className || 'page'; }
+  function save(ev) {
+    try {
+      var s = JSON.parse(sessionStorage.getItem(KEY) || '{}');
+      if (!s.first) s.first = ev; s.last = ev;
+      if (!s.landing) s.landing = location.pathname + location.search;
+      sessionStorage.setItem(KEY, JSON.stringify(s));
+    } catch (e) {}
+    (window.rdLeadEvents = window.rdLeadEvents || []).push(ev);
+    try { document.dispatchEvent(new CustomEvent('rd:lead', { detail: ev })); } catch (e) {}
+  }
+  try { var s0 = JSON.parse(sessionStorage.getItem(KEY) || '{}'); if (!s0.landing) { s0.landing = location.pathname + location.search; s0.referrer = document.referrer || ''; sessionStorage.setItem(KEY, JSON.stringify(s0)); } } catch (e) {}
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href],[data-cta]'); if (!a) return;
+    var k = kind(a); if (!k || k === 'search') return;
+    save({ type: k, from: String(where(a)).split(' ')[0], page: location.pathname, t: Date.now() });
+  }, true);
+  var form = document.getElementById('rd-form');
+  if (form) form.addEventListener('submit', function () {
+    var s = {}; try { s = JSON.parse(sessionStorage.getItem(KEY) || '{}'); } catch (e) {}
+    var file = form.querySelector('input[type=file]'), iam = form.querySelector('input[name="I am"]'), builder = iam ? /builder|construtor/i.test(iam.value) : /type=builder/.test(location.search);
+    var type = file && file.files && file.files.length ? 'drawing-upload' : builder ? 'builder-inquiry' : 'estimate-request';
+    function put(n, v) { var i = form.querySelector('input[name="' + n + '"]'); if (!i) { i = document.createElement('input'); i.type = 'hidden'; i.name = n; form.appendChild(i); } i.value = v || ''; }
+    put('lead_type', type); put('lead_entry', s.first ? s.first.type + ' / ' + s.first.from + ' / ' + s.first.page : 'direct');
+    put('landing_page', s.landing); put('referrer', s.referrer);
+    save({ type: type, from: 'estimate-form', page: location.pathname, t: Date.now() });
+  }, true);
 })();

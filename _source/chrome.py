@@ -22,9 +22,11 @@ SVC_LINES = {
 
 T = {
  'en': dict(
-   nav=[('/#services', 'Services'), ('/#projects', 'Projects')],
+   nav=[('/#projects', 'Projects', ''), ('/builders', 'Builders', 'rd-hl-x'), ('/homeowners', 'Homeowners', 'rd-hl-x')],
    main=[('/#services', 'Services'), ('/#projects', 'Projects'), ('/builders', 'For builders'), ('/homeowners', 'For homeowners')],
-   sub=[('/journal', 'Journal'), ('/reviews', 'Reviews'), ('/areas', 'Service areas'), ('/', 'Home')],
+   sub=[('/#about', 'About'), ('/reviews', 'Reviews'), ('/journal', 'Journal'), ('/areas', 'Service areas'), ('#contact', 'Contact'), ('/', 'Home')],
+   svc_label='Services', svc_all='All services', who='Who we work with',
+   who_links=[('/builders', 'For builders'), ('/homeowners', 'For homeowners'), ('/#projects', 'Selected projects'), ('/estimate', 'Request an Estimate')],
    areas='Service areas', search='Search the site', search_ph='Search: spray foam, Level 5, soundproofing…', close='CLOSE', menu='Menu', menu_close='Close',
    sugg='Popular:', sugg_list=['Level 5 finish', 'Spray foam', 'Soundproofing', 'Plaster repair', 'Builders', 'WSIB'],
    est='Request an Estimate', enq='Enquire', call='Call', est_short='Estimate', skip='Skip to content', home='Ricarti Drywall, home',
@@ -60,25 +62,32 @@ HEADER = '''<div><a class="rd-skip" href="#main">%(skip)s</a></div>
 <div class="rd-panel-m" role="dialog" aria-modal="true" aria-label="%(menu)s">
 <div class="rd-pm-top"><a href="%(home)s" aria-label="%(home_l)s"><img src="/images/lockup-plaster-refined.png" alt="Ricarti Drywall" width="264" height="52"></a></div>
 <div class="rd-pm-body">
-<nav class="rd-pm-main" aria-label="Main">%(main)s<div class="rd-pm-sub">%(sub)s<button type="button" data-open-search>%(search)s</button></div></nav>
-<ol class="rd-pm-svc">%(svc)s</ol>
+<nav class="rd-pm-main" aria-label="%(menu)s">
+<button type="button" class="rd-pm-search" data-open-search data-cta="search" data-cta-loc="menu">%(ssvg)s<span>%(search)s</span></button>
+%(main)s<div class="rd-pm-sub">%(sub)s</div></nav>
+<details class="rd-pm-svcd" open><summary><span>%(svc_l)s</span>%(caret)s</summary><ol class="rd-pm-svc">%(svc)s</ol><a class="rd-pm-all" href="/#services">%(svc_all)s →</a></details>
 <div class="rd-pm-side">
 <img src="/images/svc-architectural-480.jpg" alt="" width="480" height="600" loading="lazy" decoding="async">
-<address><a href="tel:+16474821139">(647) 482-1139</a><br><a href="mailto:cris@ricartidrywall.ca">cris@ricartidrywall.ca</a><br><a href="%(ig)s" rel="noopener">Instagram · @ricarti_drywall</a></address>
+<address><a href="tel:+16474821139" data-cta="call" data-cta-loc="menu">(647) 482-1139</a><br><a href="mailto:cris@ricartidrywall.ca" data-cta="email" data-cta-loc="menu">cris@ricartidrywall.ca</a><br><a href="%(ig)s" rel="noopener">Instagram · @ricarti_drywall</a></address>
 <nav class="rd-mlangs" aria-label="%(lang_l)s">%(langs_s)s</nav>
-<a class="rd-pm-est" href="/estimate">%(est)s</a>
+<a class="rd-pm-est" href="/estimate" data-cta="estimate" data-cta-loc="menu">%(est)s</a>
 </div>
 </div>
 <div class="rd-pm-foot"><div><em>%(slogan)s</em><span>%(region)s</span></div></div>
 </div>
 </details>
+<details class="rd-svcdd"><summary%(svc_cur)s>%(svc_l)s%(caret)s</summary><div class="rd-svcdd-p"><div>
+<ol class="rd-pm-svc">%(svc)s</ol>
+<nav class="rd-svcdd-side" aria-label="%(svc_l)s"><p>%(who)s</p>%(who_links)s<a class="rd-pm-all" href="/#services">%(svc_all)s →</a></nav>
+</div></div></details>
 %(nav)s
 </div>
 <a href="%(home)s" class="rd-logo" aria-label="%(home_l)s"><img src="/images/lockup-plaster-refined.png" alt="Ricarti Drywall" width="264" height="52"></a>
 <div class="rd-hr">
 <details class="rd-lang"><summary aria-label="%(lang_l)s: %(cur)s"><span class="rd-lang-cur">%(cur)s</span>%(caret)s</summary><nav class="rd-lang-list" aria-label="%(lang_l)s">%(langs)s</nav></details>
-<a class="rd-enq" href="mailto:cris@ricartidrywall.ca">%(enq)s</a>
-<a class="rd-est" href="/estimate">%(est)s</a>
+<button type="button" class="rd-hsearch" data-open-search data-cta="search" data-cta-loc="header" aria-label="%(search)s">%(ssvg)s</button>
+<a class="rd-enq" href="mailto:cris@ricartidrywall.ca" data-cta="email" data-cta-loc="header">%(enq)s</a>
+<a class="rd-est" href="/estimate" data-cta="estimate" data-cta-loc="header"><span class="rd-est-l">%(est)s</span><span class="rd-est-s">%(est_s)s</span></a>
 </div>
 </div></header>
 <dialog id="rd-search" class="rd-dlg" aria-label="%(search)s"><div class="rd-panel">
@@ -88,17 +97,23 @@ HEADER = '''<div><a class="rd-skip" href="#main">%(skip)s</a></div>
 </div></dialog>
 '''
 
+SVC_URLS = [x['url'] for x in _json_nav['services']]
+
 def header(active='', lang='en', alts=None, over=False):
     t = T[lang]; alts = alts or {'en': active or '/'}
     home = '/' if lang == 'en' else '/%s/' % lang
     cur_short = [s for c, s, _ in LANGS if c == lang][0]
-    svc = ''.join('<li><a href="%s"><span class="n">%02d</span><span><span class="h">%s</span><span class="d">%s</span></span></a></li>'
-                  % (x['url'], i + 1, x['label'].replace('&', '&amp;'), SVC_LINES.get(x['id'], '')) for i, x in enumerate(_json_nav['services']))
+    svc = ''.join('<li><a href="%s"%s><span class="n">%02d</span><span><span class="h">%s</span><span class="d">%s</span></span></a></li>'
+                  % (x['url'], ' aria-current="page"' if active == x['url'] else '', i + 1, x['label'].replace('&', '&amp;'), SVC_LINES.get(x['id'], ''))
+                  for i, x in enumerate(_json_nav['services']))
+    main = ''.join(_a(h, x, active, ' class="rd-pm-svclink"' if h == '/#services' else '') for h, x in t['main'])
     return HEADER % dict(skip=t['skip'], over=' rd-over' if over else '', menu=t['menu'], mclose=t['menu_close'], msvg=MENU_SVG, home=home, home_l=t['home'],
-           main=''.join(_a(h, x, active) for h, x in t['main']), sub=''.join(_a(h, x, active) for h, x in t['sub']),
+           main=main, sub=''.join(_a(h, x, active) for h, x in t['sub']),
            search=t['search'], svc=svc, ig=IG, lang_l=t['lang_label'], langs_s=lang_links(lang, alts, True),
            langs=lang_links(lang, alts), est=t['est'], slogan=t['slogan'], region=t['region'], cur=cur_short, caret=CARET_SVG,
-           nav=''.join(_a(h, x, active) for h, x in t['nav']), enq=t['enq'], ssvg=SEARCH_SVG, sph=t['search_ph'], close=t['close'], sugg=t['sugg'],
+           svc_l=t['svc_label'], svc_all=t['svc_all'], who=t['who'], who_links=''.join(_a(h, x, active) for h, x in t['who_links']),
+           svc_cur=' class="is-active"' if active in SVC_URLS else '', est_s=t['est_short'],
+           nav=''.join(_a(h, x, active, ' class="%s"' % c if c else '') for h, x, c in t['nav']), enq=t['enq'], ssvg=SEARCH_SVG, sph=t['search_ph'], close=t['close'], sugg=t['sugg'],
            sugglinks=''.join('<a href="/search?q=%s">%s</a>' % (s.replace(' ', '+'), s) for s in t['sugg_list']))
 
 # Project album: every photo, grouped by project (street and city only, never house numbers).
@@ -123,12 +138,12 @@ FOOTER = '''<footer class="rd-foot"><div><div class="rd-cols">
 <div class="rd-f-brand"><img src="/images/lockup-plaster-refined.png" alt="Ricarti Drywall" width="203" height="40" loading="lazy" style="height:40px;width:auto;display:block"><em>%(slogan)s</em><p>%(blurb)s</p></div>
 <div><h2>%(fs)s</h2><ul>%(services)s</ul></div>
 <div><h2>%(fc)s</h2><ul>%(company)s</ul></div>
-<address style="font-style:normal"><h2>%(fct)s</h2><p style="margin:0;line-height:1.8">56 Hartley Ave<br>York, ON M6E 4E8<br><a href="tel:+16474821139">(647) 482-1139</a><br><a href="mailto:cris@ricartidrywall.ca">cris@ricartidrywall.ca</a><br><a href="%(ig)s" rel="noopener">Instagram</a> · <a href="https://www.facebook.com/ricartidrywall" rel="noopener">Facebook</a> · <a href="https://wa.me/16474821139" rel="noopener">WhatsApp</a><br><span>%(hours)s</span></p></address>
+<address id="contact" style="font-style:normal"><h2>%(fct)s</h2><p style="margin:0;line-height:1.8">56 Hartley Ave<br>York, ON M6E 4E8<br><a href="tel:+16474821139" data-cta="call" data-cta-loc="footer">(647) 482-1139</a><br><a href="mailto:cris@ricartidrywall.ca" data-cta="email" data-cta-loc="footer">cris@ricartidrywall.ca</a><br><a href="%(ig)s" rel="noopener">Instagram</a> · <a href="https://www.facebook.com/ricartidrywall" rel="noopener">Facebook</a> · <a href="https://wa.me/16474821139" rel="noopener" data-cta="whatsapp" data-cta-loc="footer">WhatsApp</a><br><span>%(hours)s</span></p></address>
 </div>
 <div class="rd-fine"><span>%(legal)s</span><span>%(region)s</span></div>
 <div class="rd-fine" style="border:0;margin-top:0"><nav aria-label="Language">%(langs)s</nav><p>%(disc)s</p></div>
 </div></footer>
-<nav class="rd-mbar" aria-label="Contact"><a href="tel:+16474821139">%(psvg)s%(call)s</a><a href="/estimate">%(est)s</a></nav>
+<nav class="rd-mbar" aria-label="Contact"><a href="tel:+16474821139" data-cta="call" data-cta-loc="mobile-bar">%(psvg)s%(call)s</a><a href="/estimate" data-cta="estimate" data-cta-loc="mobile-bar">%(est)s</a></nav>
 '''
 
 def footer(lang='en', alts=None, note=None):
