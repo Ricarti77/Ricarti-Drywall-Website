@@ -142,3 +142,16 @@ Redirects go in `vercel.json` (`redirects`, permanent) at launch only, with owne
 - Adding a language: add a URL map in i18n.URLS, HTML_LANG/OG_LOCALE/KINDS/HOME_TITLE, LANG_NAMES, chrome.LANGS, the site.js string tables (search, lightbox, stemming), and a tm_<lang>.json.
 - Language preference: stored only when a visitor clicks a language link (localStorage rd_lang). Only the bare English homepage, on a fresh visit from outside the site, sends that visitor to their chosen homepage; ?lang=en always shows English. No location or browser-language redirects.
 - Terminology flagged for human review: see the Task 009 report.
+
+## Enquiries and private uploads (Task 010)
+- /estimate (and /pt/orcamento, /es/cotizacion, /fr/soumission, /it/preventivo): two paths (homeowner / builder), built by build/est.py + build/estimate.js.
+- Delivery: JSON POST to FormSubmit's AJAX endpoint for cris@ricartidrywall.ca (same destination as before). Success is shown only when FormSubmit answers success:true.
+  FormSubmit must be activated for this address and domain (first submission sends an activation email to cris@).
+- Payload: schema ricarti.enquiry.v1 (customer_type, contact, project, services, preferred_language, lead_source incl. Task 008 first/last touch + UTM,
+  consent, attachments[] private references, attachments_not_received[]). Sent as the "CRM payload (JSON)" field and dispatched as rd:lead after success.
+- Uploads: api/uploads/config.js + api/uploads/sign.js (Vercel Functions). OFF until the owner:
+  1. creates a PRIVATE Vercel Blob store (Storage > Create > Blob > access Private) and connects it to this project (adds BLOB_READ_WRITE_TOKEN);
+  2. sets RD_UPLOADS_ENABLED=true (Preview and/or Production) and redeploys;
+  3. sends one real test enquiry with a PDF and confirms it under Storage > enquiries/.
+  Files go browser -> private store through one 10-minute presigned PUT per file (type and exact size enforced). Never in GitHub, never public.
+- GoHighLevel later: send the same payload to an inbound webhook from a server function; attach files by issuing short signed GET URLs or copying into GHL.

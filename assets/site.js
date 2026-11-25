@@ -253,8 +253,8 @@
     if (/^tel:/.test(h)) return 'call';
     if (/^mailto:/.test(h)) return 'email';
     if (/wa\.me/.test(h)) return 'whatsapp';
-    if (/\/(estimate|orcamento)\b[^#]*type=builder/.test(h)) return 'builder-inquiry';
-    if (/\/(estimate|orcamento)\b/.test(h)) return 'estimate';
+    if (/\/(estimate|orcamento|cotizacion|soumission|preventivo)\b[^#]*type=builder/.test(h)) return 'builder-inquiry';
+    if (/\/(estimate|orcamento|cotizacion|soumission|preventivo)\b/.test(h)) return 'estimate';
     return null;
   }
   function where(a) { return a.getAttribute('data-cta-loc') || (a.closest('header,.rd-panel-m,.rd-mbar,footer,.rd-hero,section,main') || {}).className || 'page'; }
@@ -277,7 +277,7 @@
   var form = document.getElementById('rd-form');
   if (form) form.addEventListener('submit', function () {
     var s = {}; try { s = JSON.parse(sessionStorage.getItem(KEY) || '{}'); } catch (e) {}
-    var file = form.querySelector('input[type=file]'), iam = form.querySelector('input[name="I am"]'), builder = iam ? /builder|construt|construct|impresa/i.test(iam.value) : /type=builder/.test(location.search);
+    var file = form.querySelector('input[type=file]'), ct = form.querySelector('input[name="customer_type"]:checked'), builder = ct ? ct.value === 'builder' : /type=builder/.test(location.search);
     var type = file && file.files && file.files.length ? 'drawing-upload' : builder ? 'builder-inquiry' : 'estimate-request';
     function put(n, v) { var i = form.querySelector('input[name="' + n + '"]'); if (!i) { i = document.createElement('input'); i.type = 'hidden'; i.name = n; form.appendChild(i); } i.value = v || ''; }
     put('lead_type', type); put('lead_entry', s.first ? s.first.type + ' / ' + s.first.from + ' / ' + s.first.page : 'direct');

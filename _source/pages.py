@@ -160,7 +160,7 @@ FAQ = [
  ('Are you insured and registered with the WSIB?', 'Yes. We carry [$X million] in liability insurance and are registered with the WSIB. Builders receive our clearance certificate and certificate of insurance before work starts.'),
  ('What is the difference between a Level 4 and a Level 5 finish?', 'Level 4 is three coats over the joints and screws, and suits most painted rooms. Level 5 adds a skim coat over the entire wall or ceiling, so joints do not show under raking light, gloss paint or dark colours.'),
  ('How long does drywall take on a new house?', 'It depends on size, ceiling height and finish level. For a typical [size] home, plan on [X] weeks from board delivery to paint-ready. You get a schedule with your quote.'),
- ('How do I get an estimate?', 'Send photos or drawings through the estimate form, or book a site visit. Requests go straight to cris@ricartidrywall.ca and we reply within [one business day].'),
+ ('How do I get an estimate?', 'Send photos or drawings through the estimate form, or book a site visit. Requests go straight to cris@ricartidrywall.ca.'),
 ]
 
 def faq_html():
