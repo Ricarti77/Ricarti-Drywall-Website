@@ -7,5 +7,3 @@ s=open(p).read()
 js=open('/home/claude/build/estimate.js').read()
 s=s.replace('</body>','<script>\n'+js+'\n</script>\n</body>',1)
 open(p,'w').write(s)
-b='/home/claude/ricarti-drywall-website/builders/index.html'
-t=open(b).read(); n=t.count('href="/estimate"'); t=t.replace('href="/estimate"','href="/estimate?type=builder"'); open(b,'w').write(t); print('builder links',n)

@@ -4,6 +4,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import build, chrome
 from articles import ARTICLES
 import portfolio
+import builders_page
 
 OUT = build.OUT
 GMAPS = 'https://www.google.com/maps/search/?api=1&query=Ricarti+Drywall+Toronto'
@@ -421,6 +422,12 @@ def search_index():
     json.dump(items, open(OUT + 'search-index.json', 'w'), ensure_ascii=False, separators=(',', ':'))
     print('search index', len(items), 'pages')
 
+def builders():
+    body = builders_page.body()
+    build.write_page('/builders', 'Insulation and drywall subcontractor for builders in the GTA | Ricarti Drywall',
+        'The insulation, steel framing and drywall trade for detached homes, semis and townhouse blocks. Pricing from drawings, WSIB clearance and insurance before day one.',
+        shell('/builders', body).replace('href="/estimate"', 'href="/estimate?type=builder"'), css=HOME_CSS + builders_page.CSS, crumbs=[('Home', '/'), ('For builders', '/builders')])
+
 if __name__ == '__main__':
-    home(); reviews(); journal(); search_page()
+    builders(); home(); reviews(); journal(); search_page()
     search_index()
