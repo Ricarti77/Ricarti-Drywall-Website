@@ -71,15 +71,20 @@
   document.querySelectorAll('.rd-mnav a').forEach(function (a) { a.addEventListener('click', function () { a.closest('details').open = false; }); });
 })();
 
-/* Ricarti Drywall — project photo album (opens in place, no redirect) */
+/* Ricarti Drywall — project photo album and per-project galleries (open in place, no redirect)
+   Main album: <ul class="rd-album"> + triggers [data-lb="index"].
+   Project galleries: <ul data-gallery-list="id"> + triggers [data-gallery="id"] (optional data-start). */
 (function () {
-  var list = document.querySelector('.rd-album');
-  if (!list) return;
+  var main = document.querySelector('.rd-album');
+  var lists = {};
+  function read(ul) { return [].map.call(ul.querySelectorAll('li'), function (li) { return { src: li.getAttribute('data-src'), cap: li.textContent }; }); }
+  if (main) lists._main = read(main);
+  document.querySelectorAll('ul[data-gallery-list]').forEach(function (ul) { lists[ul.getAttribute('data-gallery-list')] = read(ul); });
+  if (!Object.keys(lists).length) return;
   var PT = /^pt/.test(document.documentElement.lang);
   var L = PT ? { close: 'Fechar', prev: 'Foto anterior', next: 'Próxima foto', of: ' de ', title: 'Álbum de obras' }
              : { close: 'Close', prev: 'Previous photo', next: 'Next photo', of: ' of ', title: 'Project album' };
-  var items = [].map.call(list.querySelectorAll('li'), function (li) { return { src: li.getAttribute('data-src'), cap: li.textContent }; });
-  var i = 0, dlg = document.createElement('dialog');
+  var items = [], i = 0, opener = null, dlg = document.createElement('dialog');
   dlg.className = 'rd-lbx'; dlg.setAttribute('aria-label', L.title);
   dlg.innerHTML = '<div class="rd-lbx-top"><span class="rd-lbx-n"></span><button type="button" class="rd-lbx-x">' + L.close + ' ✕</button></div>' +
     '<figure><img alt=""><figcaption></figcaption></figure>' +
@@ -87,7 +92,12 @@
     '<div class="rd-lbx-th" role="list"></div>';
   document.body.appendChild(dlg);
   var img = dlg.querySelector('img'), cap = dlg.querySelector('figcaption'), n = dlg.querySelector('.rd-lbx-n'), th = dlg.querySelector('.rd-lbx-th');
-  th.innerHTML = items.map(function (it, k) { return '<button type="button" role="listitem" data-k="' + k + '" aria-label="' + it.cap.replace(/"/g, '&quot;') + '"><img src="' + it.src + '" alt="" loading="lazy"></button>'; }).join('');
+  var prevB = dlg.querySelector('.rd-lbx-p'), nextB = dlg.querySelector('.rd-lbx-f');
+  function load(list, title) {
+    items = list; dlg.setAttribute('aria-label', title || L.title);
+    th.innerHTML = items.map(function (it, k) { return '<button type="button" role="listitem" data-k="' + k + '" aria-label="' + it.cap.replace(/"/g, '&quot;') + '"><img src="' + it.src + '" alt="" loading="lazy"></button>'; }).join('');
+    var single = items.length < 2; prevB.hidden = single; nextB.hidden = single; th.hidden = single;
+  }
   function show(k) {
     i = (k + items.length) % items.length;
     img.src = items[i].src; img.alt = items[i].cap; cap.textContent = items[i].cap;
@@ -96,18 +106,46 @@
     var cur = th.children[i]; if (cur && cur.scrollIntoView) cur.scrollIntoView({ block: 'nearest', inline: 'center' });
     [i + 1, i - 1].forEach(function (k3) { var p = new Image(); p.src = items[(k3 + items.length) % items.length].src; });
   }
-  function open(k) { show(k); if (dlg.showModal) dlg.showModal(); else dlg.setAttribute('open', ''); document.documentElement.style.overflow = 'hidden'; }
-  dlg.addEventListener('close', function () { document.documentElement.style.overflow = ''; });
+  function open(list, k, title, el) {
+    load(list, title); show(k); opener = el || null;
+    if (dlg.showModal) dlg.showModal(); else dlg.setAttribute('open', '');
+    document.documentElement.style.overflow = 'hidden';
+  }
+  dlg.addEventListener('close', function () { document.documentElement.style.overflow = ''; if (opener && opener.focus) opener.focus(); });
   document.querySelectorAll('[data-lb]').forEach(function (el) {
-    el.addEventListener('click', function (e) { e.preventDefault(); open(+el.getAttribute('data-lb')); });
+    el.addEventListener('click', function (e) { if (!lists._main) return; e.preventDefault(); open(lists._main, +el.getAttribute('data-lb'), L.title, el); });
+  });
+  document.querySelectorAll('[data-gallery]').forEach(function (el) {
+    el.addEventListener('click', function (e) {
+      var id = el.getAttribute('data-gallery'); if (!lists[id]) return;
+      e.preventDefault(); open(lists[id], +(el.getAttribute('data-start') || 0), el.getAttribute('data-gallery-title') || L.title, el);
+    });
   });
   dlg.querySelector('.rd-lbx-x').addEventListener('click', function () { dlg.close(); });
-  dlg.querySelector('.rd-lbx-p').addEventListener('click', function () { show(i - 1); });
-  dlg.querySelector('.rd-lbx-f').addEventListener('click', function () { show(i + 1); });
+  prevB.addEventListener('click', function () { show(i - 1); });
+  nextB.addEventListener('click', function () { show(i + 1); });
   th.addEventListener('click', function (e) { var b = e.target.closest('button'); if (b) show(+b.getAttribute('data-k')); });
-  dlg.addEventListener('keydown', function (e) { if (e.key === 'ArrowLeft') show(i - 1); if (e.key === 'ArrowRight') show(i + 1); });
+  dlg.addEventListener('keydown', function (e) { if (items.length < 2) return; if (e.key === 'ArrowLeft') show(i - 1); if (e.key === 'ArrowRight') show(i + 1); });
   var x0 = null;
   dlg.addEventListener('touchstart', function (e) { x0 = e.touches[0].clientX; }, { passive: true });
-  dlg.addEventListener('touchend', function (e) { if (x0 === null) return; var dx = e.changedTouches[0].clientX - x0; if (Math.abs(dx) > 40) show(i + (dx < 0 ? 1 : -1)); x0 = null; });
+  dlg.addEventListener('touchend', function (e) { if (x0 === null || items.length < 2) return; var dx = e.changedTouches[0].clientX - x0; if (Math.abs(dx) > 40) show(i + (dx < 0 ? 1 : -1)); x0 = null; });
   dlg.addEventListener('click', function (e) { if (e.target === dlg) dlg.close(); });
+})();
+
+/* Ricarti Drywall — portfolio filters (all projects stay visible without JavaScript) */
+(function () {
+  var bar = document.querySelector('.rd-pf-filters');
+  if (!bar) return;
+  var cards = document.querySelectorAll('.rd-pf-item');
+  var status = document.querySelector('.rd-pf-status');
+  var grid = document.querySelector('.rd-pf-grid');
+  bar.hidden = false;
+  bar.addEventListener('click', function (e) {
+    var b = e.target.closest('button[data-filter]'); if (!b) return;
+    var f = b.getAttribute('data-filter'), shown = 0;
+    bar.querySelectorAll('button').forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+    cards.forEach(function (c) { var on = f === 'all' || (' ' + c.getAttribute('data-cats') + ' ').indexOf(' ' + f + ' ') > -1; c.hidden = !on; if (on) shown++; });
+    if (grid) grid.classList.toggle('is-filtered', f !== 'all');
+    if (status) status.textContent = status.getAttribute(shown === 1 ? 'data-one' : 'data-many').replace('%d', shown);
+  });
 })();

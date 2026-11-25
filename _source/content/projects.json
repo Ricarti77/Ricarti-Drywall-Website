@@ -1,0 +1,377 @@
+{
+ "_schema": "Ricarti Drywall portfolio. One entry per project; order = display order. Never put house numbers in any field. Leave unknown facts null (they are not shown). documented_work lists only work visible in the project photos; keys: custom-homes, renovation, commercial, architectural, insulation, drywall-finishing. Photos: put web images (900x1600 JPG) in /images; cover = 4:5 crop at 1000px and 600px. Captions and alt text need en and pt.",
+ "categories": [
+  {
+   "key": "all",
+   "en": "All Projects",
+   "pt": "Todos os projetos"
+  },
+  {
+   "key": "custom-homes",
+   "en": "Custom Homes",
+   "pt": "Casas sob medida"
+  },
+  {
+   "key": "renovation",
+   "en": "Renovations",
+   "pt": "Reformas"
+  },
+  {
+   "key": "commercial",
+   "en": "Commercial",
+   "pt": "Comercial"
+  },
+  {
+   "key": "architectural",
+   "en": "Architectural Finishing",
+   "pt": "Acabamentos arquitetônicos"
+  },
+  {
+   "key": "insulation",
+   "en": "Insulation",
+   "pt": "Isolamento"
+  },
+  {
+   "key": "drywall-finishing",
+   "en": "Drywall & Finishing",
+   "pt": "Drywall e acabamento"
+  }
+ ],
+ "projects": [
+  {
+   "id": "kent",
+   "name": "Kent",
+   "published": true,
+   "location": {
+    "street": "Kent",
+    "neighbourhood": null,
+    "city": null,
+    "city_verified": false
+   },
+   "project_type": null,
+   "client_type": null,
+   "builder": null,
+   "year": null,
+   "services_performed": null,
+   "documented_work": [
+    "drywall-finishing"
+   ],
+   "cover": {
+    "file": "pf-kent.jpg",
+    "file_small": "pf-kent-600.jpg",
+    "alt": {
+     "en": "Staircase wall with panel mouldings and seamless painted walls, Kent",
+     "pt": "Parede da escada com molduras em painéis e paredes pintadas sem emendas aparentes, Kent"
+    }
+   },
+   "photos": [
+    {
+     "file": "kent-08.jpg",
+     "caption": {
+      "en": "Kent — stair wall with panel mouldings, painted, before final clean-up",
+      "pt": "Kent — parede da escada com molduras em painéis, pintada, antes da limpeza final"
+     }
+    },
+    {
+     "file": "hero-kent.jpg",
+     "caption": {
+      "en": "Kent, Toronto — finished bedroom after paint",
+      "pt": "Kent, Toronto — quarto pronto, depois da pintura"
+     }
+    },
+    {
+     "file": "kent-01.jpg",
+     "caption": {
+      "en": "Kent, Toronto — smooth walls and ceiling, painted",
+      "pt": "Kent, Toronto — paredes e teto lisos, já pintados"
+     }
+    },
+    {
+     "file": "kent-02.jpg",
+     "caption": {
+      "en": "Kent, Toronto — the long stair hall, finished before paint",
+      "pt": "Kent, Toronto — o longo hall da escada, com o acabamento pronto antes da pintura"
+     }
+    },
+    {
+     "file": "kent-03.jpg",
+     "caption": {
+      "en": "Kent, Toronto — painted bedroom under window light",
+      "pt": "Kent, Toronto — quarto pintado sob a luz da janela"
+     }
+    },
+    {
+     "file": "kent-04.jpg",
+     "caption": {
+      "en": "Kent, Toronto — kitchen and living area, finished drywall",
+      "pt": "Kent, Toronto — cozinha e sala com o drywall acabado"
+     }
+    },
+    {
+     "file": "kent-05.jpg",
+     "caption": {
+      "en": "Kent, Toronto — finish coats done, floors protected",
+      "pt": "Kent, Toronto — demãos de acabamento concluídas, pisos protegidos"
+     }
+    },
+    {
+     "file": "kent-06.jpg",
+     "caption": {
+      "en": "Kent, Toronto — bedroom ready for paint",
+      "pt": "Kent, Toronto — quarto pronto para pintar"
+     }
+    },
+    {
+     "file": "kent-07.jpg",
+     "caption": {
+      "en": "Kent, Toronto — open main floor during finishing",
+      "pt": "Kent, Toronto — térreo aberto durante o acabamento"
+     }
+    }
+   ],
+   "notes": "Photos show board, tape and finish through finished, painted rooms, the stair hall and the kitchen."
+  },
+  {
+   "id": "brule",
+   "name": "Brule",
+   "published": true,
+   "location": {
+    "street": "Brule",
+    "neighbourhood": null,
+    "city": null,
+    "city_verified": false
+   },
+   "project_type": null,
+   "client_type": null,
+   "builder": null,
+   "year": null,
+   "services_performed": null,
+   "documented_work": [
+    "insulation",
+    "drywall-finishing",
+    "architectural"
+   ],
+   "cover": {
+    "file": "pf-brule.jpg",
+    "file_small": "pf-brule-600.jpg",
+    "alt": {
+     "en": "Arched doorway with corner bead opening onto an arched window, Brule",
+     "pt": "Passagem em arco com cantoneira abrindo para uma janela em arco, Brule"
+    }
+   },
+   "photos": [
+    {
+     "file": "brule-09.jpg",
+     "caption": {
+      "en": "Brule — arched doorway with corner bead, looking through to an arched window",
+      "pt": "Brule — passagem em arco com cantoneira, com vista para uma janela em arco"
+     }
+    },
+    {
+     "file": "brule-01.jpg",
+     "caption": {
+      "en": "Brule, Toronto — arched dormer nook boarded in moisture-resistant drywall",
+      "pt": "Brule, Toronto — nicho de janela em arco revestido com drywall resistente à umidade"
+     }
+    },
+    {
+     "file": "brule-02.jpg",
+     "caption": {
+      "en": "Brule, Toronto — the same nook in daylight, ready for tape",
+      "pt": "Brule, Toronto — o mesmo nicho com luz do dia, pronto para o tratamento de juntas"
+     }
+    },
+    {
+     "file": "brule-04.jpg",
+     "caption": {
+      "en": "Brule, Toronto — arched doorway boarded, with corner bead",
+      "pt": "Brule, Toronto — passagem em arco com as chapas e a cantoneira instaladas"
+     }
+    },
+    {
+     "file": "brule-05.jpg",
+     "caption": {
+      "en": "Brule, Toronto — bedroom boarded around a row of three windows",
+      "pt": "Brule, Toronto — quarto com as chapas instaladas em volta de três janelas"
+     }
+    },
+    {
+     "file": "brule-07.jpg",
+     "caption": {
+      "en": "Brule, Toronto — room boarded around French doors",
+      "pt": "Brule, Toronto — cômodo com as chapas instaladas em volta das portas francesas"
+     }
+    },
+    {
+     "file": "brule-08.jpg",
+     "caption": {
+      "en": "Brule, Toronto — arched niche and framing before board",
+      "pt": "Brule, Toronto — nicho em arco e estrutura antes das chapas"
+     }
+    },
+    {
+     "file": "brule-03.jpg",
+     "caption": {
+      "en": "Brule, Toronto — insulated ceiling on resilient channel, board stocked by type",
+      "pt": "Brule, Toronto — forro isolado sobre perfil resiliente, chapas estocadas por tipo"
+     }
+    },
+    {
+     "file": "brule-06.jpg",
+     "caption": {
+      "en": "Brule, Toronto — closed-cell spray foam between roof rafters",
+      "pt": "Brule, Toronto — espuma projetada de célula fechada entre os caibros do telhado"
+     }
+    }
+   ],
+   "notes": "Photos show spray foam at the roof, board throughout, arches and a barrel-vaulted nook, steel channel ceiling grid."
+  },
+  {
+   "id": "stanton",
+   "name": "Stanton",
+   "published": true,
+   "location": {
+    "street": "Stanton",
+    "neighbourhood": null,
+    "city": null,
+    "city_verified": false
+   },
+   "project_type": null,
+   "client_type": null,
+   "builder": null,
+   "year": null,
+   "services_performed": null,
+   "documented_work": [
+    "insulation"
+   ],
+   "cover": {
+    "file": "pf-stanton.jpg",
+    "file_small": "pf-stanton-600.jpg",
+    "alt": {
+     "en": "Open floor with exposed joists and a timber staircase before insulation, Stanton",
+     "pt": "Pavimento aberto com vigas à mostra e escada de madeira antes do isolamento, Stanton"
+    }
+   },
+   "photos": [
+    {
+     "file": "stanton-01.jpg",
+     "caption": {
+      "en": "Stanton, Toronto — open joists before insulation and board",
+      "pt": "Stanton, Toronto — vigas à mostra antes do isolamento e das chapas"
+     }
+    },
+    {
+     "file": "stanton-02.jpg",
+     "caption": {
+      "en": "Stanton, Toronto — mineral wool and steel channel on an exterior wall",
+      "pt": "Stanton, Toronto — lã de rocha e perfil de aço numa parede externa"
+     }
+    },
+    {
+     "file": "stanton-03.jpg",
+     "caption": {
+      "en": "Stanton, Toronto — mineral wool behind resilient channel, close up",
+      "pt": "Stanton, Toronto — lã de rocha atrás do perfil resiliente, de perto"
+     }
+    },
+    {
+     "file": "stanton-04.jpg",
+     "caption": {
+      "en": "Stanton, Toronto — spray foam around a window opening",
+      "pt": "Stanton, Toronto — espuma projetada em volta do vão de uma janela"
+     }
+    },
+    {
+     "file": "stanton-05.jpg",
+     "caption": {
+      "en": "Stanton, Toronto — sound insulation under a sloped ceiling",
+      "pt": "Stanton, Toronto — isolamento acústico sob um teto inclinado"
+     }
+    }
+   ],
+   "notes": "Photos show spray foam, mineral wool and resilient channel; no board or finish photos yet."
+  },
+  {
+   "id": "lauther",
+   "name": "Lauther Ave",
+   "published": true,
+   "location": {
+    "street": "Lauther Ave",
+    "neighbourhood": null,
+    "city": null,
+    "city_verified": false
+   },
+   "project_type": null,
+   "client_type": null,
+   "builder": null,
+   "year": null,
+   "services_performed": null,
+   "documented_work": [
+    "renovation",
+    "drywall-finishing"
+   ],
+   "cover": {
+    "file": "pf-lauther.jpg",
+    "file_small": "pf-lauther-600.jpg",
+    "alt": {
+     "en": "New taped ceiling around an original plaster medallion, Lauther Ave",
+     "pt": "Forro novo com juntas tratadas em volta de um florão de gesso original, Lauther Ave"
+    }
+   },
+   "photos": [
+    {
+     "file": "lauther-01.jpg",
+     "caption": {
+      "en": "Lauther Ave, Toronto — old lath-and-plaster ceiling coming down",
+      "pt": "Lauther Ave, Toronto — retirada do antigo forro de reboco sobre ripas"
+     }
+    },
+    {
+     "file": "lauther-02.jpg",
+     "caption": {
+      "en": "Lauther Ave, Toronto — new ceiling taped around the original medallion",
+      "pt": "Lauther Ave, Toronto — forro novo com as juntas tratadas em volta do florão original"
+     }
+    }
+   ],
+   "notes": "Photos show an old lath-and-plaster ceiling removed and a new ceiling taped around the original medallion and crown."
+  },
+  {
+   "id": "thompson",
+   "name": "Thompson",
+   "published": true,
+   "location": {
+    "street": "Thompson",
+    "neighbourhood": null,
+    "city": null,
+    "city_verified": false
+   },
+   "project_type": null,
+   "client_type": null,
+   "builder": null,
+   "year": null,
+   "services_performed": null,
+   "documented_work": [
+    "drywall-finishing"
+   ],
+   "cover": {
+    "file": "pf-thompson.jpg",
+    "file_small": "pf-thompson-600.jpg",
+    "alt": {
+     "en": "Finisher on stilts skimming a ceiling with floors covered, Thompson",
+     "pt": "Profissional sobre pernas de pau aplicando massa no forro, pisos cobertos, Thompson"
+    }
+   },
+   "photos": [
+    {
+     "file": "thompson-01.jpg",
+     "caption": {
+      "en": "Thompson, Toronto — finisher on stilts, floors covered",
+      "pt": "Thompson, Toronto — profissional de acabamento sobre pernas de pau, pisos cobertos"
+     }
+    }
+   ],
+   "notes": "One usable photo (a second shows a crew member's face and is held back until permission is confirmed)."
+  }
+ ]
+}

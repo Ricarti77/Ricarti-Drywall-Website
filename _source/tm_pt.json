@@ -643,7 +643,32 @@
   "Acoustic insulation, resilient channels, sound isolation assemblies, and specialized noise control solutions.": "Isolamento acústico, perfis resilientes, sistemas de isolamento sonoro e soluções especiais de controle de ruído.",
   "Metal Stud Framing": "Estrutura em perfis de aço",
   "Precision steel stud framing for custom homes, residential renovations, and selected commercial projects.": "Estruturas em perfis de aço executadas com precisão para casas sob medida, reformas residenciais e obras comerciais selecionadas.",
-  "<0><1>Since 2009</1> · family-owned</0><2><3>One crew</3> from insulation to paint-ready</2><4><5>WSIB</5> &amp; fully insured</4><6><7>Written scope</7> on every project</6>": "<0><1>Desde 2009</1> · empresa familiar</0><2><3>Uma única equipe</3> do isolamento à parede pronta para pintar</2><4><5>WSIB</5> e seguro completo</4><6><7>Escopo por escrito</7> em toda obra</6>"
+  "<0><1>Since 2009</1> · family-owned</0><2><3>One crew</3> from insulation to paint-ready</2><4><5>WSIB</5> &amp; fully insured</4><6><7>Written scope</7> on every project</6>": "<0><1>Desde 2009</1> · empresa familiar</0><2><3>Uma única equipe</3> do isolamento à parede pronta para pintar</2><4><5>WSIB</5> e seguro completo</4><6><7>Escopo por escrito</7> em toda obra</6>",
+  "Kent — stair wall with panel mouldings, painted, before final clean-up": "Kent — parede da escada com molduras em painéis, pintada, antes da limpeza final",
+  "View gallery · 9 photos": "Ver galeria · 9 fotos",
+  "Drywall &amp; Finishing": "Drywall e acabamento",
+  "Brule — arched doorway with corner bead, looking through to an arched window": "Brule — passagem em arco com cantoneira, com vista para uma janela em arco",
+  "Insulation · Drywall &amp; Finishing · Architectural Finishing": "Isolamento · Drywall e acabamento · Acabamentos arquitetônicos",
+  "View gallery · 5 photos": "Ver galeria · 5 fotos",
+  "View gallery · 2 photos": "Ver galeria · 2 fotos",
+  "Renovations · Drywall &amp; Finishing": "Reformas · Drywall e acabamento",
+  "View gallery · 1 photo": "Ver galeria · 1 foto",
+  "Selected Projects": "Projetos selecionados",
+  "Craftsmanship in Every Detail.": "Maestria em cada detalhe.",
+  "From exceptional custom homes to complex architectural spaces, our work reflects a commitment to precision, craftsmanship, and excellence.": "De casas sob medida excepcionais a espaços arquitetônicos complexos, nosso trabalho reflete um compromisso com a precisão, a maestria e a excelência.",
+  "All Projects<0>5</0>": "Todos os projetos<0>5</0>",
+  "Renovations<0>1</0>": "Reformas<0>1</0>",
+  "Architectural Finishing<0>1</0>": "Acabamentos arquitetônicos<0>1</0>",
+  "Insulation<0>2</0>": "Isolamento<0>2</0>",
+  "Drywall &amp; Finishing<0>4</0>": "Drywall e acabamento<0>4</0>",
+  "<0/><1>View gallery</1>": "<0/><1>Ver galeria</1>",
+  "Kent": "Kent",
+  "Brule": "Brule",
+  "Stanton": "Stanton",
+  "Lauther Ave": "Lauther Ave",
+  "Thompson": "Thompson",
+  "Work documented": "Etapas registradas",
+  "View all 26 photos": "Ver as 26 fotos"
  },
  "attrs": {
   "Ricarti Drywall": "Ricarti Drywall",
@@ -741,7 +766,18 @@
   "Smooth painted walls and ceiling in a finished bedroom with white oak floors, Kent, Toronto": "Paredes e teto lisos e pintados num quarto pronto com piso de carvalho branco, Kent, Toronto",
   "Curved, barrel-vaulted dormer nook boarded in moisture-resistant drywall, Brule, Toronto": "Nicho abobadado em curva revestido com drywall resistente à umidade, Brule, Toronto",
   "Steel channel ceiling grid installed over insulation before board, Brule, Toronto": "Grelha de perfis de aço no forro, instalada sobre o isolamento antes das chapas, Brule, Toronto",
-  "A long wall of mineral wool sound insulation behind steel resilient channels, Stanton, Toronto": "Parede extensa com isolamento acústico em lã de rocha atrás de perfis resilientes de aço, Stanton, Toronto"
+  "A long wall of mineral wool sound insulation behind steel resilient channels, Stanton, Toronto": "Parede extensa com isolamento acústico em lã de rocha atrás de perfis resilientes de aço, Stanton, Toronto",
+  "Staircase wall with panel mouldings and seamless painted walls, Kent": "Parede da escada com molduras em painéis e paredes pintadas sem emendas aparentes, Kent",
+  "Open the Kent gallery, 9 photos": "Abrir a galeria Kent, 9 fotos",
+  "Arched doorway with corner bead opening onto an arched window, Brule": "Passagem em arco com cantoneira abrindo para uma janela em arco, Brule",
+  "Open the Brule gallery, 9 photos": "Abrir a galeria Brule, 9 fotos",
+  "Open floor with exposed joists and a timber staircase before insulation, Stanton": "Pavimento aberto com vigas à mostra e escada de madeira antes do isolamento, Stanton",
+  "Open the Stanton gallery, 5 photos": "Abrir a galeria Stanton, 5 fotos",
+  "New taped ceiling around an original plaster medallion, Lauther Ave": "Forro novo com juntas tratadas em volta de um florão de gesso original, Lauther Ave",
+  "Open the Lauther Ave gallery, 2 photos": "Abrir a galeria Lauther Ave, 2 fotos",
+  "Finisher on stilts skimming a ceiling with floors covered, Thompson": "Profissional sobre pernas de pau aplicando massa no forro, pisos cobertos, Thompson",
+  "Open the Thompson gallery, 1 photo": "Abrir a galeria Thompson, 1 foto",
+  "Filter projects": "Filtrar projetos"
  },
  "scripts": {
   "\"PHOTOS OR PLANS (OPTIONAL)\":\"DRAWINGS (PDF)\"": "\"FOTOS OU PROJETOS (OPCIONAL)\":\"PROJETOS (PDF)\"",
@@ -750,6 +786,8 @@
   "\"Request a site visit\":\"Get a ballpark\"):\"Request pricing\"": "\"Solicitar visita técnica\":\"Pedir estimativa\"):\"Solicitar orçamento\"",
   "\"Site visit request\":\"Ballpark request\"):\"Builder pricing request\"": "\"[PT] Pedido de visita técnica\":\"[PT] Pedido de estimativa\"):\"[PT] Pedido de orçamento de construtora\"",
   "location.origin+\"/estimate?sent=1\"": "location.origin+\"/pt/orcamento?sent=1\"",
-  "location.href=\"/estimate\"": "location.href=\"/pt/orcamento\""
+  "location.href=\"/estimate\"": "location.href=\"/pt/orcamento\"",
+  "\"Showing %d project\"": "\"Mostrando %d projeto\"",
+  "\"Showing %d projects\"": "\"Mostrando %d projetos\""
  }
 }

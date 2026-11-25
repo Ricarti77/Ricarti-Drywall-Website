@@ -3,6 +3,7 @@ import json, re, html, os, sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import build, chrome
 from articles import ARTICLES
+import portfolio
 
 OUT = build.OUT
 GMAPS = 'https://www.google.com/maps/search/?api=1&query=Ricarti+Drywall+Toronto'
@@ -236,6 +237,8 @@ def home():
 <p class="rd-exp-proof"><span><b>Since 2009</b> · family-owned</span><span><b>One crew</b> from insulation to paint-ready</span><span><b>WSIB</b> &amp; fully insured</span><span><b>Written scope</b> on every project</span></p>
 </section>
 
+%(portfolio)s
+
 <section class="rd-wrap rd-sec" aria-labelledby="notes-h">
 <div class="rd-notes">
 <figure style="margin:0">%(stanton)s<figcaption class="rd-cap">Stanton, Toronto — mineral wool and steel channel, before board.</figcaption></figure>
@@ -285,12 +288,12 @@ def home():
            kent2=img('kent-02.jpg', 'Long stair hall with finished drywall walls, Kent, Toronto'),
            stanton=img('stanton-03.jpg', 'Mineral wool insulation behind steel resilient channel, Stanton, Toronto'),
            thompson=img('thompson-01.jpg', 'A finisher on stilts skimming a ceiling, Thompson, Toronto'),
-           q0=REVIEWS[0][1], n0=REVIEWS[0][0].upper(), rows=rows, expertise=expertise, cards=''.join(card(a) for a in ARTICLES[:3]),
+           q0=REVIEWS[0][1], n0=REVIEWS[0][0].upper(), rows=rows, expertise=expertise, portfolio=portfolio.section(), cards=''.join(card(a) for a in ARTICLES[:3]),
            quotes=quotes, gmaps=GMAPS, faq=faq_html())
     body += band('Start with a site visit, not a <em>guess.</em>', ('Book a site visit', '/estimate'), ('Builders: send drawings', '/estimate?type=builder'))
     build.write_page('', 'Ricarti Drywall | Drywall, insulation and finishing in Toronto and the GTA',
         'Family-owned since 2009. Insulation, steel framing, drywall and Level 4 or Level 5 finishing for homeowners and builders across Toronto, the GTA, Hamilton, Kitchener-Cambridge and Muskoka.',
-        shell('/', body), css=HOME_CSS, image='hero-kent.jpg')
+        shell('/', body), css=HOME_CSS + portfolio.CSS, image='hero-kent.jpg')
 
 # ---------------------------------------------------------------- REVIEWS
 def reviews():

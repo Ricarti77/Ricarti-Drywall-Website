@@ -68,32 +68,10 @@ def header(active='', lang='en', alts=None):
            sugglinks=''.join('<a href="/search?q=%s">%s</a>' % (s.replace(' ', '+'), s) for s in t['sugg_list']))
 
 # Project album: every photo, grouped by project (street and city only, never house numbers).
-ALBUM = [
- ('brule-01.jpg', 'Brule, Toronto — arched dormer nook boarded in moisture-resistant drywall'),
- ('brule-02.jpg', 'Brule, Toronto — the same nook in daylight, ready for tape'),
- ('brule-04.jpg', 'Brule, Toronto — arched doorway boarded, with corner bead'),
- ('brule-05.jpg', 'Brule, Toronto — bedroom boarded around a row of three windows'),
- ('brule-07.jpg', 'Brule, Toronto — room boarded around French doors'),
- ('brule-08.jpg', 'Brule, Toronto — arched niche and framing before board'),
- ('brule-03.jpg', 'Brule, Toronto — insulated ceiling on resilient channel, board stocked by type'),
- ('brule-06.jpg', 'Brule, Toronto — closed-cell spray foam between roof rafters'),
- ('hero-kent.jpg', 'Kent, Toronto — finished bedroom after paint'),
- ('kent-01.jpg', 'Kent, Toronto — smooth walls and ceiling, painted'),
- ('kent-02.jpg', 'Kent, Toronto — the long stair hall, finished before paint'),
- ('kent-03.jpg', 'Kent, Toronto — painted bedroom under window light'),
- ('kent-04.jpg', 'Kent, Toronto — kitchen and living area, finished drywall'),
- ('kent-05.jpg', 'Kent, Toronto — finish coats done, floors protected'),
- ('kent-06.jpg', 'Kent, Toronto — bedroom ready for paint'),
- ('kent-07.jpg', 'Kent, Toronto — open main floor during finishing'),
- ('lauther-01.jpg', 'Lauther Ave, Toronto — old lath-and-plaster ceiling coming down'),
- ('lauther-02.jpg', 'Lauther Ave, Toronto — new ceiling taped around the original medallion'),
- ('stanton-01.jpg', 'Stanton, Toronto — open joists before insulation and board'),
- ('stanton-02.jpg', 'Stanton, Toronto — mineral wool and steel channel on an exterior wall'),
- ('stanton-03.jpg', 'Stanton, Toronto — mineral wool behind resilient channel, close up'),
- ('stanton-04.jpg', 'Stanton, Toronto — spray foam around a window opening'),
- ('stanton-05.jpg', 'Stanton, Toronto — sound insulation under a sloped ceiling'),
- ('thompson-01.jpg', 'Thompson, Toronto — finisher on stilts, floors covered'),
-]
+import json as _json, os as _os
+_PROJ = _json.load(open(_os.path.join(_os.path.dirname(_os.path.abspath(__file__)), 'content', 'projects.json')))
+# Album = every published project photo, in project order (single source of truth: content/projects.json)
+ALBUM = [(ph['file'], ph['caption']['en']) for pr in _PROJ['projects'] if pr.get('published') for ph in pr['photos']]
 TILES = ['brule-04.jpg', 'kent-03.jpg', 'stanton-02.jpg', 'brule-07.jpg', 'lauther-02.jpg', 'stanton-04.jpg']
 T['en'].update(album_k='Project album', album_h='Fresh off the trowel.', album_all='View all %d photos')
 
