@@ -30,6 +30,26 @@ def card(a, size='m'):
 
 # ---------------------------------------------------------------- HOME
 HOME_CSS = '''
+.rd-exp-head{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:24px 64px;align-items:end;margin-bottom:clamp(40px,5vw,64px)}
+.rd-exp-head h2 em{display:block;font-style:italic;color:var(--spruce)}
+.rd-exp-head .rd-lede{max-width:440px;margin:0}
+.rd-exp-grid{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(48px,5vw,72px) clamp(24px,2.6vw,40px)}
+.rd-svc{display:flex;flex-direction:column;height:100%;text-decoration:none;color:var(--ink)}
+.rd-svc-img{display:block;overflow:hidden;background:var(--gypsum);margin-bottom:22px}
+.rd-svc-img img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;transition:transform .9s cubic-bezier(.2,.6,.2,1),filter .6s ease;filter:saturate(.92)}
+.rd-svc:hover .rd-svc-img img,.rd-svc:focus-visible .rd-svc-img img{transform:scale(1.035);filter:saturate(1)}
+.rd-svc-n{font:300 15px/1 var(--serif);color:var(--spruce);letter-spacing:.06em;padding-top:14px;border-top:1px solid var(--hair)}
+.rd-svc-h{margin:12px 0 10px;font:300 clamp(24px,2.1vw,30px)/1.12 var(--serif);letter-spacing:-.01em}
+.rd-svc-d{margin:0 0 20px;font-size:15px;line-height:1.6;color:var(--muted);max-width:400px}
+.rd-svc-cta{margin-top:auto;align-self:flex-start;font-size:11px;letter-spacing:.16em;font-weight:500;text-transform:uppercase;color:var(--spruce);padding-bottom:4px;border-bottom:1px solid transparent;transition:border-color .3s}
+.rd-svc:hover .rd-svc-cta,.rd-svc:focus-visible .rd-svc-cta{border-bottom-color:var(--spruce)}
+.rd-svc:hover .rd-svc-h{color:var(--spruce)}
+.rd-exp-proof{display:flex;flex-wrap:wrap;gap:10px 36px;margin:clamp(48px,5vw,72px) 0 0;padding-top:20px;border-top:1px solid var(--ink);font-size:13px;color:var(--muted)}
+.rd-exp-proof b{font-weight:500;color:var(--ink)}
+@media (max-width:1100px){.rd-exp-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:820px){.rd-exp-head{grid-template-columns:1fr;align-items:start}}
+@media (max-width:700px){.rd-exp-grid{grid-template-columns:1fr;gap:48px}.rd-svc-img img{aspect-ratio:4/3}.rd-exp-proof{flex-direction:column}}
+@media (prefers-reduced-motion:reduce){.rd-svc-img img{transition:none}.rd-svc:hover .rd-svc-img img{transform:none}}
 .rd-cover{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(32px,5.5vw,96px);align-items:center;padding-top:clamp(40px,5vw,72px)}
 .rd-eyebrow{margin:0 0 30px;font-size:12px;letter-spacing:.28em;font-weight:500;color:var(--spruce);text-transform:uppercase}
 @media (max-width:520px){.rd-eyebrow{font-size:11px;letter-spacing:.14em;margin-bottom:22px}}
@@ -107,6 +127,21 @@ HOME_CSS = '''
 @media (max-width:700px){.rd-row{grid-template-columns:48px minmax(0,1fr)}.rd-row .d{grid-column:2}.rd-row>span:last-child{display:none}}
 '''
 
+EXPERTISE = [
+ ('Drywall Systems', 'Premium drywall installation, custom ceilings, curved walls, and complex architectural designs.',
+  'svc-drywall-systems', 'Bright bedroom boarded floor to ceiling around a row of three windows, Brule, Toronto', '/estimate', 'Discuss your project'),
+ ('Insulation &amp; Spray Foam', 'Closed-cell spray foam, batt insulation, mineral wool, and blown-in insulation solutions for superior thermal performance.',
+  'svc-insulation', 'Spray foam insulation sealing the walls around a window, Stanton, Toronto', '/journal/spray-foam-vs-batt-insulation', 'Read the guide'),
+ ('Level 4 &amp; Level 5 Finishing', 'Precision taping, skim coating, and premium surface preparation for exceptional architectural finishes.',
+  'svc-finishing', 'Smooth painted walls and ceiling in a finished bedroom with white oak floors, Kent, Toronto', '/drywall-finishing-toronto', 'Explore Service'),
+ ('Architectural Finishing', 'Trimless details, shadow reveals, custom curves, integrated air vents, frameless lighting details, and specialized architectural drywall solutions.',
+  'svc-architectural', 'Curved, barrel-vaulted dormer nook boarded in moisture-resistant drywall, Brule, Toronto', '/estimate', 'Discuss your project'),
+ ('Acoustic &amp; Soundproofing Systems', 'Acoustic insulation, resilient channels, sound isolation assemblies, and specialized noise control solutions.',
+  'svc-acoustic', 'A long wall of mineral wool sound insulation behind steel resilient channels, Stanton, Toronto', '/journal/soundproofing-a-room', 'Read the guide'),
+ ('Metal Stud Framing', 'Precision steel stud framing for custom homes, residential renovations, and selected commercial projects.',
+  'svc-framing', 'Steel channel ceiling grid installed over insulation before board, Brule, Toronto', '/estimate', 'Discuss your project'),
+]
+
 SERVICES = [
  ('Insulation & air sealing', 'Batt, blown-in and spray foam, open and closed cell, with the air barrier and vapour control your inspector checks for.', '/journal/spray-foam-vs-batt-insulation'),
  ('Steel stud framing', 'Bulkheads, ceilings, partitions and basement walls, framed straight and plumb so the board goes on flat.', '/#services'),
@@ -128,6 +163,10 @@ def faq_html():
     return ''.join('<details%s><summary>%s<span class="rd-plus" aria-hidden="true">+</span></summary><p>%s</p></details>' % (' open' if i == 0 else '', q, a) for i, (q, a) in enumerate(FAQ))
 
 def home():
+    expertise = ''.join(
+        '<li><a class="rd-svc" href="%s"><span class="rd-svc-img"><img src="/images/%s.jpg" srcset="/images/%s-480.jpg 480w, /images/%s.jpg 900w" sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 31vw" alt="%s" width="900" height="1125" loading="lazy" decoding="async"></span>'
+        '<span class="rd-svc-n">%02d</span><h3 class="rd-svc-h">%s</h3><p class="rd-svc-d">%s</p><span class="rd-svc-cta">%s<span aria-hidden="true"> →</span></span></a></li>'
+        % (u, img_, img_, img_, alt, i + 1, h, d, cta) for i, (h, d, img_, alt, u, cta) in enumerate(EXPERTISE))
     rows = ''.join('<a class="rd-row" href="%s"><span class="n">%02d</span><span class="h">%s</span><span class="d">%s</span><span aria-hidden="true">→</span></a>' % (u, i + 1, h.replace('&', '&amp;'), d) for i, (h, d, u) in enumerate(SERVICES))
     quotes = ''.join('<blockquote><p>“%s”</p><footer>%s · GOOGLE REVIEW</footer></blockquote>' % (q, n.upper()) for n, q in REVIEWS[1:4])
     body = '''
@@ -188,12 +227,13 @@ def home():
 </article>
 </section>
 
-<section id="services" class="rd-wrap rd-sec" aria-labelledby="services-h">
-<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px 64px;align-items:end;margin-bottom:36px">
-<div><p class="rd-kicker">The index</p><h2 id="services-h" class="rd-h2">Everything between the framing and the <em>paint.</em></h2></div>
-<p class="rd-muted" style="margin:0;max-width:460px">One crew from insulation to paint-ready walls. Fewer trades on site, no gap waiting for the next one.</p>
-</div>
-<div style="border-top:1px solid var(--ink)">%(rows)s</div>
+<section id="services" class="rd-wrap rd-sec rd-exp" aria-labelledby="services-h">
+<header class="rd-exp-head">
+<div><p class="rd-kicker">Our Expertise</p><h2 id="services-h" class="rd-h2">Built with Precision.<em>Finished with Excellence.</em></h2></div>
+<p class="rd-lede">Specialized construction systems and architectural finishes for projects where quality is non-negotiable.</p>
+</header>
+<ol class="rd-exp-grid">%(expertise)s</ol>
+<p class="rd-exp-proof"><span><b>Since 2009</b> · family-owned</span><span><b>One crew</b> from insulation to paint-ready</span><span><b>WSIB</b> &amp; fully insured</span><span><b>Written scope</b> on every project</span></p>
 </section>
 
 <section class="rd-wrap rd-sec" aria-labelledby="notes-h">
@@ -245,7 +285,7 @@ def home():
            kent2=img('kent-02.jpg', 'Long stair hall with finished drywall walls, Kent, Toronto'),
            stanton=img('stanton-03.jpg', 'Mineral wool insulation behind steel resilient channel, Stanton, Toronto'),
            thompson=img('thompson-01.jpg', 'A finisher on stilts skimming a ceiling, Thompson, Toronto'),
-           q0=REVIEWS[0][1], n0=REVIEWS[0][0].upper(), rows=rows, cards=''.join(card(a) for a in ARTICLES[:3]),
+           q0=REVIEWS[0][1], n0=REVIEWS[0][0].upper(), rows=rows, expertise=expertise, cards=''.join(card(a) for a in ARTICLES[:3]),
            quotes=quotes, gmaps=GMAPS, faq=faq_html())
     body += band('Start with a site visit, not a <em>guess.</em>', ('Book a site visit', '/estimate'), ('Builders: send drawings', '/estimate?type=builder'))
     build.write_page('', 'Ricarti Drywall | Drywall, insulation and finishing in Toronto and the GTA',
