@@ -5,6 +5,7 @@ import build, chrome
 from articles import ARTICLES
 import portfolio
 import builders_page
+import homeowners_page
 
 OUT = build.OUT
 GMAPS = 'https://www.google.com/maps/search/?api=1&query=Ricarti+Drywall+Toronto'
@@ -428,6 +429,12 @@ def builders():
         'The insulation, steel framing and drywall trade for detached homes, semis and townhouse blocks. Pricing from drawings, WSIB clearance and insurance before day one.',
         shell('/builders', body).replace('href="/estimate"', 'href="/estimate?type=builder"'), css=HOME_CSS + builders_page.CSS, crumbs=[('Home', '/'), ('For builders', '/builders')])
 
+def homeowners():
+    body = homeowners_page.body()
+    build.write_page('/homeowners', 'Drywall contractor for homeowners in Toronto | Ricarti Drywall',
+        'Custom homes, additions, basements and repairs. A site visit, a written scope with the finish level for each room, a clean site and a final walkthrough. Book a site visit.',
+        shell('/homeowners', body), css=HOME_CSS + builders_page.CSS + homeowners_page.CSS, crumbs=[('Home', '/'), ('For homeowners', '/homeowners')])
+
 if __name__ == '__main__':
-    builders(); home(); reviews(); journal(); search_page()
+    homeowners(); builders(); home(); reviews(); journal(); search_page()
     search_index()
