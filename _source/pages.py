@@ -30,12 +30,17 @@ def card(a, size='m'):
 
 # ---------------------------------------------------------------- HOME
 HOME_CSS = '''
-.rd-cover{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(32px,5vw,80px);align-items:end;padding-top:clamp(40px,6vw,88px)}
-.rd-cover h1{margin:0 0 28px;font-size:12px;letter-spacing:.16em;font-weight:500;color:var(--spruce);text-transform:uppercase}
-.rd-display{margin:0;font:300 clamp(52px,8.4vw,132px)/.94 var(--serif);letter-spacing:-.025em}
-.rd-cover .rd-lede{max-width:560px;margin:36px 0 32px}
+.rd-cover{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(32px,5.5vw,96px);align-items:center;padding-top:clamp(40px,5vw,72px)}
+.rd-eyebrow{margin:0 0 30px;font-size:12px;letter-spacing:.28em;font-weight:500;color:var(--spruce);text-transform:uppercase}
+@media (max-width:520px){.rd-eyebrow{font-size:11px;letter-spacing:.14em;margin-bottom:22px}}
+.rd-cover h1{margin:0;font-weight:inherit}
+.rd-display{display:block;font:300 clamp(54px,7.6vw,124px)/.95 var(--serif);letter-spacing:-.025em}
+.rd-display em{display:block;font-style:italic;color:var(--spruce)}
+.rd-sub{display:block;margin-top:30px;max-width:620px;font:300 clamp(21px,1.9vw,28px)/1.3 var(--serif);color:var(--ink);letter-spacing:-.005em}
+.rd-cover .rd-lede{max-width:560px;margin:24px 0 36px;font-size:18px}
+.rd-cover-cta{display:flex;flex-wrap:wrap;gap:14px 20px;align-items:center}
 .rd-cover figure{margin:0}
-.rd-cover figure img{width:100%;aspect-ratio:4/5;object-fit:cover;display:block}
+.rd-cover figure img{width:100%;aspect-ratio:9/14;object-fit:cover;display:block;max-height:calc(100vh - 190px);max-height:calc(100svh - 190px);min-height:520px}
 .rd-byline{display:flex;flex-wrap:wrap;gap:8px 28px;margin-top:44px;padding-top:18px;border-top:1px solid var(--hair);font-size:13px;color:var(--muted)}
 .rd-byline b{font-weight:500;color:var(--ink)}
 .rd-toc{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));border-top:1px solid var(--ink);border-bottom:1px solid var(--hair);margin-top:clamp(56px,7vw,96px)}
@@ -98,7 +103,7 @@ HOME_CSS = '''
 .rd-letter blockquote{margin:0;font:300 clamp(23px,2.1vw,29px)/1.42 var(--serif)}
 .rd-sig{margin-top:28px;font:italic 300 30px var(--serif);color:var(--spruce)}
 @media (max-width:1000px){.rd-toc{grid-template-columns:repeat(2,minmax(0,1fr))}.rd-toc a{border-right:0;border-bottom:1px solid var(--hair)}.rd-quotes,.rd-cards{grid-template-columns:1fr 1fr}}
-@media (max-width:820px){.rd-cover,.rd-story,.rd-two,.rd-notes,.rd-letter{grid-template-columns:1fr}.rd-cover figure img{aspect-ratio:4/3}.rd-story aside{order:3}.rd-quotes,.rd-cards{grid-template-columns:1fr}}
+@media (max-width:820px){.rd-cover,.rd-story,.rd-two,.rd-notes,.rd-letter{grid-template-columns:1fr}.rd-cover figure img{aspect-ratio:4/5;max-height:none;min-height:0}.rd-cover-txt{order:0}.rd-story aside{order:3}.rd-quotes,.rd-cards{grid-template-columns:1fr}}
 @media (max-width:700px){.rd-row{grid-template-columns:48px minmax(0,1fr)}.rd-row .d{grid-column:2}.rd-row>span:last-child{display:none}}
 '''
 
@@ -129,14 +134,14 @@ def home():
 <main id="main">
 <div class="rd-wrap">
 <section class="rd-cover" aria-label="Introduction">
-<div>
-<h1>Drywall, insulation &amp; finishing contractor — Toronto &amp; the GTA</h1>
-<p class="rd-display">Good walls go <em>unnoticed.</em></p>
-<p class="rd-lede">That is the whole job. Ricarti Drywall insulates, boards and finishes custom homes, additions and townhouses across Toronto and the GTA, Hamilton, Kitchener–Cambridge and Muskoka, for the homeowners who live in them and the builders who build them.</p>
-<div style="display:flex;flex-wrap:wrap;gap:14px 20px;align-items:center"><a class="rd-btn" href="/estimate">Book a site visit</a><a class="rd-btn-o" href="/estimate?type=builder">Builders: send drawings</a><a class="rd-link" href="tel:+16474821139">or call (647) 482-1139</a></div>
+<div class="rd-cover-txt">
+<p class="rd-eyebrow">Precision. Craftsmanship. Excellence.</p>
+<h1><span class="rd-display">Perfection <em>Starts Here.</em></span><span class="rd-sub">Premium Drywall, Insulation &amp; Architectural Finishing.</span></h1>
+<p class="rd-lede">Since 2009, Ricarti Drywall has delivered exceptional craftsmanship, precision, and reliability across custom homes, commercial projects, and residential renovations throughout Toronto, the GTA, Hamilton, Kitchener-Cambridge, and Muskoka.</p>
+<div class="rd-cover-cta"><a class="rd-btn" href="/estimate">Request an Estimate</a><a class="rd-btn-o" href="/estimate?type=builder">Builders — Send Your Drawings</a><a class="rd-link" href="tel:+16474821139">or call (647) 482-1139</a></div>
 <div class="rd-byline"><span><b>Est. 2009</b> · family-owned</span><span><b>Level 4</b> standard · Level 5 on request</span><span><b>WSIB</b> clearance on request</span></div>
 </div>
-<figure>%(cover)s<figcaption class="rd-cap">Brule, Toronto — an arched dormer nook, boarded and ready for tape.</figcaption></figure>
+<figure>%(cover)s<figcaption class="rd-cap">Kent, Toronto — a finished room: seamless painted walls over a white oak floor.</figcaption></figure>
 </section>
 
 <nav class="rd-toc" aria-label="On this page">
@@ -235,7 +240,7 @@ def home():
 </div>
 </section>
 </main>
-''' % dict(cover=img('brule-01.jpg', 'An arched dormer nook boarded in moisture-resistant drywall, Brule, Toronto', eager=True),
+''' % dict(cover='<img src="/images/hero-kent-room-1200.jpg" srcset="/images/hero-kent-room-720.jpg 720w, /images/hero-kent-room-1200.jpg 1200w" sizes="(max-width: 820px) 100vw, 40vw" alt="A finished room on Kent, Toronto: seamless painted walls, a recessed light and a white oak floor beneath a wide window" width="1200" height="2133" fetchpriority="high">',
            hero=img('hero-kent.jpg', 'A finished bedroom on Kent, Toronto: smooth painted walls and ceiling with a wide window', w=2160, h=1215),
            kent2=img('kent-02.jpg', 'Long stair hall with finished drywall walls, Kent, Toronto'),
            stanton=img('stanton-03.jpg', 'Mineral wool insulation behind steel resilient channel, Stanton, Toronto'),
