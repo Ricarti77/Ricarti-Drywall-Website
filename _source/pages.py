@@ -136,7 +136,7 @@ def home():
 <section class="rd-cover" aria-label="Introduction">
 <div class="rd-cover-txt">
 <p class="rd-eyebrow">Precision. Craftsmanship. Excellence.</p>
-<h1><span class="rd-display">Perfection <em>Starts Here.</em></span><span class="rd-sub">Premium Drywall, Insulation &amp; Architectural Finishing.</span></h1>
+<h1><span class="rd-display">Perfection <em>Starts Here!</em></span><span class="rd-sub">Premium Drywall, Insulation &amp; Architectural Finishing.</span></h1>
 <p class="rd-lede">Since 2009, Ricarti Drywall has delivered exceptional craftsmanship, precision, and reliability across custom homes, commercial projects, and residential renovations throughout Toronto, the GTA, Hamilton, Kitchener-Cambridge, and Muskoka.</p>
 <div class="rd-cover-cta"><a class="rd-btn" href="/estimate">Request an Estimate</a><a class="rd-btn-o" href="/estimate?type=builder">Builders — Send Your Drawings</a><a class="rd-link" href="tel:+16474821139">or call (647) 482-1139</a></div>
 <div class="rd-byline"><span><b>Est. 2009</b> · family-owned</span><span><b>Level 4</b> standard · Level 5 on request</span><span><b>WSIB</b> clearance on request</span></div>
