@@ -150,15 +150,15 @@ CSS = '''
 .rd-b-cta .rd-kicker{color:var(--soft)}
 .rd-b-cta h2{margin:0;font:300 clamp(40px,5vw,72px)/1.02 var(--serif);letter-spacing:-.02em}
 .rd-b-cta h2 em{display:block;color:var(--soft)}
-.rd-b-cta-p{margin:28px 0 36px;max-width:560px;font-size:18px;line-height:1.6;color:#C9D3CD}
+.rd-b-cta-p{margin:28px 0 36px;max-width:560px;font-size:18px;line-height:1.6;color:var(--dim)}
 .rd-b-cta .rd-btn{background:#fff;color:var(--deep)}.rd-b-cta .rd-btn:hover{background:var(--soft)}
-.rd-b-cta .rd-btn-o{border-color:#5E7A6E;color:#fff}.rd-b-cta .rd-btn-o:hover{border-color:#fff;color:#fff}
+.rd-b-cta .rd-btn-o{border-color:var(--bronze);color:#fff}.rd-b-cta .rd-btn-o:hover{border-color:#fff;color:#fff}
 .rd-b-contact{display:flex;flex-wrap:wrap;gap:8px 28px;margin:28px 0 0;font-size:15px}
-.rd-b-contact a{color:#fff;text-decoration:none;border-bottom:1px solid #5E7A6E;padding-bottom:2px}
+.rd-b-contact a{color:#fff;text-decoration:none;border-bottom:1px solid var(--bronze);padding-bottom:2px}
 .rd-b-cta-r h3{margin:0 0 18px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:500;color:var(--soft)}
-.rd-b-cta-r dl{margin:0;border-top:1px solid #3A5247}
-.rd-b-cta-r dl>div{display:grid;grid-template-columns:120px 1fr;gap:12px;padding:14px 0;border-bottom:1px solid #3A5247;font-size:15px}
-.rd-b-cta-r dt{color:#fff;font-weight:500}.rd-b-cta-r dd{margin:0;color:#C9D3CD}
+.rd-b-cta-r dl{margin:0;border-top:1px solid var(--line-d)}
+.rd-b-cta-r dl>div{display:grid;grid-template-columns:120px 1fr;gap:12px;padding:14px 0;border-bottom:1px solid var(--line-d);font-size:15px}
+.rd-b-cta-r dt{color:#fff;font-weight:500}.rd-b-cta-r dd{margin:0;color:var(--dim)}
 @media (max-width:1100px){.rd-steps{grid-template-columns:repeat(3,minmax(0,1fr))}.rd-b-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:900px){.rd-caps,.rd-b-area,.rd-b-cta>div{grid-template-columns:1fr}.rd-caps-txt{position:static}.rd-caps-txt{order:-1}}
 @media (max-width:640px){.rd-b-grid,.rd-steps,.rd-caps-list{grid-template-columns:1fr}.rd-b-cta-r dl>div{grid-template-columns:1fr;gap:2px}}

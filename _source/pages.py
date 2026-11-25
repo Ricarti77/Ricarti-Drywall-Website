@@ -98,9 +98,9 @@ HOME_CSS = '''
 .rd-two li{padding:12px 0;border-bottom:1px solid var(--hair)}
 .rd-two .rd-dark{background:var(--deep);color:#fff}
 .rd-two .rd-dark .rd-kicker{color:var(--soft)}
-.rd-two .rd-dark p{color:#C9D3CD}
-.rd-two .rd-dark li{border-color:#3A5247}
-.rd-two .rd-dark ul{border-color:#3A5247}
+.rd-two .rd-dark p{color:var(--dim)}
+.rd-two .rd-dark li{border-color:var(--line-d)}
+.rd-two .rd-dark ul{border-color:var(--line-d)}
 .rd-two .rd-dark .rd-btn{background:#fff;color:var(--deep)}.rd-two .rd-dark .rd-btn:hover{background:var(--soft)}
 .rd-two .rd-dark .rd-link{color:#fff;border-color:#fff}
 .rd-row{display:grid;grid-template-columns:64px minmax(0,1fr) minmax(0,1.4fr) 24px;gap:8px 32px;padding:28px 0;border-bottom:1px solid var(--hair);text-decoration:none;align-items:baseline}
@@ -167,80 +167,97 @@ def faq_html():
     return ''.join('<details%s><summary>%s<span class="rd-plus" aria-hidden="true">+</span></summary><p>%s</p></details>' % (' open' if i == 0 else '', q, a) for i, (q, a) in enumerate(FAQ))
 
 def home():
+    svc_ids = [x['id'] for x in chrome._json_nav['services']]
     expertise = ''.join(
-        '<li><a class="rd-svc" href="%s"><span class="rd-svc-img"><img src="/images/%s.jpg" srcset="/images/%s-480.jpg 480w, /images/%s.jpg 900w" sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 31vw" alt="%s" width="900" height="1125" loading="lazy" decoding="async"></span>'
-        '<span class="rd-svc-n">%02d</span><h3 class="rd-svc-h">%s</h3><p class="rd-svc-d">%s</p><span class="rd-svc-cta">%s<span aria-hidden="true"> →</span></span></a></li>'
-        % (u, img_, img_, img_, alt, i + 1, h, d, cta) for i, (h, d, img_, alt, u, cta) in enumerate(EXPERTISE))
-    rows = ''.join('<a class="rd-row" href="%s"><span class="n">%02d</span><span class="h">%s</span><span class="d">%s</span><span aria-hidden="true">→</span></a>' % (u, i + 1, h.replace('&', '&amp;'), d) for i, (h, d, u) in enumerate(SERVICES))
+        '<li><a class="rd-dx" href="%s"><div class="rd-dx-img" aria-hidden="true"><img src="/images/%s-480.jpg" alt="" width="480" height="600" loading="lazy" decoding="async"></div>'
+        '<p class="rd-dx-n">%02d</p><div class="rd-dx-b"><h3 class="rd-dx-h">%s</h3><p class="rd-dx-t">%s</p><p class="rd-dx-d">%s</p><p class="rd-dx-cta">%s<span aria-hidden="true"> →</span></p></div></a></li>'
+        % (u, img_, i + 1, h, chrome.SVC_LINES.get(svc_ids[i], ''), d, cta) for i, (h, d, img_, alt, u, cta) in enumerate(EXPERTISE))
     quotes = ''.join('<blockquote><p>“%s”</p><footer>%s · GOOGLE REVIEW</footer></blockquote>' % (q, n.upper()) for n, q in REVIEWS[1:4])
+    hero = ('<picture>'
+            '<source media="(max-width: 700px)" type="image/avif" srcset="/images/hero-d-m-720.avif 720w, /images/hero-d-m-1080.avif 1080w" sizes="100vw">'
+            '<source media="(max-width: 700px)" srcset="/images/hero-d-m-720.jpg 720w, /images/hero-d-m-1080.jpg 1080w" sizes="100vw">'
+            '<source type="image/avif" srcset="/images/hero-d-1080.avif 1080w, /images/hero-d-1600.avif 1600w, /images/hero-d-2160.avif 2160w" sizes="100vw">'
+            '<img class="rd-hero-img" src="/images/hero-d-1600.jpg" srcset="/images/hero-d-1080.jpg 1080w, /images/hero-d-1600.jpg 1600w, /images/hero-d-2160.jpg 2160w" sizes="100vw" '
+            'alt="An arched dormer window framed by a curved drywall return, boarded and ready for tape, on the Brule project in Toronto" width="2160" height="1215" fetchpriority="high" decoding="async">'
+            '</picture>')
     body = '''
 <main id="main">
-<div class="rd-wrap">
-<section class="rd-cover" aria-label="Introduction">
-<div class="rd-cover-txt">
-<p class="rd-eyebrow">Precision. Craftsmanship. Excellence.</p>
+<section class="rd-hero" aria-label="Introduction">
+%(hero)s
+<div class="rd-hero-shade" aria-hidden="true"></div>
+<div class="rd-hero-grid" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+<div class="rd-hero-in">
+<div class="rd-hero-txt">
+<p class="rd-eyebrow">Drywall · Insulation · Architectural Finishing</p>
 <h1><span class="rd-display">Perfection <em>Starts Here!</em></span><span class="rd-sub">Premium Drywall, Insulation &amp; Architectural Finishing.</span></h1>
-<p class="rd-lede">Since 2009, Ricarti Drywall has delivered exceptional craftsmanship, precision, and reliability across custom homes, commercial projects, and residential renovations throughout Toronto, the GTA, Hamilton, Kitchener-Cambridge, and Muskoka.</p>
-<div class="rd-cover-cta"><a class="rd-btn" href="/estimate">Request an Estimate</a><a class="rd-btn-o" href="/estimate?type=builder">Builders — Send Your Drawings</a><a class="rd-link" href="tel:+16474821139">or call (647) 482-1139</a></div>
-<div class="rd-byline"><span><b>Est. 2009</b> · family-owned</span><span><b>Level 4</b> standard · Level 5 on request</span><span><b>WSIB</b> clearance on request</span></div>
 </div>
-<figure>%(cover)s<figcaption class="rd-cap">Kent, Toronto — a finished room: seamless painted walls over a white oak floor.</figcaption></figure>
+<div class="rd-hero-bar">
+<p class="rd-hero-facts"><span><b>Est. 2009</b> · family-owned</span><span><b>Level 4</b> standard · Level 5 on request</span><span>GTA · Hamilton · Kitchener–Cambridge · Muskoka</span></p>
+<p class="rd-hero-cta"><a class="rd-btn rd-btn-l" href="/estimate">Request an Estimate</a><a class="rd-btn-o rd-btn-ol" href="/estimate?type=builder">Builders — Send Your Drawings</a></p>
+</div>
+</div>
 </section>
 
-<nav class="rd-toc" aria-label="On this page">
-<a href="/homeowners"><span>01</span><b>For homeowners</b><i>Building or renovating your house</i></a>
-<a href="/builders"><span>02</span><b>For builders</b><i>Your insulation &amp; drywall trade</i></a>
-<a href="/drywall-finishing-toronto"><span>03</span><b>The finish levels</b><i>Level 4 or Level 5?</i></a>
-<a href="/journal"><span>04</span><b>The Journal</b><i>Guides for owners and builders</i></a>
-<a href="/reviews"><span>05</span><b>Reviews</b><i>What clients say</i></a>
+<nav class="rd-quick" aria-label="Quick access">
+<a href="#services"><span class="rd-num">01</span><b>Services</b></a>
+<a href="#projects"><span class="rd-num">02</span><b>Projects</b></a>
+<a href="/builders"><span class="rd-num">03</span><b>Builders</b></a>
+<a href="/estimate"><span class="rd-num">04</span><b>Estimate</b></a>
 </nav>
-</div>
 
-<article class="rd-feature" aria-labelledby="feat-h">
-<figure>%(hero)s<figcaption><p>FEATURE · KENT, TORONTO</p><h2 id="feat-h">One house, every wall, three coats.</h2></figcaption></figure>
-<div class="rd-wrap rd-story">
-<aside><dl><dt>PROJECT</dt><dd>Full house, Kent, Toronto</dd><dt>SCOPE</dt><dd>Board, tape and finish throughout, stair hall included</dd><dt>FINISH</dt><dd>Level 4, painted</dd><dt>YEAR</dt><dd>2026</dd></dl></aside>
-<div class="rd-prose">
-<p>Nobody walks into a finished room and admires the drywall. They notice the light from the window, the colour of the paint, the height of the ceiling. If they notice the wall, something has gone wrong: a joint catching the afternoon sun, a ridge along the ceiling, a corner that is not quite straight.</p>
-<p>On Kent we boarded, taped and finished the whole house, from the bedrooms to the long stair hall where light runs down the wall from above. Stair halls are where shortcuts show first. Every joint got its coats, every screw was set and filled, and every wall was checked at the end with a work light held flat to the surface, the way low winter sun will hit it.</p>
-<p>Then the painters came, and the walls disappeared into the rooms. Which is exactly the point.</p>
-<p><a class="rd-link" href="/drywall-finishing-toronto">How we finish, and what Level 4 and 5 mean</a></p>
-</div>
-<div class="rd-side">%(kent2)s<p class="rd-cap">The stair hall on Kent, boarded and finished before paint.</p></div>
-</div>
-</article>
-
+<section class="rd-practice" aria-labelledby="practice-h">
 <div class="rd-wrap">
-<blockquote class="rd-pull"><p>“%(q0)s”</p><footer>%(n0)s · GOOGLE REVIEW</footer></blockquote>
+<p class="rd-kicker">The practice</p>
+<h2 id="practice-h" class="rd-statement rd-rv">We build the surfaces architecture is judged by: the walls, the ceilings, and the way light falls across them.</h2>
+<p class="rd-lede rd-practice-p">Since 2009, Ricarti Drywall has delivered exceptional craftsmanship, precision, and reliability across custom homes, commercial projects, and residential renovations throughout Toronto, the GTA, Hamilton, Kitchener-Cambridge, and Muskoka.</p>
 </div>
+</section>
+
+<section id="services" class="rd-dsec rd-exp-d" aria-labelledby="services-h">
+<div class="rd-wrap">
+<header class="rd-exp-head">
+<div><p class="rd-kicker">Our Expertise</p><h2 id="services-h" class="rd-h2">Six disciplines.<em> One standard.</em></h2></div>
+<p class="rd-lede">Specialized construction systems and architectural finishes for projects where quality is non-negotiable.</p>
+</header>
+<ol class="rd-dx-grid">%(expertise)s</ol>
+<p class="rd-exp-proof"><span><b>Since 2009</b> · family-owned</span><span><b>One crew</b> from insulation to paint-ready</span><span><b>WSIB</b> &amp; fully insured</span><span><b>Written scope</b> on every project</span></p>
+</div>
+</section>
+
+%(portfolio)s
 
 <section class="rd-two" aria-label="Two ways we work">
-<article style="background:#fff">
+<article>
 <p class="rd-kicker">For homeowners</p>
 <h3>Building or renovating the house you will live in.</h3>
 <p class="rd-muted" style="margin:0;max-width:520px">You deal with the person whose name is on the company. We visit, measure, and give you a written scope that names the insulation, the board and the finish level for each room.</p>
-<ul><li>A site visit before any price</li><li>Written scope with the finish level spelled out</li><li>Site swept and bagged at the end of every day</li><li>Final walkthrough under a work light, with you</li></ul>
-<div style="margin-top:auto;padding-top:8px;display:flex;flex-wrap:wrap;gap:16px 24px;align-items:center"><a class="rd-btn" href="/estimate">Book a site visit</a><a class="rd-link" href="/homeowners">More for homeowners</a></div>
+<ul><li><span class="rd-num">01</span>A site visit before any price</li><li><span class="rd-num">02</span>Written scope with the finish level spelled out</li><li><span class="rd-num">03</span>Site swept and bagged at the end of every day</li><li><span class="rd-num">04</span>Final walkthrough under a work light, with you</li></ul>
+<div class="rd-two-cta"><a class="rd-btn" href="/estimate">Book a site visit</a><a class="rd-link" href="/homeowners">More for homeowners</a></div>
 </article>
 <article class="rd-dark">
 <p class="rd-kicker">For builders &amp; developers</p>
 <h3>Your insulation and drywall trade, on schedule.</h3>
 <p style="margin:0;max-width:520px">Detached homes, semis and townhouse blocks. We price from drawings, staff to your schedule, and send the paperwork before the first board goes up.</p>
-<ul><li>WSIB clearance and insurance certificate with the quote</li><li>Pricing from drawings, per unit or per block</li><li>One lead hand on site who answers to your super</li><li>Photo updates at insulation inspection and board-ready</li></ul>
-<div style="margin-top:auto;padding-top:8px;display:flex;flex-wrap:wrap;gap:16px 24px;align-items:center"><a class="rd-btn" href="/estimate?type=builder">Send drawings for pricing</a><a class="rd-link" href="/builders">More for builders</a></div>
+<ul><li><span class="rd-num">01</span>WSIB clearance and insurance certificate with the quote</li><li><span class="rd-num">02</span>Pricing from drawings, per unit or per block</li><li><span class="rd-num">03</span>One lead hand on site who answers to your super</li><li><span class="rd-num">04</span>Photo updates at insulation inspection and board-ready</li></ul>
+<div class="rd-two-cta"><a class="rd-btn" href="/estimate?type=builder">Send drawings for pricing</a><a class="rd-link" href="/builders">More for builders</a></div>
 </article>
 </section>
 
-<section id="services" class="rd-wrap rd-sec rd-exp" aria-labelledby="services-h">
-<header class="rd-exp-head">
-<div><p class="rd-kicker">Our Expertise</p><h2 id="services-h" class="rd-h2">Built with Precision.<em>Finished with Excellence.</em></h2></div>
-<p class="rd-lede">Specialized construction systems and architectural finishes for projects where quality is non-negotiable.</p>
-</header>
-<ol class="rd-exp-grid">%(expertise)s</ol>
-<p class="rd-exp-proof"><span><b>Since 2009</b> · family-owned</span><span><b>One crew</b> from insulation to paint-ready</span><span><b>WSIB</b> &amp; fully insured</span><span><b>Written scope</b> on every project</span></p>
-</section>
-
-%(portfolio)s
+<article class="rd-feature" aria-labelledby="feat-h">
+<figure>%(feat)s<figcaption><p>Feature · Kent, Toronto</p><h2 id="feat-h">One house, every wall, three coats.</h2></figcaption></figure>
+<div class="rd-wrap rd-story">
+<aside><dl><dt>Project</dt><dd>Full house, Kent, Toronto</dd><dt>Scope</dt><dd>Board, tape and finish throughout, stair hall included</dd><dt>Finish</dt><dd>Level 4, painted</dd><dt>Year</dt><dd>2026</dd></dl></aside>
+<div class="rd-prose">
+<p>Nobody walks into a finished room and admires the drywall. They notice the light from the window, the colour of the paint, the height of the ceiling. If they notice the wall, something has gone wrong: a joint catching the afternoon sun, a ridge along the ceiling, a corner that is not quite straight.</p>
+<details class="rd-more"><summary>Read the full story</summary><div>
+<p>On Kent we boarded, taped and finished the whole house, from the bedrooms to the long stair hall where light runs down the wall from above. Stair halls are where shortcuts show first. Every joint got its coats, every screw was set and filled, and every wall was checked at the end with a work light held flat to the surface, the way low winter sun will hit it.</p>
+<p>Then the painters came, and the walls disappeared into the rooms. Which is exactly the point.</p>
+</div></details>
+<p><a class="rd-link" href="/drywall-finishing-toronto">How we finish, and what Level 4 and 5 mean</a></p>
+</div>
+<div class="rd-side">%(kent2)s<p class="rd-cap">The stair hall on Kent, boarded and finished before paint.</p></div>
+</div>
+</article>
 
 <section class="rd-wrap rd-sec" aria-labelledby="notes-h">
 <div class="rd-notes">
@@ -255,16 +272,15 @@ def home():
 </div>
 </section>
 
-<section class="rd-wrap rd-sec" aria-labelledby="journal-h">
-<div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:20px;margin-bottom:36px"><div><p class="rd-kicker">The Journal</p><h2 id="journal-h" class="rd-h2">Know what you are <em>paying for.</em></h2></div><a class="rd-link" href="/journal">All articles</a></div>
-<div class="rd-cards">%(cards)s</div>
+<section class="rd-wrap rd-sec" aria-labelledby="reviews-h">
+<div class="rd-sec-head"><div><p class="rd-kicker">Client words</p><h2 id="reviews-h" class="rd-h2">In their words, not ours.</h2></div><p class="rd-sec-links"><a class="rd-link" href="/reviews">All reviews</a><a class="rd-link" href="%(gmaps)s" rel="noopener">See us on Google</a></p></div>
+<blockquote class="rd-pull"><p>“%(q0)s”</p><footer>%(n0)s · GOOGLE REVIEW</footer></blockquote>
+<div class="rd-quotes rd-scroll">%(quotes)s</div>
 </section>
 
-<section class="rd-wrap rd-sec" aria-labelledby="reviews-h">
-<p class="rd-kicker">Client words</p>
-<h2 id="reviews-h" class="rd-h2">In their words, not ours.</h2>
-<div class="rd-quotes">%(quotes)s</div>
-<p style="margin-top:40px;display:flex;flex-wrap:wrap;gap:16px 28px"><a class="rd-link" href="/reviews">All reviews</a><a class="rd-link" href="%(gmaps)s" rel="noopener">See us on Google</a></p>
+<section class="rd-wrap rd-sec" aria-labelledby="journal-h">
+<div class="rd-sec-head"><div><p class="rd-kicker">The Journal</p><h2 id="journal-h" class="rd-h2">Know what you are <em>paying for.</em></h2></div><p class="rd-sec-links"><a class="rd-link" href="/journal">All articles</a></p></div>
+<div class="rd-cards rd-scroll">%(cards)s</div>
 </section>
 
 <section class="rd-wrap rd-sec" aria-label="From the owner">
@@ -280,23 +296,143 @@ def home():
 </section>
 
 <section class="rd-wrap rd-sec" aria-labelledby="faq-h">
-<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:40px 64px;align-items:start">
+<div class="rd-faq-wrap">
 <div><p class="rd-kicker">Questions</p><h2 id="faq-h" class="rd-h2">What people ask before they call.</h2></div>
 <div class="rd-faq" style="border-top:1px solid var(--hair)">%(faq)s</div>
 </div>
 </section>
 </main>
-''' % dict(cover='<img src="/images/hero-kent-room-1200.jpg" srcset="/images/hero-kent-room-720.jpg 720w, /images/hero-kent-room-1200.jpg 1200w" sizes="(max-width: 820px) 100vw, 40vw" alt="A finished room on Kent, Toronto: seamless painted walls, a recessed light and a white oak floor beneath a wide window" width="1200" height="2133" fetchpriority="high">',
-           hero=img('hero-kent.jpg', 'A finished bedroom on Kent, Toronto: smooth painted walls and ceiling with a wide window', w=2160, h=1215),
+''' % dict(hero=hero,
+           feat=img('hero-kent.jpg', 'A finished bedroom on Kent, Toronto: smooth painted walls and ceiling with a wide window', w=2160, h=1215),
            kent2=img('kent-02.jpg', 'Long stair hall with finished drywall walls, Kent, Toronto'),
            stanton=img('stanton-03.jpg', 'Mineral wool insulation behind steel resilient channel, Stanton, Toronto'),
            thompson=img('thompson-01.jpg', 'A finisher on stilts skimming a ceiling, Thompson, Toronto'),
-           q0=REVIEWS[0][1], n0=REVIEWS[0][0].upper(), rows=rows, expertise=expertise, portfolio=portfolio.section(), cards=''.join(card(a) for a in ARTICLES[:3]),
+           q0=REVIEWS[0][1], n0=REVIEWS[0][0].upper(), expertise=expertise, portfolio=portfolio.section(), cards=''.join(card(a) for a in ARTICLES[:3]),
            quotes=quotes, gmaps=GMAPS, faq=faq_html())
-    body += band('Start with a site visit, not a <em>guess.</em>', ('Book a site visit', '/estimate'), ('Builders: send drawings', '/estimate?type=builder'))
+    body += closing()
+    page = '<div>' + chrome.header('/', over=True) + body + chrome.ig_strip() + chrome.footer() + '</div>'
     build.write_page('', 'Ricarti Drywall | Drywall, insulation and finishing in Toronto and the GTA',
         'Family-owned since 2009. Insulation, steel framing, drywall and Level 4 or Level 5 finishing for homeowners and builders across Toronto, the GTA, Hamilton, Kitchener-Cambridge and Muskoka.',
-        shell('/', body), css=HOME_CSS + portfolio.CSS, image='hero-kent.jpg')
+        page, css=HOME_CSS + D_HOME_CSS + portfolio.CSS, image='hero-d-1600.jpg',
+        helmet='<link rel="preload" as="image" type="image/avif" imagesrcset="/images/hero-d-m-720.avif 720w, /images/hero-d-m-1080.avif 1080w" imagesizes="100vw" media="(max-width: 700px)" fetchpriority="high">\n'
+               '<link rel="preload" as="image" type="image/avif" imagesrcset="/images/hero-d-1080.avif 1080w, /images/hero-d-1600.avif 1600w, /images/hero-d-2160.avif 2160w" imagesizes="100vw" media="(min-width: 701px)" fetchpriority="high">')
+
+def closing():
+    return ('<section class="rd-band rd-closing" aria-labelledby="close-h"><div><img class="rd-mark" src="/images/lockup-plaster.png" alt="" width="193" height="38" loading="lazy">'
+            '<h2 id="close-h">Perfection <em>Starts Here!</em></h2><p class="rd-close-p">Start with a site visit, not a guess.</p>'
+            '<div style="display:flex;flex-wrap:wrap;justify-content:center;gap:14px"><a class="rd-btn" href="/estimate">Request an Estimate</a><a class="rd-btn-o" href="/estimate?type=builder">Builders — Send Your Drawings</a></div></div></section>')
+
+D_HOME_CSS = '''
+.rd-hero{position:relative;height:100vh;height:100svh;min-height:620px;max-height:1100px;overflow:hidden;background:var(--ink);color:var(--warm)}
+.rd-hero picture,.rd-hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.rd-hero-shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(14,14,14,.84) 0%,rgba(14,14,14,.62) 40%,rgba(14,14,14,0) 72%),linear-gradient(180deg,rgba(14,14,14,.6) 0%,rgba(14,14,14,0) 20%,rgba(14,14,14,0) 52%,rgba(14,14,14,.86) 100%)}
+.rd-hero-grid{position:absolute;inset:0 var(--pad);display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px;pointer-events:none}
+.rd-hero-grid span{border-left:1px solid rgba(241,237,230,.07)}
+.rd-hero-grid span:last-child{border-right:1px solid rgba(241,237,230,.07)}
+.rd-hero-in{position:absolute;inset:0;max-width:1440px;margin:0 auto;padding:0 var(--pad);display:flex;flex-direction:column;justify-content:flex-end}
+.rd-hero-txt{padding-bottom:clamp(36px,5vh,64px)}
+.rd-hero .rd-eyebrow{color:var(--bronze);letter-spacing:.14em;margin-bottom:24px;font-size:13px}
+.rd-hero h1{margin:0;font-weight:inherit}
+.rd-hero .rd-display{font:300 clamp(64px,11.4vw,164px)/.9 var(--serif);letter-spacing:-.02em;color:var(--warm)}
+.rd-hero .rd-display em{display:block;font-style:italic;color:var(--warm)}
+.rd-hero .rd-sub{display:block;margin-top:22px;font:400 15px/1.5 var(--sans);color:var(--dim);max-width:520px}
+.rd-hero-bar{border-top:1px solid rgba(241,237,230,.18);min-height:96px;display:flex;flex-wrap:wrap;align-items:center;gap:16px 40px;padding:16px 0}
+.rd-hero-facts{margin:0;display:flex;flex-wrap:wrap;gap:6px 40px;font-size:13.5px;color:var(--dim)}
+.rd-hero-facts b{color:var(--warm);font-weight:500}
+.rd-hero-cta{margin:0 0 0 auto;display:flex;flex-wrap:wrap;gap:12px}
+.rd-btn-l{background:var(--warm);border-color:var(--warm);color:var(--ink)}.rd-btn-l:hover{background:var(--soft);border-color:var(--soft);color:var(--ink)}
+.rd-btn-ol{border-color:rgba(241,237,230,.5);color:var(--warm)}.rd-btn-ol:hover{border-color:var(--bronze);color:var(--warm)}
+@media (prefers-reduced-motion:no-preference){
+ .rd-hero-img{animation:rdSettle 16s var(--ease) both}
+ @keyframes rdSettle{from{transform:scale(1.05)}to{transform:scale(1)}}
+ .rd-hero-grid span{transform-origin:top;animation:rdDraw .9s var(--ease) both}
+ @keyframes rdDraw{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+}
+.rd-quick{display:none}
+.rd-practice{padding:clamp(88px,10vw,150px) 0}
+.rd-practice .rd-wrap{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,7fr) minmax(0,3fr);gap:24px clamp(24px,3vw,48px);align-items:start}
+.rd-statement{margin:0;font:300 clamp(34px,3.9vw,56px)/1.1 var(--serif);letter-spacing:-.005em}
+.rd-practice-p{font-size:15.5px;border-top:1px solid var(--ink);padding-top:14px;margin-top:8px}
+.rd-dsec{background:var(--ink);color:var(--warm);padding:clamp(88px,10vw,140px) 0}
+.rd-dsec .rd-kicker{color:var(--bronze)}
+.rd-dsec .rd-lede{color:var(--dim)}
+.rd-dsec .rd-h2 em{color:var(--soft)}
+.rd-exp-head{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:24px 64px;align-items:end;margin-bottom:clamp(40px,5vw,64px)}
+.rd-exp-head h2 em{display:block}
+.rd-dx-grid{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--line-d);border-left:1px solid var(--line-d)}
+.rd-dx-grid li{border-right:1px solid var(--line-d);border-bottom:1px solid var(--line-d)}
+.rd-dx{position:relative;display:flex;flex-direction:column;justify-content:space-between;gap:40px;min-height:300px;height:100%;padding:30px 32px;text-decoration:none;color:var(--warm)!important;overflow:hidden}
+.rd-dx-img{position:absolute;inset:0;opacity:0;transition:opacity .45s var(--ease)}
+.rd-dx-img img{width:100%;height:100%;object-fit:cover;display:block}
+.rd-dx-img::after{content:"";position:absolute;inset:0;background:rgba(14,14,14,.58)}
+.rd-dx:hover .rd-dx-img,.rd-dx:focus-visible .rd-dx-img{opacity:1}
+.rd-dx-n{position:relative;margin:0;font-size:13px;font-weight:500;color:var(--bronze)}
+.rd-dx-b{position:relative;display:flex;flex-direction:column}
+.rd-dx-h{margin:0;font:400 clamp(30px,2.6vw,38px)/1.05 var(--serif)}
+.rd-dx:hover .rd-dx-h{font-style:italic}
+.rd-dx-t{margin:10px 0 0;font-size:13.5px;color:var(--stone)}
+.rd-dx-d{margin:14px 0 0;font-size:15px;line-height:1.55;color:var(--dim);max-width:380px}
+.rd-dx-cta{margin:18px 0 0;font-size:13.5px;font-weight:600;color:var(--warm);align-self:flex-start;border-bottom:1px solid var(--bronze);padding-bottom:3px}
+.rd-exp-proof{display:flex;flex-wrap:wrap;gap:10px 36px;margin:clamp(40px,5vw,64px) 0 0;padding-top:20px;border-top:1px solid var(--line-d);font-size:13.5px;color:var(--stone)}
+.rd-exp-proof b{font-weight:500;color:var(--warm)}
+.rd-two{margin-top:0}
+.rd-two article{background:var(--gypsum)}
+.rd-two article.rd-dark{background:var(--graphite)}
+.rd-two li{display:grid;grid-template-columns:40px 1fr;align-items:baseline}
+.rd-two .rd-dark .rd-num{color:var(--bronze)}
+.rd-two .rd-dark .rd-kicker{color:var(--bronze)}
+.rd-two-cta{margin-top:auto;padding-top:8px;display:flex;flex-wrap:wrap;gap:16px 24px;align-items:center}
+.rd-two .rd-dark .rd-btn{background:var(--warm);border-color:var(--warm);color:var(--ink)}
+.rd-two .rd-dark .rd-link{color:var(--warm)}
+.rd-feature{margin-top:0}
+.rd-feature>figure figcaption p{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--soft)}
+.rd-more>summary{display:inline-block;font-size:15px;font-weight:500;border-bottom:1px solid var(--bronze);padding-bottom:3px;margin-bottom:20px}
+.rd-more[open]>summary{display:none}
+.rd-sec-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:20px;margin-bottom:36px}
+.rd-sec-links{display:flex;flex-wrap:wrap;gap:16px 28px;margin:0}
+.rd-pull{padding:clamp(40px,5vw,72px) 0;border-bottom:0;border-top:1px solid var(--hair)}
+.rd-quotes{margin-top:0}
+.rd-faq-wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:40px 64px;align-items:start}
+.rd-closing>div{gap:22px}
+.rd-close-p{margin:0;color:var(--dim)}
+@media (max-width:1100px){.rd-dx-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.rd-practice .rd-wrap{grid-template-columns:1fr}}
+@media (max-width:820px){.rd-exp-head{grid-template-columns:1fr;align-items:start}.rd-hero-cta{margin-left:0}}
+@media (max-width:700px){
+ .rd-hero{height:calc(100svh - 80px);min-height:560px;max-height:820px}
+ .rd-hero-shade{background:linear-gradient(180deg,rgba(14,14,14,.66) 0%,rgba(14,14,14,0) 16%,rgba(14,14,14,.15) 40%,rgba(14,14,14,.92) 78%,rgba(14,14,14,.96) 100%)}
+ .rd-hero-grid{display:none}
+ .rd-hero .rd-display{font-size:clamp(52px,16vw,66px)}
+ .rd-hero .rd-sub{font-size:14.5px;margin-top:16px}
+ .rd-hero-txt{padding-bottom:20px}
+ .rd-hero-bar{min-height:0;border:0;padding:0 0 24px}
+ .rd-hero-facts{display:none}
+ .rd-hero-cta{display:none}
+ .rd-quick{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));background:var(--ink);border-bottom:1px solid var(--line-d)}
+ .rd-quick a{display:flex;flex-direction:column;justify-content:space-between;min-height:92px;padding:16px 20px;color:var(--warm);text-decoration:none;border-top:1px solid var(--line-d)}
+ .rd-quick a:nth-child(odd){border-right:1px solid var(--line-d)}
+ .rd-quick .rd-num{color:var(--bronze)}
+ .rd-quick b{font:400 26px/1 var(--serif)}
+ .rd-practice{padding:64px 0}
+ .rd-statement{font-size:31px}
+ .rd-dsec{padding:64px 0}
+ .rd-dx-grid{grid-template-columns:1fr}
+ .rd-dx{min-height:0;padding:18px 0;flex-direction:row;align-items:baseline;gap:14px}
+ .rd-dx-grid,.rd-dx-grid li{border-left:0;border-right:0}
+ .rd-dx-img,.rd-dx-d,.rd-dx-cta{display:none}
+ .rd-dx-h{font-size:24px}
+ .rd-dx-t{font-size:12.5px;margin-top:4px}
+ .rd-exp-proof{display:none}
+ .rd-two article{padding:40px 20px}
+ .rd-feature>figure img{height:320px}
+ .rd-story aside{display:none}
+ .rd-scroll{display:flex!important;overflow-x:auto;scroll-snap-type:x mandatory;gap:16px;margin:0 calc(-1 * var(--pad));padding:0 var(--pad) 8px;scrollbar-width:none}
+ .rd-scroll>*{flex:0 0 82%;scroll-snap-align:start}
+ .rd-pull p{font-size:28px}
+ .rd-letter{padding-top:40px}
+ .rd-letter figure{display:none}
+}
+@media (prefers-reduced-motion:reduce){.rd-dx-img{transition:none}}
+'''
 
 # ---------------------------------------------------------------- REVIEWS
 def reviews():

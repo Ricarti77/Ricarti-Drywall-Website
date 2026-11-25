@@ -149,3 +149,42 @@
     if (status) status.textContent = status.getAttribute(shown === 1 ? 'data-one' : 'data-many').replace('%d', shown);
   });
 })();
+
+/* Concept D: header over hero, full-screen menu, language menu, gentle reveals */
+(function () {
+  var root = document.documentElement; root.classList.add('js');
+  var head = document.querySelector('.rd-head');
+  if (head && head.classList.contains('rd-over')) {
+    var solid = function () { head.classList.toggle('is-solid', window.scrollY > 80); };
+    solid(); window.addEventListener('scroll', solid, { passive: true });
+  }
+  var menu = document.querySelector('.rd-menu');
+  if (menu) {
+    var panel = menu.querySelector('.rd-panel-m'), sum = menu.querySelector('summary'), bar = document.querySelector('.rd-mbar');
+    menu.addEventListener('toggle', function () {
+      document.body.style.overflow = menu.open ? 'hidden' : '';
+      if (bar) bar.classList.toggle('is-hidden', menu.open);
+      if (menu.open) { var f = panel.querySelector('a,button'); if (f) f.focus(); } else { sum.focus(); }
+    });
+    panel.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', function () { menu.open = false; }); });
+    panel.querySelectorAll('[data-open-search]').forEach(function (b) { b.addEventListener('click', function () { menu.open = false; }, true); });
+    document.addEventListener('keydown', function (e) {
+      if (!menu.open) return;
+      if (e.key === 'Escape') { e.preventDefault(); menu.open = false; return; }
+      if (e.key !== 'Tab') return;
+      var f = [sum].concat([].slice.call(panel.querySelectorAll('a[href],button'))), first = f[0], last = f[f.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    });
+  }
+  var lang = document.querySelector('.rd-lang');
+  if (lang) {
+    document.addEventListener('click', function (e) { if (lang.open && !lang.contains(e.target)) lang.open = false; });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && lang.open) { lang.open = false; lang.querySelector('summary').focus(); } });
+  }
+  var rv = document.querySelectorAll('.rd-rv');
+  if (rv.length && 'IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (es) { es.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('is-in'); io.unobserve(en.target); } }); }, { rootMargin: '0px 0px -10% 0px' });
+    rv.forEach(function (el) { io.observe(el); });
+  } else { rv.forEach(function (el) { el.classList.add('is-in'); }); }
+})();

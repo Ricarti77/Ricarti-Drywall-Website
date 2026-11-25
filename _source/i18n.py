@@ -233,7 +233,10 @@ def search_index(lang):
         out.append({'u': u, 't': title, 'd': soup.find('meta', attrs={'name': 'description'})['content'], 'k': kinds.get(it['k'], it['k']), 'x': txt[:6000]})
     json.dump(out, open(ROOT + '%s/search-index.json' % lang, 'w'), ensure_ascii=False, separators=(',', ':'))
 
+# Published languages only. Spanish (es-419) and French (fr-CA) are prepared: add them here, with a URLS map and a
+# translation memory, when their pages are complete. Until then they never appear in any language menu.
 LANG_NAMES = [('en', 'EN', 'English'), ('pt', 'PT', 'Português')]
+PLANNED_LANGS = {'es': ('ES', 'Español', 'es-419'), 'fr': ('FR', 'Français', 'fr-CA')}
 
 def relink(lang_list=('en', 'pt')):
     """Put matching language switches and hreflang tags on every English page and its translations."""
@@ -250,13 +253,18 @@ def relink(lang_list=('en', 'pt')):
                 for code, sh, name in LANG_NAMES:
                     a = soup.new_tag('a', href=alts[code], lang=HTML_LANG.get(code, code), hreflang=HTML_LANG.get(code, code))
                     a.string = sh if short else name
+                    a['data-short'] = sh
                     if code == lang: a['aria-current'] = 'true'
                     out.append(a)
                 return out
-            for box, short in [(soup.select_one('.rd-top .rd-langs'), True), (soup.select_one('.rd-mlangs'), False), (soup.select_one('.rd-foot nav[aria-label="Language"]'), False)]:
+            for box, short in [(soup.select_one('.rd-lang-list'), False), (soup.select_one('.rd-mlangs'), True), (soup.select_one('.rd-foot nav[aria-label="Language"]'), False)]:
                 if box is None: continue
                 box.clear()
                 for a in links(short): box.append(a)
+            cur = soup.select_one('.rd-lang-cur')
+            if cur is not None:
+                cur.string = dict((c, s) for c, s, _ in LANG_NAMES)[lang]
+                cur.parent['aria-label'] = cur.parent['aria-label'].split(':')[0] + ': ' + cur.string
             for l in soup.find_all('link', rel='alternate'):
                 l.decompose()
             canon = soup.find('link', rel='canonical')

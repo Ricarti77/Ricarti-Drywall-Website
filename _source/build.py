@@ -68,11 +68,13 @@ def swap_chrome(body, out_path, ig=True):
     body = body[:min(cut)] if cut else end[:end.rfind('</div>')]
     return body + (chrome.ig_strip() if ig and out_path != '/estimate' else '') + chrome.footer() + '</div>'
 
-HEAD_COMMON = """<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,300;0,7..72,400;1,7..72,300&amp;family=Hanken+Grotesk:wght@400;500;600&amp;display=swap">
+HEAD_COMMON = """<link rel="preload" href="/assets/fonts/cormorant-garamond.woff" as="font" type="font/woff" crossorigin>
+<link rel="preload" href="/assets/fonts/archivo.woff" as="font" type="font/woff" crossorigin>
 <link rel="stylesheet" href="/assets/site.css">"""
 LOC = {'en': 'en_CA', 'pt': 'pt_BR', 'fr': 'fr_CA', 'it': 'it_IT', 'he': 'he_IL'}
 
 def write_page(out_path, title, desc, body, helmet='', css='', extra_schema=None, lang='en', alts=None, image='hero-kent.jpg', ptype='WebPage', crumbs=None):
+    body = d_palette(body); css = d_palette(css); helmet = d_palette(helmet)
     url = SITE + (out_path or '/')
     graph = [BUSINESS, {"@type": "WebPage" if ptype == 'BlogPosting' else ptype, "url": url, "name": title, "description": desc, "inLanguage": {'pt': 'pt-BR'}.get(lang, lang), "publisher": {"@id": SITE + "/#business"}}]
     if crumbs:
@@ -103,11 +105,9 @@ def write_page(out_path, title, desc, body, helmet='', css='', extra_schema=None
 <meta property="og:url" content="%(url)s">
 <meta property="og:image" content="%(site)s/images/%(image)s">
 <meta property="og:locale" content="%(locale)s">
-<meta name="theme-color" content="#1E3129">
-<link rel="icon" type="image/png" href="/images/monogram-spruce.png">
-<link rel="apple-touch-icon" href="/images/monogram-spruce.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<meta name="theme-color" content="#161616">
+<link rel="icon" type="image/png" href="/images/monogram-graphite.png">
+<link rel="apple-touch-icon" href="/images/monogram-graphite.png">
 %(common)s
 %(helmet)s
 <style>%(css)s</style>
@@ -128,9 +128,23 @@ def write_page(out_path, title, desc, body, helmet='', css='', extra_schema=None
     open(d + 'index.html', 'w').write(page)
     print('wrote', d + 'index.html', len(page))
 
+D_MAP = [('#1E3129', '#161616'), ('#2E4A3F', '#7A5C38'), ('#24272A', '#161616'), ('#F7F5F0', '#F1EDE6'), ('#DDD7CB', '#D8D1C5'),
+         ('#5E615F', '#5A554E'), ('#CBD8D0', '#D9BF95'), ('#5E7A6E', '#A8865A'), ('#EDE9E1', '#E8E2D8'),
+         ("'Hanken Grotesk'", 'Archivo'), ('"Hanken Grotesk"', 'Archivo'), ('Hanken Grotesk', 'Archivo'), ('Literata', "'Cormorant Garamond'")]
+
+def d_palette(s):
+    """Concept D: map the old palette and fonts left in converted artboards (Areas, Estimate) to the new tokens."""
+    for a, b in D_MAP:
+        s = re.sub(re.escape(a), b, s, flags=re.I)
+    return s
+
 def faq_schema(body):
     items = []
-    for m in re.finditer(r'<details[^>]*>\s*<summary[^>]*>(.*?)</summary>\s*<p[^>]*>(.*?)</p>\s*</details>', body, re.S):
+    # Only real FAQ items (a summary with the + marker followed by one answer paragraph), never menus or toggles.
+    for block in re.findall(r'<details\b[^>]*>(?:(?!<details\b).)*?</details>', body, re.S):
+        m = re.match(r'<details[^>]*>\s*<summary[^>]*>((?:(?!</summary>).)*?rd-plus(?:(?!</summary>).)*)</summary>\s*<p[^>]*>(.*?)</p>\s*</details>$', block, re.S)
+        if not m:
+            continue
         q = re.sub(r'<[^>]+>', '', m.group(1)).replace('+', '').strip()
         a = re.sub(r'<[^>]+>', '', m.group(2)).strip()
         items.append({"@type": "Question", "name": html.unescape(q), "acceptedAnswer": {"@type": "Answer", "text": html.unescape(a)}})

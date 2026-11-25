@@ -14,15 +14,16 @@
 <meta content="Ricarti Drywall | Drywall, isolamento e acabamento em Toronto e na Grande Toronto" property="og:title"/>
 <meta content="Empresa familiar desde 2009. Isolamento, estrutura em perfis de aço, drywall e acabamento Nível 4 ou Nível 5 para proprietários e construtoras em Toronto, na Grande Toronto, em Hamilton, Kitchener-Cambridge e Muskoka. Atendimento em português." property="og:description"/>
 <meta content="https://ricartidrywall.ca/pt/" property="og:url"/>
-<meta content="https://ricartidrywall.ca/images/hero-kent.jpg" property="og:image"/>
+<meta content="https://ricartidrywall.ca/images/hero-d-1600.jpg" property="og:image"/>
 <meta content="pt_BR" property="og:locale"/>
-<meta content="#1E3129" name="theme-color"/>
-<link href="/images/monogram-spruce.png" rel="icon" type="image/png"/>
-<link href="/images/monogram-spruce.png" rel="apple-touch-icon"/>
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,300;0,7..72,400;1,7..72,300&amp;family=Hanken+Grotesk:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<meta content="#161616" name="theme-color"/>
+<link href="/images/monogram-graphite.png" rel="icon" type="image/png"/>
+<link href="/images/monogram-graphite.png" rel="apple-touch-icon"/>
+<link as="font" crossorigin="" href="/assets/fonts/cormorant-garamond.woff" rel="preload" type="font/woff"/>
+<link as="font" crossorigin="" href="/assets/fonts/archivo.woff" rel="preload" type="font/woff"/>
 <link href="/assets/site.css" rel="stylesheet"/>
+<link as="image" fetchpriority="high" imagesizes="100vw" imagesrcset="/images/hero-d-m-720.avif 720w, /images/hero-d-m-1080.avif 1080w" media="(max-width: 700px)" rel="preload" type="image/avif"/>
+<link as="image" fetchpriority="high" imagesizes="100vw" imagesrcset="/images/hero-d-1080.avif 1080w, /images/hero-d-1600.avif 1600w, /images/hero-d-2160.avif 2160w" media="(min-width: 701px)" rel="preload" type="image/avif"/>
 <style>
 .rd-exp-head{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:24px 64px;align-items:end;margin-bottom:clamp(40px,5vw,64px)}
 .rd-exp-head h2 em{display:block;font-style:italic;color:var(--spruce)}
@@ -88,9 +89,9 @@
 .rd-two li{padding:12px 0;border-bottom:1px solid var(--hair)}
 .rd-two .rd-dark{background:var(--deep);color:#fff}
 .rd-two .rd-dark .rd-kicker{color:var(--soft)}
-.rd-two .rd-dark p{color:#C9D3CD}
-.rd-two .rd-dark li{border-color:#3A5247}
-.rd-two .rd-dark ul{border-color:#3A5247}
+.rd-two .rd-dark p{color:var(--dim)}
+.rd-two .rd-dark li{border-color:var(--line-d)}
+.rd-two .rd-dark ul{border-color:var(--line-d)}
 .rd-two .rd-dark .rd-btn{background:#fff;color:var(--deep)}.rd-two .rd-dark .rd-btn:hover{background:var(--soft)}
 .rd-two .rd-dark .rd-link{color:#fff;border-color:#fff}
 .rd-row{display:grid;grid-template-columns:64px minmax(0,1fr) minmax(0,1.4fr) 24px;gap:8px 32px;padding:28px 0;border-bottom:1px solid var(--hair);text-decoration:none;align-items:baseline}
@@ -120,6 +121,116 @@
 @media (max-width:820px){.rd-cover,.rd-story,.rd-two,.rd-notes,.rd-letter{grid-template-columns:1fr}.rd-cover figure img{aspect-ratio:4/5;max-height:none;min-height:0}.rd-cover-txt{order:0}.rd-story aside{order:3}.rd-quotes,.rd-cards{grid-template-columns:1fr}}
 @media (max-width:700px){.rd-row{grid-template-columns:48px minmax(0,1fr)}.rd-row .d{grid-column:2}.rd-row>span:last-child{display:none}}
 
+.rd-hero{position:relative;height:100vh;height:100svh;min-height:620px;max-height:1100px;overflow:hidden;background:var(--ink);color:var(--warm)}
+.rd-hero picture,.rd-hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.rd-hero-shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(14,14,14,.84) 0%,rgba(14,14,14,.62) 40%,rgba(14,14,14,0) 72%),linear-gradient(180deg,rgba(14,14,14,.6) 0%,rgba(14,14,14,0) 20%,rgba(14,14,14,0) 52%,rgba(14,14,14,.86) 100%)}
+.rd-hero-grid{position:absolute;inset:0 var(--pad);display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px;pointer-events:none}
+.rd-hero-grid span{border-left:1px solid rgba(241,237,230,.07)}
+.rd-hero-grid span:last-child{border-right:1px solid rgba(241,237,230,.07)}
+.rd-hero-in{position:absolute;inset:0;max-width:1440px;margin:0 auto;padding:0 var(--pad);display:flex;flex-direction:column;justify-content:flex-end}
+.rd-hero-txt{padding-bottom:clamp(36px,5vh,64px)}
+.rd-hero .rd-eyebrow{color:var(--bronze);letter-spacing:.14em;margin-bottom:24px;font-size:13px}
+.rd-hero h1{margin:0;font-weight:inherit}
+.rd-hero .rd-display{font:300 clamp(64px,11.4vw,164px)/.9 var(--serif);letter-spacing:-.02em;color:var(--warm)}
+.rd-hero .rd-display em{display:block;font-style:italic;color:var(--warm)}
+.rd-hero .rd-sub{display:block;margin-top:22px;font:400 15px/1.5 var(--sans);color:var(--dim);max-width:520px}
+.rd-hero-bar{border-top:1px solid rgba(241,237,230,.18);min-height:96px;display:flex;flex-wrap:wrap;align-items:center;gap:16px 40px;padding:16px 0}
+.rd-hero-facts{margin:0;display:flex;flex-wrap:wrap;gap:6px 40px;font-size:13.5px;color:var(--dim)}
+.rd-hero-facts b{color:var(--warm);font-weight:500}
+.rd-hero-cta{margin:0 0 0 auto;display:flex;flex-wrap:wrap;gap:12px}
+.rd-btn-l{background:var(--warm);border-color:var(--warm);color:var(--ink)}.rd-btn-l:hover{background:var(--soft);border-color:var(--soft);color:var(--ink)}
+.rd-btn-ol{border-color:rgba(241,237,230,.5);color:var(--warm)}.rd-btn-ol:hover{border-color:var(--bronze);color:var(--warm)}
+@media (prefers-reduced-motion:no-preference){
+ .rd-hero-img{animation:rdSettle 16s var(--ease) both}
+ @keyframes rdSettle{from{transform:scale(1.05)}to{transform:scale(1)}}
+ .rd-hero-grid span{transform-origin:top;animation:rdDraw .9s var(--ease) both}
+ @keyframes rdDraw{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+}
+.rd-quick{display:none}
+.rd-practice{padding:clamp(88px,10vw,150px) 0}
+.rd-practice .rd-wrap{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,7fr) minmax(0,3fr);gap:24px clamp(24px,3vw,48px);align-items:start}
+.rd-statement{margin:0;font:300 clamp(34px,3.9vw,56px)/1.1 var(--serif);letter-spacing:-.005em}
+.rd-practice-p{font-size:15.5px;border-top:1px solid var(--ink);padding-top:14px;margin-top:8px}
+.rd-dsec{background:var(--ink);color:var(--warm);padding:clamp(88px,10vw,140px) 0}
+.rd-dsec .rd-kicker{color:var(--bronze)}
+.rd-dsec .rd-lede{color:var(--dim)}
+.rd-dsec .rd-h2 em{color:var(--soft)}
+.rd-exp-head{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:24px 64px;align-items:end;margin-bottom:clamp(40px,5vw,64px)}
+.rd-exp-head h2 em{display:block}
+.rd-dx-grid{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--line-d);border-left:1px solid var(--line-d)}
+.rd-dx-grid li{border-right:1px solid var(--line-d);border-bottom:1px solid var(--line-d)}
+.rd-dx{position:relative;display:flex;flex-direction:column;justify-content:space-between;gap:40px;min-height:300px;height:100%;padding:30px 32px;text-decoration:none;color:var(--warm)!important;overflow:hidden}
+.rd-dx-img{position:absolute;inset:0;opacity:0;transition:opacity .45s var(--ease)}
+.rd-dx-img img{width:100%;height:100%;object-fit:cover;display:block}
+.rd-dx-img::after{content:"";position:absolute;inset:0;background:rgba(14,14,14,.58)}
+.rd-dx:hover .rd-dx-img,.rd-dx:focus-visible .rd-dx-img{opacity:1}
+.rd-dx-n{position:relative;margin:0;font-size:13px;font-weight:500;color:var(--bronze)}
+.rd-dx-b{position:relative;display:flex;flex-direction:column}
+.rd-dx-h{margin:0;font:400 clamp(30px,2.6vw,38px)/1.05 var(--serif)}
+.rd-dx:hover .rd-dx-h{font-style:italic}
+.rd-dx-t{margin:10px 0 0;font-size:13.5px;color:var(--stone)}
+.rd-dx-d{margin:14px 0 0;font-size:15px;line-height:1.55;color:var(--dim);max-width:380px}
+.rd-dx-cta{margin:18px 0 0;font-size:13.5px;font-weight:600;color:var(--warm);align-self:flex-start;border-bottom:1px solid var(--bronze);padding-bottom:3px}
+.rd-exp-proof{display:flex;flex-wrap:wrap;gap:10px 36px;margin:clamp(40px,5vw,64px) 0 0;padding-top:20px;border-top:1px solid var(--line-d);font-size:13.5px;color:var(--stone)}
+.rd-exp-proof b{font-weight:500;color:var(--warm)}
+.rd-two{margin-top:0}
+.rd-two article{background:var(--gypsum)}
+.rd-two article.rd-dark{background:var(--graphite)}
+.rd-two li{display:grid;grid-template-columns:40px 1fr;align-items:baseline}
+.rd-two .rd-dark .rd-num{color:var(--bronze)}
+.rd-two .rd-dark .rd-kicker{color:var(--bronze)}
+.rd-two-cta{margin-top:auto;padding-top:8px;display:flex;flex-wrap:wrap;gap:16px 24px;align-items:center}
+.rd-two .rd-dark .rd-btn{background:var(--warm);border-color:var(--warm);color:var(--ink)}
+.rd-two .rd-dark .rd-link{color:var(--warm)}
+.rd-feature{margin-top:0}
+.rd-feature>figure figcaption p{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--soft)}
+.rd-more>summary{display:inline-block;font-size:15px;font-weight:500;border-bottom:1px solid var(--bronze);padding-bottom:3px;margin-bottom:20px}
+.rd-more[open]>summary{display:none}
+.rd-sec-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:20px;margin-bottom:36px}
+.rd-sec-links{display:flex;flex-wrap:wrap;gap:16px 28px;margin:0}
+.rd-pull{padding:clamp(40px,5vw,72px) 0;border-bottom:0;border-top:1px solid var(--hair)}
+.rd-quotes{margin-top:0}
+.rd-faq-wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:40px 64px;align-items:start}
+.rd-closing>div{gap:22px}
+.rd-close-p{margin:0;color:var(--dim)}
+@media (max-width:1100px){.rd-dx-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.rd-practice .rd-wrap{grid-template-columns:1fr}}
+@media (max-width:820px){.rd-exp-head{grid-template-columns:1fr;align-items:start}.rd-hero-cta{margin-left:0}}
+@media (max-width:700px){
+ .rd-hero{height:calc(100svh - 80px);min-height:560px;max-height:820px}
+ .rd-hero-shade{background:linear-gradient(180deg,rgba(14,14,14,.66) 0%,rgba(14,14,14,0) 16%,rgba(14,14,14,.15) 40%,rgba(14,14,14,.92) 78%,rgba(14,14,14,.96) 100%)}
+ .rd-hero-grid{display:none}
+ .rd-hero .rd-display{font-size:clamp(52px,16vw,66px)}
+ .rd-hero .rd-sub{font-size:14.5px;margin-top:16px}
+ .rd-hero-txt{padding-bottom:20px}
+ .rd-hero-bar{min-height:0;border:0;padding:0 0 24px}
+ .rd-hero-facts{display:none}
+ .rd-hero-cta{display:none}
+ .rd-quick{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));background:var(--ink);border-bottom:1px solid var(--line-d)}
+ .rd-quick a{display:flex;flex-direction:column;justify-content:space-between;min-height:92px;padding:16px 20px;color:var(--warm);text-decoration:none;border-top:1px solid var(--line-d)}
+ .rd-quick a:nth-child(odd){border-right:1px solid var(--line-d)}
+ .rd-quick .rd-num{color:var(--bronze)}
+ .rd-quick b{font:400 26px/1 var(--serif)}
+ .rd-practice{padding:64px 0}
+ .rd-statement{font-size:31px}
+ .rd-dsec{padding:64px 0}
+ .rd-dx-grid{grid-template-columns:1fr}
+ .rd-dx{min-height:0;padding:18px 0;flex-direction:row;align-items:baseline;gap:14px}
+ .rd-dx-grid,.rd-dx-grid li{border-left:0;border-right:0}
+ .rd-dx-img,.rd-dx-d,.rd-dx-cta{display:none}
+ .rd-dx-h{font-size:24px}
+ .rd-dx-t{font-size:12.5px;margin-top:4px}
+ .rd-exp-proof{display:none}
+ .rd-two article{padding:40px 20px}
+ .rd-feature>figure img{height:320px}
+ .rd-story aside{display:none}
+ .rd-scroll{display:flex!important;overflow-x:auto;scroll-snap-type:x mandatory;gap:16px;margin:0 calc(-1 * var(--pad));padding:0 var(--pad) 8px;scrollbar-width:none}
+ .rd-scroll>*{flex:0 0 82%;scroll-snap-align:start}
+ .rd-pull p{font-size:28px}
+ .rd-letter{padding-top:40px}
+ .rd-letter figure{display:none}
+}
+@media (prefers-reduced-motion:reduce){.rd-dx-img{transition:none}}
+
 .rd-pf-filters{display:flex;flex-wrap:wrap;gap:4px 30px;margin:0 0 clamp(40px,5vw,64px);padding-bottom:14px;border-bottom:1px solid var(--hair)}
 .rd-pf-filters[hidden]{display:none}
 .rd-pf-filters button{background:none;border:0;padding:8px 0;font:inherit;font-size:14px;letter-spacing:.02em;color:var(--muted);cursor:pointer;border-bottom:1px solid transparent;transition:color .25s,border-color .25s}
@@ -133,18 +244,18 @@
 .rd-pf-cover{display:block;position:relative;width:100%;padding:0;border:0;background:var(--gypsum);cursor:zoom-in;overflow:hidden}
 .rd-pf-cover img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;transition:transform 1.1s cubic-bezier(.2,.6,.2,1),filter .6s ease;filter:saturate(.9)}
 .rd-pf-cover:hover img,.rd-pf-cover:focus-visible img{transform:scale(1.03);filter:saturate(1)}
-.rd-pf-view{position:absolute;left:20px;bottom:18px;color:#fff;font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:500;opacity:0;transform:translateY(6px);transition:opacity .4s,transform .4s;text-shadow:0 1px 8px rgba(0,0,0,.45)}
+.rd-pf-view{position:absolute;left:20px;bottom:18px;color:#fff;font-size:13px;font-weight:500;opacity:0;transform:translateY(6px);transition:opacity .4s,transform .4s;text-shadow:0 1px 8px rgba(0,0,0,.45)}
 .rd-pf-cover:hover .rd-pf-view,.rd-pf-cover:focus-visible .rd-pf-view{opacity:1;transform:none}
 .rd-pf-meta{display:grid;grid-template-columns:auto 1fr;gap:0 22px;padding-top:24px}
-.rd-pf-n{grid-row:span 4;font:300 15px/1 var(--serif);color:var(--spruce);padding-top:14px}
-.rd-pf-h{margin:0;font:300 clamp(30px,3vw,46px)/1.05 var(--serif);letter-spacing:-.015em}
+.rd-pf-n{grid-row:span 4;font-size:13px;font-weight:500;color:var(--spruce);padding-top:16px;font-variant-numeric:tabular-nums}
+.rd-pf-h{margin:0;font:300 clamp(34px,3.3vw,52px)/1.02 var(--serif);letter-spacing:-.01em}
 .rd-pf-place{margin:6px 0 0;font-size:14px;color:var(--muted)}
 .rd-pf-meta dl{margin:16px 0 0;display:grid;gap:10px}
-.rd-pf-meta dt{font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:500;color:var(--muted)}
+.rd-pf-meta dt{font-size:12.5px;font-weight:500;color:var(--muted)}
 .rd-pf-meta dd{margin:3px 0 0;font-size:15px}
-.rd-pf-link{justify-self:start;margin-top:18px;background:none;border:0;padding:0 0 4px;font:inherit;font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:500;color:var(--spruce);border-bottom:1px solid transparent;cursor:pointer;transition:border-color .3s}
-.rd-pf-link:hover,.rd-pf-link:focus-visible{border-bottom-color:var(--spruce)}
-@media (max-width:700px){.rd-pf-grid{grid-template-columns:1fr;gap:64px}.rd-pf-grid .rd-pf-item:nth-child(even){margin-top:0}.rd-pf-filters{gap:2px 20px}}
+.rd-pf-link{justify-self:start;margin-top:18px;background:none;border:0;padding:0 0 4px;font:inherit;font-size:14px;font-weight:600;color:var(--ink);border-bottom:1px solid var(--bronze);cursor:pointer;min-height:32px}
+.rd-pf-link:hover,.rd-pf-link:focus-visible{color:var(--spruce)}
+@media (max-width:700px){.rd-pf-grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:14px;margin:0 calc(-1 * var(--pad));padding:0 var(--pad) 8px;scrollbar-width:none}.rd-pf-item{flex:0 0 80%;scroll-snap-align:start}.rd-pf-grid .rd-pf-item:nth-child(even){margin-top:0}.rd-pf-filters{gap:2px 20px;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}.rd-pf-filters button{white-space:nowrap;min-height:44px}.rd-pf-meta dl{display:none}.rd-pf-meta{padding-top:14px}.rd-pf-h{font-size:30px}}
 @media (prefers-reduced-motion:reduce){.rd-pf-cover img,.rd-pf-view{transition:none}.rd-pf-cover:hover img{transform:none}}
 </style>
 <script type="application/ld+json">
@@ -214,7 +325,7 @@
    "mainEntity": [
     {
      "@type": "Question",
-     "name": "MenuHomeFor homeownersFor buildersServicesJournalReviewsService areasGet an estimate(647) 482-1139Instagram · @ricarti_drywallEN\n\n\nSearch the site/\nGet an estimate\n\n\n\nCLOSE\nPopular: Level 5 finishSpray foamSoundproofingPlaster repairBuildersWSIB\n\n\n\n\n\n\n\nPrecision. Craftsmanship. Excellence.\nPerfection Starts Here!Premium Drywall, Insulation & Architectural Finishing.\nSince 2009, Ricarti Drywall has delivered exceptional craftsmanship, precision, and reliability across custom homes, commercial projects, and residential renovations throughout Toronto, the GTA, Hamilton, Kitchener-Cambridge, and Muskoka.\nRequest an EstimateBuilders — Send Your Drawingsor call (647) 482-1139\nEst. 2009 · family-ownedLevel 4 standard · Level 5 on requestWSIB clearance on request\n\nKent, Toronto — a finished room: seamless painted walls over a white oak floor.\n\n\n\n01For homeownersBuilding or renovating your house\n02For buildersYour insulation & drywall trade\n03The finish levelsLevel 4 or Level 5?\n04The JournalGuides for owners and builders\n05ReviewsWhat clients say\n\n\n\n\nFEATURE · KENT, TORONTOOne house, every wall, three coats.\n\nPROJECTFull house, Kent, TorontoSCOPEBoard, tape and finish throughout, stair hall includedFINISHLevel 4, paintedYEAR2026\n\nNobody walks into a finished room and admires the drywall. They notice the light from the window, the colour of the paint, the height of the ceiling. If they notice the wall, something has gone wrong: a joint catching the afternoon sun, a ridge along the ceiling, a corner that is not quite straight.\nOn Kent we boarded, taped and finished the whole house, from the bedrooms to the long stair hall where light runs down the wall from above. Stair halls are where shortcuts show first. Every joint got its coats, every screw was set and filled, and every wall was checked at the end with a work light held flat to the surface, the way low winter sun will hit it.\nThen the painters came, and the walls disappeared into the rooms. Which is exactly the point.\nHow we finish, and what Level 4 and 5 mean\n\nThe stair hall on Kent, boarded and finished before paint.\n\n\n\n\n“He completed everything on time and on budget, and the end result was flawless.”IOANA POPA · GOOGLE REVIEW\n\n\n\n\nFor homeowners\nBuilding or renovating the house you will live in.\nYou deal with the person whose name is on the company. We visit, measure, and give you a written scope that names the insulation, the board and the finish level for each room.\nA site visit before any priceWritten scope with the finish level spelled outSite swept and bagged at the end of every dayFinal walkthrough under a work light, with you\nBook a site visitMore for homeowners\n\n\nFor builders & developers\nYour insulation and drywall trade, on schedule.\nDetached homes, semis and townhouse blocks. We price from drawings, staff to your schedule, and send the paperwork before the first board goes up.\nWSIB clearance and insurance certificate with the quotePricing from drawings, per unit or per blockOne lead hand on site who answers to your superPhoto updates at insulation inspection and board-ready\nSend drawings for pricingMore for builders\n\n\n\n\n\nOur ExpertiseBuilt with Precision.Finished with Excellence.\nSpecialized construction systems and architectural finishes for projects where quality is non-negotiable.\n\n01Drywall SystemsPremium drywall installation, custom ceilings, curved walls, and complex architectural designs.Explore Service →02Insulation & Spray FoamClosed-cell spray foam, batt insulation, mineral wool, and blown-in insulation solutions for superior thermal performance.Explore Service →03Level 4 & Level 5 FinishingPrecision taping, skim coating, and premium surface preparation for exceptional architectural finishes.Explore Service →04Architectural FinishingTrimless details, shadow reveals, custom curves, integrated air vents, frameless lighting details, and specialized architectural drywall solutions.Explore Service →05Acoustic & Soundproofing SystemsAcoustic insulation, resilient channels, sound isolation assemblies, and specialized noise control solutions.Explore Service →06Metal Stud FramingPrecision steel stud framing for custom homes, residential renovations, and selected commercial projects.Explore Service →\nSince 2009 · family-ownedOne crew from insulation to paint-readyWSIB & fully insuredWritten scope on every project\n\n\n\n\nSelected ProjectsCraftsmanship in Every Detail.\nFrom exceptional custom homes to complex architectural spaces, our work reflects a commitment to precision, craftsmanship, and excellence.\n\nAll Projects5Renovations1Architectural Finishing1Insulation2Drywall & Finishing4\n\n\nView gallery\n01KentWork documentedDrywall & Finishing\nView gallery · 9 photos\nKent — stair wall with panel mouldings, painted, before final clean-upKent, Toronto — finished bedroom after paintKent, Toronto — smooth walls and ceiling, paintedKent, Toronto — the long stair hall, finished before paintKent, Toronto — painted bedroom under window lightKent, Toronto — kitchen and living area, finished drywallKent, Toronto — finish coats done, floors protectedKent, Toronto — bedroom ready for paintKent, Toronto — open main floor during finishing\n\n\nView gallery\n02BruleWork documentedInsulation · Drywall & Finishing · Architectural Finishing\nView gallery · 9 photos\nBrule — arched doorway with corner bead, looking through to an arched windowBrule, Toronto — arched dormer nook boarded in moisture-resistant drywallBrule, Toronto — the same nook in daylight, ready for tapeBrule, Toronto — arched doorway boarded, with corner beadBrule, Toronto — bedroom boarded around a row of three windowsBrule, Toronto — room boarded around French doorsBrule, Toronto — arched niche and framing before boardBrule, Toronto — insulated ceiling on resilient channel, board stocked by typeBrule, Toronto — closed-cell spray foam between roof rafters\n\n\nView gallery\n03StantonWork documentedInsulation\nView gallery · 5 photos\nStanton, Toronto — open joists before insulation and boardStanton, Toronto — mineral wool and steel channel on an exterior wallStanton, Toronto — mineral wool behind resilient channel, close upStanton, Toronto — spray foam around a window openingStanton, Toronto — sound insulation under a sloped ceiling\n\n\nView gallery\n04Lauther AveWork documentedRenovations · Drywall & Finishing\nView gallery · 2 photos\nLauther Ave, Toronto — old lath-and-plaster ceiling coming downLauther Ave, Toronto — new ceiling taped around the original medallion\n\n\nView gallery\n05ThompsonWork documentedDrywall & Finishing\nView gallery · 1 photo\nThompson, Toronto — finisher on stilts, floors covered\n\n\n\n\n\nStanton, Toronto — mineral wool and steel channel, before board.\n\nField notes · under the board\nThe best work on a job is the work you never see.\nBefore a single sheet goes up, the wall is insulated, sealed and inspected. Get this layer right and the house is warmer, quieter and drier for decades. Get it wrong and no amount of finishing will fix it.\nWarmthClosed-cell foam at rim joists and sloped ceilings, batts in the wallsQuietMineral wool, resilient channel and sealed penetrationsDryA continuous air and vapour barrier, checked before it is covered\nRead: soundproofing a room\n\n\n\n\n\nThe JournalKnow what you are paying for.All articles\nInsulation · 6 min readSpray foam or batts: which goes where, and whyHiring · 5 min readSeven questions to ask a drywall contractor before you signSound · 5 min readSoundproofing a room: what actually works\n\n\n\nClient words\nIn their words, not ours.\n“Not only was the dry wall installed perfectly they also repaired a lath and plaster wall. Would highly recommend them.”JENNIFER PETURSSON · GOOGLE REVIEW“Cris and his crew drywalled and taped my entire house project.”MIKE B. · GOOGLE REVIEW“I have used Ricarti drywall service a few times, and every time we have a great experience. Highly recommended.”MILAD FOROUGHI MASOULEH · GOOGLE REVIEW\nAll reviewsSee us on Google\n\n\n\n\nOn site on Thompson, Toronto.\n\nA note from the owner\n[Draft — rewrite in your own words.] I want to be judged on the last coat, not the quote. Every house we finish carries our name, so I walk every room with you before we leave, and I tell you plainly if a wall needs more work than you were told.\nCris\nCris Ricarti · Owner, Ricarti Drywall · cris@ricartidrywall.ca\n\n\n\n\n\n\nQuestionsWhat people ask before they call.\nDo you work for homeowners or only for builders?",
+     "name": "Do you work for homeowners or only for builders?",
      "acceptedAnswer": {
       "@type": "Answer",
       "text": "Os dois. Pegamos obras diretamente de proprietários que estão construindo ou reformando, e trabalhamos como a equipe de isolamento e drywall de construtoras e empreiteiras em casas isoladas, geminadas e townhouses."
@@ -268,74 +379,68 @@
 <script defer="" src="/assets/site.js"></script>
 </head>
 <body>
-<div><a class="rd-skip" href="#main">Pular para o conteúdo</a> <div class="rd-top"><div>
-<span class="rd-hide">Empresa familiar desde 2009 · Grande Toronto · Hamilton · Kitchener–Cambridge · Muskoka</span> <nav aria-label="Utilidades"><a class="rd-hide" href="/pt/areas-atendidas">Áreas atendidas</a><a class="rd-hide rd-speak" href="/pt/" hreflang="pt-BR" lang="pt">Atendimento em português</a><span aria-label="Idioma" class="rd-langs"><a href="/" hreflang="en" lang="en">EN</a><a aria-current="true" href="/pt/" hreflang="pt-BR" lang="pt-BR">PT</a></span><a aria-label="Instagram @ricarti_drywall" href="https://www.instagram.com/ricarti_drywall/" rel="noopener"><svg aria-hidden="true" class="rd-ico" viewbox="0 0 24 24"><rect height="18" rx="5" width="18" x="3" y="3"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.3" cy="6.7" fill="currentColor" r=".6"></circle></svg></a><a class="rd-hide" href="mailto:cris@ricartidrywall.ca">cris@ricartidrywall.ca</a><a href="tel:+16474821139">(647) 482-1139</a></nav>
-</div></div> <header class="rd-head"><div>
-<nav aria-label="Principal" class="rd-nav"><a aria-current="page" href="/pt/">Início</a><a href="/pt/proprietarios">Proprietários</a><a href="/pt/construtoras">Construtoras</a><a href="/pt/acabamento-de-drywall-toronto">Serviços</a><a href="/pt/guias">Guias</a><a href="/pt/avaliacoes">Avaliações</a></nav>
-<details class="rd-mnav"><summary>Menu</summary><ul><li><a aria-current="page" href="/pt/">Início</a></li><li><a href="/pt/proprietarios">Para proprietários</a></li><li><a href="/pt/construtoras">Para construtoras</a></li><li><a href="/pt/acabamento-de-drywall-toronto">Serviços</a></li><li><a href="/pt/guias">Guias</a></li><li><a href="/pt/avaliacoes">Avaliações</a></li><li><a href="/pt/areas-atendidas">Áreas atendidas</a></li><li><a href="/pt/orcamento">Peça um orçamento</a></li><li><a href="tel:+16474821139">(647) 482-1139</a></li><li><a href="https://www.instagram.com/ricarti_drywall/" rel="noopener">Instagram · @ricarti_drywall</a></li><li class="rd-mlangs"><a href="/" hreflang="en" lang="en">English</a><a aria-current="true" href="/pt/" hreflang="pt-BR" lang="pt-BR">Português</a></li></ul></details>
-<a aria-label="Ricarti Drywall, início" class="rd-logo" href="/pt/"><img alt="Ricarti Drywall" height="52" src="/images/lockup-graphite.png" width="264"/></a>
-<div class="rd-right">
-<button aria-label="Buscar no site" class="rd-sbtn" data-open-search="" type="button"><svg aria-hidden="true" class="rd-ico" viewbox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"></circle><path d="M15.5 15.5 21 21"></path></svg><span>Buscar no site</span><kbd>/</kbd></button> <a class="rd-cta" href="/pt/orcamento">Peça um orçamento</a>
+<div><div><a class="rd-skip" href="#main">Pular para o conteúdo</a></div>
+<header class="rd-head rd-over"><div>
+<div class="rd-hl">
+<details class="rd-menu"><summary aria-label="Menu"><svg aria-hidden="true" viewbox="0 0 24 9"><path d="M0 .6h24M0 8.4h15"></path></svg><span class="rd-m-open rd-m-t">Menu</span><span class="rd-m-close rd-m-t">Fechar</span></summary>
+<div aria-label="Menu" aria-modal="true" class="rd-panel-m" role="dialog">
+<div class="rd-pm-top"><a aria-label="Ricarti Drywall, início" href="/pt/"><img alt="Ricarti Drywall" height="52" src="/images/lockup-plaster.png" width="264"/></a></div>
+<div class="rd-pm-body">
+<nav aria-label="Principal" class="rd-pm-main"><a href="/pt/#services">Serviços</a><a href="/pt/#projects">Projetos</a><a href="/pt/construtoras">Para construtoras</a><a href="/pt/proprietarios">Para proprietários</a><div class="rd-pm-sub"><a href="/pt/guias">Guias</a><a href="/pt/avaliacoes">Avaliações</a><a href="/pt/areas-atendidas">Áreas atendidas</a><a aria-current="page" href="/pt/">Início</a><button data-open-search="" type="button">Buscar no site</button></div></nav>
+<ol class="rd-pm-svc"><li><a href="/pt/instalacao-de-drywall-toronto"><span class="n">01</span><span><span class="h">Sistemas de drywall</span><span class="d">Tipo X · resistente à umidade · múltiplas camadas</span></span></a></li><li><a href="/pt/isolamento-e-espuma-projetada-toronto"><span class="n">02</span><span><span class="h">Isolamento e espuma projetada</span><span class="d">Célula fechada · mantas · lã de rocha · sótão</span></span></a></li><li><a href="/pt/acabamento-de-drywall-toronto"><span class="n">03</span><span><span class="h">Acabamento Nível 4 e Nível 5</span><span class="d">Fitas · massa corrida · tetos lisos</span></span></a></li><li><a href="/pt/acabamentos-arquitetonicos-toronto"><span class="n">04</span><span><span class="h">Acabamentos arquitetônicos</span><span class="d">Curvas · frisos · grelhas embutidas · sem guarnição</span></span></a></li><li><a href="/pt/isolamento-acustico-toronto"><span class="n">05</span><span><span class="h">Isolamento acústico</span><span class="d">Perfil resiliente · mantas acústicas · camadas</span></span></a></li><li><a href="/pt/estrutura-em-perfis-de-aco-toronto"><span class="n">06</span><span><span class="h">Estrutura em perfis de aço</span><span class="d">Não estrutural · sancas · divisórias</span></span></a></li></ol>
+<div class="rd-pm-side">
+<img alt="" decoding="async" height="600" loading="lazy" src="/images/svc-architectural-480.jpg" width="480"/> <address><a href="tel:+16474821139">(647) 482-1139</a><br/><a href="mailto:cris@ricartidrywall.ca">cris@ricartidrywall.ca</a><br/><a href="https://www.instagram.com/ricarti_drywall/" rel="noopener">Instagram · @ricarti_drywall</a></address> <nav aria-label="Idioma" class="rd-mlangs"><a data-short="EN" href="/" hreflang="en" lang="en">EN</a><a aria-current="true" data-short="PT" href="/pt/" hreflang="pt-BR" lang="pt-BR">PT</a></nav> <a class="rd-pm-est" href="/pt/orcamento">Peça um orçamento</a>
 </div>
-</div></header> <dialog aria-label="Buscar no site" class="rd-dlg" id="rd-search"><div class="rd-panel">
+</div>
+<div class="rd-pm-foot"><div><em>A perfeição começa aqui!</em><span>Toronto · GTA · Hamilton · Kitchener–Cambridge · Muskoka</span></div></div>
+</div>
+</details> <a href="/pt/#services">Serviços</a><a href="/pt/#projects">Projetos</a>
+</div>
+<a aria-label="Ricarti Drywall, início" class="rd-logo" href="/pt/"><img alt="Ricarti Drywall" height="52" src="/images/lockup-plaster.png" width="264"/></a>
+<div class="rd-hr">
+<details class="rd-lang"><summary aria-label="Idioma: PT"><span class="rd-lang-cur">PT</span><svg aria-hidden="true" viewbox="0 0 9 6"><path d="M.5.8l4 4 4-4"></path></svg></summary><nav aria-label="Idioma" class="rd-lang-list"><a data-short="EN" href="/" hreflang="en" lang="en">English</a><a aria-current="true" data-short="PT" href="/pt/" hreflang="pt-BR" lang="pt-BR">Português</a></nav></details> <a class="rd-enq" href="mailto:cris@ricartidrywall.ca">Contato</a> <a class="rd-est" href="/pt/orcamento">Peça um orçamento</a>
+</div>
+</div></header>
+<dialog aria-label="Buscar no site" class="rd-dlg" id="rd-search"><div class="rd-panel">
 <form action="/pt/busca" class="rd-sform" role="search"><svg aria-hidden="true" class="rd-ico" viewbox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"></circle><path d="M15.5 15.5 21 21"></path></svg><input aria-label="Buscar no site" autocomplete="off" id="rd-q" name="q" placeholder="Buscar: espuma, Nível 5, isolamento acústico…" type="search"/><button id="rd-sclose" type="button">FECHAR</button></form>
 <div class="rd-sugg" id="rd-sugg">Mais buscados: <a href="/pt/busca?q=Nível+5">Nível 5</a><a href="/pt/busca?q=Espuma">Espuma</a><a href="/pt/busca?q=Isolamento+acústico">Isolamento acústico</a><a href="/pt/busca?q=Reboco">Reboco</a><a href="/pt/busca?q=Construtoras">Construtoras</a><a href="/pt/busca?q=WSIB">WSIB</a></div>
 <ul aria-live="polite" class="rd-res" id="rd-res"></ul>
-</div></dialog> <main id="main">
-<div class="rd-wrap">
-<section aria-label="Introdução" class="rd-cover">
-<div class="rd-cover-txt">
-<p class="rd-eyebrow">Precisão. Maestria. Excelência.</p>
+</div></dialog>
+<main id="main">
+<section aria-label="Introdução" class="rd-hero">
+<picture><source media="(max-width: 700px)" sizes="100vw" srcset="/images/hero-d-m-720.avif 720w, /images/hero-d-m-1080.avif 1080w" type="image/avif"><source media="(max-width: 700px)" sizes="100vw" srcset="/images/hero-d-m-720.jpg 720w, /images/hero-d-m-1080.jpg 1080w"><source sizes="100vw" srcset="/images/hero-d-1080.avif 1080w, /images/hero-d-1600.avif 1600w, /images/hero-d-2160.avif 2160w" type="image/avif"><img alt="Janela em arco numa água-furtada, com retorno curvo em drywall, já com as chapas e pronta para as fitas, na obra Brule, em Toronto" class="rd-hero-img" decoding="async" fetchpriority="high" height="1215" sizes="100vw" src="/images/hero-d-1600.jpg" srcset="/images/hero-d-1080.jpg 1080w, /images/hero-d-1600.jpg 1600w, /images/hero-d-2160.jpg 2160w" width="2160"/></source></source></source></picture>
+<div aria-hidden="true" class="rd-hero-shade"></div>
+<div aria-hidden="true" class="rd-hero-grid"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+<div class="rd-hero-in">
+<div class="rd-hero-txt">
+<p class="rd-eyebrow">Drywall · Isolamento · Acabamentos arquitetônicos</p>
 <h1><span class="rd-display">A perfeição <em>começa aqui!</em></span><span class="rd-sub">Drywall, isolamento e acabamentos arquitetônicos de alto padrão.</span></h1>
-<p class="rd-lede">Desde 2009, a Ricarti Drywall entrega acabamento excepcional, precisão e confiabilidade em casas sob medida, obras comerciais e reformas residenciais em Toronto, na Grande Toronto, em Hamilton, Kitchener-Cambridge e Muskoka.</p>
-<div class="rd-cover-cta"><a class="rd-btn" href="/pt/orcamento">Peça um orçamento</a><a class="rd-btn-o" href="/pt/orcamento?type=builder">Construtoras — enviem seus projetos</a><a class="rd-link" href="tel:+16474821139">ou ligue: (647) 482-1139</a></div>
-<div class="rd-byline"><span><b>Desde 2009</b> · empresa familiar</span><span><b>Nível 4</b> como padrão · Nível 5 sob consulta</span><span><b>WSIB</b>: certificado disponível</span></div>
 </div>
-<figure><img alt="Um cômodo pronto na Kent, Toronto: paredes pintadas sem emendas aparentes, spot embutido e piso de carvalho branco sob uma janela larga" fetchpriority="high" height="2133" sizes="(max-width: 820px) 100vw, 40vw" src="/images/hero-kent-room-1200.jpg" srcset="/images/hero-kent-room-720.jpg 720w, /images/hero-kent-room-1200.jpg 1200w" width="1200"/><figcaption class="rd-cap">Kent, Toronto — um cômodo pronto: paredes pintadas sem emendas aparentes sobre piso de carvalho branco.</figcaption></figure>
+<div class="rd-hero-bar">
+<p class="rd-hero-facts"><span><b>Desde 2009</b> · empresa familiar</span><span><b>Nível 4</b> como padrão · Nível 5 sob consulta</span><span>GTA · Hamilton · Kitchener–Cambridge · Muskoka</span></p>
+<p class="rd-hero-cta"><a class="rd-btn rd-btn-l" href="/pt/orcamento">Peça um orçamento</a><a class="rd-btn-o rd-btn-ol" href="/pt/orcamento?type=builder">Construtoras — enviem seus projetos</a></p>
+</div>
+</div>
 </section>
-<nav aria-label="Nesta página" class="rd-toc">
-<a href="/pt/proprietarios"><span>01</span><b>Para proprietários</b><i>Vai construir ou reformar sua casa</i></a> <a href="/pt/construtoras"><span>02</span><b>Para construtoras</b><i>Sua equipe de isolamento e drywall</i></a> <a href="/pt/acabamento-de-drywall-toronto"><span>03</span><b>Níveis de acabamento</b><i>Nível 4 ou Nível 5?</i></a> <a href="/pt/guias"><span>04</span><b>Guias</b><i>Para proprietários e construtoras</i></a> <a href="/pt/avaliacoes"><span>05</span><b>Avaliações</b><i>O que dizem os clientes</i></a>
+<nav aria-label="Acesso rápido" class="rd-quick">
+<a href="#services"><span class="rd-num">01</span><b>Serviços</b></a> <a href="#projects"><span class="rd-num">02</span><b>Projetos</b></a> <a href="/pt/construtoras"><span class="rd-num">03</span><b>Construtoras</b></a> <a href="/pt/orcamento"><span class="rd-num">04</span><b>Orçamento</b></a>
 </nav>
-</div>
-<article aria-labelledby="feat-h" class="rd-feature">
-<figure><img alt="Quarto pronto na Kent, Toronto: paredes e teto lisos e pintados, com uma janela larga" decoding="async" height="1215" loading="lazy" src="/images/hero-kent.jpg" width="2160"/><figcaption><p>EM DESTAQUE · KENT, TORONTO</p><h2 id="feat-h">Uma casa, todas as paredes, três demãos.</h2></figcaption></figure>
-<div class="rd-wrap rd-story">
-<aside><dl><dt>OBRA</dt><dd>Casa inteira, Kent, Toronto</dd><dt>ESCOPO</dt><dd>Chapas, tratamento de juntas e acabamento em toda a casa, incluindo o hall da escada</dd><dt>ACABAMENTO</dt><dd>Nível 4, pintado</dd><dt>ANO</dt><dd>2026</dd></dl></aside>
-<div class="rd-prose">
-<p>Ninguém entra num cômodo pronto e fica admirando o drywall. As pessoas reparam na luz da janela, na cor da tinta, no pé-direito. Se alguém repara na parede, é porque algo deu errado: uma junta aparecendo com o sol da tarde, uma ondulação no teto, um canto que não ficou bem reto.</p>
-<p>Na casa da Kent, fizemos a instalação das chapas, o tratamento de juntas e o acabamento da casa inteira, dos quartos ao longo hall da escada, onde a luz desce pela parede vinda de cima. É no hall da escada que qualquer atalho aparece primeiro. Cada junta recebeu todas as demãos, cada parafuso foi rebaixado e coberto, e no fim cada parede foi conferida com um refletor encostado rente à superfície — do jeito que o sol baixo do inverno vai bater nela.</p>
-<p>Depois vieram os pintores, e as paredes simplesmente sumiram nos ambientes. Que é exatamente a ideia.</p>
-<p><a class="rd-link" href="/pt/acabamento-de-drywall-toronto">Como fazemos o acabamento e o que significam os Níveis 4 e 5</a></p>
-</div>
-<div class="rd-side"><img alt="Longo hall de escada com paredes de drywall acabadas, Kent, Toronto" decoding="async" height="1600" loading="lazy" src="/images/kent-02.jpg" width="900"/><p class="rd-cap">O hall da escada na Kent, com o acabamento pronto antes da pintura.</p></div>
-</div>
-</article>
+<section aria-labelledby="practice-h" class="rd-practice">
 <div class="rd-wrap">
-<blockquote class="rd-pull"><p>“Ele concluiu tudo dentro do prazo e do orçamento, e o resultado final ficou impecável.”</p><footer>IOANA POPA · AVALIAÇÃO NO GOOGLE (TRADUZIDA DO INGLÊS)</footer></blockquote>
+<p class="rd-kicker">O nosso ofício</p>
+<h2 class="rd-statement rd-rv" id="practice-h">Construímos as superfícies pelas quais a arquitetura é julgada: as paredes, os tetos e a maneira como a luz incide sobre eles.</h2>
+<p class="rd-lede rd-practice-p">Desde 2009, a Ricarti Drywall entrega acabamento excepcional, precisão e confiabilidade em casas sob medida, obras comerciais e reformas residenciais em Toronto, na Grande Toronto, em Hamilton, Kitchener-Cambridge e Muskoka.</p>
 </div>
-<section aria-label="Duas formas de trabalhar" class="rd-two">
-<article style="background:#fff">
-<p class="rd-kicker">Para proprietários</p>
-<h3>Vai construir ou reformar a casa onde vai morar.</h3>
-<p class="rd-muted" style="margin:0;max-width:520px">Você fala diretamente com o dono da empresa. Fazemos a visita, tiramos as medidas e entregamos um escopo por escrito que especifica o isolamento, o tipo de chapa e o nível de acabamento de cada cômodo.</p>
-<ul><li>Visita técnica antes de qualquer preço</li><li>Escopo por escrito, com o nível de acabamento especificado</li><li>Obra varrida e entulho ensacado ao fim de cada dia</li><li>Vistoria final com refletor, junto com você</li></ul>
-<div style="margin-top:auto;padding-top:8px;display:flex;flex-wrap:wrap;gap:16px 24px;align-items:center"><a class="rd-btn" href="/pt/orcamento">Agende uma visita técnica</a><a class="rd-link" href="/pt/proprietarios">Mais para proprietários</a></div>
-</article>
-<article class="rd-dark">
-<p class="rd-kicker">Para construtoras e incorporadoras</p>
-<h3>Sua equipe de isolamento e drywall, dentro do cronograma.</h3>
-<p style="margin:0;max-width:520px">Casas isoladas, geminadas e blocos de townhouses. Orçamos a partir dos projetos, dimensionamos a equipe pelo seu cronograma e enviamos a documentação antes da primeira chapa subir.</p>
-<ul><li>Certificado do WSIB e apólice de seguro junto com o orçamento</li><li>Orçamento a partir dos projetos, por unidade ou por bloco</li><li>Um encarregado na obra, que responde ao seu mestre de obras</li><li>Fotos de acompanhamento na inspeção do isolamento e na liberação para as chapas</li></ul>
-<div style="margin-top:auto;padding-top:8px;display:flex;flex-wrap:wrap;gap:16px 24px;align-items:center"><a class="rd-btn" href="/pt/orcamento?type=builder">Envie os projetos para orçamento</a><a class="rd-link" href="/pt/construtoras">Mais para construtoras</a></div>
-</article>
 </section>
-<section aria-labelledby="services-h" class="rd-wrap rd-sec rd-exp" id="services">
+<section aria-labelledby="services-h" class="rd-dsec rd-exp-d" id="services">
+<div class="rd-wrap">
 <header class="rd-exp-head">
-<div><p class="rd-kicker">Nossas especialidades</p><h2 class="rd-h2" id="services-h">Construído com precisão.<em>Finalizado com excelência.</em></h2></div>
+<div><p class="rd-kicker">Nossas especialidades</p><h2 class="rd-h2" id="services-h">Seis especialidades.<em> Um só padrão.</em></h2></div>
 <p class="rd-lede">Sistemas construtivos especializados e acabamentos arquitetônicos para obras em que a qualidade não é negociável.</p>
 </header>
-<ol class="rd-exp-grid"><li><a class="rd-svc" href="/pt/instalacao-de-drywall-toronto"><span class="rd-svc-img"><img alt="Quarto claro com as chapas instaladas do piso ao teto em volta de três janelas, Brule, Toronto" decoding="async" height="1125" loading="lazy" sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 31vw" src="/images/svc-drywall-systems.jpg" srcset="/images/svc-drywall-systems-480.jpg 480w, /images/svc-drywall-systems.jpg 900w" width="900"/></span><span class="rd-svc-n">01</span><h3 class="rd-svc-h">Sistemas de drywall</h3><p class="rd-svc-d">Instalação de drywall de alto padrão, forros sob medida, paredes curvas e projetos arquitetônicos complexos.</p><span class="rd-svc-cta">Conheça o serviço<span aria-hidden="true"> →</span></span></a></li><li><a class="rd-svc" href="/pt/isolamento-e-espuma-projetada-toronto"><span class="rd-svc-img"><img alt="Espuma projetada vedando as paredes em volta de uma janela, Stanton, Toronto" decoding="async" height="1125" loading="lazy" sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 31vw" src="/images/svc-insulation.jpg" srcset="/images/svc-insulation-480.jpg 480w, /images/svc-insulation.jpg 900w" width="900"/></span><span class="rd-svc-n">02</span><h3 class="rd-svc-h">Isolamento e espuma projetada</h3><p class="rd-svc-d">Espuma projetada de célula fechada, mantas, lã de rocha e isolamento soprado para um desempenho térmico superior.</p><span class="rd-svc-cta">Conheça o serviço<span aria-hidden="true"> →</span></span></a></li><li><a class="rd-svc" href="/pt/acabamento-de-drywall-toronto"><span class="rd-svc-img"><img alt="Paredes e teto lisos e pintados num quarto pronto com piso de carvalho branco, Kent, Toronto" decoding="async" height="1125" loading="lazy" sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 31vw" src="/images/svc-finishing.jpg" srcset="/images/svc-finishing-480.jpg 480w, /images/svc-finishing.jpg 900w" width="900"/></span><span class="rd-svc-n">03</span><h3 class="rd-svc-h">Acabamento Nível 4 e Nível 5</h3><p class="rd-svc-d">Tratamento de juntas de precisão, massa em toda a superfície e preparação de alto padrão para acabamentos arquitetônicos excepcionais.</p><span class="rd-svc-cta">Conheça o serviço<span aria-hidden="true"> →</span></span></a></li><li><a class="rd-svc" href="/pt/acabamentos-arquitetonicos-toronto"><span class="rd-svc-img"><img alt="Nicho abobadado em curva revestido com drywall resistente à umidade, Brule, Toronto" decoding="async" height="1125" loading="lazy" sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 31vw" src="/images/svc-architectural.jpg" srcset="/images/svc-architectural-480.jpg 480w, /images/svc-architectural.jpg 900w" width="900"/></span><span class="rd-svc-n">04</span><h3 class="rd-svc-h">Acabamentos arquitetônicos</h3><p class="rd-svc-d">Detalhes sem guarnição, tabicas e negativos, curvas sob medida, difusores de ar embutidos, iluminação embutida sem moldura e soluções especiais em drywall arquitetônico.</p><span class="rd-svc-cta">Conheça o serviço<span aria-hidden="true"> →</span></span></a></li><li><a class="rd-svc" href="/pt/isolamento-acustico-toronto"><span class="rd-svc-img"><img alt="Parede extensa com isolamento acústico em lã de rocha atrás de perfis resilientes de aço, Stanton, Toronto" decoding="async" height="1125" loading="lazy" sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 31vw" src="/images/svc-acoustic.jpg" srcset="/images/svc-acoustic-480.jpg 480w, /images/svc-acoustic.jpg 900w" width="900"/></span><span class="rd-svc-n">05</span><h3 class="rd-svc-h">Sistemas de isolamento acústico</h3><p class="rd-svc-d">Isolamento acústico, perfis resilientes, sistemas de isolamento sonoro e soluções especiais de controle de ruído.</p><span class="rd-svc-cta">Conheça o serviço<span aria-hidden="true"> →</span></span></a></li><li><a class="rd-svc" href="/pt/estrutura-em-perfis-de-aco-toronto"><span class="rd-svc-img"><img alt="Grelha de perfis de aço no forro, instalada sobre o isolamento antes das chapas, Brule, Toronto" decoding="async" height="1125" loading="lazy" sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 31vw" src="/images/svc-framing.jpg" srcset="/images/svc-framing-480.jpg 480w, /images/svc-framing.jpg 900w" width="900"/></span><span class="rd-svc-n">06</span><h3 class="rd-svc-h">Estrutura em perfis de aço</h3><p class="rd-svc-d">Estruturas em perfis de aço executadas com precisão para casas sob medida, reformas residenciais e obras comerciais selecionadas.</p><span class="rd-svc-cta">Conheça o serviço<span aria-hidden="true"> →</span></span></a></li></ol>
+<ol class="rd-dx-grid"><li><a class="rd-dx" href="/pt/instalacao-de-drywall-toronto"><div aria-hidden="true" class="rd-dx-img"><img alt="" decoding="async" height="600" loading="lazy" src="/images/svc-drywall-systems-480.jpg" width="480"/></div><p class="rd-dx-n">01</p><div class="rd-dx-b"><h3 class="rd-dx-h">Sistemas de drywall</h3><p class="rd-dx-t">Tipo X · resistente à umidade · múltiplas camadas</p><p class="rd-dx-d">Instalação de drywall de alto padrão, forros sob medida, paredes curvas e projetos arquitetônicos complexos.</p><p class="rd-dx-cta">Conheça o serviço<span aria-hidden="true"> →</span></p></div></a></li><li><a class="rd-dx" href="/pt/isolamento-e-espuma-projetada-toronto"><div aria-hidden="true" class="rd-dx-img"><img alt="" decoding="async" height="600" loading="lazy" src="/images/svc-insulation-480.jpg" width="480"/></div><p class="rd-dx-n">02</p><div class="rd-dx-b"><h3 class="rd-dx-h">Isolamento e espuma projetada</h3><p class="rd-dx-t">Célula fechada · mantas · lã de rocha · sótão</p><p class="rd-dx-d">Espuma projetada de célula fechada, mantas, lã de rocha e isolamento soprado para um desempenho térmico superior.</p><p class="rd-dx-cta">Conheça o serviço<span aria-hidden="true"> →</span></p></div></a></li><li><a class="rd-dx" href="/pt/acabamento-de-drywall-toronto"><div aria-hidden="true" class="rd-dx-img"><img alt="" decoding="async" height="600" loading="lazy" src="/images/svc-finishing-480.jpg" width="480"/></div><p class="rd-dx-n">03</p><div class="rd-dx-b"><h3 class="rd-dx-h">Acabamento Nível 4 e Nível 5</h3><p class="rd-dx-t">Fitas · massa corrida · tetos lisos</p><p class="rd-dx-d">Tratamento de juntas de precisão, massa em toda a superfície e preparação de alto padrão para acabamentos arquitetônicos excepcionais.</p><p class="rd-dx-cta">Conheça o serviço<span aria-hidden="true"> →</span></p></div></a></li><li><a class="rd-dx" href="/pt/acabamentos-arquitetonicos-toronto"><div aria-hidden="true" class="rd-dx-img"><img alt="" decoding="async" height="600" loading="lazy" src="/images/svc-architectural-480.jpg" width="480"/></div><p class="rd-dx-n">04</p><div class="rd-dx-b"><h3 class="rd-dx-h">Acabamentos arquitetônicos</h3><p class="rd-dx-t">Curvas · frisos · grelhas embutidas · sem guarnição</p><p class="rd-dx-d">Detalhes sem guarnição, tabicas e negativos, curvas sob medida, difusores de ar embutidos, iluminação embutida sem moldura e soluções especiais em drywall arquitetônico.</p><p class="rd-dx-cta">Conheça o serviço<span aria-hidden="true"> →</span></p></div></a></li><li><a class="rd-dx" href="/pt/isolamento-acustico-toronto"><div aria-hidden="true" class="rd-dx-img"><img alt="" decoding="async" height="600" loading="lazy" src="/images/svc-acoustic-480.jpg" width="480"/></div><p class="rd-dx-n">05</p><div class="rd-dx-b"><h3 class="rd-dx-h">Sistemas de isolamento acústico</h3><p class="rd-dx-t">Perfil resiliente · mantas acústicas · camadas</p><p class="rd-dx-d">Isolamento acústico, perfis resilientes, sistemas de isolamento sonoro e soluções especiais de controle de ruído.</p><p class="rd-dx-cta">Conheça o serviço<span aria-hidden="true"> →</span></p></div></a></li><li><a class="rd-dx" href="/pt/estrutura-em-perfis-de-aco-toronto"><div aria-hidden="true" class="rd-dx-img"><img alt="" decoding="async" height="600" loading="lazy" src="/images/svc-framing-480.jpg" width="480"/></div><p class="rd-dx-n">06</p><div class="rd-dx-b"><h3 class="rd-dx-h">Estrutura em perfis de aço</h3><p class="rd-dx-t">Não estrutural · sancas · divisórias</p><p class="rd-dx-d">Estruturas em perfis de aço executadas com precisão para casas sob medida, reformas residenciais e obras comerciais selecionadas.</p><p class="rd-dx-cta">Conheça o serviço<span aria-hidden="true"> →</span></p></div></a></li></ol>
 <p class="rd-exp-proof"><span><b>Desde 2009</b> · empresa familiar</span><span><b>Uma única equipe</b> do isolamento à parede pronta para pintar</span><span><b>WSIB</b> e seguro completo</span><span><b>Escopo por escrito</b> em toda obra</span></p>
+</div>
 </section>
 <section aria-labelledby="projects-h" class="rd-wrap rd-sec rd-pf" id="projects">
 <header class="rd-exp-head">
@@ -375,6 +480,37 @@
 <ul data-gallery-list="thompson" hidden=""><li data-src="/images/thompson-01.jpg">Thompson, Toronto — profissional de acabamento sobre pernas de pau, pisos cobertos</li></ul>
 </li></ol>
 </section>
+<section aria-label="Duas formas de trabalhar" class="rd-two">
+<article>
+<p class="rd-kicker">Para proprietários</p>
+<h3>Vai construir ou reformar a casa onde vai morar.</h3>
+<p class="rd-muted" style="margin:0;max-width:520px">Você fala diretamente com o dono da empresa. Fazemos a visita, tiramos as medidas e entregamos um escopo por escrito que especifica o isolamento, o tipo de chapa e o nível de acabamento de cada cômodo.</p>
+<ul><li><span class="rd-num">01</span>Uma visita técnica antes de qualquer preço</li><li><span class="rd-num">02</span>Escopo por escrito com o nível de acabamento definido</li><li><span class="rd-num">03</span>Obra varrida e lixo ensacado ao fim de cada dia</li><li><span class="rd-num">04</span>Vistoria final com luz de inspeção, junto com você</li></ul>
+<div class="rd-two-cta"><a class="rd-btn" href="/pt/orcamento">Agende uma visita técnica</a><a class="rd-link" href="/pt/proprietarios">Mais para proprietários</a></div>
+</article>
+<article class="rd-dark">
+<p class="rd-kicker">Para construtoras e incorporadoras</p>
+<h3>Sua equipe de isolamento e drywall, dentro do cronograma.</h3>
+<p style="margin:0;max-width:520px">Casas isoladas, geminadas e blocos de townhouses. Orçamos a partir dos projetos, dimensionamos a equipe pelo seu cronograma e enviamos a documentação antes da primeira chapa subir.</p>
+<ul><li><span class="rd-num">01</span>Certificado WSIB e apólice de seguro junto com o orçamento</li><li><span class="rd-num">02</span>Orçamento a partir dos projetos, por unidade ou por bloco</li><li><span class="rd-num">03</span>Um encarregado na obra que responde ao seu mestre de obras</li><li><span class="rd-num">04</span>Fotos na vistoria do isolamento e com as chapas prontas</li></ul>
+<div class="rd-two-cta"><a class="rd-btn" href="/pt/orcamento?type=builder">Envie os projetos para orçamento</a><a class="rd-link" href="/pt/construtoras">Mais para construtoras</a></div>
+</article>
+</section>
+<article aria-labelledby="feat-h" class="rd-feature">
+<figure><img alt="Quarto pronto na Kent, Toronto: paredes e teto lisos e pintados, com uma janela larga" decoding="async" height="1215" loading="lazy" src="/images/hero-kent.jpg" width="2160"/><figcaption><p>Em destaque · Kent, Toronto</p><h2 id="feat-h">Uma casa, todas as paredes, três demãos.</h2></figcaption></figure>
+<div class="rd-wrap rd-story">
+<aside><dl><dt>Obra</dt><dd>Casa inteira, Kent, Toronto</dd><dt>Escopo</dt><dd>Chapas, tratamento de juntas e acabamento em toda a casa, incluindo o hall da escada</dd><dt>Acabamento</dt><dd>Nível 4, pintado</dd><dt>Ano</dt><dd>2026</dd></dl></aside>
+<div class="rd-prose">
+<p>Ninguém entra num cômodo pronto e fica admirando o drywall. As pessoas reparam na luz da janela, na cor da tinta, no pé-direito. Se alguém repara na parede, é porque algo deu errado: uma junta aparecendo com o sol da tarde, uma ondulação no teto, um canto que não ficou bem reto.</p>
+<details class="rd-more"><summary>Leia a história completa</summary><div>
+<p>Na casa da Kent, fizemos a instalação das chapas, o tratamento de juntas e o acabamento da casa inteira, dos quartos ao longo hall da escada, onde a luz desce pela parede vinda de cima. É no hall da escada que qualquer atalho aparece primeiro. Cada junta recebeu todas as demãos, cada parafuso foi rebaixado e coberto, e no fim cada parede foi conferida com um refletor encostado rente à superfície — do jeito que o sol baixo do inverno vai bater nela.</p>
+<p>Depois vieram os pintores, e as paredes simplesmente sumiram nos ambientes. Que é exatamente a ideia.</p>
+</div></details>
+<p><a class="rd-link" href="/pt/acabamento-de-drywall-toronto">Como fazemos o acabamento e o que significam os Níveis 4 e 5</a></p>
+</div>
+<div class="rd-side"><img alt="Longo hall de escada com paredes de drywall acabadas, Kent, Toronto" decoding="async" height="1600" loading="lazy" src="/images/kent-02.jpg" width="900"/><p class="rd-cap">O hall da escada na Kent, com o acabamento pronto antes da pintura.</p></div>
+</div>
+</article>
 <section aria-labelledby="notes-h" class="rd-wrap rd-sec">
 <div class="rd-notes">
 <figure style="margin:0"><img alt="Isolamento em lã de rocha atrás de perfil resiliente de aço, Stanton, Toronto" decoding="async" height="1600" loading="lazy" src="/images/stanton-03.jpg" width="900"/><figcaption class="rd-cap">Stanton, Toronto — lã de rocha e perfil de aço, antes das chapas.</figcaption></figure>
@@ -387,15 +523,14 @@
 </div>
 </div>
 </section>
-<section aria-labelledby="journal-h" class="rd-wrap rd-sec">
-<div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:20px;margin-bottom:36px"><div><p class="rd-kicker">Guias</p><h2 class="rd-h2" id="journal-h">Saiba pelo que você está <em>pagando.</em></h2></div><a class="rd-link" href="/pt/guias">Todos os guias</a></div>
-<div class="rd-cards"><a class="rd-card" href="/pt/guias/espuma-ou-manta-isolamento-termico"><img alt="Espuma projetada de célula fechada aplicada entre os caibros do telhado, Brule, Toronto" decoding="async" height="1600" loading="lazy" src="/images/brule-06.jpg" width="900"/><span class="rd-label">Isolamento · leitura de 6 min</span><span class="rd-ct">Espuma projetada ou manta: o que vai onde, e por quê</span></a><a class="rd-card" href="/pt/guias/perguntas-antes-de-contratar-drywall"><img alt="Cozinha e sala no meio da reforma, com o drywall já acabado, Kent, Toronto" decoding="async" height="1600" loading="lazy" src="/images/kent-04.jpg" width="900"/><span class="rd-label">Contratação · leitura de 5 min</span><span class="rd-ct">Sete perguntas para fazer a uma empresa de drywall antes de assinar</span></a><a class="rd-card" href="/pt/guias/isolamento-acustico-de-um-comodo"><img alt="Isolamento acústico em lã de rocha atrás de perfil resiliente de aço num teto inclinado, Stanton, Toronto" decoding="async" height="1600" loading="lazy" src="/images/stanton-05.jpg" width="900"/><span class="rd-label">Acústica · leitura de 5 min</span><span class="rd-ct">Isolamento acústico de um cômodo: o que realmente funciona</span></a></div>
-</section>
 <section aria-labelledby="reviews-h" class="rd-wrap rd-sec">
-<p class="rd-kicker">Palavra dos clientes</p>
-<h2 class="rd-h2" id="reviews-h">Nas palavras deles, não nas nossas.</h2>
-<div class="rd-quotes"><blockquote><p>“Além de o drywall ter sido instalado com perfeição, eles também repararam uma parede de reboco sobre ripas. Recomendo muito.”</p><footer>JENNIFER PETURSSON · AVALIAÇÃO NO GOOGLE (TRADUZIDA DO INGLÊS)</footer></blockquote><blockquote><p>“O Cris e a equipe dele fizeram o drywall e o tratamento de juntas da minha casa inteira.”</p><footer>MIKE B. · AVALIAÇÃO NO GOOGLE (TRADUZIDA DO INGLÊS)</footer></blockquote><blockquote><p>“Já usei os serviços da Ricarti Drywall algumas vezes, e a experiência foi ótima todas as vezes. Super recomendo.”</p><footer>MILAD FOROUGHI MASOULEH · AVALIAÇÃO NO GOOGLE (TRADUZIDA DO INGLÊS)</footer></blockquote></div>
-<p style="margin-top:40px;display:flex;flex-wrap:wrap;gap:16px 28px"><a class="rd-link" href="/pt/avaliacoes">Todas as avaliações</a><a class="rd-link" href="https://www.google.com/maps/search/?api=1&amp;query=Ricarti+Drywall+Toronto" rel="noopener">Veja-nos no Google</a></p>
+<div class="rd-sec-head"><div><p class="rd-kicker">Palavra dos clientes</p><h2 class="rd-h2" id="reviews-h">Nas palavras deles, não nas nossas.</h2></div><p class="rd-sec-links"><a class="rd-link" href="/pt/avaliacoes">Todas as avaliações</a><a class="rd-link" href="https://www.google.com/maps/search/?api=1&amp;query=Ricarti+Drywall+Toronto" rel="noopener">Veja-nos no Google</a></p></div>
+<blockquote class="rd-pull"><p>“Ele concluiu tudo dentro do prazo e do orçamento, e o resultado final ficou impecável.”</p><footer>IOANA POPA · AVALIAÇÃO NO GOOGLE (TRADUZIDA DO INGLÊS)</footer></blockquote>
+<div class="rd-quotes rd-scroll"><blockquote><p>“Além de o drywall ter sido instalado com perfeição, eles também repararam uma parede de reboco sobre ripas. Recomendo muito.”</p><footer>JENNIFER PETURSSON · AVALIAÇÃO NO GOOGLE (TRADUZIDA DO INGLÊS)</footer></blockquote><blockquote><p>“O Cris e a equipe dele fizeram o drywall e o tratamento de juntas da minha casa inteira.”</p><footer>MIKE B. · AVALIAÇÃO NO GOOGLE (TRADUZIDA DO INGLÊS)</footer></blockquote><blockquote><p>“Já usei os serviços da Ricarti Drywall algumas vezes, e a experiência foi ótima todas as vezes. Super recomendo.”</p><footer>MILAD FOROUGHI MASOULEH · AVALIAÇÃO NO GOOGLE (TRADUZIDA DO INGLÊS)</footer></blockquote></div>
+</section>
+<section aria-labelledby="journal-h" class="rd-wrap rd-sec">
+<div class="rd-sec-head"><div><p class="rd-kicker">Guias</p><h2 class="rd-h2" id="journal-h">Saiba pelo que você está <em>pagando.</em></h2></div><p class="rd-sec-links"><a class="rd-link" href="/pt/guias">Todos os guias</a></p></div>
+<div class="rd-cards rd-scroll"><a class="rd-card" href="/pt/guias/espuma-ou-manta-isolamento-termico"><img alt="Espuma projetada de célula fechada aplicada entre os caibros do telhado, Brule, Toronto" decoding="async" height="1600" loading="lazy" src="/images/brule-06.jpg" width="900"/><span class="rd-label">Isolamento · leitura de 6 min</span><span class="rd-ct">Espuma projetada ou manta: o que vai onde, e por quê</span></a><a class="rd-card" href="/pt/guias/perguntas-antes-de-contratar-drywall"><img alt="Cozinha e sala no meio da reforma, com o drywall já acabado, Kent, Toronto" decoding="async" height="1600" loading="lazy" src="/images/kent-04.jpg" width="900"/><span class="rd-label">Contratação · leitura de 5 min</span><span class="rd-ct">Sete perguntas para fazer a uma empresa de drywall antes de assinar</span></a><a class="rd-card" href="/pt/guias/isolamento-acustico-de-um-comodo"><img alt="Isolamento acústico em lã de rocha atrás de perfil resiliente de aço num teto inclinado, Stanton, Toronto" decoding="async" height="1600" loading="lazy" src="/images/stanton-05.jpg" width="900"/><span class="rd-label">Acústica · leitura de 5 min</span><span class="rd-ct">Isolamento acústico de um cômodo: o que realmente funciona</span></a></div>
 </section>
 <section aria-label="Do proprietário" class="rd-wrap rd-sec">
 <div class="rd-letter">
@@ -409,20 +544,23 @@
 </div>
 </section>
 <section aria-labelledby="faq-h" class="rd-wrap rd-sec">
-<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:40px 64px;align-items:start">
+<div class="rd-faq-wrap">
 <div><p class="rd-kicker">Dúvidas</p><h2 class="rd-h2" id="faq-h">O que as pessoas perguntam antes de ligar.</h2></div>
 <div class="rd-faq" style="border-top:1px solid var(--hair)"><details open=""><summary>Vocês atendem proprietários ou só construtoras?<span aria-hidden="true" class="rd-plus">+</span></summary><p>Os dois. Pegamos obras diretamente de proprietários que estão construindo ou reformando, e trabalhamos como a equipe de isolamento e drywall de construtoras e empreiteiras em casas isoladas, geminadas e townhouses.</p></details><details><summary>Quais regiões vocês atendem?<span aria-hidden="true" class="rd-plus">+</span></summary><p>Toda a Grande Toronto (GTA), além de Hamilton, Kitchener–Cambridge e a região de Muskoka.</p></details><details><summary>Vocês têm seguro e são registrados no WSIB?<span aria-hidden="true" class="rd-plus">+</span></summary><p>Sim. Temos seguro de responsabilidade civil de [CA$ X milhões] e somos registrados no WSIB, o órgão de seguro contra acidentes de trabalho de Ontário. As construtoras recebem nosso certificado de regularidade e a apólice de seguro antes do início da obra.</p></details><details><summary>Qual é a diferença entre o acabamento Nível 4 e o Nível 5?<span aria-hidden="true" class="rd-plus">+</span></summary><p>O Nível 4 são três demãos de massa sobre as juntas e os parafusos, e atende à maioria dos cômodos pintados. O Nível 5 acrescenta uma demão fina de massa sobre toda a parede ou o teto, para que as juntas não apareçam sob luz rasante, tinta brilhante ou cores escuras.</p></details><details><summary>Quanto tempo leva o drywall numa casa nova?<span aria-hidden="true" class="rd-plus">+</span></summary><p>Depende do tamanho, do pé-direito e do nível de acabamento. Para uma casa típica de [tamanho], conte com [X] semanas da entrega das chapas até a parede pronta para pintar. Você recebe o cronograma junto com o orçamento.</p></details><details><summary>Como peço um orçamento?<span aria-hidden="true" class="rd-plus">+</span></summary><p>Envie fotos ou projetos pelo formulário de orçamento, ou agende uma visita técnica. Os pedidos chegam direto em cris@ricartidrywall.ca e respondemos em até [um dia útil].</p></details></div>
 </div>
 </section>
-</main> <section aria-label="Comece agora" class="rd-band"><div><h2>Comece com uma visita técnica, não com um <em>palpite.</em></h2><div style="display:flex;flex-wrap:wrap;gap:14px"><a class="rd-btn" href="/pt/orcamento">Agende uma visita técnica</a><a class="rd-btn-o" href="/pt/orcamento?type=builder">Construtoras: enviem os projetos</a></div></div></section><section aria-labelledby="ig-h" class="rd-ig"><header><div><p class="rd-kicker">Álbum de obras</p><h2 id="ig-h">Direto da obra.</h2></div><div style="display:flex;flex-wrap:wrap;gap:12px"><button class="rd-btn" data-lb="0" type="button">Ver as 26 fotos</button><a class="rd-btn-o" href="https://www.instagram.com/ricarti_drywall/" rel="noopener"><svg aria-hidden="true" class="rd-ico" viewbox="0 0 24 24"><rect height="18" rx="5" width="18" x="3" y="3"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.3" cy="6.7" fill="currentColor" r=".6"></circle></svg> Siga @ricarti_drywall</a></div></header><div class="rd-grid"><a data-lb="12" href="/images/brule-04.jpg"><img alt="Brule, Toronto — passagem em arco com as chapas e a cantoneira instaladas" decoding="async" height="300" loading="lazy" src="/images/brule-04.jpg" width="300"/><span>BRULE</span></a><a data-lb="4" href="/images/kent-03.jpg"><img alt="Kent, Toronto — quarto pintado sob a luz da janela" decoding="async" height="300" loading="lazy" src="/images/kent-03.jpg" width="300"/><span>KENT</span></a><a data-lb="19" href="/images/stanton-02.jpg"><img alt="Stanton, Toronto — lã de rocha e perfil de aço numa parede externa" decoding="async" height="300" loading="lazy" src="/images/stanton-02.jpg" width="300"/><span>STANTON</span></a><a data-lb="14" href="/images/brule-07.jpg"><img alt="Brule, Toronto — cômodo com as chapas instaladas em volta das portas francesas" decoding="async" height="300" loading="lazy" src="/images/brule-07.jpg" width="300"/><span>BRULE</span></a><a data-lb="24" href="/images/lauther-02.jpg"><img alt="Lauther Ave, Toronto — forro novo com as juntas tratadas em volta do florão original" decoding="async" height="300" loading="lazy" src="/images/lauther-02.jpg" width="300"/><span>LAUTHER AVE</span></a><a data-lb="21" href="/images/stanton-04.jpg"><img alt="Stanton, Toronto — espuma projetada em volta do vão de uma janela" decoding="async" height="300" loading="lazy" src="/images/stanton-04.jpg" width="300"/><span>STANTON</span></a></div><ul class="rd-album" hidden=""><li data-src="/images/kent-08.jpg">Kent — parede da escada com molduras em painéis, pintada, antes da limpeza final</li><li data-src="/images/hero-kent.jpg">Kent, Toronto — quarto pronto, depois da pintura</li><li data-src="/images/kent-01.jpg">Kent, Toronto — paredes e teto lisos, já pintados</li><li data-src="/images/kent-02.jpg">Kent, Toronto — o longo hall da escada, com o acabamento pronto antes da pintura</li><li data-src="/images/kent-03.jpg">Kent, Toronto — quarto pintado sob a luz da janela</li><li data-src="/images/kent-04.jpg">Kent, Toronto — cozinha e sala com o drywall acabado</li><li data-src="/images/kent-05.jpg">Kent, Toronto — demãos de acabamento concluídas, pisos protegidos</li><li data-src="/images/kent-06.jpg">Kent, Toronto — quarto pronto para pintar</li><li data-src="/images/kent-07.jpg">Kent, Toronto — térreo aberto durante o acabamento</li><li data-src="/images/brule-09.jpg">Brule — passagem em arco com cantoneira, com vista para uma janela em arco</li><li data-src="/images/brule-01.jpg">Brule, Toronto — nicho de janela em arco revestido com drywall resistente à umidade</li><li data-src="/images/brule-02.jpg">Brule, Toronto — o mesmo nicho com luz do dia, pronto para o tratamento de juntas</li><li data-src="/images/brule-04.jpg">Brule, Toronto — passagem em arco com as chapas e a cantoneira instaladas</li><li data-src="/images/brule-05.jpg">Brule, Toronto — quarto com as chapas instaladas em volta de três janelas</li><li data-src="/images/brule-07.jpg">Brule, Toronto — cômodo com as chapas instaladas em volta das portas francesas</li><li data-src="/images/brule-08.jpg">Brule, Toronto — nicho em arco e estrutura antes das chapas</li><li data-src="/images/brule-03.jpg">Brule, Toronto — forro isolado sobre perfil resiliente, chapas estocadas por tipo</li><li data-src="/images/brule-06.jpg">Brule, Toronto — espuma projetada de célula fechada entre os caibros do telhado</li><li data-src="/images/stanton-01.jpg">Stanton, Toronto — vigas à mostra antes do isolamento e das chapas</li><li data-src="/images/stanton-02.jpg">Stanton, Toronto — lã de rocha e perfil de aço numa parede externa</li><li data-src="/images/stanton-03.jpg">Stanton, Toronto — lã de rocha atrás do perfil resiliente, de perto</li><li data-src="/images/stanton-04.jpg">Stanton, Toronto — espuma projetada em volta do vão de uma janela</li><li data-src="/images/stanton-05.jpg">Stanton, Toronto — isolamento acústico sob um teto inclinado</li><li data-src="/images/lauther-01.jpg">Lauther Ave, Toronto — retirada do antigo forro de reboco sobre ripas</li><li data-src="/images/lauther-02.jpg">Lauther Ave, Toronto — forro novo com as juntas tratadas em volta do florão original</li><li data-src="/images/thompson-01.jpg">Thompson, Toronto — profissional de acabamento sobre pernas de pau, pisos cobertos</li></ul></section> <footer class="rd-foot"><div class="rd-cols">
-<div><img alt="Ricarti Drywall" height="80" loading="lazy" src="/images/lockup-boxed-graphite.png" style="width:200px;height:auto;display:block" width="200"/><p class="rd-muted" style="margin:16px 0 0;max-width:260px">Isolamento, estrutura em perfis de aço, drywall e acabamento para casas em toda a Grande Toronto, Hamilton, Kitchener–Cambridge e Muskoka.</p></div>
+</main>
+<section aria-labelledby="close-h" class="rd-band rd-closing"><div><img alt="" class="rd-mark" height="38" loading="lazy" src="/images/lockup-plaster.png" width="193"/><h2 id="close-h">A perfeição <em>começa aqui!</em></h2><p class="rd-close-p">Comece com uma visita técnica, não com um palpite.</p><div style="display:flex;flex-wrap:wrap;justify-content:center;gap:14px"><a class="rd-btn" href="/pt/orcamento">Peça um orçamento</a><a class="rd-btn-o" href="/pt/orcamento?type=builder">Construtoras — enviem seus projetos</a></div></div></section><section aria-labelledby="ig-h" class="rd-ig"><header><div><p class="rd-kicker">Álbum de obras</p><h2 id="ig-h">Direto da obra.</h2></div><div style="display:flex;flex-wrap:wrap;gap:12px"><button class="rd-btn" data-lb="0" type="button">Ver as 26 fotos</button><a class="rd-btn-o" href="https://www.instagram.com/ricarti_drywall/" rel="noopener"><svg aria-hidden="true" class="rd-ico" viewbox="0 0 24 24"><rect height="18" rx="5" width="18" x="3" y="3"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.3" cy="6.7" fill="currentColor" r=".6"></circle></svg> Siga @ricarti_drywall</a></div></header><div class="rd-grid"><a data-lb="12" href="/images/brule-04.jpg"><img alt="Brule, Toronto — passagem em arco com as chapas e a cantoneira instaladas" decoding="async" height="300" loading="lazy" src="/images/brule-04.jpg" width="300"/><span>BRULE</span></a><a data-lb="4" href="/images/kent-03.jpg"><img alt="Kent, Toronto — quarto pintado sob a luz da janela" decoding="async" height="300" loading="lazy" src="/images/kent-03.jpg" width="300"/><span>KENT</span></a><a data-lb="19" href="/images/stanton-02.jpg"><img alt="Stanton, Toronto — lã de rocha e perfil de aço numa parede externa" decoding="async" height="300" loading="lazy" src="/images/stanton-02.jpg" width="300"/><span>STANTON</span></a><a data-lb="14" href="/images/brule-07.jpg"><img alt="Brule, Toronto — cômodo com as chapas instaladas em volta das portas francesas" decoding="async" height="300" loading="lazy" src="/images/brule-07.jpg" width="300"/><span>BRULE</span></a><a data-lb="24" href="/images/lauther-02.jpg"><img alt="Lauther Ave, Toronto — forro novo com as juntas tratadas em volta do florão original" decoding="async" height="300" loading="lazy" src="/images/lauther-02.jpg" width="300"/><span>LAUTHER AVE</span></a><a data-lb="21" href="/images/stanton-04.jpg"><img alt="Stanton, Toronto — espuma projetada em volta do vão de uma janela" decoding="async" height="300" loading="lazy" src="/images/stanton-04.jpg" width="300"/><span>STANTON</span></a></div><ul class="rd-album" hidden=""><li data-src="/images/kent-08.jpg">Kent — parede da escada com molduras em painéis, pintada, antes da limpeza final</li><li data-src="/images/hero-kent.jpg">Kent, Toronto — quarto pronto, depois da pintura</li><li data-src="/images/kent-01.jpg">Kent, Toronto — paredes e teto lisos, já pintados</li><li data-src="/images/kent-02.jpg">Kent, Toronto — o longo hall da escada, com o acabamento pronto antes da pintura</li><li data-src="/images/kent-03.jpg">Kent, Toronto — quarto pintado sob a luz da janela</li><li data-src="/images/kent-04.jpg">Kent, Toronto — cozinha e sala com o drywall acabado</li><li data-src="/images/kent-05.jpg">Kent, Toronto — demãos de acabamento concluídas, pisos protegidos</li><li data-src="/images/kent-06.jpg">Kent, Toronto — quarto pronto para pintar</li><li data-src="/images/kent-07.jpg">Kent, Toronto — térreo aberto durante o acabamento</li><li data-src="/images/brule-09.jpg">Brule — passagem em arco com cantoneira, com vista para uma janela em arco</li><li data-src="/images/brule-01.jpg">Brule, Toronto — nicho de janela em arco revestido com drywall resistente à umidade</li><li data-src="/images/brule-02.jpg">Brule, Toronto — o mesmo nicho com luz do dia, pronto para o tratamento de juntas</li><li data-src="/images/brule-04.jpg">Brule, Toronto — passagem em arco com as chapas e a cantoneira instaladas</li><li data-src="/images/brule-05.jpg">Brule, Toronto — quarto com as chapas instaladas em volta de três janelas</li><li data-src="/images/brule-07.jpg">Brule, Toronto — cômodo com as chapas instaladas em volta das portas francesas</li><li data-src="/images/brule-08.jpg">Brule, Toronto — nicho em arco e estrutura antes das chapas</li><li data-src="/images/brule-03.jpg">Brule, Toronto — forro isolado sobre perfil resiliente, chapas estocadas por tipo</li><li data-src="/images/brule-06.jpg">Brule, Toronto — espuma projetada de célula fechada entre os caibros do telhado</li><li data-src="/images/stanton-01.jpg">Stanton, Toronto — vigas à mostra antes do isolamento e das chapas</li><li data-src="/images/stanton-02.jpg">Stanton, Toronto — lã de rocha e perfil de aço numa parede externa</li><li data-src="/images/stanton-03.jpg">Stanton, Toronto — lã de rocha atrás do perfil resiliente, de perto</li><li data-src="/images/stanton-04.jpg">Stanton, Toronto — espuma projetada em volta do vão de uma janela</li><li data-src="/images/stanton-05.jpg">Stanton, Toronto — isolamento acústico sob um teto inclinado</li><li data-src="/images/lauther-01.jpg">Lauther Ave, Toronto — retirada do antigo forro de reboco sobre ripas</li><li data-src="/images/lauther-02.jpg">Lauther Ave, Toronto — forro novo com as juntas tratadas em volta do florão original</li><li data-src="/images/thompson-01.jpg">Thompson, Toronto — profissional de acabamento sobre pernas de pau, pisos cobertos</li></ul></section>
+<footer class="rd-foot"><div><div class="rd-cols">
+<div class="rd-f-brand"><img alt="Ricarti Drywall" height="40" loading="lazy" src="/images/lockup-plaster.png" style="height:40px;width:auto;display:block" width="203"/><em>A perfeição começa aqui!</em><p>Isolamento, estrutura em aço, drywall e acabamentos arquitetônicos para casas em toda a GTA, Hamilton, Kitchener–Cambridge e Muskoka. Empresa familiar desde 2009.</p></div>
 <div><h2>Serviços</h2><ul><li><a href="/pt/instalacao-de-drywall-toronto">Sistemas de drywall</a></li><li><a href="/pt/isolamento-e-espuma-projetada-toronto">Isolamento e espuma projetada</a></li><li><a href="/pt/acabamento-de-drywall-toronto">Acabamento Nível 4 e Nível 5</a></li><li><a href="/pt/acabamentos-arquitetonicos-toronto">Acabamentos arquitetônicos</a></li><li><a href="/pt/isolamento-acustico-toronto">Isolamento acústico</a></li><li><a href="/pt/estrutura-em-perfis-de-aco-toronto">Estrutura em perfis de aço</a></li></ul></div>
 <div><h2>Empresa</h2><ul><li><a href="/pt/proprietarios">Para proprietários</a></li><li><a href="/pt/construtoras">Para construtoras</a></li><li><a href="/pt/areas-atendidas">Áreas atendidas</a></li><li><a href="/pt/guias">Guias</a></li><li><a href="/pt/avaliacoes">Avaliações</a></li><li><a href="/pt/orcamento">Orçamento e visita técnica</a></li></ul></div>
-<address style="font-style:normal"><h2>Contato</h2><p style="margin:0;line-height:1.7">56 Hartley Ave<br/>York, ON M6E 4E8<br/><a href="tel:+16474821139">(647) 482-1139</a><br/><a href="mailto:cris@ricartidrywall.ca">cris@ricartidrywall.ca</a><br/><a href="https://www.instagram.com/ricarti_drywall/" rel="noopener">Instagram</a> · <a href="https://www.facebook.com/ricartidrywall" rel="noopener">Facebook</a> · <a href="https://wa.me/16474821139" rel="noopener">WhatsApp</a><br/><span class="rd-muted">[Horário de seg. a sex.]</span></p></address>
+<address style="font-style:normal"><h2>Contato</h2><p style="margin:0;line-height:1.8">56 Hartley Ave<br/>York, ON M6E 4E8<br/><a href="tel:+16474821139">(647) 482-1139</a><br/><a href="mailto:cris@ricartidrywall.ca">cris@ricartidrywall.ca</a><br/><a href="https://www.instagram.com/ricarti_drywall/" rel="noopener">Instagram</a> · <a href="https://www.facebook.com/ricartidrywall" rel="noopener">Facebook</a> · <a href="https://wa.me/16474821139" rel="noopener">WhatsApp</a><br/><span>[Horário de seg. a sex.]</span></p></address>
 </div>
-<div class="rd-fine"><span>© 2026 [Razão social] · WSIB [nº da conta] · Seguro de responsabilidade civil de [CA$ X mi]</span><span>Toronto · North York · Etobicoke · Vaughan · Richmond Hill · Markham · Mississauga · Oakville · Hamilton · Kitchener–Cambridge · Muskoka</span></div>
-<div class="rd-fine" style="border:0;margin-top:0"><nav aria-label="Idioma"><a href="/" hreflang="en" lang="en">English</a></nav><p>Esta versão em português é uma tradução oferecida por conveniência e não passou por revisão profissional. Em caso de divergência, prevalece a versão em inglês. Todo o conteúdo é informativo e não constitui orçamento nem contrato.</p></div>
-</footer> <div class="rd-mbar"><a href="tel:+16474821139">Ligar</a><a class="rd-dark" href="/pt/orcamento">Peça um orçamento</a></div>
+<div class="rd-fine"><span>© 2026 [Razão social] · WSIB [nº da conta] · seguro de responsabilidade [US$ X mi]</span><span>Toronto · GTA · Hamilton · Kitchener–Cambridge · Muskoka</span></div>
+<div class="rd-fine" style="border:0;margin-top:0"><nav aria-label="Idioma"><a data-short="EN" href="/" hreflang="en" lang="en">English</a></nav><p>Esta versão em português é uma tradução oferecida por conveniência e não passou por revisão profissional. Em caso de divergência, prevalece a versão em inglês. Todo o conteúdo é informativo e não constitui orçamento nem contrato.</p></div>
+</div></footer>
+<nav aria-label="Contato" class="rd-mbar"><a href="tel:+16474821139"><svg aria-hidden="true" class="rd-ico" viewbox="0 0 14 14"><path d="M3 1h2.5l1 3-1.5 1a7 7 0 0 0 4 4l1-1.5 3 1V11a2 2 0 0 1-2 2A11 11 0 0 1 1 3a2 2 0 0 1 2-2z"></path></svg>Ligar</a><a href="/pt/orcamento">Orçamento</a></nav>
 </div>
 </body>
 </html>
