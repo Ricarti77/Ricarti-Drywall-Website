@@ -46,7 +46,7 @@ BUSINESS = {
     "@id": SITE + "/#business",
     "name": "Ricarti Drywall",
     "url": SITE + "/",
-    "logo": SITE + "/images/lockup-graphite.png",
+    "logo": SITE + "/images/lockup-graphite-refined.png",
     "image": SITE + "/images/hero-kent.jpg",
     "telephone": "+1-647-482-1139",
     "email": "cris@ricartidrywall.ca",

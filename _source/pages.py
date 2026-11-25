@@ -318,7 +318,7 @@ def home():
                '<link rel="preload" as="image" type="image/avif" imagesrcset="/images/hero-d-1080.avif 1080w, /images/hero-d-1600.avif 1600w, /images/hero-d-2160.avif 2160w" imagesizes="100vw" media="(min-width: 701px)" fetchpriority="high">')
 
 def closing():
-    return ('<section class="rd-band rd-closing" aria-labelledby="close-h"><div><img class="rd-mark" src="/images/lockup-plaster.png" alt="" width="193" height="38" loading="lazy">'
+    return ('<section class="rd-band rd-closing" aria-labelledby="close-h"><div><img class="rd-mark" src="/images/lockup-plaster-refined.png" alt="" width="193" height="38" loading="lazy">'
             '<h2 id="close-h">Perfection <em>Starts Here!</em></h2><p class="rd-close-p">Start with a site visit, not a guess.</p>'
             '<div style="display:flex;flex-wrap:wrap;justify-content:center;gap:14px"><a class="rd-btn" href="/estimate">Request an Estimate</a><a class="rd-btn-o" href="/estimate?type=builder">Builders — Send Your Drawings</a></div></div></section>')
 

@@ -58,7 +58,7 @@ HEADER = '''<div><a class="rd-skip" href="#main">%(skip)s</a></div>
 <div class="rd-hl">
 <details class="rd-menu"><summary aria-label="%(menu)s">%(msvg)s<span class="rd-m-open rd-m-t">%(menu)s</span><span class="rd-m-close rd-m-t">%(mclose)s</span></summary>
 <div class="rd-panel-m" role="dialog" aria-modal="true" aria-label="%(menu)s">
-<div class="rd-pm-top"><a href="%(home)s" aria-label="%(home_l)s"><img src="/images/lockup-plaster.png" alt="Ricarti Drywall" width="264" height="52"></a></div>
+<div class="rd-pm-top"><a href="%(home)s" aria-label="%(home_l)s"><img src="/images/lockup-plaster-refined.png" alt="Ricarti Drywall" width="264" height="52"></a></div>
 <div class="rd-pm-body">
 <nav class="rd-pm-main" aria-label="Main">%(main)s<div class="rd-pm-sub">%(sub)s<button type="button" data-open-search>%(search)s</button></div></nav>
 <ol class="rd-pm-svc">%(svc)s</ol>
@@ -74,7 +74,7 @@ HEADER = '''<div><a class="rd-skip" href="#main">%(skip)s</a></div>
 </details>
 %(nav)s
 </div>
-<a href="%(home)s" class="rd-logo" aria-label="%(home_l)s"><img src="/images/lockup-plaster.png" alt="Ricarti Drywall" width="264" height="52"></a>
+<a href="%(home)s" class="rd-logo" aria-label="%(home_l)s"><img src="/images/lockup-plaster-refined.png" alt="Ricarti Drywall" width="264" height="52"></a>
 <div class="rd-hr">
 <details class="rd-lang"><summary aria-label="%(lang_l)s: %(cur)s"><span class="rd-lang-cur">%(cur)s</span>%(caret)s</summary><nav class="rd-lang-list" aria-label="%(lang_l)s">%(langs)s</nav></details>
 <a class="rd-enq" href="mailto:cris@ricartidrywall.ca">%(enq)s</a>
@@ -120,7 +120,7 @@ def ig_strip(lang='en'):
             % (t['album_k'], t['album_h'], t['album_all'] % len(ALBUM), IG, IG_SVG, t['ig_follow'], tiles, album))
 
 FOOTER = '''<footer class="rd-foot"><div><div class="rd-cols">
-<div class="rd-f-brand"><img src="/images/lockup-plaster.png" alt="Ricarti Drywall" width="203" height="40" loading="lazy" style="height:40px;width:auto;display:block"><em>%(slogan)s</em><p>%(blurb)s</p></div>
+<div class="rd-f-brand"><img src="/images/lockup-plaster-refined.png" alt="Ricarti Drywall" width="203" height="40" loading="lazy" style="height:40px;width:auto;display:block"><em>%(slogan)s</em><p>%(blurb)s</p></div>
 <div><h2>%(fs)s</h2><ul>%(services)s</ul></div>
 <div><h2>%(fc)s</h2><ul>%(company)s</ul></div>
 <address style="font-style:normal"><h2>%(fct)s</h2><p style="margin:0;line-height:1.8">56 Hartley Ave<br>York, ON M6E 4E8<br><a href="tel:+16474821139">(647) 482-1139</a><br><a href="mailto:cris@ricartidrywall.ca">cris@ricartidrywall.ca</a><br><a href="%(ig)s" rel="noopener">Instagram</a> · <a href="https://www.facebook.com/ricartidrywall" rel="noopener">Facebook</a> · <a href="https://wa.me/16474821139" rel="noopener">WhatsApp</a><br><span>%(hours)s</span></p></address>
