@@ -116,7 +116,7 @@ BODY = '''
 <p class="rd-hint">By sending, you agree to the use of your details described above.</p>
 </div>
 <div class="rd-status" id="rd-status" role="status" aria-live="polite"></div>
-<div class="rd-alert" id="rd-alert" role="alert" hidden><p id="rd-alert-t"></p><p>Nothing was sent. Please try again, or email <a href="mailto:cris@ricartidrywall.ca">cris@ricartidrywall.ca</a> or call <a href="tel:+16474821139">(647) 482-1139</a>.</p></div>
+<div class="rd-alert" id="rd-alert" role="alert" hidden><p id="rd-alert-t"></p><p id="rd-alert-unk" hidden>Please do not send it again yet. Email <a href="mailto:cris@ricartidrywall.ca">cris@ricartidrywall.ca</a> or call <a href="tel:+16474821139">(647) 482-1139</a> and mention your reference, and we will check whether it arrived.</p><p id="rd-alert-none">Nothing was sent. Please try again, or email <a href="mailto:cris@ricartidrywall.ca">cris@ricartidrywall.ca</a> or call <a href="tel:+16474821139">(647) 482-1139</a>.</p></div>
 </form>
 </section>
 </div>
@@ -146,7 +146,7 @@ CSS = '''
 .rd-eq-steps li span:first-child{font-family:'Cormorant Garamond',Georgia,serif;color:var(--spruce);font-size:17px}
 .rd-eq-card{flex:999 1 520px;min-width:0;max-width:780px;background:#fff;padding:clamp(22px,4vw,48px);box-sizing:border-box;border:1px solid var(--hair)}
 .rd-ef{display:flex;flex-direction:column;gap:30px}
-.rd-ef[hidden],.rd-eq-done[hidden],.rd-alert[hidden],.rd-up-off[hidden]{display:none!important}
+.rd-ef[hidden],.rd-eq-done[hidden],.rd-alert[hidden],.rd-alert p[hidden],.rd-up-off[hidden]{display:none!important}
 .rd-ef fieldset{border:0;margin:0;padding:0;min-width:0}
 .rd-ef legend,.rd-ef label:not(.rd-chip):not(.rd-seg-o):not(.rd-check):not(.rd-drop-t),.rd-up-l{display:block;margin:0 0 10px;padding:0;font-size:11px;letter-spacing:.14em;font-weight:600;text-transform:uppercase;color:var(--ink)}
 .rd-req,.rd-opt,.rd-hint-i{font-size:10.5px;letter-spacing:.08em;font-weight:500;color:var(--spruce);margin-left:6px;text-transform:uppercase}

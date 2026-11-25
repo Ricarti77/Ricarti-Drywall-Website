@@ -134,7 +134,7 @@
 .rd-eq-steps li span:first-child{font-family:'Cormorant Garamond',Georgia,serif;color:var(--spruce);font-size:17px}
 .rd-eq-card{flex:999 1 520px;min-width:0;max-width:780px;background:#fff;padding:clamp(22px,4vw,48px);box-sizing:border-box;border:1px solid var(--hair)}
 .rd-ef{display:flex;flex-direction:column;gap:30px}
-.rd-ef[hidden],.rd-eq-done[hidden],.rd-alert[hidden],.rd-up-off[hidden]{display:none!important}
+.rd-ef[hidden],.rd-eq-done[hidden],.rd-alert[hidden],.rd-alert p[hidden],.rd-up-off[hidden]{display:none!important}
 .rd-ef fieldset{border:0;margin:0;padding:0;min-width:0}
 .rd-ef legend,.rd-ef label:not(.rd-chip):not(.rd-seg-o):not(.rd-check):not(.rd-drop-t),.rd-up-l{display:block;margin:0 0 10px;padding:0;font-size:11px;letter-spacing:.14em;font-weight:600;text-transform:uppercase;color:var(--ink)}
 .rd-req,.rd-opt,.rd-hint-i{font-size:10.5px;letter-spacing:.08em;font-weight:500;color:var(--spruce);margin-left:6px;text-transform:uppercase}
@@ -436,7 +436,7 @@
 <p class="rd-hint">By sending, you agree to the use of your details described above.</p>
 </div>
 <div aria-live="polite" class="rd-status" id="rd-status" role="status"></div>
-<div class="rd-alert" hidden="" id="rd-alert" role="alert"><p id="rd-alert-t"></p><p>Nothing was sent. Please try again, or email <a href="mailto:cris@ricartidrywall.ca">cris@ricartidrywall.ca</a> or call <a href="tel:+16474821139">(647) 482-1139</a>.</p></div>
+<div class="rd-alert" hidden="" id="rd-alert" role="alert"><p id="rd-alert-t"></p><p hidden="" id="rd-alert-unk">Please do not send it again yet. Email <a href="mailto:cris@ricartidrywall.ca">cris@ricartidrywall.ca</a> or call <a href="tel:+16474821139">(647) 482-1139</a> and mention your reference, and we will check whether it arrived.</p><p id="rd-alert-none">Nothing was sent. Please try again, or email <a href="mailto:cris@ricartidrywall.ca">cris@ricartidrywall.ca</a> or call <a href="tel:+16474821139">(647) 482-1139</a>.</p></div>
 </form>
 </section>
 </div>
@@ -451,31 +451,31 @@
       check: 'Please check the highlighted fields.', type: 'File type not accepted. Use PDF, JPG, PNG, WebP or HEIC.', size: 'This file is larger than 50 MB.',
       many: 'You can attach up to 20 files.', total: 'The files add up to more than 200 MB. Please send fewer or smaller files.', dup: 'This file is already in the list.', empty: 'This file is empty.',
       remove: 'Remove', ready: 'Ready', waiting: 'Will not be uploaded', uploading: 'Uploading… %p%', uploaded: 'Uploaded', upfail: 'Upload failed',
-      upmsg: 'Uploading file %i of %n…', sending: 'Sending your enquiry…', upErr: '“%f” could not be uploaded.', sendErr: 'We could not send your enquiry.', netErr: 'The connection was interrupted.',
+      upmsg: 'Uploading file %i of %n…', sending: 'Sending your enquiry…', upErr: '“%f” could not be uploaded.', sendErr: 'We could not send your enquiry.', netErr: 'The connection was interrupted.', unk: 'We could not confirm that your enquiry arrived (reference %r).',
       files: '%n file(s) received in private storage.', removed: '%f removed.', added: '%n file(s) added.' },
     pt: { req: 'Preencha este campo.', email: 'Informe um e-mail válido, por exemplo nome@exemplo.com.', phone: 'Informe um telefone válido.',
       check: 'Verifique os campos destacados.', type: 'Tipo de arquivo não aceito. Use PDF, JPG, PNG, WebP ou HEIC.', size: 'Este arquivo tem mais de 50 MB.',
       many: 'Você pode anexar até 20 arquivos.', total: 'Os arquivos somam mais de 200 MB. Envie menos arquivos ou arquivos menores.', dup: 'Este arquivo já está na lista.', empty: 'Este arquivo está vazio.',
       remove: 'Remover', ready: 'Pronto', waiting: 'Não será enviado', uploading: 'Enviando… %p%', uploaded: 'Enviado', upfail: 'Falha no envio',
-      upmsg: 'Enviando arquivo %i de %n…', sending: 'Enviando sua solicitação…', upErr: 'Não foi possível enviar “%f”.', sendErr: 'Não foi possível enviar sua solicitação.', netErr: 'A conexão foi interrompida.',
+      upmsg: 'Enviando arquivo %i de %n…', sending: 'Enviando sua solicitação…', upErr: 'Não foi possível enviar “%f”.', sendErr: 'Não foi possível enviar sua solicitação.', netErr: 'A conexão foi interrompida.', unk: 'Não conseguimos confirmar se a sua solicitação chegou (referência %r).',
       files: '%n arquivo(s) recebido(s) em armazenamento privado.', removed: '%f removido.', added: '%n arquivo(s) adicionado(s).' },
     es: { req: 'Complete este campo.', email: 'Ingrese un correo electrónico válido, por ejemplo nombre@ejemplo.com.', phone: 'Ingrese un número de teléfono válido.',
       check: 'Revise los campos resaltados.', type: 'Tipo de archivo no aceptado. Use PDF, JPG, PNG, WebP o HEIC.', size: 'Este archivo supera los 50 MB.',
       many: 'Puede adjuntar hasta 20 archivos.', total: 'Los archivos suman más de 200 MB. Envíe menos archivos o archivos más pequeños.', dup: 'Este archivo ya está en la lista.', empty: 'Este archivo está vacío.',
       remove: 'Quitar', ready: 'Listo', waiting: 'No se subirá', uploading: 'Subiendo… %p%', uploaded: 'Subido', upfail: 'Error al subir',
-      upmsg: 'Subiendo archivo %i de %n…', sending: 'Enviando su solicitud…', upErr: 'No se pudo subir “%f”.', sendErr: 'No pudimos enviar su solicitud.', netErr: 'Se interrumpió la conexión.',
+      upmsg: 'Subiendo archivo %i de %n…', sending: 'Enviando su solicitud…', upErr: 'No se pudo subir “%f”.', sendErr: 'No pudimos enviar su solicitud.', netErr: 'Se interrumpió la conexión.', unk: 'No pudimos confirmar si su solicitud llegó (referencia %r).',
       files: '%n archivo(s) recibido(s) en almacenamiento privado.', removed: '%f quitado.', added: '%n archivo(s) agregado(s).' },
     fr: { req: 'Veuillez remplir ce champ.', email: 'Veuillez entrer une adresse courriel valide, par exemple nom@exemple.com.', phone: 'Veuillez entrer un numéro de téléphone valide.',
       check: 'Veuillez vérifier les champs indiqués.', type: 'Type de fichier non accepté. Utilisez PDF, JPG, PNG, WebP ou HEIC.', size: 'Ce fichier dépasse 50 Mo.',
       many: 'Vous pouvez joindre jusqu’à 20 fichiers.', total: 'Les fichiers dépassent 200 Mo au total. Envoyez moins de fichiers ou des fichiers plus légers.', dup: 'Ce fichier est déjà dans la liste.', empty: 'Ce fichier est vide.',
       remove: 'Retirer', ready: 'Prêt', waiting: 'Ne sera pas téléversé', uploading: 'Téléversement… %p %', uploaded: 'Téléversé', upfail: 'Échec du téléversement',
-      upmsg: 'Téléversement du fichier %i sur %n…', sending: 'Envoi de votre demande…', upErr: 'Impossible de téléverser « %f ».', sendErr: 'Nous n’avons pas pu envoyer votre demande.', netErr: 'La connexion a été interrompue.',
+      upmsg: 'Téléversement du fichier %i sur %n…', sending: 'Envoi de votre demande…', upErr: 'Impossible de téléverser « %f ».', sendErr: 'Nous n’avons pas pu envoyer votre demande.', netErr: 'La connexion a été interrompue.', unk: 'Nous n’avons pas pu confirmer la réception de votre demande (référence %r).',
       files: '%n fichier(s) reçu(s) en stockage privé.', removed: '%f retiré.', added: '%n fichier(s) ajouté(s).' },
     it: { req: 'Compilate questo campo.', email: 'Inserite un indirizzo email valido, ad esempio nome@esempio.com.', phone: 'Inserite un numero di telefono valido.',
       check: 'Controllate i campi evidenziati.', type: 'Tipo di file non accettato. Usate PDF, JPG, PNG, WebP o HEIC.', size: 'Questo file supera i 50 MB.',
       many: 'Potete allegare fino a 20 file.', total: 'I file superano in totale i 200 MB. Inviate meno file o file più leggeri.', dup: 'Questo file è già nell’elenco.', empty: 'Questo file è vuoto.',
       remove: 'Rimuovi', ready: 'Pronto', waiting: 'Non verrà caricato', uploading: 'Caricamento… %p%', uploaded: 'Caricato', upfail: 'Caricamento non riuscito',
-      upmsg: 'Caricamento del file %i di %n…', sending: 'Invio della richiesta…', upErr: 'Impossibile caricare “%f”.', sendErr: 'Non è stato possibile inviare la richiesta.', netErr: 'La connessione si è interrotta.',
+      upmsg: 'Caricamento del file %i di %n…', sending: 'Invio della richiesta…', upErr: 'Impossibile caricare “%f”.', sendErr: 'Non è stato possibile inviare la richiesta.', netErr: 'La connessione si è interrotta.', unk: 'Non è stato possibile confermare se la richiesta è arrivata (riferimento %r).',
       files: '%n file ricevuti in archiviazione privata.', removed: '%f rimosso.', added: '%n file aggiunti.' }
   };
   var L = T[LG] || T.en;
@@ -572,7 +572,7 @@
 
   /* ---------- helpers ---------- */
   function say(t) { status.textContent = t || ''; }
-  function fail(msg) { $('rd-alert-t').textContent = msg; alertBox.hidden = false; alertBox.scrollIntoView({ block: 'nearest', behavior: 'smooth' }); }
+  function fail(msg, unknown) { $('rd-alert-t').textContent = msg; $('rd-alert-unk').hidden = !unknown; $('rd-alert-none').hidden = !!unknown; alertBox.hidden = false; alertBox.scrollIntoView({ block: 'nearest', behavior: 'smooth' }); }
   function lock(on) { busy = on; $('rd-submit').disabled = on; form.setAttribute('aria-busy', on ? 'true' : 'false'); paint(); }
   function newId() {
     var d = new Date(), p = function (n) { return (n < 10 ? '0' : '') + n; }, a = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789', r = '';
@@ -627,7 +627,8 @@
     }).catch(function (x) {
       lock(false); say('');
       if (x && x.file) fail(fmt(L.upErr, { f: x.file.file.name }));
-      else fail(x && x.net ? L.sendErr + ' ' + L.netErr : L.sendErr);
+      else if (x && x.net) { if (window.console) console.warn('[enquiry] delivery status unknown', x.detail || ''); fail(fmt(L.unk, { r: enquiryId }), true); }
+      else { if (window.console) console.warn('[enquiry] delivery refused', x && x.server); fail(L.sendErr); }
     });
   });
 
@@ -664,9 +665,11 @@
       'Lead source': [payload.lead_source.first_touch ? payload.lead_source.first_touch.type + ' / ' + payload.lead_source.first_touch.from : 'direct', payload.lead_source.landing_page, payload.lead_source.referrer].filter(Boolean).join(' · '),
       'CRM payload (JSON)': JSON.stringify(payload)
     };
-    var ctl = window.AbortController ? new AbortController() : null, to = setTimeout(function () { ctl && ctl.abort(); }, 30000);
-    return fetch(form.getAttribute('data-endpoint'), { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify(body), signal: ctl && ctl.signal })
-      .catch(function () { clearTimeout(to); throw { net: true }; })
+    // Sent as an ordinary form post (no CORS preflight); FormSubmit replies with JSON because of the Accept header.
+    var fd = new URLSearchParams(); Object.keys(body).forEach(function (k) { fd.append(k, body[k] == null ? '' : String(body[k])); });
+    var ctl = window.AbortController ? new AbortController() : null, to = setTimeout(function () { ctl && ctl.abort(); }, 45000);
+    return fetch(form.getAttribute('data-endpoint'), { method: 'POST', headers: { Accept: 'application/json' }, body: fd, signal: ctl && ctl.signal })
+      .catch(function (e) { clearTimeout(to); throw { net: true, detail: (e && (e.name + ': ' + e.message)) || '' }; })
       .then(function (r) { clearTimeout(to); return r.json().catch(function () { return {}; }).then(function (j) { if (!r.ok || !(j.success === true || j.success === 'true')) throw { server: j.message || r.status }; return { stored: stored.length, missing: notUp.length, payload: payload }; }); });
   }
 
