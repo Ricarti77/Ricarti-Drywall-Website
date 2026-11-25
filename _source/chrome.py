@@ -1,4 +1,6 @@
 """Shared header, search dialog, Instagram strip and footer for every page."""
+import json as _jn, os as _on
+_json_nav = _jn.load(open(_on.path.join(_on.path.dirname(_on.path.abspath(__file__)), 'content', 'navigation.json')))
 
 IG = 'https://www.instagram.com/ricarti_drywall/'
 SEARCH_SVG = '<svg class="rd-ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21"/></svg>'
@@ -17,7 +19,7 @@ T = {
    ig_k='On Instagram', ig_h='Fresh off the trowel.', ig_follow='Follow @ricarti_drywall',
    f_blurb='Insulation, steel framing, drywall and finishing for homes across the GTA, Hamilton, Kitchener–Cambridge and Muskoka.',
    f_services='Services', f_company='Company', f_contact='Contact',
-   services=[('/drywall-finishing-toronto', 'Taping & finishing'), ('/#services', 'Insulation & spray foam'), ('/#services', 'Steel stud framing'), ('/#services', 'Drywall installation'), ('/#services', 'Small renovations')],
+   services=[(x['url'], x['label']) for x in _json_nav['services']],
    company=[('/homeowners', 'For homeowners'), ('/builders', 'For builders'), ('/areas', 'Service areas'), ('/journal', 'Journal'), ('/reviews', 'Reviews'), ('/estimate', 'Estimate & site visit')],
    hours='[Mon–Fri hours]', legal='© 2026 [Legal company name] · WSIB [account no.] · [$X M] liability',
    disclaimer='Translations of this site are provided for convenience and have not been professionally reviewed. If a translated page differs from the English, the English version applies. All content is general information, not a quote or contract.'),

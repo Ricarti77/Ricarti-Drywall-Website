@@ -1,14 +1,14 @@
 """For Homeowners — premium landing page (Task 006). All text is plain markup so the translation memory can localize it (PT now; ES/FR later)."""
 SERVICES = [
- ('Home renovations &amp; drywall installation', 'New walls and ceilings for renovations and additions, hung and finished to match the rest of your home.', None),
- ('Basement finishing', 'Framing, insulation for warmth and quiet, moisture-resistant drywall and bulkheads, finished ready for paint.', None),
- ('Attic insulation upgrades', 'Blown-in insulation topped up and air leaks sealed, so upstairs rooms stay warmer in winter and cooler in summer.', '/journal/spray-foam-vs-batt-insulation'),
- ('Spray foam insulation', 'Closed-cell spray foam where it works best: rim joists, sloped ceilings and below-grade walls.', '/journal/spray-foam-vs-batt-insulation'),
- ('Soundproofing', 'Quieter bedrooms, home offices and entertainment rooms with mineral wool, resilient channel and sealed gaps.', '/journal/soundproofing-a-room'),
- ('Popcorn ceiling removal', 'Textured ceilings removed or covered and refinished smooth. Older ceilings are tested for asbestos first.', None),
- ('Drywall repairs &amp; restoration', 'Cracks, water damage, patches after other trades, and lath-and-plaster walls in older homes.', '/journal/lath-and-plaster-repair-toronto'),
+ ('Home renovations &amp; drywall installation', 'New walls and ceilings for renovations and additions, hung and finished to match the rest of your home.', '/drywall-installation-toronto'),
+ ('Basement finishing', 'Framing, insulation for warmth and quiet, moisture-resistant drywall and bulkheads, finished ready for paint.', '/metal-stud-framing-toronto'),
+ ('Attic insulation upgrades', 'Blown-in insulation topped up and air leaks sealed, so upstairs rooms stay warmer in winter and cooler in summer.', '/insulation-spray-foam-toronto'),
+ ('Spray foam insulation', 'Closed-cell spray foam where it works best: rim joists, sloped ceilings and below-grade walls.', '/insulation-spray-foam-toronto'),
+ ('Soundproofing', 'Quieter bedrooms, home offices and entertainment rooms with mineral wool, resilient channel and sealed gaps.', '/soundproofing-toronto'),
+ ('Popcorn ceiling removal', 'Textured ceilings removed or covered and refinished smooth. Older ceilings are tested for asbestos first.', '/drywall-finishing-toronto'),
+ ('Drywall repairs &amp; restoration', 'Cracks, water damage, patches after other trades, and lath-and-plaster walls in older homes.', '/drywall-finishing-toronto'),
  ('Level 4 &amp; Level 5 finishing', 'Smooth, paint-ready walls, with a full skim coat where strong light or dark paint would show the joints.', '/drywall-finishing-toronto'),
- ('Custom architectural features', 'Arches, curved walls, niches, bulkheads and recessed details, built and finished with care.', None),
+ ('Custom architectural features', 'Arches, curved walls, niches, bulkheads and recessed details, built and finished with care.', '/architectural-drywall-finishing-toronto'),
 ]
 WHY = [
  ('Experience since 2009', 'A family-owned company focused on insulation, drywall and finishing for more than fifteen years.'),

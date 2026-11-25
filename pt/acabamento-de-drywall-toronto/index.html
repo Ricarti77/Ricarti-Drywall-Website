@@ -14,7 +14,7 @@
 <meta content="Tratamento de juntas e acabamento de drywall em Toronto: Nível 4 ou Nível 5 | Ricarti Drywall" property="og:title"/>
 <meta content="Os seis níveis de acabamento de drywall em linguagem simples, quando vale a pena pagar pelo Nível 5 e o que deve constar num orçamento de acabamento. Toronto e Grande Toronto." property="og:description"/>
 <meta content="https://ricartidrywall.ca/pt/acabamento-de-drywall-toronto" property="og:url"/>
-<meta content="https://ricartidrywall.ca/images/hero-kent.jpg" property="og:image"/>
+<meta content="https://ricartidrywall.ca/images/kent-01.jpg" property="og:image"/>
 <meta content="pt_BR" property="og:locale"/>
 <meta content="#1E3129" name="theme-color"/>
 <link href="/images/monogram-spruce.png" rel="icon" type="image/png"/>
@@ -24,16 +24,177 @@
 <link href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,300;0,7..72,400;1,7..72,300&amp;family=Hanken+Grotesk:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
 <link href="/assets/site.css" rel="stylesheet"/>
 <style>
-body{margin:0;background:#F7F5F0}
-a{color:#24272A}a:hover{color:#2E4A3F}
-details>summary{list-style:none;cursor:pointer}
-details>summary::-webkit-details-marker{display:none}
+.rd-exp-head{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:24px 64px;align-items:end;margin-bottom:clamp(40px,5vw,64px)}
+.rd-exp-head h2 em{display:block;font-style:italic;color:var(--spruce)}
+.rd-exp-head .rd-lede{max-width:440px;margin:0}
+.rd-exp-grid{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(48px,5vw,72px) clamp(24px,2.6vw,40px)}
+.rd-svc{display:flex;flex-direction:column;height:100%;text-decoration:none;color:var(--ink)}
+.rd-svc-img{display:block;overflow:hidden;background:var(--gypsum);margin-bottom:22px}
+.rd-svc-img img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;transition:transform .9s cubic-bezier(.2,.6,.2,1),filter .6s ease;filter:saturate(.92)}
+.rd-svc:hover .rd-svc-img img,.rd-svc:focus-visible .rd-svc-img img{transform:scale(1.035);filter:saturate(1)}
+.rd-svc-n{font:300 15px/1 var(--serif);color:var(--spruce);letter-spacing:.06em;padding-top:14px;border-top:1px solid var(--hair)}
+.rd-svc-h{margin:12px 0 10px;font:300 clamp(24px,2.1vw,30px)/1.12 var(--serif);letter-spacing:-.01em}
+.rd-svc-d{margin:0 0 20px;font-size:15px;line-height:1.6;color:var(--muted);max-width:400px}
+.rd-svc-cta{margin-top:auto;align-self:flex-start;font-size:11px;letter-spacing:.16em;font-weight:500;text-transform:uppercase;color:var(--spruce);padding-bottom:4px;border-bottom:1px solid transparent;transition:border-color .3s}
+.rd-svc:hover .rd-svc-cta,.rd-svc:focus-visible .rd-svc-cta{border-bottom-color:var(--spruce)}
+.rd-svc:hover .rd-svc-h{color:var(--spruce)}
+.rd-exp-proof{display:flex;flex-wrap:wrap;gap:10px 36px;margin:clamp(48px,5vw,72px) 0 0;padding-top:20px;border-top:1px solid var(--ink);font-size:13px;color:var(--muted)}
+.rd-exp-proof b{font-weight:500;color:var(--ink)}
+@media (max-width:1100px){.rd-exp-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:820px){.rd-exp-head{grid-template-columns:1fr;align-items:start}}
+@media (max-width:700px){.rd-exp-grid{grid-template-columns:1fr;gap:48px}.rd-svc-img img{aspect-ratio:4/3}.rd-exp-proof{flex-direction:column}}
+@media (prefers-reduced-motion:reduce){.rd-svc-img img{transition:none}.rd-svc:hover .rd-svc-img img{transform:none}}
+.rd-cover{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(32px,5.5vw,96px);align-items:center;padding-top:clamp(40px,5vw,72px)}
+.rd-eyebrow{margin:0 0 30px;font-size:12px;letter-spacing:.28em;font-weight:500;color:var(--spruce);text-transform:uppercase}
+@media (max-width:520px){.rd-eyebrow{font-size:11px;letter-spacing:.14em;margin-bottom:22px}}
+.rd-cover h1{margin:0;font-weight:inherit}
+.rd-display{display:block;font:300 clamp(54px,7.6vw,124px)/.95 var(--serif);letter-spacing:-.025em}
+.rd-display em{display:block;font-style:italic;color:var(--spruce)}
+.rd-sub{display:block;margin-top:30px;max-width:620px;font:300 clamp(21px,1.9vw,28px)/1.3 var(--serif);color:var(--ink);letter-spacing:-.005em}
+.rd-cover .rd-lede{max-width:560px;margin:24px 0 36px;font-size:18px}
+.rd-cover-cta{display:flex;flex-wrap:wrap;gap:14px 20px;align-items:center}
+.rd-cover figure{margin:0}
+.rd-cover figure img{width:100%;aspect-ratio:9/14;object-fit:cover;display:block;max-height:calc(100vh - 205px);max-height:calc(100svh - 205px);min-height:520px}
+.rd-byline{display:flex;flex-wrap:wrap;gap:8px 28px;margin-top:44px;padding-top:18px;border-top:1px solid var(--hair);font-size:13px;color:var(--muted)}
+.rd-byline b{font-weight:500;color:var(--ink)}
+.rd-toc{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));border-top:1px solid var(--ink);border-bottom:1px solid var(--hair);margin-top:clamp(56px,7vw,96px)}
+.rd-toc a{display:block;padding:18px 18px 20px 0;text-decoration:none;border-right:1px solid var(--hair);margin-right:18px}
+.rd-toc a:last-child{border-right:0}
+.rd-toc span{display:block;font:300 28px/1 var(--serif);color:var(--spruce);margin-bottom:10px}
+.rd-toc b{font-weight:500;font-size:15px}
+.rd-toc i{display:block;font-style:normal;font-size:13px;color:var(--muted);margin-top:4px}
+.rd-feature{margin-top:clamp(80px,9vw,128px)}
+.rd-feature>figure{margin:0;position:relative}
+.rd-feature>figure img{width:100%;height:clamp(380px,56vw,780px);object-fit:cover;display:block}
+.rd-feature>figure figcaption{position:absolute;left:var(--pad);bottom:clamp(24px,4vw,56px);right:var(--pad);color:#fff;max-width:900px}
+.rd-feature>figure figcaption p{margin:0 0 12px;font-size:11px;letter-spacing:.16em;font-weight:500}
+.rd-feature>figure figcaption h2{margin:0;font:300 clamp(36px,5.4vw,80px)/1 var(--serif);letter-spacing:-.02em;text-shadow:0 2px 30px rgba(0,0,0,.35)}
+.rd-feature>figure::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 45%,rgba(0,0,0,.55));pointer-events:none}
+.rd-feature>figure figcaption{z-index:1}
+.rd-story{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,6fr) minmax(0,3fr);gap:clamp(28px,4vw,64px);padding-top:clamp(48px,6vw,80px);align-items:start}
+.rd-story aside{font-size:13px;color:var(--muted);border-top:1px solid var(--hair);padding-top:14px}
+.rd-story aside dl{margin:0;display:grid;gap:12px}
+.rd-story aside dt{font-size:11px;letter-spacing:.14em;font-weight:500}
+.rd-story aside dd{margin:2px 0 0;color:var(--ink);font-size:14px}
+.rd-story .rd-prose{max-width:none}
+.rd-story .rd-side img{width:100%;aspect-ratio:3/4;object-fit:cover;display:block}
+.rd-pull{margin:0;padding:clamp(56px,7vw,96px) 0;text-align:center;border-bottom:1px solid var(--hair)}
+.rd-pull p{margin:0 auto;max-width:1100px;font:300 clamp(30px,4vw,58px)/1.1 var(--serif);letter-spacing:-.015em}
+.rd-pull footer{margin-top:22px;font-size:11px;letter-spacing:.16em;font-weight:500;color:var(--muted)}
+.rd-two{display:grid;grid-template-columns:1fr 1fr;margin-top:clamp(80px,9vw,128px)}
+.rd-two article{padding:clamp(36px,5vw,80px);display:flex;flex-direction:column;gap:20px}
+.rd-two h3{margin:0;font:300 clamp(30px,3vw,44px)/1.06 var(--serif)}
+.rd-two ul{margin:0;padding:0;list-style:none;border-top:1px solid var(--hair);font-size:15px}
+.rd-two li{padding:12px 0;border-bottom:1px solid var(--hair)}
+.rd-two .rd-dark{background:var(--deep);color:#fff}
+.rd-two .rd-dark .rd-kicker{color:var(--soft)}
+.rd-two .rd-dark p{color:#C9D3CD}
+.rd-two .rd-dark li{border-color:#3A5247}
+.rd-two .rd-dark ul{border-color:#3A5247}
+.rd-two .rd-dark .rd-btn{background:#fff;color:var(--deep)}.rd-two .rd-dark .rd-btn:hover{background:var(--soft)}
+.rd-two .rd-dark .rd-link{color:#fff;border-color:#fff}
+.rd-row{display:grid;grid-template-columns:64px minmax(0,1fr) minmax(0,1.4fr) 24px;gap:8px 32px;padding:28px 0;border-bottom:1px solid var(--hair);text-decoration:none;align-items:baseline}
+.rd-row:hover{color:var(--spruce)}
+.rd-row .n{font:300 30px var(--serif);color:var(--spruce)}
+.rd-row .h{font:300 clamp(22px,2.2vw,30px)/1.1 var(--serif)}
+.rd-row .d{font-size:15px;color:var(--muted)}
+.rd-notes{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(32px,5vw,80px);align-items:center}
+.rd-notes img{width:100%;aspect-ratio:4/5;object-fit:cover;display:block}
+.rd-notes dl{margin:28px 0 0;display:grid;grid-template-columns:auto minmax(0,1fr);gap:0 24px;border-top:1px solid var(--hair);font-size:15px}
+.rd-notes dt,.rd-notes dd{padding:14px 0;border-bottom:1px solid var(--hair);margin:0}
+.rd-notes dt{color:var(--spruce);font-weight:500}
+.rd-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px 28px}
+.rd-card{display:block;text-decoration:none}
+.rd-card img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;margin-bottom:16px;transition:opacity .3s}
+.rd-card:hover img{opacity:.85}
+.rd-ct{display:block;font:300 24px/1.2 var(--serif);margin-top:8px}
+.rd-quotes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px 48px;margin-top:48px}
+.rd-quotes blockquote{margin:0;border-top:1px solid var(--hair);padding-top:20px}
+.rd-quotes p{margin:0;font:300 21px/1.4 var(--serif)}
+.rd-quotes footer{margin-top:14px;font-size:11px;letter-spacing:.14em;font-weight:500;color:var(--muted)}
+.rd-letter{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,7fr);gap:clamp(32px,5vw,80px);border-top:1px solid var(--hair);padding-top:64px;align-items:start}
+.rd-letter img{width:100%;aspect-ratio:3/4;object-fit:cover;display:block;max-width:440px}
+.rd-letter blockquote{margin:0;font:300 clamp(23px,2.1vw,29px)/1.42 var(--serif)}
+.rd-sig{margin-top:28px;font:italic 300 30px var(--serif);color:var(--spruce)}
+@media (max-width:1000px){.rd-toc{grid-template-columns:repeat(2,minmax(0,1fr))}.rd-toc a{border-right:0;border-bottom:1px solid var(--hair)}.rd-quotes,.rd-cards{grid-template-columns:1fr 1fr}}
+@media (max-width:820px){.rd-cover,.rd-story,.rd-two,.rd-notes,.rd-letter{grid-template-columns:1fr}.rd-cover figure img{aspect-ratio:4/5;max-height:none;min-height:0}.rd-cover-txt{order:0}.rd-story aside{order:3}.rd-quotes,.rd-cards{grid-template-columns:1fr}}
+@media (max-width:700px){.rd-row{grid-template-columns:48px minmax(0,1fr)}.rd-row .d{grid-column:2}.rd-row>span:last-child{display:none}}
+
+.rd-b-hero{padding-top:clamp(28px,4vw,56px)}
+.rd-b-short{margin:40px 0 0;font-size:15px;max-width:620px}
+.rd-b-grid{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:56px clamp(28px,4vw,64px)}
+.rd-b-grid li{border-top:1px solid var(--hair);padding-top:20px}
+.rd-b-n{display:block;font:300 15px/1 var(--serif);color:var(--spruce);margin-bottom:14px}
+.rd-b-grid h3,.rd-steps h3{margin:0 0 10px;font:300 clamp(22px,1.9vw,27px)/1.15 var(--serif)}
+.rd-b-grid p,.rd-steps p{margin:0;font-size:15px;line-height:1.6;color:var(--muted)}
+.rd-b-quote{margin:clamp(56px,6vw,88px) 0 0;padding:28px 0 0;border-top:1px solid var(--ink);max-width:900px}
+.rd-b-quote p{margin:0;font:300 clamp(24px,2.4vw,34px)/1.3 var(--serif)}
+.rd-b-quote footer{margin-top:14px;font-size:11px;letter-spacing:.16em;font-weight:500;color:var(--muted)}
+.rd-caps{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(40px,6vw,104px);align-items:start}
+.rd-caps-img figure{margin:0}
+.rd-caps-img img{width:100%;aspect-ratio:4/5;object-fit:cover;display:block}
+.rd-caps-pair{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}
+.rd-caps-txt{position:sticky;top:120px}
+.rd-caps-list{margin-top:clamp(36px,4vw,56px);display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:36px 48px}
+.rd-cap-g h3{margin:0 0 12px;padding-top:14px;border-top:1px solid var(--hair);font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:500;color:var(--spruce)}
+.rd-cap-g ul{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.rd-cap-g li{font:300 clamp(19px,1.6vw,22px)/1.3 var(--serif)}
+.rd-steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:40px 28px;counter-reset:s}
+.rd-steps li{border-top:1px solid var(--ink);padding-top:20px}
+.rd-steps .rd-b-n{font-size:clamp(34px,3vw,46px);margin-bottom:22px}
+.rd-b-area{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:40px clamp(40px,6vw,104px);align-items:start}
+.rd-b-areas{list-style:none;margin:0;padding:0;border-top:1px solid var(--ink)}
+.rd-b-areas li{font:300 clamp(28px,3.2vw,46px)/1.1 var(--serif);padding:18px 0;border-bottom:1px solid var(--hair)}
+.rd-b-cta{background:var(--deep);color:#fff;margin-top:clamp(80px,9vw,128px)}
+.rd-b-cta>div{max-width:1440px;margin:0 auto;padding:clamp(64px,8vw,112px) var(--pad);display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:56px clamp(40px,6vw,104px);align-items:start}
+.rd-b-cta .rd-kicker{color:var(--soft)}
+.rd-b-cta h2{margin:0;font:300 clamp(40px,5vw,72px)/1.02 var(--serif);letter-spacing:-.02em}
+.rd-b-cta h2 em{display:block;color:var(--soft)}
+.rd-b-cta-p{margin:28px 0 36px;max-width:560px;font-size:18px;line-height:1.6;color:#C9D3CD}
+.rd-b-cta .rd-btn{background:#fff;color:var(--deep)}.rd-b-cta .rd-btn:hover{background:var(--soft)}
+.rd-b-cta .rd-btn-o{border-color:#5E7A6E;color:#fff}.rd-b-cta .rd-btn-o:hover{border-color:#fff;color:#fff}
+.rd-b-contact{display:flex;flex-wrap:wrap;gap:8px 28px;margin:28px 0 0;font-size:15px}
+.rd-b-contact a{color:#fff;text-decoration:none;border-bottom:1px solid #5E7A6E;padding-bottom:2px}
+.rd-b-cta-r h3{margin:0 0 18px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:500;color:var(--soft)}
+.rd-b-cta-r dl{margin:0;border-top:1px solid #3A5247}
+.rd-b-cta-r dl>div{display:grid;grid-template-columns:120px 1fr;gap:12px;padding:14px 0;border-bottom:1px solid #3A5247;font-size:15px}
+.rd-b-cta-r dt{color:#fff;font-weight:500}.rd-b-cta-r dd{margin:0;color:#C9D3CD}
+@media (max-width:1100px){.rd-steps{grid-template-columns:repeat(3,minmax(0,1fr))}.rd-b-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:900px){.rd-caps,.rd-b-area,.rd-b-cta>div{grid-template-columns:1fr}.rd-caps-txt{position:static}.rd-caps-txt{order:-1}}
+@media (max-width:640px){.rd-b-grid,.rd-steps,.rd-caps-list{grid-template-columns:1fr}.rd-b-cta-r dl>div{grid-template-columns:1fr;gap:2px}}
+
+.rd-s-hero .rd-display{font-size:clamp(44px,5.8vw,92px)}
+.rd-s-two{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:32px clamp(40px,6vw,104px);align-items:start}
+.rd-s-prose p{margin:0 0 18px;font-size:18px;line-height:1.7;color:var(--ink);max-width:680px}
+.rd-s-prose b{font-weight:600}
+.rd-s-caps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 40px;border-top:1px solid var(--ink)}
+.rd-s-caps li{padding:15px 0 15px 22px;border-bottom:1px solid var(--hair);font:300 clamp(18px,1.5vw,21px)/1.35 var(--serif);position:relative}
+.rd-s-caps li::before{content:"";position:absolute;left:0;top:25px;width:8px;height:1px;background:var(--spruce)}
+.rd-s-mats{margin:0;border-top:1px solid var(--ink)}
+.rd-s-mats>div{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,3fr);gap:8px 32px;padding:18px 0;border-bottom:1px solid var(--hair)}
+.rd-s-mats dt{font:300 clamp(19px,1.6vw,22px)/1.3 var(--serif)}
+.rd-s-mats dd{margin:0;font-size:15px;line-height:1.6;color:var(--muted)}
+.rd-s-note{font-size:13px;margin:24px 0 0;max-width:380px}
+.rd-s-apps{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:40px clamp(40px,6vw,96px);align-items:start}
+.rd-s-applist{list-style:none;margin:28px 0 0;padding:0;border-top:1px solid var(--hair)}
+.rd-s-applist li{padding:12px 0;border-bottom:1px solid var(--hair);font-size:16px}
+.rd-s-photos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.rd-s-photos figure{margin:0}
+.rd-s-photos img{width:100%;aspect-ratio:4/5;object-fit:cover;display:block}
+.rd-s-table{overflow-x:auto}
+.rd-s-table table{width:100%;border-collapse:collapse;font-size:15px}
+.rd-s-table th{text-align:left;font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:500;color:var(--muted);padding:0 16px 12px 0;border-bottom:1px solid var(--ink)}
+.rd-s-table td{padding:14px 16px 14px 0;border-bottom:1px solid var(--hair);vertical-align:top}
+.rd-s-table td:first-child{font:300 28px/1 var(--serif);color:var(--spruce);width:64px}
+.rd-s-rel{list-style:none;margin:32px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px 32px}
+.rd-s-rel a{display:block;text-decoration:none;border-top:1px solid var(--ink);padding-top:18px}
+.rd-s-rel-h{display:block;font:300 clamp(22px,2vw,28px)/1.15 var(--serif);margin:10px 0 14px}
+.rd-s-rel-c{font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:500;color:var(--spruce)}
+.rd-s-rel a:hover .rd-s-rel-h{color:var(--spruce)}
+.rd-b-cta-r dl>div:has(dd:empty){grid-template-columns:1fr}
+@media (max-width:900px){.rd-s-two,.rd-s-apps{grid-template-columns:1fr}.rd-s-rel{grid-template-columns:1fr}}
+@media (max-width:640px){.rd-s-caps{grid-template-columns:1fr}.rd-s-photos{grid-template-columns:1fr 1fr}.rd-s-photos figure:nth-child(3){display:none}.rd-s-mats>div{grid-template-columns:1fr}}
 </style>
-<style>.hv0:hover{background:#2E4A3F !important;color:#FFFFFF !important}
-.hv1:hover{color:#2E4A3F !important}
-.hv2:hover{color:#2E4A3F !important}
-.hv3:hover{color:#2E4A3F !important}
-.hv4:hover{background:#CBD8D0 !important;color:#1E3129 !important}</style>
 <script type="application/ld+json">
 {
  "@context": "https://schema.org",
@@ -97,14 +258,37 @@ details>summary::-webkit-details-marker{display:none}
    }
   },
   {
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Início",
+     "item": "https://ricartidrywall.ca/pt/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Serviços",
+     "item": "https://ricartidrywall.ca/pt/#services"
+    },
+    {
+     "@type": "ListItem",
+     "position": 3,
+     "name": "Acabamento Nível 4 e Nível 5",
+     "item": "https://ricartidrywall.ca/pt/acabamento-de-drywall-toronto"
+    }
+   ]
+  },
+  {
    "@type": "FAQPage",
    "mainEntity": [
     {
      "@type": "Question",
-     "name": "MenuHomeFor homeownersFor buildersServicesJournalReviewsService areasGet an estimate(647) 482-1139Instagram · @ricarti_drywallEN\n\n\nSearch the site/\nGet an estimate\n\n\n\nCLOSE\nPopular: Level 5 finishSpray foamSoundproofingPlaster repairBuildersWSIB\n\n\n\n\n\nHome / Services / Taping & finishing\n\n\n\nSERVICE 04 · TORONTO & THE GTA\nDrywall taping and finishing, to the level the room needs.\n\n\nTHE SHORT ANSWER\nWe finish painted walls to Level 4 as standard and recommend a Level 5 skim coat where strong side light, tall walls, or dark or glossy paint would show the joints. You get the finish level for every room in writing before we start.\n\n\n\n\nKent, Toronto — finish coats on walls and ceiling\nKent, Toronto — after paint, under window light\n\n\n\n\nThe six finish levels, in plain words.\nThe drywall industry grades finish from Level 0 to Level 5. Naming the level in your contract is the simplest way to make sure \"paint-ready\" means the same thing to you and to us.\n\n\n\nLEVELWHAT IS DONEWHERE IT IS USED\n\n0Board hung. No tape or compound.Temporary walls\n1Tape set in compound at the joints.Hidden areas, above ceilings\n2Tape plus one coat over joints and screws.Garages, under tile\n3A second coat over joints and screws.Under heavy texture\n4A third coat, sanded smooth.Most painted rooms: flat and eggshell\n5Level 4, then a skim coat over the entire surface.Raking light, tall walls, curved walls, gloss or dark paint\n\n\n\n\n\n\nWhen Level 5 is worth paying for.\n\nLight along the wallFloor-to-ceiling windows, skylights and pot lights close to a wall throw shadows across every ridge.\nTall and curved wallsDouble-height foyers and stair walls are seen from far away and at an angle.\nDark or glossy paintSheen and deep colours show the difference between paper and compound.\nWhere it is notClosets, utility rooms and most bedrooms in flat paint. We will tell you, room by room.\n\n\n\n\nWhat is in the price.Every quote lists these lines. If a line is missing, ask.\n\nFinish levelNamed for each room or area\nCornersCorner bead type, and any square or rounded details\nProtectionFloors, windows and finished surfaces covered\nDustHow sanding dust is controlled, and daily clean-up\nScheduleStart date, drying time between coats, paint-ready date\nSign-offWalkthrough with a work light, and touch-ups before paint\n\n\n\n\nFinishing questions.\n\nHow much more does Level 5 cost than Level 4?",
+     "name": "MenuHomeFor homeownersFor buildersServicesJournalReviewsService areasGet an estimate(647) 482-1139Instagram · @ricarti_drywallEN\n\n\nSearch the site/\nGet an estimate\n\n\n\nCLOSE\nPopular: Level 5 finishSpray foamSoundproofingPlaster repairBuildersWSIB\n\n\n\n\nHome / Services / Level 4 & Level 5 Finishing\n\n\nService 03 · Level 4 & Level 5 Finishing\nSurfaces Ready for the Light.\nFinishing is where a wall becomes beautiful or ordinary. We tape, coat and sand to the level each room needs, with a full skim coat where light and paint demand it.\nRequest an EstimateBuilders — Send Your Drawings\nIN SHORTRicarti Drywall finishes painted walls to Level 4 as standard and recommends Level 5, a full skim coat, where strong side light, tall walls, or dark or glossy paint would show the joints. We also remove popcorn ceilings, create smooth ceiling finishes and repair drywall and plaster. The finish level for each room is written into the estimate.\n\nKent — smooth painted walls and ceiling.\n\n\n\n\nThe serviceLevel 4 or Level 5?Level 4 is three coats of joint compound over taped joints and fasteners, sanded smooth. It suits most painted rooms with flat or eggshell paint.Level 5 adds a thin skim coat over the entire surface. It evens out the difference between paper and compound, so joints do not show under raking light, on tall walls, or beneath dark or glossy paint. We recommend it only where it pays, and say so room by room.\n\n\n\nTechnical capabilitiesWhat we deliver.Professional drywall tapingLevel 4 finishingLevel 5 finishingFull-surface skim coatingSmooth ceiling finishesPopcorn ceiling removalDrywall repairs and restorationPremium paint-ready surfacesFinishing for critical lighting conditions\n\nThe finish levelsThe six finish levels, in plain words.\nThe industry grades drywall finish from Level 0 to Level 5. Naming the level in the contract makes sure “paint-ready” means the same thing to you and to us.\nLevelWhat is doneWhere it is used0Board hung. No tape or compound.Temporary walls1Tape set in compound at joints.Hidden areas, above ceilings2Tape plus one coat over joints and screws.Garages, under tile3A second coat over joints and screws.Under heavy texture4A third coat, sanded smooth.Most painted rooms: flat and eggshell paint5Level 4 plus a skim coat over the whole surface.Raking light, tall walls, curved walls, glossy or dark paint\n\nMaterials and systemsThe right system for the job.\n\nPaper and mesh joint tapeChosen for each joint type, embedded in compound for a strong, crack-resistant seam.Joint compoundsSetting-type and ready-mix compounds used where each performs best.Corner beadsPaper-faced, metal or vinyl beads for straight, durable corners.Skim coatA thin coat over the entire surface for Level 5 finishes.Primer-ready surfacesSanded, cleaned and checked under a work light before paint.\n\n\n\nTypical applicationsWhere it makes the difference.Living rooms and great rooms with large windowsFoyers and stair hallsCeilings under pot lights and skylightsRooms with dark or glossy paintPopcorn ceiling removal and smooth ceilingsRepairs in older homes\nKent — finish coats, floors protected.Lauther Ave — new ceiling around the original medallion.Thompson — skimming a ceiling.\n\n\n\nBenefitsWhy it matters.\n01A finish that disappearsWalls and ceilings that read as flat, clean planes in any light.02Honest recommendationsLevel 5 only where light or paint will show the joints; Level 4 where it is enough.03Checked before paintEvery surface inspected with a work light held flat to the wall.\n\n\n\n\nQuestionsFrequently asked.\nHow much more does Level 5 cost than Level 4?",
      "acceptedAnswer": {
       "@type": "Answer",
-      "text": "Ele acrescenta uma demão completa de massa e a mão de obra para lixá-la, então conte com [sua faixa típica, por exemplo X–Y% a mais] no item de acabamento do orçamento. Fazer só onde a luz exige mantém o custo baixo."
+      "text": "O Nível 5 acrescenta uma demão completa de massa e a mão de obra para lixá-la, por isso custa mais no item de acabamento. Usá-lo só onde a luz exige mantém o custo baixo. O seu orçamento mostra o nível de acabamento de cada ambiente."
      }
     },
     {
@@ -117,19 +301,51 @@ details>summary::-webkit-details-marker{display:none}
     },
     {
      "@type": "Question",
-     "name": "Vocês fazem o acabamento de drywall instalado por outra empresa?",
+     "name": "Can you remove popcorn ceilings?",
      "acceptedAnswer": {
       "@type": "Answer",
-      "text": "Sim, depois de avaliar. Chapa mal instalada custa mais para ficar bem-acabada, e diremos isso no orçamento."
+      "text": "Sim. Tetos texturizados podem ser removidos e refeitos lisos, ou cobertos com drywall novo. Tetos instalados antes dos anos 1990 podem conter amianto. Em Ontário, o amianto em obras é regulado pela Ontario Regulation 278/05, que exige que materiais que possam conter amianto sejam identificados antes de serem mexidos. Mandamos analisar a textura antes de qualquer remoção e planejamos o trabalho de acordo com o resultado."
      }
     },
     {
      "@type": "Question",
-     "name": "Quanto tempo entre o tratamento de juntas e a pintura?",
+     "name": "Do you finish drywall hung by another company?",
      "acceptedAnswer": {
       "@type": "Answer",
-      "text": "Cada demão precisa secar antes da próxima. Numa casa típica de [tamanho], planejamos [X] dias da primeira fita até a parede pronta para pintar — mais no tempo frio ou úmido."
+      "text": "Sim, depois de avaliar. Chapa mal instalada custa mais para ficar bem-acabada, e diremos isso no orçamento."
      }
+    }
+   ]
+  },
+  {
+   "@type": "Service",
+   "name": "Acabamento Nível 4 e Nível 5",
+   "serviceType": "Acabamento Nível 4 e Nível 5",
+   "url": "https://ricartidrywall.ca/pt/acabamento-de-drywall-toronto",
+   "description": "Os seis níveis de acabamento de drywall em linguagem simples, quando vale a pena pagar pelo Nível 5 e o que deve constar num orçamento de acabamento. Toronto e Grande Toronto.",
+   "provider": {
+    "@id": "https://ricartidrywall.ca/pt/#business"
+   },
+   "areaServed": [
+    {
+     "@type": "City",
+     "name": "Toronto"
+    },
+    {
+     "@type": "Place",
+     "name": "Grande Toronto (GTA)"
+    },
+    {
+     "@type": "City",
+     "name": "Hamilton"
+    },
+    {
+     "@type": "City",
+     "name": "Kitchener-Cambridge"
+    },
+    {
+     "@type": "Place",
+     "name": "Muskoka"
     }
    ]
   }
@@ -139,8 +355,7 @@ details>summary::-webkit-details-marker{display:none}
 <script defer="" src="/assets/site.js"></script>
 </head>
 <body>
-<div style="font-family: 'Hanken Grotesk', system-ui, sans-serif; font-size: 16px; line-height: 1.6; color: #24272A; background: #F7F5F0; min-height: 100vh">
-<a class="rd-skip" href="#main">Pular para o conteúdo</a> <div class="rd-top"><div>
+<div><a class="rd-skip" href="#main">Pular para o conteúdo</a> <div class="rd-top"><div>
 <span class="rd-hide">Empresa familiar desde 2009 · Grande Toronto · Hamilton · Kitchener–Cambridge · Muskoka</span> <nav aria-label="Utilidades"><a class="rd-hide" href="/pt/areas-atendidas">Áreas atendidas</a><a class="rd-hide rd-speak" href="/pt/" hreflang="pt-BR" lang="pt">Atendimento em português</a><span aria-label="Idioma" class="rd-langs"><a href="/drywall-finishing-toronto" hreflang="en" lang="en">EN</a><a aria-current="true" href="/pt/acabamento-de-drywall-toronto" hreflang="pt-BR" lang="pt-BR">PT</a></span><a aria-label="Instagram @ricarti_drywall" href="https://www.instagram.com/ricarti_drywall/" rel="noopener"><svg aria-hidden="true" class="rd-ico" viewbox="0 0 24 24"><rect height="18" rx="5" width="18" x="3" y="3"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.3" cy="6.7" fill="currentColor" r=".6"></circle></svg></a><a class="rd-hide" href="mailto:cris@ricartidrywall.ca">cris@ricartidrywall.ca</a><a href="tel:+16474821139">(647) 482-1139</a></nav>
 </div></div> <header class="rd-head"><div>
 <nav aria-label="Principal" class="rd-nav"><a href="/pt/">Início</a><a href="/pt/proprietarios">Proprietários</a><a href="/pt/construtoras">Construtoras</a><a aria-current="page" href="/pt/acabamento-de-drywall-toronto">Serviços</a><a href="/pt/guias">Guias</a><a href="/pt/avaliacoes">Avaliações</a></nav>
@@ -153,86 +368,64 @@ details>summary::-webkit-details-marker{display:none}
 <form action="/pt/busca" class="rd-sform" role="search"><svg aria-hidden="true" class="rd-ico" viewbox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"></circle><path d="M15.5 15.5 21 21"></path></svg><input aria-label="Buscar no site" autocomplete="off" id="rd-q" name="q" placeholder="Buscar: espuma, Nível 5, isolamento acústico…" type="search"/><button id="rd-sclose" type="button">FECHAR</button></form>
 <div class="rd-sugg" id="rd-sugg">Mais buscados: <a href="/pt/busca?q=Nível+5">Nível 5</a><a href="/pt/busca?q=Espuma">Espuma</a><a href="/pt/busca?q=Isolamento+acústico">Isolamento acústico</a><a href="/pt/busca?q=Reboco">Reboco</a><a href="/pt/busca?q=Construtoras">Construtoras</a><a href="/pt/busca?q=WSIB">WSIB</a></div>
 <ul aria-live="polite" class="rd-res" id="rd-res"></ul>
-</div></dialog> <main id="main" style="max-width: 1440px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 80px)">
-<nav aria-label="Navegação estrutural" style="padding: 24px 0 0; font-size: 13px; color: #5E615F"><a href="/pt/" style="text-decoration: none; color: #5E615F">Início</a> / <a href="/pt/" style="text-decoration: none; color: #5E615F">Serviços</a> / <span style="color: #24272A">Tratamento de juntas e acabamento</span></nav>
-<section style="padding: clamp(40px, 6vw, 80px) 0 0; display: flex; flex-wrap: wrap; gap: 40px 80px; align-items: end">
-<div style="flex: 999 1 560px; min-width: 0">
-<p style="margin: 0 0 16px; font-size: 11px; letter-spacing: 0.14em; font-weight: 500; color: #2E4A3F">SERVIÇO 04 · TORONTO E GRANDE TORONTO</p>
-<h1 style="margin: 0; font-family: Literata, Georgia, serif; font-weight: 300; font-size: clamp(42px, 5.6vw, 80px); line-height: 1; letter-spacing: -0.02em">Tratamento de juntas e acabamento de drywall, no nível que o cômodo <em style="color: #2E4A3F">pede.</em></h1>
+</div></dialog> <main id="main">
+<div class="rd-wrap">
+<nav aria-label="Navegação estrutural" class="rd-muted" style="font-size:13px;padding-top:28px"><a href="/pt/">Início</a> / <a href="/pt/#services">Serviços</a> / Acabamento Nível 4 e Nível 5</nav>
+<section aria-label="Introdução" class="rd-cover rd-b-hero rd-s-hero">
+<div class="rd-cover-txt">
+<p class="rd-eyebrow">Serviço 03 · Acabamento Nível 4 e Nível 5</p>
+<h1><span class="rd-display">Superfícies prontas <em>para a luz.</em></span></h1>
+<p class="rd-lede">É no acabamento que uma parede fica bonita ou comum. Tratamos as juntas, aplicamos as demãos e lixamos no nível que cada ambiente pede, com massa em toda a superfície onde a luz e a tinta exigem.</p>
+<div class="rd-cover-cta"><a class="rd-btn" href="/pt/orcamento">Peça um orçamento</a><a class="rd-btn-o" href="/pt/orcamento?type=builder">Construtoras — enviem seus projetos</a></div>
+<div class="rd-short rd-b-short"><b>EM RESUMO</b>A Ricarti Drywall faz o acabamento de paredes pintadas no Nível 4 como padrão e recomenda o Nível 5, uma demão de massa em toda a superfície, onde luz lateral forte, paredes altas ou tinta escura ou brilhante mostrariam as juntas. Também removemos tetos texturizados (popcorn), executamos forros lisos e reparamos drywall e reboco. O nível de acabamento de cada ambiente consta do orçamento por escrito.</div>
 </div>
-<div style="flex: 1 1 320px; max-width: 460px; background: #FFFFFF; padding: 24px 28px; border-left: 0">
-<p style="margin: 0 0 8px; font-size: 11px; letter-spacing: 0.14em; font-weight: 500; color: #5E615F">A RESPOSTA CURTA</p>
-<p style="margin: 0; font-size: 16px">Fazemos o acabamento de paredes pintadas no Nível 4 como padrão e recomendamos o Nível 5 — uma demão de massa em toda a superfície — onde luz lateral forte, paredes altas ou tinta escura ou brilhante deixariam as juntas aparecerem. Você recebe o nível de acabamento de cada cômodo por escrito antes de começarmos.</p>
+<figure><img alt="Paredes e teto lisos e pintados num quarto pronto com piso de carvalho branco, Kent" fetchpriority="high" height="1600" src="/images/kent-01.jpg" width="900"/><figcaption class="rd-cap">Kent — paredes e teto lisos e pintados.</figcaption></figure>
+</section>
+</div>
+<section aria-labelledby="intro-h" class="rd-wrap rd-sec">
+<div class="rd-s-two"><div><p class="rd-kicker">O serviço</p><h2 class="rd-h2" id="intro-h">Nível 4 ou <em>Nível 5?</em></h2></div><div class="rd-s-prose"><p>O <b>Nível 4</b> são três demãos de massa sobre as juntas com fita e os parafusos, lixadas até ficarem lisas. Atende à maioria dos ambientes pintados com tinta fosca ou acetinada.</p><p>O <b>Nível 5</b> acrescenta uma demão fina de massa sobre toda a superfície. Ela iguala a diferença entre o papel e a massa, para que as juntas não apareçam sob luz rasante, em paredes altas ou sob tinta escura ou brilhante. Só recomendamos onde compensa, e dizemos isso ambiente por ambiente.</p></div></div>
+</section>
+<section aria-labelledby="caps-h" class="rd-wrap rd-sec">
+<div class="rd-s-two"><div><p class="rd-kicker">Capacidades técnicas</p><h2 class="rd-h2" id="caps-h">O que <em>entregamos.</em></h2></div><ul class="rd-s-caps"><li>Tratamento de juntas profissional</li><li>Acabamento Nível 4</li><li>Acabamento Nível 5</li><li>Massa em toda a superfície (skim coat)</li><li>Forros com acabamento liso</li><li>Remoção de teto texturizado (popcorn)</li><li>Reparos e restauração de drywall</li><li>Superfícies de alto padrão prontas para pintura</li><li>Acabamento para condições críticas de iluminação</li></ul></div>
+</section>
+<section aria-labelledby="levels-h" class="rd-wrap rd-sec"><div class="rd-s-two"><div><p class="rd-kicker">Os níveis de acabamento</p><h2 class="rd-h2" id="levels-h">Os seis níveis de acabamento, <em>em linguagem simples.</em></h2>
+<p class="rd-muted" style="margin:20px 0 0;max-width:420px">O setor classifica o acabamento de drywall do Nível 0 ao Nível 5. Especificar o nível no contrato garante que “pronto para pintura” signifique a mesma coisa para você e para nós.</p></div>
+<div class="rd-s-table"><table><thead><tr><th>Nível</th><th>O que é feito</th><th>Onde é usado</th></tr></thead><tbody><tr><td>0</td><td>Chapas instaladas. Sem fita nem massa.</td><td>Paredes provisórias</td></tr><tr><td>1</td><td>Fita assentada com massa nas juntas.</td><td>Áreas ocultas, acima do forro</td></tr><tr><td>2</td><td>Fita e uma demão sobre juntas e parafusos.</td><td>Garagens, sob revestimento cerâmico</td></tr><tr><td>3</td><td>Uma segunda demão sobre juntas e parafusos.</td><td>Sob textura pesada</td></tr><tr><td>4</td><td>Uma terceira demão, lixada até ficar lisa.</td><td>A maioria dos ambientes pintados: tinta fosca e acetinada</td></tr><tr><td>5</td><td>Nível 4, mais uma demão de massa em toda a superfície.</td><td>Luz rasante, paredes altas, paredes curvas, tinta brilhante ou escura</td></tr></tbody></table></div></div></section>
+<section aria-labelledby="mat-h" class="rd-wrap rd-sec">
+<div class="rd-s-two"><div><p class="rd-kicker">Materiais e sistemas</p><h2 class="rd-h2" id="mat-h">O sistema certo <em>para cada obra.</em></h2>
+</div>
+<dl class="rd-s-mats"><div><dt>Fita de papel e fita telada</dt><dd>Escolhidas para cada tipo de junta e assentadas na massa, para uma emenda firme e resistente a trincas.</dd></div><div><dt>Massas para juntas</dt><dd>Massas de pega rápida e massas prontas, cada uma usada onde funciona melhor.</dd></div><div><dt>Cantoneiras</dt><dd>Cantoneiras de papel, metálicas ou de vinil para cantos retos e duráveis.</dd></div><div><dt>Massa em toda a superfície</dt><dd>Uma demão fina sobre toda a superfície para acabamentos Nível 5.</dd></div><div><dt>Superfícies prontas para o primer</dt><dd>Lixadas, limpas e conferidas com um refletor antes da pintura.</dd></div></dl></div>
+</section>
+<section aria-labelledby="apps-h" class="rd-wrap rd-sec">
+<div class="rd-s-apps"><div><p class="rd-kicker">Aplicações típicas</p><h2 class="rd-h2" id="apps-h">Onde ele <em>faz a diferença.</em></h2><ul class="rd-s-applist"><li>Salas de estar e ambientes amplos com janelas grandes</li><li>Halls de entrada e de escada</li><li>Forros sob spots embutidos e claraboias</li><li>Ambientes com tinta escura ou brilhante</li><li>Remoção de teto texturizado e forros lisos</li><li>Reparos em casas antigas</li></ul></div>
+<div class="rd-s-photos"><figure><img alt="Quarto com as demãos de massa de acabamento nas paredes e no teto, pisos protegidos, Kent" decoding="async" height="1600" loading="lazy" src="/images/kent-05.jpg" width="900"/><figcaption class="rd-cap">Kent — demãos de acabamento, pisos protegidos.</figcaption></figure><figure><img alt="Forro novo com juntas tratadas em volta de um florão de gesso original, Lauther Ave" decoding="async" height="1600" loading="lazy" src="/images/lauther-02.jpg" width="900"/><figcaption class="rd-cap">Lauther Ave — forro novo em volta do florão original.</figcaption></figure><figure><img alt="Profissional sobre pernas de pau aplicando massa no forro, pisos cobertos, Thompson" decoding="async" height="1600" loading="lazy" src="/images/thompson-01.jpg" width="900"/><figcaption class="rd-cap">Thompson — aplicação de massa no forro.</figcaption></figure></div></div>
+</section>
+<section aria-labelledby="ben-h" class="rd-wrap rd-sec">
+<header class="rd-exp-head"><div><p class="rd-kicker">Benefícios</p><h2 class="rd-h2" id="ben-h">Por que <em>isso importa.</em></h2></div></header>
+<ol class="rd-b-grid"><li><span class="rd-b-n">01</span><h3>Um acabamento que desaparece</h3><p>Paredes e forros que se leem como planos limpos e perfeitos sob qualquer luz.</p></li><li><span class="rd-b-n">02</span><h3>Recomendações honestas</h3><p>Nível 5 só onde a luz ou a tinta vão mostrar as juntas; Nível 4 onde ele basta.</p></li><li><span class="rd-b-n">03</span><h3>Conferido antes da pintura</h3><p>Cada superfície inspecionada com um refletor encostado rente à parede.</p></li></ol>
+</section>
+<section aria-labelledby="faq-h" class="rd-wrap rd-sec">
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:40px 64px;align-items:start">
+<div><p class="rd-kicker">Dúvidas</p><h2 class="rd-h2" id="faq-h">Perguntas frequentes.</h2></div>
+<div class="rd-faq" style="border-top:1px solid var(--hair)"><details open=""><summary>Quanto o Nível 5 custa a mais que o Nível 4?<span aria-hidden="true" class="rd-plus">+</span></summary><p>O Nível 5 acrescenta uma demão completa de massa e a mão de obra para lixá-la, por isso custa mais no item de acabamento. Usá-lo só onde a luz exige mantém o custo baixo. O seu orçamento mostra o nível de acabamento de cada ambiente.</p></details><details><summary>Dá para saber o nível de acabamento só olhando?<span aria-hidden="true" class="rd-plus">+</span></summary><p>Encoste uma luz forte rente à parede, ou olhe ao longo dela na direção de uma janela. Juntas e cabeças de parafuso que somem de frente costumam aparecer nesse ângulo. É assim que conferimos o nosso próprio trabalho.</p></details><details><summary>Vocês removem teto texturizado (popcorn)?<span aria-hidden="true" class="rd-plus">+</span></summary><p>Sim. Tetos texturizados podem ser removidos e refeitos lisos, ou cobertos com drywall novo. Tetos instalados antes dos anos 1990 podem conter amianto. Em Ontário, o amianto em obras é regulado pela Ontario Regulation 278/05, que exige que materiais que possam conter amianto sejam identificados antes de serem mexidos. Mandamos analisar a textura antes de qualquer remoção e planejamos o trabalho de acordo com o resultado.</p></details><details><summary>Vocês fazem o acabamento de drywall instalado por outra empresa?<span aria-hidden="true" class="rd-plus">+</span></summary><p>Sim, depois de avaliar. Chapa mal instalada custa mais para ficar bem-acabada, e diremos isso no orçamento.</p></details></div>
 </div>
 </section>
-<div style="margin-top: 56px; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px">
-<figure style="margin: 0"><img alt="Quarto com as demãos de massa de acabamento nas paredes e no teto, pisos protegidos, Kent, Toronto" fetchpriority="high" src="/images/kent-06.jpg" style="width: 100%; aspect-ratio: 3 / 4; object-fit: cover; display: block"/><figcaption style="margin-top: 10px; font-size: 12px; color: #5E615F">Kent, Toronto — demãos de acabamento nas paredes e no teto</figcaption></figure>
-<figure style="margin: 0"><img alt="A mesma casa depois da pintura: paredes e teto lisos sob a luz da janela, Kent, Toronto" decoding="async" loading="lazy" src="/images/kent-01.jpg" style="width: 100%; aspect-ratio: 3 / 4; object-fit: cover; display: block"/><figcaption style="margin-top: 10px; font-size: 12px; color: #5E615F">Kent, Toronto — depois da pintura, com a luz da janela</figcaption></figure>
-</div>
-<section aria-labelledby="lv" style="padding: clamp(72px, 8vw, 112px) 0 0; display: flex; flex-wrap: wrap; gap: 40px 80px; align-items: flex-start">
-<div style="flex: 1 1 320px; max-width: 460px">
-<h2 id="lv" style="margin: 0; font-family: Literata, Georgia, serif; font-weight: 300; font-size: clamp(32px, 3.8vw, 52px); line-height: 1.05">Os seis níveis de acabamento, em linguagem simples.</h2>
-<p style="margin: 20px 0 0; color: #5E615F">O setor de drywall classifica o acabamento do Nível 0 ao Nível 5. Especificar o nível no contrato é o jeito mais simples de garantir que “pronto para pintura” signifique a mesma coisa para você e para nós.</p>
-</div>
-<div style="flex: 999 1 560px; min-width: 0; overflow-x: auto">
-<table style="width: 100%; min-width: 520px; border-collapse: collapse; font-size: 15px">
-<thead><tr><th scope="col" style="text-align: left; font-size: 11px; letter-spacing: 0.14em; font-weight: 500; color: #5E615F; padding: 0 16px 12px 0; border-bottom: 1px solid #24272A">NÍVEL</th><th scope="col" style="text-align: left; font-size: 11px; letter-spacing: 0.14em; font-weight: 500; color: #5E615F; padding: 0 16px 12px 0; border-bottom: 1px solid #24272A">O QUE É FEITO</th><th scope="col" style="text-align: left; font-size: 11px; letter-spacing: 0.14em; font-weight: 500; color: #5E615F; padding: 0 0 12px; border-bottom: 1px solid #24272A">ONDE É USADO</th></tr></thead>
-<tbody>
-<tr><td style="padding: 14px 16px 14px 0; border-bottom: 1px solid #DDD7CB; font-family: Literata, Georgia, serif; font-size: 22px">0</td><td style="padding: 14px 16px 14px 0; border-bottom: 1px solid #DDD7CB">Chapas instaladas. Sem fita nem massa.</td><td style="padding: 14px 0; border-bottom: 1px solid #DDD7CB; color: #5E615F">Paredes provisórias</td></tr>
-<tr><td style="padding: 14px 16px 14px 0; border-bottom: 1px solid #DDD7CB; font-family: Literata, Georgia, serif; font-size: 22px">1</td><td style="padding: 14px 16px 14px 0; border-bottom: 1px solid #DDD7CB">Fita assentada com massa nas juntas.</td><td style="padding: 14px 0; border-bottom: 1px solid #DDD7CB; color: #5E615F">Áreas ocultas, acima do forro</td></tr>
-<tr><td style="padding: 14px 16px 14px 0; border-bottom: 1px solid #DDD7CB; font-family: Literata, Georgia, serif; font-size: 22px">2</td><td style="padding: 14px 16px 14px 0; border-bottom: 1px solid #DDD7CB">Fita e uma demão sobre juntas e parafusos.</td><td style="padding: 14px 0; border-bottom: 1px solid #DDD7CB; color: #5E615F">Garagens, sob revestimento cerâmico</td></tr>
-<tr><td style="padding: 14px 16px 14px 0; border-bottom: 1px solid #DDD7CB; font-family: Literata, Georgia, serif; font-size: 22px">3</td><td style="padding: 14px 16px 14px 0; border-bottom: 1px solid #DDD7CB">Uma segunda demão sobre juntas e parafusos.</td><td style="padding: 14px 0; border-bottom: 1px solid #DDD7CB; color: #5E615F">Sob textura pesada</td></tr>
-<tr><td style="padding: 14px 16px 14px 0; border-bottom: 1px solid #DDD7CB; font-family: Literata, Georgia, serif; font-size: 22px">4</td><td style="padding: 14px 16px 14px 0; border-bottom: 1px solid #DDD7CB">Uma terceira demão, lixada até ficar lisa.</td><td style="padding: 14px 0; border-bottom: 1px solid #DDD7CB; color: #5E615F">A maioria dos cômodos pintados: tinta fosca e acetinada</td></tr>
-<tr style="background: #FFFFFF"><td style="padding: 14px 16px 14px 12px; border-bottom: 1px solid #DDD7CB; font-family: Literata, Georgia, serif; font-size: 22px; color: #2E4A3F">5</td><td style="padding: 14px 16px 14px 0; border-bottom: 1px solid #DDD7CB">Nível 4, mais uma demão de massa em toda a superfície.</td><td style="padding: 14px 12px 14px 0; border-bottom: 1px solid #DDD7CB; color: #5E615F">Luz rasante, paredes altas, paredes curvas, tinta brilhante ou escura</td></tr>
-</tbody>
-</table>
-</div>
+<section aria-labelledby="rel-h" class="rd-wrap rd-sec">
+<p class="rd-kicker">Serviços relacionados</p><h2 class="rd-h2" id="rel-h" style="font-size:clamp(28px,3vw,40px)">Conheça mais do <em>nosso trabalho.</em></h2>
+<ul class="rd-s-rel"><li><a href="/pt/acabamentos-arquitetonicos-toronto"><span class="rd-b-n">04</span><span class="rd-s-rel-h">Acabamentos arquitetônicos</span><span class="rd-s-rel-c">Conheça o serviço<span aria-hidden="true"> →</span></span></a></li><li><a href="/pt/instalacao-de-drywall-toronto"><span class="rd-b-n">01</span><span class="rd-s-rel-h">Sistemas de drywall</span><span class="rd-s-rel-c">Conheça o serviço<span aria-hidden="true"> →</span></span></a></li><li><a href="/pt/isolamento-acustico-toronto"><span class="rd-b-n">05</span><span class="rd-s-rel-h">Isolamento acústico</span><span class="rd-s-rel-c">Conheça o serviço<span aria-hidden="true"> →</span></span></a></li></ul>
 </section>
-<section aria-labelledby="when" style="padding: clamp(72px, 8vw, 112px) 0 0">
-<h2 id="when" style="margin: 0 0 40px; font-family: Literata, Georgia, serif; font-weight: 300; font-size: clamp(32px, 3.8vw, 52px); line-height: 1.05; max-width: 760px">Quando o Nível 5 vale o investimento.</h2>
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 32px">
-<div style="border-top: 1px solid #DDD7CB; padding-top: 18px"><p style="margin: 0 0 8px; font-family: Literata, Georgia, serif; font-size: 22px; font-weight: 300">Luz ao longo da parede</p><p style="margin: 0; color: #5E615F; font-size: 15px">Janelas do piso ao teto, claraboias e spots embutidos perto da parede projetam sombra em cada irregularidade.</p></div>
-<div style="border-top: 1px solid #DDD7CB; padding-top: 18px"><p style="margin: 0 0 8px; font-family: Literata, Georgia, serif; font-size: 22px; font-weight: 300">Paredes altas e curvas</p><p style="margin: 0; color: #5E615F; font-size: 15px">Halls com pé-direito duplo e paredes de escada são vistos de longe e de lado.</p></div>
-<div style="border-top: 1px solid #DDD7CB; padding-top: 18px"><p style="margin: 0 0 8px; font-family: Literata, Georgia, serif; font-size: 22px; font-weight: 300">Tinta escura ou brilhante</p><p style="margin: 0; color: #5E615F; font-size: 15px">O brilho e as cores profundas mostram a diferença entre o papel e a massa.</p></div>
-<div style="border-top: 1px solid #DDD7CB; padding-top: 18px"><p style="margin: 0 0 8px; font-family: Literata, Georgia, serif; font-size: 22px; font-weight: 300">Onde não vale</p><p style="margin: 0; color: #5E615F; font-size: 15px">Closets, áreas de serviço e a maioria dos quartos com tinta fosca. Diremos isso cômodo por cômodo.</p></div>
+</main> <section aria-labelledby="cta-h" class="rd-b-cta"><div>
+<div class="rd-b-cta-l">
+<p class="rd-kicker">Comece uma obra</p>
+<h2 id="cta-h">Vamos conversar sobre <em>a sua obra.</em></h2>
+<p class="rd-b-cta-p">Proprietários: peçam um orçamento e combinamos uma visita. Construtoras e arquitetos: enviem seus projetos e analisamos o escopo.</p>
+<div class="rd-cover-cta"><a class="rd-btn" href="/pt/orcamento">Peça um orçamento</a><a class="rd-btn-o" href="/pt/orcamento?type=builder">Construtoras — enviem seus projetos</a></div>
+<p class="rd-b-contact"><a href="tel:+16474821139">(647) 482-1139</a><a href="mailto:cris@ricartidrywall.ca">cris@ricartidrywall.ca</a></p>
 </div>
-</section>
-<section aria-labelledby="inc" style="padding: clamp(72px, 8vw, 112px) 0 0; display: flex; flex-wrap: wrap; gap: 40px 80px">
-<div style="flex: 1 1 320px; max-width: 460px"><h2 id="inc" style="margin: 0; font-family: Literata, Georgia, serif; font-weight: 300; font-size: clamp(32px, 3.8vw, 52px); line-height: 1.05">O que está incluído no preço.</h2><p style="margin: 20px 0 0; color: #5E615F">Todo orçamento traz estes itens. Se faltar algum, pergunte.</p></div>
-<dl style="flex: 999 1 520px; min-width: 0; margin: 0; display: grid; grid-template-columns: minmax(120px, auto) minmax(0, 1fr); gap: 0 24px; border-top: 1px solid #DDD7CB; font-size: 15px">
-<dt style="padding: 14px 0; border-bottom: 1px solid #DDD7CB; color: #5E615F">Nível de acabamento</dt><dd style="margin: 0; padding: 14px 0; border-bottom: 1px solid #DDD7CB">Especificado para cada cômodo ou área</dd>
-<dt style="padding: 14px 0; border-bottom: 1px solid #DDD7CB; color: #5E615F">Cantos</dt><dd style="margin: 0; padding: 14px 0; border-bottom: 1px solid #DDD7CB">Tipo de cantoneira e eventuais detalhes retos ou arredondados</dd>
-<dt style="padding: 14px 0; border-bottom: 1px solid #DDD7CB; color: #5E615F">Proteção</dt><dd style="margin: 0; padding: 14px 0; border-bottom: 1px solid #DDD7CB">Pisos, janelas e superfícies prontas cobertos</dd>
-<dt style="padding: 14px 0; border-bottom: 1px solid #DDD7CB; color: #5E615F">Poeira</dt><dd style="margin: 0; padding: 14px 0; border-bottom: 1px solid #DDD7CB">Como a poeira do lixamento é controlada, e limpeza diária</dd>
-<dt style="padding: 14px 0; border-bottom: 1px solid #DDD7CB; color: #5E615F">Cronograma</dt><dd style="margin: 0; padding: 14px 0; border-bottom: 1px solid #DDD7CB">Data de início, tempo de secagem entre demãos, data de liberação para pintura</dd>
-<dt style="padding: 14px 0; border-bottom: 1px solid #DDD7CB; color: #5E615F">Aprovação</dt><dd style="margin: 0; padding: 14px 0; border-bottom: 1px solid #DDD7CB">Vistoria com refletor e retoques antes da pintura</dd>
-</dl>
-</section>
-<section aria-labelledby="fq" style="padding: clamp(72px, 8vw, 112px) 0 0; display: flex; flex-wrap: wrap; gap: 40px 80px">
-<h2 id="fq" style="flex: 1 1 320px; max-width: 460px; margin: 0; font-family: Literata, Georgia, serif; font-weight: 300; font-size: clamp(32px, 3.8vw, 52px); line-height: 1.05">Dúvidas sobre acabamento.</h2>
-<div style="flex: 999 1 520px; min-width: 0; border-top: 1px solid #DDD7CB">
-<details open="" style="border-bottom: 1px solid #DDD7CB; padding: 18px 0"><summary style="font-size: 18px; font-weight: 500">Quanto o Nível 5 custa a mais que o Nível 4?</summary><p style="margin: 10px 0 0; color: #5E615F">Ele acrescenta uma demão completa de massa e a mão de obra para lixá-la, então conte com [sua faixa típica, por exemplo X–Y% a mais] no item de acabamento do orçamento. Fazer só onde a luz exige mantém o custo baixo.</p></details>
-<details style="border-bottom: 1px solid #DDD7CB; padding: 18px 0"><summary style="font-size: 18px; font-weight: 500">Dá para saber o nível de acabamento só olhando?</summary><p style="margin: 10px 0 0; color: #5E615F">Encoste uma luz forte rente à parede, ou olhe ao longo dela na direção de uma janela. Juntas e cabeças de parafuso que somem de frente costumam aparecer nesse ângulo. É assim que conferimos o nosso próprio trabalho.</p></details>
-<details style="border-bottom: 1px solid #DDD7CB; padding: 18px 0"><summary style="font-size: 18px; font-weight: 500">Vocês fazem o acabamento de drywall instalado por outra empresa?</summary><p style="margin: 10px 0 0; color: #5E615F">Sim, depois de avaliar. Chapa mal instalada custa mais para ficar bem-acabada, e diremos isso no orçamento.</p></details>
-<details style="border-bottom: 1px solid #DDD7CB; padding: 18px 0"><summary style="font-size: 18px; font-weight: 500">Quanto tempo entre o tratamento de juntas e a pintura?</summary><p style="margin: 10px 0 0; color: #5E615F">Cada demão precisa secar antes da próxima. Numa casa típica de [tamanho], planejamos [X] dias da primeira fita até a parede pronta para pintar — mais no tempo frio ou úmido.</p></details>
-</div>
-</section>
-<section aria-label="Serviços relacionados" style="padding: clamp(72px, 8vw, 112px) 0 0">
-<p style="margin: 0 0 20px; font-size: 11px; letter-spacing: 0.14em; font-weight: 500; color: #5E615F">RELACIONADOS</p>
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px 32px">
-<a class="hv1" href="/pt/" style="display: block; border-top: 1px solid #24272A; padding-top: 16px; text-decoration: none; font-family: Literata, Georgia, serif; font-size: 22px; font-weight: 300">Isolamento e espuma projetada →</a>
-<a class="hv2" href="/pt/" style="display: block; border-top: 1px solid #24272A; padding-top: 16px; text-decoration: none; font-family: Literata, Georgia, serif; font-size: 22px; font-weight: 300">Instalação de drywall →</a>
-<a class="hv3" href="/pt/" style="display: block; border-top: 1px solid #24272A; padding-top: 16px; text-decoration: none; font-family: Literata, Georgia, serif; font-size: 22px; font-weight: 300">Para construtoras →</a>
-</div>
-<p style="margin: 48px 0 0; font-size: 13px; color: #5E615F">Escrito por Cris Ricarti, proprietário da Ricarti Drywall · Atualizado em novembro de 2026</p>
-</section>
-</main> <section aria-label="Comece agora" style="background: #1E3129; color: #FFFFFF; margin-top: clamp(72px, 8vw, 112px)">
-<div style="max-width: 1440px; margin: 0 auto; padding: clamp(56px, 7vw, 88px) clamp(20px, 5vw, 80px); display: flex; flex-wrap: wrap; gap: 32px; align-items: center; justify-content: space-between">
-<h2 style="margin: 0; font-family: Literata, Georgia, serif; font-weight: 300; font-size: clamp(30px, 3.4vw, 46px); line-height: 1.08; max-width: 680px">Não sabe quais cômodos precisam do Nível 5? Percorremos tudo <em style="color: #CBD8D0">com você.</em></h2> <a class="hv4" href="/pt/orcamento" style="background: #FFFFFF; color: #1E3129; padding: 16px 26px; font-size: 15px; font-weight: 500; text-decoration: none">Agende uma visita técnica</a>
-</div>
-</section> <section aria-labelledby="ig-h" class="rd-ig"><header><div><p class="rd-kicker">Álbum de obras</p><h2 id="ig-h">Direto da obra.</h2></div><div style="display:flex;flex-wrap:wrap;gap:12px"><button class="rd-btn" data-lb="0" type="button">Ver as 26 fotos</button><a class="rd-btn-o" href="https://www.instagram.com/ricarti_drywall/" rel="noopener"><svg aria-hidden="true" class="rd-ico" viewbox="0 0 24 24"><rect height="18" rx="5" width="18" x="3" y="3"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.3" cy="6.7" fill="currentColor" r=".6"></circle></svg> Siga @ricarti_drywall</a></div></header><div class="rd-grid"><a data-lb="12" href="/images/brule-04.jpg"><img alt="Brule, Toronto — passagem em arco com as chapas e a cantoneira instaladas" decoding="async" height="300" loading="lazy" src="/images/brule-04.jpg" width="300"/><span>BRULE</span></a><a data-lb="4" href="/images/kent-03.jpg"><img alt="Kent, Toronto — quarto pintado sob a luz da janela" decoding="async" height="300" loading="lazy" src="/images/kent-03.jpg" width="300"/><span>KENT</span></a><a data-lb="19" href="/images/stanton-02.jpg"><img alt="Stanton, Toronto — lã de rocha e perfil de aço numa parede externa" decoding="async" height="300" loading="lazy" src="/images/stanton-02.jpg" width="300"/><span>STANTON</span></a><a data-lb="14" href="/images/brule-07.jpg"><img alt="Brule, Toronto — cômodo com as chapas instaladas em volta das portas francesas" decoding="async" height="300" loading="lazy" src="/images/brule-07.jpg" width="300"/><span>BRULE</span></a><a data-lb="24" href="/images/lauther-02.jpg"><img alt="Lauther Ave, Toronto — forro novo com as juntas tratadas em volta do florão original" decoding="async" height="300" loading="lazy" src="/images/lauther-02.jpg" width="300"/><span>LAUTHER AVE</span></a><a data-lb="21" href="/images/stanton-04.jpg"><img alt="Stanton, Toronto — espuma projetada em volta do vão de uma janela" decoding="async" height="300" loading="lazy" src="/images/stanton-04.jpg" width="300"/><span>STANTON</span></a></div><ul class="rd-album" hidden=""><li data-src="/images/kent-08.jpg">Kent — parede da escada com molduras em painéis, pintada, antes da limpeza final</li><li data-src="/images/hero-kent.jpg">Kent, Toronto — quarto pronto, depois da pintura</li><li data-src="/images/kent-01.jpg">Kent, Toronto — paredes e teto lisos, já pintados</li><li data-src="/images/kent-02.jpg">Kent, Toronto — o longo hall da escada, com o acabamento pronto antes da pintura</li><li data-src="/images/kent-03.jpg">Kent, Toronto — quarto pintado sob a luz da janela</li><li data-src="/images/kent-04.jpg">Kent, Toronto — cozinha e sala com o drywall acabado</li><li data-src="/images/kent-05.jpg">Kent, Toronto — demãos de acabamento concluídas, pisos protegidos</li><li data-src="/images/kent-06.jpg">Kent, Toronto — quarto pronto para pintar</li><li data-src="/images/kent-07.jpg">Kent, Toronto — térreo aberto durante o acabamento</li><li data-src="/images/brule-09.jpg">Brule — passagem em arco com cantoneira, com vista para uma janela em arco</li><li data-src="/images/brule-01.jpg">Brule, Toronto — nicho de janela em arco revestido com drywall resistente à umidade</li><li data-src="/images/brule-02.jpg">Brule, Toronto — o mesmo nicho com luz do dia, pronto para o tratamento de juntas</li><li data-src="/images/brule-04.jpg">Brule, Toronto — passagem em arco com as chapas e a cantoneira instaladas</li><li data-src="/images/brule-05.jpg">Brule, Toronto — quarto com as chapas instaladas em volta de três janelas</li><li data-src="/images/brule-07.jpg">Brule, Toronto — cômodo com as chapas instaladas em volta das portas francesas</li><li data-src="/images/brule-08.jpg">Brule, Toronto — nicho em arco e estrutura antes das chapas</li><li data-src="/images/brule-03.jpg">Brule, Toronto — forro isolado sobre perfil resiliente, chapas estocadas por tipo</li><li data-src="/images/brule-06.jpg">Brule, Toronto — espuma projetada de célula fechada entre os caibros do telhado</li><li data-src="/images/stanton-01.jpg">Stanton, Toronto — vigas à mostra antes do isolamento e das chapas</li><li data-src="/images/stanton-02.jpg">Stanton, Toronto — lã de rocha e perfil de aço numa parede externa</li><li data-src="/images/stanton-03.jpg">Stanton, Toronto — lã de rocha atrás do perfil resiliente, de perto</li><li data-src="/images/stanton-04.jpg">Stanton, Toronto — espuma projetada em volta do vão de uma janela</li><li data-src="/images/stanton-05.jpg">Stanton, Toronto — isolamento acústico sob um teto inclinado</li><li data-src="/images/lauther-01.jpg">Lauther Ave, Toronto — retirada do antigo forro de reboco sobre ripas</li><li data-src="/images/lauther-02.jpg">Lauther Ave, Toronto — forro novo com as juntas tratadas em volta do florão original</li><li data-src="/images/thompson-01.jpg">Thompson, Toronto — profissional de acabamento sobre pernas de pau, pisos cobertos</li></ul></section> <footer class="rd-foot"><div class="rd-cols">
+<div class="rd-b-cta-r"><h3>Área de atendimento</h3><dl><div><dt>Toronto</dt><dd></dd></div><div><dt>Grande Toronto (GTA)</dt><dd></dd></div><div><dt>Hamilton</dt><dd></dd></div><div><dt>Kitchener-Cambridge</dt><dd></dd></div><div><dt>Muskoka</dt><dd></dd></div></dl></div>
+</div></section> <section aria-labelledby="ig-h" class="rd-ig"><header><div><p class="rd-kicker">Álbum de obras</p><h2 id="ig-h">Direto da obra.</h2></div><div style="display:flex;flex-wrap:wrap;gap:12px"><button class="rd-btn" data-lb="0" type="button">Ver as 26 fotos</button><a class="rd-btn-o" href="https://www.instagram.com/ricarti_drywall/" rel="noopener"><svg aria-hidden="true" class="rd-ico" viewbox="0 0 24 24"><rect height="18" rx="5" width="18" x="3" y="3"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.3" cy="6.7" fill="currentColor" r=".6"></circle></svg> Siga @ricarti_drywall</a></div></header><div class="rd-grid"><a data-lb="12" href="/images/brule-04.jpg"><img alt="Brule, Toronto — passagem em arco com as chapas e a cantoneira instaladas" decoding="async" height="300" loading="lazy" src="/images/brule-04.jpg" width="300"/><span>BRULE</span></a><a data-lb="4" href="/images/kent-03.jpg"><img alt="Kent, Toronto — quarto pintado sob a luz da janela" decoding="async" height="300" loading="lazy" src="/images/kent-03.jpg" width="300"/><span>KENT</span></a><a data-lb="19" href="/images/stanton-02.jpg"><img alt="Stanton, Toronto — lã de rocha e perfil de aço numa parede externa" decoding="async" height="300" loading="lazy" src="/images/stanton-02.jpg" width="300"/><span>STANTON</span></a><a data-lb="14" href="/images/brule-07.jpg"><img alt="Brule, Toronto — cômodo com as chapas instaladas em volta das portas francesas" decoding="async" height="300" loading="lazy" src="/images/brule-07.jpg" width="300"/><span>BRULE</span></a><a data-lb="24" href="/images/lauther-02.jpg"><img alt="Lauther Ave, Toronto — forro novo com as juntas tratadas em volta do florão original" decoding="async" height="300" loading="lazy" src="/images/lauther-02.jpg" width="300"/><span>LAUTHER AVE</span></a><a data-lb="21" href="/images/stanton-04.jpg"><img alt="Stanton, Toronto — espuma projetada em volta do vão de uma janela" decoding="async" height="300" loading="lazy" src="/images/stanton-04.jpg" width="300"/><span>STANTON</span></a></div><ul class="rd-album" hidden=""><li data-src="/images/kent-08.jpg">Kent — parede da escada com molduras em painéis, pintada, antes da limpeza final</li><li data-src="/images/hero-kent.jpg">Kent, Toronto — quarto pronto, depois da pintura</li><li data-src="/images/kent-01.jpg">Kent, Toronto — paredes e teto lisos, já pintados</li><li data-src="/images/kent-02.jpg">Kent, Toronto — o longo hall da escada, com o acabamento pronto antes da pintura</li><li data-src="/images/kent-03.jpg">Kent, Toronto — quarto pintado sob a luz da janela</li><li data-src="/images/kent-04.jpg">Kent, Toronto — cozinha e sala com o drywall acabado</li><li data-src="/images/kent-05.jpg">Kent, Toronto — demãos de acabamento concluídas, pisos protegidos</li><li data-src="/images/kent-06.jpg">Kent, Toronto — quarto pronto para pintar</li><li data-src="/images/kent-07.jpg">Kent, Toronto — térreo aberto durante o acabamento</li><li data-src="/images/brule-09.jpg">Brule — passagem em arco com cantoneira, com vista para uma janela em arco</li><li data-src="/images/brule-01.jpg">Brule, Toronto — nicho de janela em arco revestido com drywall resistente à umidade</li><li data-src="/images/brule-02.jpg">Brule, Toronto — o mesmo nicho com luz do dia, pronto para o tratamento de juntas</li><li data-src="/images/brule-04.jpg">Brule, Toronto — passagem em arco com as chapas e a cantoneira instaladas</li><li data-src="/images/brule-05.jpg">Brule, Toronto — quarto com as chapas instaladas em volta de três janelas</li><li data-src="/images/brule-07.jpg">Brule, Toronto — cômodo com as chapas instaladas em volta das portas francesas</li><li data-src="/images/brule-08.jpg">Brule, Toronto — nicho em arco e estrutura antes das chapas</li><li data-src="/images/brule-03.jpg">Brule, Toronto — forro isolado sobre perfil resiliente, chapas estocadas por tipo</li><li data-src="/images/brule-06.jpg">Brule, Toronto — espuma projetada de célula fechada entre os caibros do telhado</li><li data-src="/images/stanton-01.jpg">Stanton, Toronto — vigas à mostra antes do isolamento e das chapas</li><li data-src="/images/stanton-02.jpg">Stanton, Toronto — lã de rocha e perfil de aço numa parede externa</li><li data-src="/images/stanton-03.jpg">Stanton, Toronto — lã de rocha atrás do perfil resiliente, de perto</li><li data-src="/images/stanton-04.jpg">Stanton, Toronto — espuma projetada em volta do vão de uma janela</li><li data-src="/images/stanton-05.jpg">Stanton, Toronto — isolamento acústico sob um teto inclinado</li><li data-src="/images/lauther-01.jpg">Lauther Ave, Toronto — retirada do antigo forro de reboco sobre ripas</li><li data-src="/images/lauther-02.jpg">Lauther Ave, Toronto — forro novo com as juntas tratadas em volta do florão original</li><li data-src="/images/thompson-01.jpg">Thompson, Toronto — profissional de acabamento sobre pernas de pau, pisos cobertos</li></ul></section> <footer class="rd-foot"><div class="rd-cols">
 <div><img alt="Ricarti Drywall" height="80" loading="lazy" src="/images/lockup-boxed-graphite.png" style="width:200px;height:auto;display:block" width="200"/><p class="rd-muted" style="margin:16px 0 0;max-width:260px">Isolamento, estrutura em perfis de aço, drywall e acabamento para casas em toda a Grande Toronto, Hamilton, Kitchener–Cambridge e Muskoka.</p></div>
-<div><h2>Serviços</h2><ul><li><a href="/pt/acabamento-de-drywall-toronto">Tratamento de juntas e acabamento</a></li><li><a href="/pt/#services">Isolamento e espuma projetada</a></li><li><a href="/pt/#services">Estrutura em perfis de aço</a></li><li><a href="/pt/#services">Instalação de drywall</a></li><li><a href="/pt/#services">Pequenas reformas</a></li></ul></div>
+<div><h2>Serviços</h2><ul><li><a href="/pt/instalacao-de-drywall-toronto">Sistemas de drywall</a></li><li><a href="/pt/isolamento-e-espuma-projetada-toronto">Isolamento e espuma projetada</a></li><li><a href="/pt/acabamento-de-drywall-toronto">Acabamento Nível 4 e Nível 5</a></li><li><a href="/pt/acabamentos-arquitetonicos-toronto">Acabamentos arquitetônicos</a></li><li><a href="/pt/isolamento-acustico-toronto">Isolamento acústico</a></li><li><a href="/pt/estrutura-em-perfis-de-aco-toronto">Estrutura em perfis de aço</a></li></ul></div>
 <div><h2>Empresa</h2><ul><li><a href="/pt/proprietarios">Para proprietários</a></li><li><a href="/pt/construtoras">Para construtoras</a></li><li><a href="/pt/areas-atendidas">Áreas atendidas</a></li><li><a href="/pt/guias">Guias</a></li><li><a href="/pt/avaliacoes">Avaliações</a></li><li><a href="/pt/orcamento">Orçamento e visita técnica</a></li></ul></div>
 <address style="font-style:normal"><h2>Contato</h2><p style="margin:0;line-height:1.7">56 Hartley Ave<br/>York, ON M6E 4E8<br/><a href="tel:+16474821139">(647) 482-1139</a><br/><a href="mailto:cris@ricartidrywall.ca">cris@ricartidrywall.ca</a><br/><a href="https://www.instagram.com/ricarti_drywall/" rel="noopener">Instagram</a> · <a href="https://www.facebook.com/ricartidrywall" rel="noopener">Facebook</a> · <a href="https://wa.me/16474821139" rel="noopener">WhatsApp</a><br/><span class="rd-muted">[Horário de seg. a sex.]</span></p></address>
 </div>

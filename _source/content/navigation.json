@@ -1,0 +1,68 @@
+{
+ "_note": "Single navigation definition (Task 007 prep). Task 008 will render desktop dropdowns and mobile submenus from this file. Footer services already use it.",
+ "primary": [
+  {
+   "label": "Home",
+   "url": "/"
+  },
+  {
+   "label": "For homeowners",
+   "url": "/homeowners"
+  },
+  {
+   "label": "For builders",
+   "url": "/builders"
+  },
+  {
+   "label": "Services",
+   "url": "/#services",
+   "children": "services"
+  },
+  {
+   "label": "Projects",
+   "url": "/#projects",
+   "children": "project_categories"
+  },
+  {
+   "label": "Journal",
+   "url": "/journal"
+  },
+  {
+   "label": "Reviews",
+   "url": "/reviews"
+  }
+ ],
+ "services": [
+  {
+   "id": "drywall",
+   "label": "Drywall Systems",
+   "url": "/drywall-installation-toronto"
+  },
+  {
+   "id": "insulation",
+   "label": "Insulation & Spray Foam",
+   "url": "/insulation-spray-foam-toronto"
+  },
+  {
+   "id": "finishing",
+   "label": "Level 4 & Level 5 Finishing",
+   "url": "/drywall-finishing-toronto"
+  },
+  {
+   "id": "architectural",
+   "label": "Architectural Finishing",
+   "url": "/architectural-drywall-finishing-toronto"
+  },
+  {
+   "id": "acoustic",
+   "label": "Acoustic & Soundproofing",
+   "url": "/soundproofing-toronto"
+  },
+  {
+   "id": "framing",
+   "label": "Metal Stud Framing",
+   "url": "/metal-stud-framing-toronto"
+  }
+ ],
+ "project_categories": "from content/projects.json categories (only those with projects)"
+}

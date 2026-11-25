@@ -11,7 +11,9 @@ The live WordPress site (ricartidrywall.ca), DNS and Vercel security settings ar
 | 002 | Original logo 30% larger, centred between nav and search | Done |
 | 003 | Our Expertise — six services | Done |
 | 004 | Selected Projects portfolio, filters, per-project galleries, `content/projects.json` | Done |
-| 005 | Premium For Builders landing page | Done, awaiting approval |
+| 005 | Premium For Builders landing page | Done |
+| 006 | Premium For Homeowners landing page | Done |
+| 007 | Six individual service pages (EN + PT), shared navigation data | Done, awaiting approval |
 
 ---
 
@@ -32,9 +34,8 @@ The live WordPress site (ricartidrywall.ca), DNS and Vercel security settings ar
 - Logo enlarged and centred (Task 002).
 
 **Dependencies — do first**
-- Individual service pages. Only one exists today (`/drywall-finishing-toronto`). Needed:
-  Drywall Systems, Insulation & Spray Foam, Architectural Finishing, Acoustic & Soundproofing, Metal Stud Framing
-  (+ Portuguese, Spanish, French versions). The dropdown and the "Explore Service" links on the home page point to them.
+- ~~Individual service pages~~ — done in Task 007 (six pages, EN + PT). Spanish and French versions to follow.
+- Shared navigation definition ready: `_source/content/navigation.json` (primary items, service children, project categories). Footer already uses it; Task 008 renders dropdowns from it.
 - Project category pages or anchors (`/projects?category=…` or `/projects/<category>`), fed by `content/projects.json`.
 
 **Architecture plan**
@@ -100,3 +101,30 @@ Italian and Hebrew are no longer planned. `x-default` points to the English page
 - Professional photography of finished high-end projects.
 - Old blog posts migration (needs the WordPress export) and 301 redirects at launch.
 - Launch checklist: remove `noindex`, add sitemap, connect domain (only with owner approval).
+
+---
+
+## Service page URLs (Task 007) and WordPress migration plan
+
+| Service | English URL | Portuguese URL |
+|---|---|---|
+| 01 Drywall Systems | `/drywall-installation-toronto` | `/pt/instalacao-de-drywall-toronto` |
+| 02 Insulation & Spray Foam | `/insulation-spray-foam-toronto` | `/pt/isolamento-e-espuma-projetada-toronto` |
+| 03 Level 4 & Level 5 Finishing | `/drywall-finishing-toronto` (unchanged) | `/pt/acabamento-de-drywall-toronto` (unchanged) |
+| 04 Architectural Finishing | `/architectural-drywall-finishing-toronto` | `/pt/acabamentos-arquitetonicos-toronto` |
+| 05 Acoustic & Soundproofing | `/soundproofing-toronto` | `/pt/isolamento-acustico-toronto` |
+| 06 Metal Stud Framing | `/metal-stud-framing-toronto` | `/pt/estrutura-em-perfis-de-aco-toronto` |
+
+Spanish (`/es/…`) and French (`/fr/…`) service URLs will use localized slugs in the same pattern.
+
+**Proposed 301 redirects at launch (old WordPress URL → new URL)**
+| Old URL (ricartidrywall.ca) | New URL |
+|---|---|
+| `/services-ricarti-drywall/` | `/#services` (or `/drywall-installation-toronto`) |
+| `/about-us/` | `/` (until an About page exists) |
+| `/projects/` | `/#projects` |
+| `/contact-us/` | `/estimate` |
+| `/landing-page/` | `/` |
+| 61 old blog posts | matching Journal articles where they exist, otherwise `/journal` — needs the WordPress export to map one by one |
+
+Redirects go in `vercel.json` (`redirects`, permanent) at launch only, with owner approval.

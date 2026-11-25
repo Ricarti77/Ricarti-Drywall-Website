@@ -6,6 +6,7 @@ from articles import ARTICLES
 import portfolio
 import builders_page
 import homeowners_page
+import service_pages
 
 OUT = build.OUT
 GMAPS = 'https://www.google.com/maps/search/?api=1&query=Ricarti+Drywall+Toronto'
@@ -132,17 +133,17 @@ HOME_CSS = '''
 
 EXPERTISE = [
  ('Drywall Systems', 'Premium drywall installation, custom ceilings, curved walls, and complex architectural designs.',
-  'svc-drywall-systems', 'Bright bedroom boarded floor to ceiling around a row of three windows, Brule, Toronto', '/estimate', 'Discuss your project'),
+  'svc-drywall-systems', 'Bright bedroom boarded floor to ceiling around a row of three windows, Brule, Toronto', '/drywall-installation-toronto', 'Explore Service'),
  ('Insulation &amp; Spray Foam', 'Closed-cell spray foam, batt insulation, mineral wool, and blown-in insulation solutions for superior thermal performance.',
-  'svc-insulation', 'Spray foam insulation sealing the walls around a window, Stanton, Toronto', '/journal/spray-foam-vs-batt-insulation', 'Read the guide'),
+  'svc-insulation', 'Spray foam insulation sealing the walls around a window, Stanton, Toronto', '/insulation-spray-foam-toronto', 'Explore Service'),
  ('Level 4 &amp; Level 5 Finishing', 'Precision taping, skim coating, and premium surface preparation for exceptional architectural finishes.',
   'svc-finishing', 'Smooth painted walls and ceiling in a finished bedroom with white oak floors, Kent, Toronto', '/drywall-finishing-toronto', 'Explore Service'),
  ('Architectural Finishing', 'Trimless details, shadow reveals, custom curves, integrated air vents, frameless lighting details, and specialized architectural drywall solutions.',
-  'svc-architectural', 'Curved, barrel-vaulted dormer nook boarded in moisture-resistant drywall, Brule, Toronto', '/estimate', 'Discuss your project'),
+  'svc-architectural', 'Curved, barrel-vaulted dormer nook boarded in moisture-resistant drywall, Brule, Toronto', '/architectural-drywall-finishing-toronto', 'Explore Service'),
  ('Acoustic &amp; Soundproofing Systems', 'Acoustic insulation, resilient channels, sound isolation assemblies, and specialized noise control solutions.',
-  'svc-acoustic', 'A long wall of mineral wool sound insulation behind steel resilient channels, Stanton, Toronto', '/journal/soundproofing-a-room', 'Read the guide'),
+  'svc-acoustic', 'A long wall of mineral wool sound insulation behind steel resilient channels, Stanton, Toronto', '/soundproofing-toronto', 'Explore Service'),
  ('Metal Stud Framing', 'Precision steel stud framing for custom homes, residential renovations, and selected commercial projects.',
-  'svc-framing', 'Steel channel ceiling grid installed over insulation before board, Brule, Toronto', '/estimate', 'Discuss your project'),
+  'svc-framing', 'Steel channel ceiling grid installed over insulation before board, Brule, Toronto', '/metal-stud-framing-toronto', 'Explore Service'),
 ]
 
 SERVICES = [
@@ -416,7 +417,7 @@ def search_index():
         txt = re.sub(r'<[^>]+>', ' ', txt)
         txt = re.sub(r'\s+', ' ', html.unescape(txt)).strip()
         kind = 'Journal' if rel.startswith('/journal/') else {'/homeowners': 'Homeowners', '/builders': 'Builders', '/areas': 'Service areas', '/estimate': 'Contact',
-                                                                '/reviews': 'Reviews', '/journal': 'Journal', '/drywall-finishing-toronto': 'Service', '/': 'Home'}.get(rel, 'Page')
+                                                                '/reviews': 'Reviews', '/journal': 'Journal', '/': 'Home'}.get(rel, 'Service' if rel in [sp['url'] for sp in service_pages.PAGES] else 'Page')
         items.append({'u': rel, 't': title, 'd': desc, 'k': kind, 'x': txt[:6000]})
     order = {'Home': 0, 'Service': 1, 'Homeowners': 1, 'Builders': 1, 'Journal': 2}
     items.sort(key=lambda i: (order.get(i['k'], 3), i['u']))
@@ -435,6 +436,14 @@ def homeowners():
         'Custom homes, additions, basements and repairs. A site visit, a written scope with the finish level for each room, a clean site and a final walkthrough. Book a site visit.',
         shell('/homeowners', body), css=HOME_CSS + builders_page.CSS + homeowners_page.CSS, crumbs=[('Home', '/'), ('For homeowners', '/homeowners')])
 
+def services():
+    for sp in service_pages.PAGES:
+        schema = [{"@type": "Service", "name": re.sub(r'<[^>]+>|&amp;', lambda m: '&' if m.group(0) == '&amp;' else '', sp['short_name']), "serviceType": re.sub(r'&amp;', '&', sp['short_name']),
+                   "url": build.SITE + sp['url'], "description": sp['desc'], "provider": {"@id": build.SITE + "/#business"},
+                   "areaServed": [{"@type": "City", "name": a} if a not in ('Greater Toronto Area', 'Muskoka') else {"@type": "Place", "name": a} for a in service_pages.AREAS]}]
+        build.write_page(sp['url'], sp['title'], sp['desc'], shell(sp['url'], service_pages.body(sp)), css=HOME_CSS + builders_page.CSS + service_pages.CSS,
+                         extra_schema=schema, image=sp['hero'][0], crumbs=[('Home', '/'), ('Services', '/#services'), (re.sub(r'&amp;', '&', sp['short_name']), sp['url'])])
+
 if __name__ == '__main__':
-    homeowners(); builders(); home(); reviews(); journal(); search_page()
+    services(); homeowners(); builders(); home(); reviews(); journal(); search_page()
     search_index()
