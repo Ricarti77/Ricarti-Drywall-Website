@@ -162,3 +162,16 @@ Redirects go in `vercel.json` (`redirects`, permanent) at launch only, with owne
   Search pages stay noindex, follow and out of the sitemap. Titles over 65 characters lose the " | Ricarti Drywall" suffix.
 - Redirects: build/redirects.py (map + checker; --apply writes vercel.json at launch only). Blog inventory: build/wp_inventory.py export.xml [gsc.csv] > inventory.csv.
 - Launch files: _source/robots.launch.txt replaces robots.txt; remove the X-Robots-Tag header block from vercel.json; .vercelignore keeps _source out of deployments.
+
+## Enquiry delivery (Task 010-A): Vercel Function + Microsoft 365
+- FormSubmit removed. The form POSTs JSON to /api/enquiry (same origin). The function validates everything again, applies
+  honeypot / minimum fill time / link heuristics / per-instance rate limit (5 per 10 min per hashed IP) / per-reference
+  duplicate guard, then sends ONE email to cris@ricartidrywall.ca through Microsoft Graph sendMail (no automatic retries).
+- Replies: accepted (Graph 202 — accepted by Microsoft, not proof of inbox delivery), failed (definitely not sent),
+  uncertain (timeout / 429 / 5xx: may still arrive; visitor keeps the same reference and is asked not to resend).
+- Logs: reference, outcome, codes, timing, type, language, region only. No names, emails, phone numbers or text.
+- Environment (Vercel, Sensitive): RD_ENQUIRY_ENABLED=true, MS_TENANT_ID, MS_CLIENT_ID, MS_CLIENT_SECRET (or
+  MS_CERT_PRIVATE_KEY + MS_CERT_THUMBPRINT), RD_MAIL_SENDER=cris@ricartidrywall.ca, optional RD_MAIL_TO, RD_RATE_SALT.
+- Exchange Online: RBAC for Applications, role "Application Mail.Send" scoped to the one mailbox; no Mail.Send consent in Entra.
+- CRM prep: api/_lib/crm.js builds ricarti.enquiry.v2 (classification, province/city/postal code, ON/BC routing,
+  consent) and GoHighLevel / JobTread shapes. dispatch() does nothing until CRM_PROVIDER is set in Task 012+.

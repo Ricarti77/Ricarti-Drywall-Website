@@ -1,6 +1,6 @@
 """Estimate page (Task 010): two enquiry paths, private drawing/photo upload, CRM-ready payload.
 
-Delivery: the enquiry is emailed to the existing destination (FormSubmit, cris@ricartidrywall.ca) through its JSON
+Delivery: POST to /api/enquiry (Vercel Function), which validates it and emails cris@ricartidrywall.ca via Microsoft Graph. Was FormSubmit until Task 010-A; its JSON
 endpoint, so the page only shows success when the service confirms it. Files go to a private Vercel Blob store through
 short-lived presigned URLs issued by /api/uploads/sign — only when that store has been created and switched on
 (see /api/uploads/config). Until then the page says so plainly and sends the enquiry without the files.
@@ -9,7 +9,6 @@ import os, sys, html
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import build, chrome, pages
 
-DEST = 'https://formsubmit.co/ajax/cris@ricartidrywall.ca'
 
 def opt(v, t):
     return '<option value="%s">%s</option>' % (v, t)
@@ -56,7 +55,7 @@ BODY = '''
 <p><button type="button" class="rd-ef-link" id="rd-again">Send another enquiry</button></p>
 </div>
 
-<form id="rd-form" class="rd-ef" novalidate data-endpoint="%(dest)s">
+<form id="rd-form" class="rd-ef" novalidate>
 <fieldset class="rd-ef-who">
 <legend>I am</legend>
 <div class="rd-seg">
@@ -105,7 +104,7 @@ BODY = '''
 
 <fieldset class="rd-ef-consent">
 <legend class="rd-vh">Privacy and consent</legend>
-<p class="rd-privacy" id="rd-privacy">We use the details you send only to reply to your enquiry and to prepare your estimate. Your enquiry is emailed to Ricarti Drywall through FormSubmit; files you upload are kept in private storage and are not publicly accessible. We do not sell your information. To see, correct or delete it, email <a href="mailto:cris@ricartidrywall.ca">cris@ricartidrywall.ca</a>.</p>
+<p class="rd-privacy" id="rd-privacy">We use the details you send only to reply to your enquiry and to prepare your estimate. Your enquiry is sent through our website's secure server to Ricarti Drywall's business email (Microsoft 365); files you upload are kept in private storage and are not publicly accessible. We do not sell your information. To see, correct or delete it, email <a href="mailto:cris@ricartidrywall.ca">cris@ricartidrywall.ca</a>.</p>
 <label class="rd-check"><input type="checkbox" name="marketing_opt_in" value="yes"><span>Optional: I would like to receive occasional project news and seasonal tips from Ricarti Drywall by email. I can unsubscribe at any time.</span></label>
 </fieldset>
 
@@ -222,7 +221,6 @@ CSS = '''
 
 def main():
     body = BODY % dict(
-        dest=DEST,
         ptypes='\n'.join(opt(v, t) for v, t in PTYPES),
         htimes='\n'.join(opt(v, t) for v, t in HTIMES),
         btimes='\n'.join(opt(v, t) for v, t in BTIMES),

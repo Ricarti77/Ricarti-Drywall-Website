@@ -1,7 +1,7 @@
 /* Ricarti Drywall — estimate form (Task 010). Two paths, private uploads, verified delivery. No CRM connection. */
 (function () {
   var form = document.getElementById('rd-form'); if (!form) return;
-  var LANG = document.documentElement.lang || 'en-CA', LG = LANG.slice(0, 2);
+  var T0 = Date.now(), LANG = document.documentElement.lang || 'en-CA', LG = LANG.slice(0, 2);
   var T = {
     en: { req: 'Please fill in this field.', email: 'Please enter a valid email address, for example name@example.com.', phone: 'Please enter a valid phone number.',
       check: 'Please check the highlighted fields.', type: 'File type not accepted. Use PDF, JPG, PNG, WebP or HEIC.', size: 'This file is larger than 50 MB.',
@@ -207,26 +207,21 @@
       attachments: stored, attachments_not_received: notUp,
       crm: { provider: (window.RD_CRM || {}).provider || 'gohighlevel', connected: false }
     };
-    var tag = LG === 'en' ? '' : '[' + LG.toUpperCase() + '] ';
-    var body = {
-      _subject: tag + (who === 'builder' ? 'Builder enquiry' : 'Homeowner enquiry') + ' — ' + payload.contact.name + ' — ' + enquiryId,
-      _template: 'table', _captcha: 'false', _honey: '',
-      'Reference': enquiryId, 'Customer type': who === 'builder' ? 'Builder / contractor' : 'Homeowner',
-      'Name': payload.contact.name, 'Company': payload.contact.company, email: payload.contact.email, 'Phone': payload.contact.phone,
-      'Project location': payload.project.location, 'Project type': who === 'builder' ? txt('#f-ptype') : '', 'Timeline': form.querySelector(tl).value ? txt(tl) : '',
-      'Services': serviceNames.join(', '), 'Notes': payload.project.description,
-      'Files in private storage': stored.map(function (a) { return a.ref + ' (' + size(a.size) + ')'; }).join('\n') || 'None',
-      'Files NOT received': notUp.map(function (a) { return a.name + ' (' + size(a.size) + ')'; }).join('\n') || 'None',
-      'Language': LANG, 'Marketing consent': payload.consent.marketing_opt_in ? 'Yes (opted in on the form)' : 'No',
-      'Lead source': [payload.lead_source.first_touch ? payload.lead_source.first_touch.type + ' / ' + payload.lead_source.first_touch.from : 'direct', payload.lead_source.landing_page, payload.lead_source.referrer].filter(Boolean).join(' · '),
-      'CRM payload (JSON)': JSON.stringify(payload)
-    };
-    // Sent as an ordinary form post (no CORS preflight); FormSubmit replies with JSON because of the Accept header.
-    var fd = new URLSearchParams(); Object.keys(body).forEach(function (k) { fd.append(k, body[k] == null ? '' : String(body[k])); });
-    var ctl = window.AbortController ? new AbortController() : null, to = setTimeout(function () { ctl && ctl.abort(); }, 45000);
-    return fetch(form.getAttribute('data-endpoint'), { method: 'POST', headers: { Accept: 'application/json' }, body: fd, signal: ctl && ctl.signal })
-      .catch(function (e) { clearTimeout(to); throw { net: true, detail: (e && (e.name + ': ' + e.message)) || '' }; })
-      .then(function (r) { clearTimeout(to); return r.json().catch(function () { return {}; }).then(function (j) { if (!r.ok || !(j.success === true || j.success === 'true')) throw { server: j.message || r.status }; return { stored: stored.length, missing: notUp.length, payload: payload }; }); });
+    payload._honey = form.elements._honey.value;
+    payload.elapsed_ms = Date.now() - T0;
+    // Our own server function validates it and emails it to the office through Microsoft 365.
+    var ctl = window.AbortController ? new AbortController() : null, to = setTimeout(function () { ctl && ctl.abort(); }, 30000);
+    return fetch('/api/enquiry', { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify(payload), signal: ctl && ctl.signal })
+      .catch(function (e) { clearTimeout(to); throw { net: true, detail: (e && e.name) || '' }; })
+      .then(function (r) {
+        clearTimeout(to);
+        return r.json().catch(function () { return null; }).then(function (j) {
+          var st = j && j.status;
+          if (st === 'accepted') return { stored: stored.length, missing: notUp.length, payload: payload };
+          if (st === 'failed') throw { server: (j && j.code) || r.status };
+          throw { net: true, detail: (j && j.code) || 'http-' + r.status };      // 'uncertain' or an unreadable reply
+        });
+      });
   }
 
   function done(res) {

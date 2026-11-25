@@ -1071,7 +1071,8 @@
   "Rather talk? <0>Call (647) 482-1139</0> or <1>email cris@ricartidrywall.ca</1>.": "¿Prefiere hablar? <0>Llame al (647) 482-1139</0> o <1>escriba a cris@ricartidrywall.ca</1>.",
   "Enquiry form": "Formulario de solicitud",
   "Request an estimate or send drawings | Ricarti Drywall": "Solicite una cotización o envíe planos | Ricarti Drywall",
-  "Please do not send it again yet. Email <0>cris@ricartidrywall.ca</0> or call <1>(647) 482-1139</1> and mention your reference, and we will check whether it arrived.": "Por favor, no la envíe de nuevo todavía. Escriba a <0>cris@ricartidrywall.ca</0> o llame al <1>(647) 482-1139</1> e indique su referencia, y verificaremos si llegó."
+  "Please do not send it again yet. Email <0>cris@ricartidrywall.ca</0> or call <1>(647) 482-1139</1> and mention your reference, and we will check whether it arrived.": "Por favor, no la envíe de nuevo todavía. Escriba a <0>cris@ricartidrywall.ca</0> o llame al <1>(647) 482-1139</1> e indique su referencia, y verificaremos si llegó.",
+  "We use the details you send only to reply to your enquiry and to prepare your estimate. Your enquiry is sent through our website's secure server to Ricarti Drywall's business email (Microsoft 365); files you upload are kept in private storage and are not publicly accessible. We do not sell your information. To see, correct or delete it, email <0>cris@ricartidrywall.ca</0>.": "Usamos los datos que envía solo para responder a su solicitud y preparar su cotización. Su solicitud se envía a través del servidor seguro de nuestro sitio al correo empresarial de Ricarti Drywall (Microsoft 365); los archivos que sube se guardan en un almacenamiento privado y no son accesibles públicamente. No vendemos su información. Para consultarla, corregirla o eliminarla, escriba a <0>cris@ricartidrywall.ca</0>."
  },
  "attrs": {
   "Ricarti Drywall": "Ricarti Drywall",
