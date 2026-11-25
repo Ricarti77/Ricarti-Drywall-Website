@@ -5,9 +5,13 @@
   var list = document.getElementById('rd-res');
   var sugg = document.getElementById('rd-sugg');
   var index = null, loading = null;
-  var PT = /^pt/.test(document.documentElement.lang);
-  var L = PT ? { idx: '/pt/search-index.json', page: '/pt/busca', none: 'Nada encontrado para “%s”. Tente “espuma”, “nível 5” ou “acústico”, ou ligue para ' }
-             : { idx: '/search-index.json', page: '/search', none: 'Nothing matched “%s”. Try “spray foam”, “Level 5” or “soundproofing”, or call ' };
+  var LG = (document.documentElement.lang || 'en').slice(0, 2);
+  var L = ({
+    pt: { idx: '/pt/search-index.json', page: '/pt/busca', none: 'Nada encontrado para “%s”. Tente “espuma”, “nível 5” ou “acústico”, ou ligue para ' },
+    es: { idx: '/es/search-index.json', page: '/es/buscar', none: 'No encontramos nada para “%s”. Pruebe “espuma”, “Nivel 5” o “insonorización”, o llame al ' },
+    fr: { idx: '/fr/search-index.json', page: '/fr/recherche', none: 'Aucun résultat pour « %s ». Essayez « mousse », « niveau 5 » ou « insonorisation », ou appelez au ' },
+    it: { idx: '/it/search-index.json', page: '/it/cerca', none: 'Nessun risultato per “%s”. Provate “schiuma”, “Livello 5” o “insonorizzazione”, oppure chiamate il ' }
+  })[LG] || { idx: '/search-index.json', page: '/search', none: 'Nothing matched “%s”. Try “spray foam”, “Level 5” or “soundproofing”, or call ' };
 
   function load() {
     if (index) return Promise.resolve(index);
@@ -15,7 +19,9 @@
     return loading;
   }
   function norm(s) { return (s || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[–—]/g, '-'); }
-  function stem(t) { return t.length > 5 ? (PT ? t.replace(/(acoes|acao|mente|cos|cas|cao|oes|os|as|es|o|a|e|s)$/, '') : t.replace(/(ations?|ing|ion|ers|ed|es|s|e)$/, '')) : t; }
+  var STEM = { pt: /(acoes|acao|mente|cos|cas|cao|oes|os|as|es|o|a|e|s)$/, es: /(aciones|acion|ciones|cion|mente|es|os|as|o|a|e|s)$/,
+               fr: /(ations?|ements?|euses?|eurs?|ees?|es|e|s|x)$/, it: /(azioni|azione|zioni|zione|mente|i|e|o|a)$/, en: /(ations?|ing|ion|ers|ed|es|s|e)$/ };
+  function stem(t) { return t.length > 5 ? t.replace(STEM[LG] || STEM.en, '') : t; }
   function esc(s) { return s.replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
   var STOP = { de: 1, da: 1, do: 1, das: 1, dos: 1, para: 1, com: 1, um: 1, uma: 1, que: 1, como: 1, em: 1, no: 1, na: 1, e: 1, o: 1, os: 1, as: 1, the: 1, and: 1, for: 1, you: 1, how: 1, what: 1, does: 1, with: 1, are: 1, can: 1, do: 1, of: 1, to: 1, in: 1, a: 1, my: 1, is: 1, an: 1, or: 1 };
 
@@ -81,9 +87,12 @@
   if (main) lists._main = read(main);
   document.querySelectorAll('ul[data-gallery-list]').forEach(function (ul) { lists[ul.getAttribute('data-gallery-list')] = read(ul); });
   if (!Object.keys(lists).length) return;
-  var PT = /^pt/.test(document.documentElement.lang);
-  var L = PT ? { close: 'Fechar', prev: 'Foto anterior', next: 'Próxima foto', of: ' de ', title: 'Álbum de obras' }
-             : { close: 'Close', prev: 'Previous photo', next: 'Next photo', of: ' of ', title: 'Project album' };
+  var L = ({
+    pt: { close: 'Fechar', prev: 'Foto anterior', next: 'Próxima foto', of: ' de ', title: 'Álbum de obras' },
+    es: { close: 'Cerrar', prev: 'Foto anterior', next: 'Foto siguiente', of: ' de ', title: 'Álbum de proyectos' },
+    fr: { close: 'Fermer', prev: 'Photo précédente', next: 'Photo suivante', of: ' sur ', title: 'Album de projets' },
+    it: { close: 'Chiudi', prev: 'Foto precedente', next: 'Foto successiva', of: ' di ', title: 'Album dei progetti' }
+  })[(document.documentElement.lang || 'en').slice(0, 2)] || { close: 'Close', prev: 'Previous photo', next: 'Next photo', of: ' of ', title: 'Project album' };
   var items = [], i = 0, opener = null, dlg = document.createElement('dialog');
   dlg.className = 'rd-lbx'; dlg.setAttribute('aria-label', L.title);
   dlg.innerHTML = '<div class="rd-lbx-top"><span class="rd-lbx-n"></span><button type="button" class="rd-lbx-x">' + L.close + ' ✕</button></div>' +
@@ -268,11 +277,31 @@
   var form = document.getElementById('rd-form');
   if (form) form.addEventListener('submit', function () {
     var s = {}; try { s = JSON.parse(sessionStorage.getItem(KEY) || '{}'); } catch (e) {}
-    var file = form.querySelector('input[type=file]'), iam = form.querySelector('input[name="I am"]'), builder = iam ? /builder|construtor/i.test(iam.value) : /type=builder/.test(location.search);
+    var file = form.querySelector('input[type=file]'), iam = form.querySelector('input[name="I am"]'), builder = iam ? /builder|construt|construct|impresa/i.test(iam.value) : /type=builder/.test(location.search);
     var type = file && file.files && file.files.length ? 'drawing-upload' : builder ? 'builder-inquiry' : 'estimate-request';
     function put(n, v) { var i = form.querySelector('input[name="' + n + '"]'); if (!i) { i = document.createElement('input'); i.type = 'hidden'; i.name = n; form.appendChild(i); } i.value = v || ''; }
     put('lead_type', type); put('lead_entry', s.first ? s.first.type + ' / ' + s.first.from + ' / ' + s.first.page : 'direct');
     put('landing_page', s.landing); put('referrer', s.referrer);
     save({ type: type, from: 'estimate-form', page: location.pathname, t: Date.now() });
   }, true);
+})();
+
+/* Language preference: remembered only when the visitor picks a language. No location or browser-language redirects. */
+(function () {
+  var KEY = 'rd_lang', HOMES = { en: '/', pt: '/pt/', es: '/es/', fr: '/fr/', it: '/it/' };
+  function get() { try { return localStorage.getItem(KEY); } catch (e) { return null; } }
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[hreflang]');
+    if (!a) return;
+    var code = (a.getAttribute('hreflang') || '').slice(0, 2);
+    if (HOMES[code]) { try { localStorage.setItem(KEY, code); } catch (err) {} }
+  }, true);
+  /* Only the English homepage, only on a fresh visit from outside the site (not back/forward, not an internal link),
+     and only to a language the visitor chose before. ?lang=en always shows English. */
+  var pref = get();
+  if (location.pathname !== '/' || !pref || pref === 'en' || !HOMES[pref] || /[?&]lang=en\b/.test(location.search)) return;
+  var nav = performance.getEntriesByType && performance.getEntriesByType('navigation')[0];
+  if (nav && nav.type !== 'navigate') return;
+  try { if (document.referrer && new URL(document.referrer).origin === location.origin) return; } catch (e) {}
+  location.replace(HOMES[pref]);
 })();

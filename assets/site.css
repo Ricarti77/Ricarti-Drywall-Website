@@ -311,3 +311,5 @@ main>.rd-wrap:first-child:has(.rd-b-hero)>nav a{color:var(--dim)}
 @media (max-width:1080px){.rd-logo{padding:10px 0;margin:-10px 0}}
 article>header>nav:first-child a{display:inline-block;padding:13px 3px;margin:-13px -3px}
 .rd-sform button[type=submit]{min-height:44px}
+/* Task 009: translated labels are longer; keep the Builders/Homeowners header links only where they clear the centred logo */
+@media (max-width:1439px){html:not([lang^="en"]) .rd-hl-x{display:none}}

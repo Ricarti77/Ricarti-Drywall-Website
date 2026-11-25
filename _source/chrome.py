@@ -7,7 +7,7 @@ SEARCH_SVG = '<svg class="rd-ico" viewBox="0 0 24 24" aria-hidden="true"><circle
 IG_SVG = '<svg class="rd-ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r=".6" fill="currentColor"/></svg>'
 
 # Concept D. Only languages that have pages are ever shown; Spanish and French are prepared but not published.
-LANGS = [('en', 'EN', 'English'), ('pt', 'PT', 'Português'), ('es', 'ES', 'Español'), ('fr', 'FR', 'Français')]
+LANGS = [('en', 'EN', 'English'), ('pt', 'PT', 'Português'), ('es', 'ES', 'Español'), ('fr', 'FR', 'Français'), ('it', 'IT', 'Italiano')]
 MENU_SVG = '<svg viewBox="0 0 24 9" aria-hidden="true"><path d="M0 .6h24M0 8.4h15"/></svg>'
 CARET_SVG = '<svg viewBox="0 0 9 6" aria-hidden="true"><path d="M.5.8l4 4 4-4"/></svg>'
 PHONE_SVG = '<svg class="rd-ico" viewBox="0 0 14 14" aria-hidden="true"><path d="M3 1h2.5l1 3-1.5 1a7 7 0 0 0 4 4l1-1.5 3 1V11a2 2 0 0 1-2 2A11 11 0 0 1 1 3a2 2 0 0 1 2-2z"/></svg>'
@@ -141,7 +141,7 @@ FOOTER = '''<footer class="rd-foot"><div><div class="rd-cols">
 <address id="contact" style="font-style:normal"><h2>%(fct)s</h2><p style="margin:0;line-height:1.8">56 Hartley Ave<br>York, ON M6E 4E8<br><a href="tel:+16474821139" data-cta="call" data-cta-loc="footer">(647) 482-1139</a><br><a href="mailto:cris@ricartidrywall.ca" data-cta="email" data-cta-loc="footer">cris@ricartidrywall.ca</a><br><a href="%(ig)s" rel="noopener">Instagram</a> · <a href="https://www.facebook.com/ricartidrywall" rel="noopener">Facebook</a> · <a href="https://wa.me/16474821139" rel="noopener" data-cta="whatsapp" data-cta-loc="footer">WhatsApp</a><br><span>%(hours)s</span></p></address>
 </div>
 <div class="rd-fine"><span>%(legal)s</span><span>%(region)s</span></div>
-<div class="rd-fine" style="border:0;margin-top:0"><nav aria-label="Language">%(langs)s</nav><p>%(disc)s</p></div>
+<div class="rd-fine" style="border:0;margin-top:0"><nav class="rd-flangs" aria-label="Language">%(langs)s</nav><p>%(disc)s</p></div>
 </div></footer>
 <nav class="rd-mbar" aria-label="Contact"><a href="tel:+16474821139" data-cta="call" data-cta-loc="mobile-bar">%(psvg)s%(call)s</a><a href="/estimate" data-cta="estimate" data-cta-loc="mobile-bar">%(est)s</a></nav>
 '''

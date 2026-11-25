@@ -137,4 +137,8 @@ Redirects go in `vercel.json` (`redirects`, permanent) at launch only, with owne
 - To connect later: listen for `rd:lead`, set enabled:true and map the hidden fields to the GoHighLevel form/webhook.
 
 ## Languages
-- EN-CA and PT-BR live. ES (es-419) and FR (fr-CA) prepared in build/i18n.py (HTML_LANG, PLANNED_LANGS) and hidden until Task 009.
+- Live: EN-CA (default, x-default), PT-BR (/pt/), ES-419 (/es/), FR-CA (/fr/), IT-IT (/it/). 19 pages per language.
+- Pipeline: build English → `i18n.py build <lang>` from tm_<lang>.json (translation memory) → `i18n.py relink` (language switchers, hreflang, sitemap.xml).
+- Adding a language: add a URL map in i18n.URLS, HTML_LANG/OG_LOCALE/KINDS/HOME_TITLE, LANG_NAMES, chrome.LANGS, the site.js string tables (search, lightbox, stemming), and a tm_<lang>.json.
+- Language preference: stored only when a visitor clicks a language link (localStorage rd_lang). Only the bare English homepage, on a fresh visit from outside the site, sends that visitor to their chosen homepage; ?lang=en always shows English. No location or browser-language redirects.
+- Terminology flagged for human review: see the Task 009 report.

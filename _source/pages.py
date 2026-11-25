@@ -539,13 +539,14 @@ def search_index():
             continue
         rel = '/' + os.path.relpath(root, OUT).replace('.', '').strip('/')
         rel = '/' if rel == '/' else rel
-        if rel in ('/search',) or rel.startswith(('/pt', '/fr', '/it', '/he')):
+        if rel in ('/search',) or rel.split('/')[1] in ('pt', 'es', 'fr', 'it', 'he'):
             continue
         s = open(os.path.join(root, 'index.html')).read()
         title = html.unescape(re.search(r'<title>(.*?)</title>', s).group(1)).split(' | ')[0]
         if rel == '/':
             title = 'Ricarti Drywall — home'
-        desc = html.unescape(re.search(r'<meta name="description" content="(.*?)"', s).group(1))
+        md = re.search(r'<meta name="description" content="(.*?)"', s) or re.search(r'<meta content="(.*?)" name="description"', s)
+        desc = html.unescape(md.group(1))
         m = re.search(r'<main\b.*?</main>', s, re.S)
         txt = m.group(0) if m else ''
         txt = re.sub(r'<(script|style|nav)\b.*?</\1>', ' ', txt, flags=re.S)

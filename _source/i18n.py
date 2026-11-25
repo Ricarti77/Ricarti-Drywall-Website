@@ -23,9 +23,54 @@ URLS = {'pt': {
  '/journal/soundproofing-a-room': '/pt/guias/isolamento-acustico-de-um-comodo',
  '/journal/lath-and-plaster-repair-toronto': '/pt/guias/reparo-de-reboco-em-casas-antigas-toronto',
  '/journal/what-a-drywall-subcontractor-needs-to-price-your-project': '/pt/guias/o-que-o-empreiteiro-de-drywall-precisa-para-orcar',
+},
+'es': {
+ '/': '/es/', '/homeowners': '/es/propietarios', '/builders': '/es/constructoras', '/areas': '/es/areas-de-servicio',
+ '/drywall-finishing-toronto': '/es/acabado-de-drywall-toronto', '/estimate': '/es/cotizacion', '/journal': '/es/guias',
+ '/reviews': '/es/resenas', '/search': '/es/buscar',
+ '/drywall-installation-toronto': '/es/instalacion-de-drywall-toronto', '/insulation-spray-foam-toronto': '/es/aislamiento-y-espuma-en-aerosol-toronto',
+ '/architectural-drywall-finishing-toronto': '/es/acabados-arquitectonicos-toronto', '/soundproofing-toronto': '/es/insonorizacion-toronto',
+ '/metal-stud-framing-toronto': '/es/estructura-de-perfiles-metalicos-toronto',
+ '/journal/spray-foam-vs-batt-insulation': '/es/guias/espuma-en-aerosol-o-mantas-aislantes',
+ '/journal/questions-to-ask-a-drywall-contractor': '/es/guias/preguntas-antes-de-contratar-drywall',
+ '/journal/soundproofing-a-room': '/es/guias/como-insonorizar-una-habitacion',
+ '/journal/lath-and-plaster-repair-toronto': '/es/guias/reparacion-de-yeso-sobre-listones-toronto',
+ '/journal/what-a-drywall-subcontractor-needs-to-price-your-project': '/es/guias/que-necesita-el-subcontratista-de-drywall-para-cotizar',
+},
+'fr': {
+ '/': '/fr/', '/homeowners': '/fr/proprietaires', '/builders': '/fr/constructeurs', '/areas': '/fr/secteurs-desservis',
+ '/drywall-finishing-toronto': '/fr/tirage-de-joints-toronto', '/estimate': '/fr/soumission', '/journal': '/fr/guides',
+ '/reviews': '/fr/avis', '/search': '/fr/recherche',
+ '/drywall-installation-toronto': '/fr/pose-de-gypse-toronto', '/insulation-spray-foam-toronto': '/fr/isolation-et-mousse-giclee-toronto',
+ '/architectural-drywall-finishing-toronto': '/fr/finitions-architecturales-toronto', '/soundproofing-toronto': '/fr/insonorisation-toronto',
+ '/metal-stud-framing-toronto': '/fr/colombages-metalliques-toronto',
+ '/journal/spray-foam-vs-batt-insulation': '/fr/guides/mousse-giclee-ou-isolant-en-nattes',
+ '/journal/questions-to-ask-a-drywall-contractor': '/fr/guides/questions-a-poser-a-un-entrepreneur-en-gypse',
+ '/journal/soundproofing-a-room': '/fr/guides/insonoriser-une-piece',
+ '/journal/lath-and-plaster-repair-toronto': '/fr/guides/reparation-de-platre-sur-lattes-toronto',
+ '/journal/what-a-drywall-subcontractor-needs-to-price-your-project': '/fr/guides/ce-quil-faut-au-sous-traitant-en-gypse-pour-soumissionner',
+},
+'it': {
+ '/': '/it/', '/homeowners': '/it/proprietari', '/builders': '/it/imprese-edili', '/areas': '/it/zone-servite',
+ '/drywall-finishing-toronto': '/it/finitura-cartongesso-toronto', '/estimate': '/it/preventivo', '/journal': '/it/guide',
+ '/reviews': '/it/recensioni', '/search': '/it/cerca',
+ '/drywall-installation-toronto': '/it/installazione-cartongesso-toronto', '/insulation-spray-foam-toronto': '/it/isolamento-e-schiuma-a-spruzzo-toronto',
+ '/architectural-drywall-finishing-toronto': '/it/finiture-architettoniche-toronto', '/soundproofing-toronto': '/it/insonorizzazione-toronto',
+ '/metal-stud-framing-toronto': '/it/orditure-metalliche-toronto',
+ '/journal/spray-foam-vs-batt-insulation': '/it/guide/schiuma-a-spruzzo-o-pannelli-isolanti',
+ '/journal/questions-to-ask-a-drywall-contractor': '/it/guide/domande-da-fare-a-un-impresa-di-cartongesso',
+ '/journal/soundproofing-a-room': '/it/guide/come-insonorizzare-una-stanza',
+ '/journal/lath-and-plaster-repair-toronto': '/it/guide/riparazione-intonaco-su-listelli-toronto',
+ '/journal/what-a-drywall-subcontractor-needs-to-price-your-project': '/it/guide/cosa-serve-al-cartongessista-per-il-preventivo',
 }}
-HTML_LANG = {'pt': 'pt-BR', 'en': 'en-CA', 'es': 'es-419', 'fr': 'fr-CA'}
-OG_LOCALE = {'pt': 'pt_BR'}
+HTML_LANG = {'pt': 'pt-BR', 'en': 'en-CA', 'es': 'es-419', 'fr': 'fr-CA', 'it': 'it-IT'}
+OG_LOCALE = {'pt': 'pt_BR', 'es': 'es_LA', 'fr': 'fr_CA', 'it': 'it_IT'}
+KINDS = {
+ 'pt': {'Home': 'Início', 'Service': 'Serviço', 'Homeowners': 'Proprietários', 'Builders': 'Construtoras', 'Journal': 'Guias', 'Service areas': 'Áreas atendidas', 'Contact': 'Contato', 'Reviews': 'Avaliações', 'Page': 'Página'},
+ 'es': {'Home': 'Inicio', 'Service': 'Servicio', 'Homeowners': 'Propietarios', 'Builders': 'Constructoras', 'Journal': 'Guías', 'Service areas': 'Áreas de servicio', 'Contact': 'Contacto', 'Reviews': 'Reseñas', 'Page': 'Página'},
+ 'it': {'Home': 'Home', 'Service': 'Servizio', 'Homeowners': 'Proprietari', 'Builders': 'Imprese edili', 'Journal': 'Guide', 'Service areas': 'Zone servite', 'Contact': 'Contatti', 'Reviews': 'Recensioni', 'Page': 'Pagina'},
+ 'fr': {'Home': 'Accueil', 'Service': 'Service', 'Homeowners': 'Propriétaires', 'Builders': 'Constructeurs', 'Journal': 'Guides', 'Service areas': 'Secteurs desservis', 'Contact': 'Contact', 'Reviews': 'Avis', 'Page': 'Page'}}
+HOME_TITLE = {'pt': 'Ricarti Drywall — início', 'es': 'Ricarti Drywall — inicio', 'fr': 'Ricarti Drywall — accueil', 'it': 'Ricarti Drywall — home'}
 
 BLOCK = set('html body head div section article aside header footer main nav ul ol li dl dt dd p h1 h2 h3 h4 h5 h6 figure figcaption blockquote table thead tbody tr td th form fieldset legend label select option textarea button details summary address dialog title'.split())
 VOID = set('br img input hr wbr source meta link'.split())
@@ -228,20 +273,22 @@ def search_index(lang):
         if k: k.decompose()
         txt = re.sub(r'\s+', ' ', main.get_text(' ')).strip()
         title = soup.title.get_text().split(' | ')[0]
-        if it['u'] == '/': title = 'Ricarti Drywall — início'
-        kinds = {'Home': 'Início', 'Service': 'Serviço', 'Homeowners': 'Proprietários', 'Builders': 'Construtoras', 'Journal': 'Guias', 'Service areas': 'Áreas atendidas', 'Contact': 'Contato', 'Reviews': 'Avaliações', 'Page': 'Página'}
+        if it['u'] == '/': title = HOME_TITLE[lang]
+        kinds = KINDS[lang]
         out.append({'u': u, 't': title, 'd': soup.find('meta', attrs={'name': 'description'})['content'], 'k': kinds.get(it['k'], it['k']), 'x': txt[:6000]})
     json.dump(out, open(ROOT + '%s/search-index.json' % lang, 'w'), ensure_ascii=False, separators=(',', ':'))
 
 # Published languages only. Spanish (es-419) and French (fr-CA) are prepared: add them here, with a URLS map and a
 # translation memory, when their pages are complete. Until then they never appear in any language menu.
-LANG_NAMES = [('en', 'EN', 'English'), ('pt', 'PT', 'Português')]
-PLANNED_LANGS = {'es': ('ES', 'Español', 'es-419'), 'fr': ('FR', 'Français', 'fr-CA')}
+LANG_NAMES = [('en', 'EN', 'English'), ('pt', 'PT', 'Português'), ('es', 'ES', 'Español'), ('fr', 'FR', 'Français'), ('it', 'IT', 'Italiano')]
+PUBLISHED = [c for c, _, _ in LANG_NAMES]
 
-def relink(lang_list=('en', 'pt')):
+def relink(lang_list=None):
     """Put matching language switches and hreflang tags on every English page and its translations."""
-    for en, pt in URLS['pt'].items():
-        alts = {'en': en, 'pt': pt}
+    lang_list = lang_list or PUBLISHED
+    for en in URLS['pt']:
+        alts = {'en': en}
+        alts.update({l: URLS[l][en] for l in PUBLISHED if l != 'en'})
         for lang in lang_list:
             path = ROOT + alts[lang].strip('/') + ('/' if alts[lang] != '/' else '') + 'index.html'
             path = path.replace('//', '/')
@@ -257,7 +304,7 @@ def relink(lang_list=('en', 'pt')):
                     if code == lang: a['aria-current'] = 'true'
                     out.append(a)
                 return out
-            for box, short in [(soup.select_one('.rd-lang-list'), False), (soup.select_one('.rd-mlangs'), True), (soup.select_one('.rd-foot nav[aria-label="Language"]'), False)]:
+            for box, short in [(soup.select_one('.rd-lang-list'), False), (soup.select_one('.rd-mlangs'), True), (soup.select_one('.rd-flangs'), False)]:
                 if box is None: continue
                 box.clear()
                 for a in links(short): box.append(a)
@@ -268,19 +315,46 @@ def relink(lang_list=('en', 'pt')):
             for l in soup.find_all('link', rel='alternate'):
                 l.decompose()
             canon = soup.find('link', rel='canonical')
-            for code in ('en', 'pt', 'x-default'):
+            for code in PUBLISHED + ['x-default']:
                 l = soup.new_tag('link', rel='alternate', hreflang=HTML_LANG.get(code, code), href=SITE + alts['en' if code == 'x-default' else code])
                 canon.insert_after(l)
             open(path, 'w').write(str(soup))
+    sitemap()
+
+def sitemap():
+    """One <url> per page in every language, each listing all its language versions (xhtml:link alternates)."""
+    from datetime import date
+    out = ['<?xml version="1.0" encoding="UTF-8"?>',
+           '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">']
+    today = date.today().isoformat()
+    extra = sorted(r for r, _ in all_pages() if r not in URLS['pt'] and not any(r == u.rstrip('/') or r == u for l in URLS for u in URLS[l].values()))
+    for en in URLS['pt']:
+        alts = {'en': en}; alts.update({l: URLS[l][en] for l in PUBLISHED if l != 'en'})
+        for l in PUBLISHED:
+            out.append('<url><loc>%s%s</loc><lastmod>%s</lastmod>' % (SITE, alts[l], today))
+            for c in PUBLISHED:
+                out.append(' <xhtml:link rel="alternate" hreflang="%s" href="%s%s"/>' % (HTML_LANG[c], SITE, alts[c]))
+            out.append(' <xhtml:link rel="alternate" hreflang="x-default" href="%s%s"/></url>' % (SITE, en))
+    for r in extra:
+        out.append('<url><loc>%s%s</loc><lastmod>%s</lastmod></url>' % (SITE, r, today))
+    out.append('</urlset>')
+    open(ROOT + 'sitemap.xml', 'w').write('\n'.join(out) + '\n')
+
+def all_pages():
+    for d, _, files in os.walk(ROOT):
+        if '/.git' in d or '_source' in d: continue
+        rel = '/' + os.path.relpath(d, ROOT).strip('.').strip('/')
+        if 'index.html' in files: yield ('/' if rel == '/' else rel), d
 
 if __name__ == '__main__':
     cmd = sys.argv[1]
     if cmd == 'extract':
         segs, attrs = extract()
-        tm = load_tm('pt')
+        lang = sys.argv[2] if len(sys.argv) > 2 else 'pt'
+        tm = load_tm(lang)
         todo = {'segments': {k: v for k, v in segs.items() if k not in tm.get('segments', {})},
                 'attrs': {k: v for k, v in attrs.items() if k not in tm.get('attrs', {})}}
-        json.dump(todo, open(os.path.join(HERE, 'todo_pt.json'), 'w'), ensure_ascii=False, indent=1)
+        json.dump(todo, open(os.path.join(HERE, 'todo_%s.json' % lang), 'w'), ensure_ascii=False, indent=1)
         print('segments', len(segs), 'attrs', len(attrs), '| to translate:', len(todo['segments']), len(todo['attrs']),
               '| words', sum(len(plain(k).split()) for k in todo['segments']) + sum(len(k.split()) for k in todo['attrs']))
     elif cmd == 'build':
@@ -289,5 +363,6 @@ if __name__ == '__main__':
             translate_page(rel, path, lang, tm, missing)
         search_index(lang)
         json.dump(missing, open(os.path.join(HERE, 'missing_%s.json' % lang), 'w'), ensure_ascii=False, indent=1)
-        print('missing', len(missing['segments']), len(missing['attrs']))
+        print(lang, 'missing', len(missing['segments']), len(missing['attrs']))
+    elif cmd == 'relink':
         relink()

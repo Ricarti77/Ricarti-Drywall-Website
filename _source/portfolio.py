@@ -74,7 +74,7 @@ CSS = '''
 .rd-pf-meta dl{margin:16px 0 0;display:grid;gap:10px}
 .rd-pf-meta dt{font-size:12.5px;font-weight:500;color:var(--muted)}
 .rd-pf-meta dd{margin:3px 0 0;font-size:15px}
-.rd-pf-link{justify-self:start;margin-top:18px;background:none;border:0;padding:0 0 4px;font:inherit;font-size:14px;font-weight:600;color:var(--ink);border-bottom:1px solid var(--bronze);cursor:pointer;min-height:32px}
+.rd-pf-link{justify-self:start;margin-top:6px;background:none;border:0;padding:0 0 4px;font:inherit;font-size:14px;font-weight:600;color:var(--ink);border-bottom:1px solid var(--bronze);cursor:pointer;min-height:44px;display:inline-flex;align-items:flex-end}
 .rd-pf-link:hover,.rd-pf-link:focus-visible{color:var(--spruce)}
 @media (max-width:700px){.rd-pf-grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:14px;margin:0 calc(-1 * var(--pad));padding:0 var(--pad) 8px;scrollbar-width:none}.rd-pf-item{flex:0 0 80%;scroll-snap-align:start}.rd-pf-grid .rd-pf-item:nth-child(even){margin-top:0}.rd-pf-filters{gap:2px 20px;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}.rd-pf-filters button{white-space:nowrap;min-height:44px}.rd-pf-meta dl{display:none}.rd-pf-meta{padding-top:14px}.rd-pf-h{font-size:30px}}
 @media (prefers-reduced-motion:reduce){.rd-pf-cover img,.rd-pf-view{transition:none}.rd-pf-cover:hover img{transform:none}}
