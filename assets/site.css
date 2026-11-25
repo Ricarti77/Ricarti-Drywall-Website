@@ -25,8 +25,12 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible{o
 .rd-nav{display:flex;gap:22px;font-size:14px;white-space:nowrap}
 .rd-nav a{text-decoration:none;padding:6px 0;border-bottom:1px solid transparent}
 .rd-nav a[aria-current]{border-bottom-color:var(--spruce);color:var(--spruce)}
-.rd-logo{grid-column:2;display:block}
-.rd-logo img{height:40px;width:auto;display:block}
+.rd-logo{grid-column:2;display:block;justify-self:center;line-height:0}
+.rd-logo img{height:52px;width:auto;display:block}
+@media (min-width:1361px){
+ .rd-head>div{grid-template-columns:auto minmax(0,1fr) auto}
+ .rd-nav,.rd-mnav{grid-column:1}
+}
 .rd-right{grid-column:3;display:flex;justify-content:flex-end;align-items:center;gap:12px}
 .rd-sbtn{display:flex;align-items:center;gap:10px;min-width:210px;background:#fff;border:1px solid var(--hair);padding:11px 14px;font:inherit;font-size:14px;color:var(--muted);cursor:pointer;text-align:left}
 .rd-sbtn:hover{border-color:var(--ink);color:var(--ink)}
@@ -47,7 +51,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible{o
 @media (max-width:900px){
  .rd-cta,.rd-top .rd-hide{display:none}
  .rd-head>div{padding:10px var(--pad);gap:12px}
- .rd-logo img{height:34px}
+ .rd-logo img{height:44px;height:min(44px,calc((100vw - 150px) / 5.085))}
  .rd-sbtn{border:0;background:none;padding:10px 4px;color:var(--ink)}
  .rd-sbtn .rd-ico{width:22px;height:22px}
  .rd-top>div{justify-content:center}

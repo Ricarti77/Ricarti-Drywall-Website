@@ -51,7 +51,7 @@ def header(active='', lang='en', alts=None):
 <header class="rd-head"><div>
 <nav aria-label="Main" class="rd-nav">%(nav)s</nav>
 <details class="rd-mnav"><summary>%(menu)s</summary><ul>%(mnav)s<li><a href="tel:+16474821139">(647) 482-1139</a></li><li><a href="%(ig)s" rel="noopener">Instagram · @ricarti_drywall</a></li><li class="rd-mlangs">%(langs)s</li></ul></details>
-<a href="%(home)s" class="rd-logo" aria-label="%(home_l)s"><img src="/images/lockup-graphite.png" alt="Ricarti Drywall" width="180" height="40"></a>
+<a href="%(home)s" class="rd-logo" aria-label="%(home_l)s"><img src="/images/lockup-graphite.png" alt="Ricarti Drywall" width="264" height="52"></a>
 <div class="rd-right">
 <button type="button" class="rd-sbtn" data-open-search aria-label="%(search)s">%(ssvg)s<span>%(search)s</span><kbd>/</kbd></button>
 <a href="/estimate" class="rd-cta">%(est)s</a>
