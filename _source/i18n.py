@@ -12,7 +12,7 @@ SITE = 'https://ricartidrywall.ca'
 HERE = os.path.dirname(os.path.abspath(__file__))
 
 URLS = {'pt': {
- '/': '/pt/', '/homeowners': '/pt/proprietarios', '/builders': '/pt/construtoras', '/areas': '/pt/areas-atendidas',
+ '/': '/pt', '/homeowners': '/pt/proprietarios', '/builders': '/pt/construtoras', '/areas': '/pt/areas-atendidas',
  '/drywall-finishing-toronto': '/pt/acabamento-de-drywall-toronto', '/estimate': '/pt/orcamento', '/journal': '/pt/guias',
  '/reviews': '/pt/avaliacoes', '/search': '/pt/busca',
  '/drywall-installation-toronto': '/pt/instalacao-de-drywall-toronto', '/insulation-spray-foam-toronto': '/pt/isolamento-e-espuma-projetada-toronto',
@@ -25,7 +25,7 @@ URLS = {'pt': {
  '/journal/what-a-drywall-subcontractor-needs-to-price-your-project': '/pt/guias/o-que-o-empreiteiro-de-drywall-precisa-para-orcar',
 },
 'es': {
- '/': '/es/', '/homeowners': '/es/propietarios', '/builders': '/es/constructoras', '/areas': '/es/areas-de-servicio',
+ '/': '/es', '/homeowners': '/es/propietarios', '/builders': '/es/constructoras', '/areas': '/es/areas-de-servicio',
  '/drywall-finishing-toronto': '/es/acabado-de-drywall-toronto', '/estimate': '/es/cotizacion', '/journal': '/es/guias',
  '/reviews': '/es/resenas', '/search': '/es/buscar',
  '/drywall-installation-toronto': '/es/instalacion-de-drywall-toronto', '/insulation-spray-foam-toronto': '/es/aislamiento-y-espuma-en-aerosol-toronto',
@@ -38,7 +38,7 @@ URLS = {'pt': {
  '/journal/what-a-drywall-subcontractor-needs-to-price-your-project': '/es/guias/que-necesita-el-subcontratista-de-drywall-para-cotizar',
 },
 'fr': {
- '/': '/fr/', '/homeowners': '/fr/proprietaires', '/builders': '/fr/constructeurs', '/areas': '/fr/secteurs-desservis',
+ '/': '/fr', '/homeowners': '/fr/proprietaires', '/builders': '/fr/constructeurs', '/areas': '/fr/secteurs-desservis',
  '/drywall-finishing-toronto': '/fr/tirage-de-joints-toronto', '/estimate': '/fr/soumission', '/journal': '/fr/guides',
  '/reviews': '/fr/avis', '/search': '/fr/recherche',
  '/drywall-installation-toronto': '/fr/pose-de-gypse-toronto', '/insulation-spray-foam-toronto': '/fr/isolation-et-mousse-giclee-toronto',
@@ -51,7 +51,7 @@ URLS = {'pt': {
  '/journal/what-a-drywall-subcontractor-needs-to-price-your-project': '/fr/guides/ce-quil-faut-au-sous-traitant-en-gypse-pour-soumissionner',
 },
 'it': {
- '/': '/it/', '/homeowners': '/it/proprietari', '/builders': '/it/imprese-edili', '/areas': '/it/zone-servite',
+ '/': '/it', '/homeowners': '/it/proprietari', '/builders': '/it/imprese-edili', '/areas': '/it/zone-servite',
  '/drywall-finishing-toronto': '/it/finitura-cartongesso-toronto', '/estimate': '/it/preventivo', '/journal': '/it/guide',
  '/reviews': '/it/recensioni', '/search': '/it/cerca',
  '/drywall-installation-toronto': '/it/installazione-cartongesso-toronto', '/insulation-spray-foam-toronto': '/it/isolamento-e-schiuma-a-spruzzo-toronto',
@@ -318,6 +318,11 @@ def relink(lang_list=None):
             for code in PUBLISHED + ['x-default']:
                 l = soup.new_tag('link', rel='alternate', hreflang=HTML_LANG.get(code, code), href=SITE + alts['en' if code == 'x-default' else code])
                 canon.insert_after(l)
+            # Long titles get truncated in search results; the brand suffix is the part to drop (Google shows the site name anyway).
+            t = soup.find('title')
+            if t and len(t.get_text()) > 65 and t.get_text().endswith(' | Ricarti Drywall'):
+                t.string = t.get_text()[:-len(' | Ricarti Drywall')]
+                for m in soup.find_all('meta', property='og:title'): m['content'] = t.string
             open(path, 'w').write(str(soup))
     sitemap()
 
@@ -329,6 +334,8 @@ def sitemap():
     today = date.today().isoformat()
     extra = sorted(r for r, _ in all_pages() if r not in URLS['pt'] and not any(r == u.rstrip('/') or r == u for l in URLS for u in URLS[l].values()))
     for en in URLS['pt']:
+        if en == '/search':
+            continue  # internal search page: crawlable, not listed (noindex, follow at launch)
         alts = {'en': en}; alts.update({l: URLS[l][en] for l in PUBLISHED if l != 'en'})
         for l in PUBLISHED:
             out.append('<url><loc>%s%s</loc><lastmod>%s</lastmod>' % (SITE, alts[l], today))

@@ -6,6 +6,8 @@ import chrome
 SRC = '/mnt/user-data/outputs/artifacts/5078cdd0-42b9-4fdb-9994-bd2a51044395/project/'
 OUT = '/home/claude/ricarti-drywall-website/'
 SITE = 'https://ricartidrywall.ca'
+# Preview builds stay out of search engines. Only a launch build (RD_LAUNCH=1, owner-approved) drops the noindex tag.
+ROBOTS = '' if os.environ.get('RD_LAUNCH') == '1' else '<meta name="robots" content="noindex, nofollow">\n'
 
 assets = json.load(open('/home/claude/photos/assets.json'))
 BLOB = {v: k for k, v in assets.items()}
@@ -104,8 +106,7 @@ def write_page(out_path, title, desc, body, helmet='', css='', extra_schema=None
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>%(title)s</title>
 <meta name="description" content="%(desc)s">
-<meta name="robots" content="noindex, nofollow">
-<link rel="canonical" href="%(url)s">
+%(robots)s<link rel="canonical" href="%(url)s">
 %(hl)s<meta property="og:type" content="%(ogtype)s">
 <meta property="og:site_name" content="Ricarti Drywall">
 <meta property="og:title" content="%(title)s">
@@ -130,7 +131,7 @@ def write_page(out_path, title, desc, body, helmet='', css='', extra_schema=None
 </html>
 """ % dict(lang={'pt': 'pt-BR', 'en': 'en-CA'}.get(lang, lang), dir=' dir="rtl"' if lang == 'he' else '', title=html.escape(title), desc=html.escape(desc), url=url, site=SITE, hl=hl,
            ogtype='article' if ptype == 'BlogPosting' else 'website', image=image, locale=LOC[lang],
-           common=HEAD_COMMON, helmet=helmet.strip(), css=BASE_CSS + css, schema=schema, body=body.strip())
+           common=HEAD_COMMON, robots=('<meta name="robots" content="noindex, follow">\n' if out_path == '/search' and not ROBOTS else ROBOTS), helmet=helmet.strip(), css=BASE_CSS + css, schema=schema, body=body.strip())
     d = OUT + (out_path.strip('/') + '/' if out_path else '')
     os.makedirs(d, exist_ok=True)
     open(d + 'index.html', 'w').write(page)

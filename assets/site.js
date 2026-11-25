@@ -288,7 +288,7 @@
 
 /* Language preference: remembered only when the visitor picks a language. No location or browser-language redirects. */
 (function () {
-  var KEY = 'rd_lang', HOMES = { en: '/', pt: '/pt/', es: '/es/', fr: '/fr/', it: '/it/' };
+  var KEY = 'rd_lang', HOMES = { en: '/', pt: '/pt', es: '/es', fr: '/fr', it: '/it' };
   function get() { try { return localStorage.getItem(KEY); } catch (e) { return null; } }
   document.addEventListener('click', function (e) {
     var a = e.target.closest && e.target.closest('a[hreflang]');

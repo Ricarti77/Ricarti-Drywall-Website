@@ -155,3 +155,10 @@ Redirects go in `vercel.json` (`redirects`, permanent) at launch only, with owne
   3. sends one real test enquiry with a PDF and confirms it under Storage > enquiries/.
   Files go browser -> private store through one 10-minute presigned PUT per file (type and exact size enforced). Never in GitHub, never public.
 - GoHighLevel later: send the same payload to an inbound webhook from a server function; attach files by issuing short signed GET URLs or copying into GHL.
+
+## SEO and WordPress migration (Task 011)
+- Language home URLs have no trailing slash (/pt, /es, /fr, /it), matching vercel.json trailingSlash:false, so canonicals, hreflang and the sitemap point at final URLs.
+- noindex is a build switch: preview builds always carry <meta name="robots" content="noindex, nofollow">; RD_LAUNCH=1 ./make.sh drops it (owner-approved launch only).
+  Search pages stay noindex, follow and out of the sitemap. Titles over 65 characters lose the " | Ricarti Drywall" suffix.
+- Redirects: build/redirects.py (map + checker; --apply writes vercel.json at launch only). Blog inventory: build/wp_inventory.py export.xml [gsc.csv] > inventory.csv.
+- Launch files: _source/robots.launch.txt replaces robots.txt; remove the X-Robots-Tag header block from vercel.json; .vercelignore keeps _source out of deployments.
