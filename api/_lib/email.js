@@ -1,7 +1,7 @@
 // Office notification email (English). Human-readable only: no JSON, code or CRM metadata in the visible email.
 // The structured ricarti.enquiry.v2 record (crm.js) is still built for future GoHighLevel / database use, but it is
 // not printed here and is NOT stored anywhere yet. All customer text is HTML-escaped.
-import { C, SANS, SERIF, esc, layout, sectionTitle, rows, paragraph, button, logoAttachment } from './brand.js';
+import { C, SANS, SERIF, esc, layout, sectionTitle, rows, paragraph, button } from './brand.js';
 
 const LABEL = {
   services: { insulation: 'Insulation & spray foam', 'drywall-installation': 'Drywall installation', 'taping-finishing': 'Taping & finishing (Level 4 / 5)',
@@ -15,6 +15,16 @@ const LABEL = {
 };
 const PROV = { ON: 'Ontario', BC: 'British Columbia', QC: 'Quebec', AB: 'Alberta', MB: 'Manitoba', SK: 'Saskatchewan', NS: 'Nova Scotia',
   NB: 'New Brunswick', NL: 'Newfoundland and Labrador', PE: 'Prince Edward Island', NT: 'Northwest Territories', YT: 'Yukon' };
+// Canadian / North American numbers: 6474821139, (647) 482 1139, +1 647.482.1139 -> 647-482-1139. Anything else
+// (extensions, international numbers) is shown exactly as typed.
+export function phone(raw) {
+  const s = String(raw || '').trim();
+  if (/[a-z]/i.test(s.replace(/^\+/, ''))) return { display: s, tel: '' };
+  let d = s.replace(/\D/g, '');
+  if (d.length === 11 && d[0] === '1') d = d.slice(1);
+  if (d.length === 10 && /^[2-9]\d{2}[2-9]/.test(d)) return { display: d.slice(0, 3) + '-' + d.slice(3, 6) + '-' + d.slice(6), tel: '+1' + d };
+  return { display: s, tel: s.replace(/[^\d+]/g, '') };
+}
 const size = (b) => (b < 1048576 ? Math.max(1, Math.round(b / 1024)) + ' KB' : (b / 1048576).toFixed(1) + ' MB');
 
 export function when(iso) {
@@ -52,6 +62,7 @@ export function build(rec, flags) {
   const loc = rec.project.location, st = locationStatus(loc, rec.project.routing);
   const services = rec.services.map((s) => LABEL.services[s]).filter(Boolean);
   const notRec = rec.attachments_not_received || [], got = rec.attachments || [];
+  const ph = phone(rec.contact.phone);
 
   const replySubject = 'Your estimate request — ' + rec.id;
   const replyHref = 'mailto:' + encodeURIComponent(rec.contact.email).replace(/%40/g, '@') + '?subject=' + encodeURIComponent(replySubject);
@@ -67,7 +78,7 @@ export function build(rec, flags) {
   h += rows([
     ['Name', rec.contact.name], ['Company', rec.contact.company],
     ['Email', '<a href="mailto:' + esc(rec.contact.email) + '" style="color:' + C.ink + ';text-decoration:underline">' + esc(rec.contact.email) + '</a>', true],
-    ['Phone', rec.contact.phone ? '<a href="tel:' + esc(rec.contact.phone.replace(/[^\d+]/g, '')) + '" style="color:' + C.ink + ';text-decoration:underline">' + esc(rec.contact.phone) + '</a>' : '', true],
+    ['Phone', ph.display ? (ph.tel ? '<a href="tel:' + esc(ph.tel) + '" style="color:' + C.ink + ';text-decoration:underline">' + esc(ph.display) + '</a>' : esc(ph.display)) : '', true],
     ['Customer type', b ? 'Builder / contractor' : 'Homeowner'],
     ['Language', LABEL.lang[rec.preferred_language] || rec.preferred_language],
     ['Marketing emails', rec.consent.marketing_opt_in ? 'Yes — opted in on the form' : 'No'],
@@ -112,7 +123,7 @@ export function build(rec, flags) {
   const text = [
     (spam ? 'WARNING: this enquiry contains several links and may be spam. No confirmation was sent to the customer.\n' : '') + 'NEW ' + kind.toUpperCase(),
     rec.id, 'Received ' + date, '',
-    'CUSTOMER', line('Name', rec.contact.name), line('Company', rec.contact.company), line('Email', rec.contact.email), line('Phone', rec.contact.phone),
+    'CUSTOMER', line('Name', rec.contact.name), line('Company', rec.contact.company), line('Email', rec.contact.email), line('Phone', ph.display),
     line('Customer type', b ? 'Builder / contractor' : 'Homeowner'), line('Language', LABEL.lang[rec.preferred_language]),
     line('Marketing emails', rec.consent.marketing_opt_in ? 'Yes — opted in on the form' : 'No'), '',
     'PROJECT', line('Location (as typed)', loc.raw || '—'), line('Location check', st.text), line('Project type', b ? LABEL.type[rec.project.type] : ''),
@@ -128,5 +139,5 @@ export function build(rec, flags) {
     'RICARTI DRYWALL — Perfection Starts Here!',
   ].filter((x) => x !== null).join('\n');
 
-  return { subject, html, text, replyTo: rec.contact.email, attachments: [logoAttachment()] };
+  return { subject, html, text, replyTo: rec.contact.email };
 }

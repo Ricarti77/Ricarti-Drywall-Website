@@ -1,7 +1,12 @@
 // Shared Concept D email shell: charcoal header with the lockup, warm-white body, bronze accents, English slogan.
 // Built for Outlook (Word engine), Gmail and mobile: table layout, inline styles, bgcolor attributes, no web fonts,
-// no background images, no CSS the major clients strip. The logo travels inline by Content-ID (see logo.js).
-import { LOGO_CID, LOGO_W, LOGO_H, LOGO_PNG_BASE64 } from './logo.js';
+// no background images, no CSS the major clients strip.
+//
+// Logo: the header is an HTML wordmark (live text, no image), so it renders in every client, with images blocked, and
+// never depends on the password-protected preview. An inline Content-ID image was tried first (commit 20d451e) and
+// showed as a broken image in Outlook. Once the logo is on a public HTTPS address (e.g. the production domain at
+// launch), set RD_EMAIL_LOGO_URL to it: the header then shows that image, and Outlook shows styled alt text if
+// images are blocked.
 
 export const C = { charcoal: '#1E1D1B', ink: '#161616', warm: '#F1EDE6', paper: '#FBF9F5', bronze: '#A8865A', line: '#D8D1C5', stone: '#6B665E', soft: '#8F8A82' };
 export const SERIF = "Georgia,'Times New Roman',Times,serif";
@@ -10,7 +15,23 @@ export const SANS = 'Arial,Helvetica,sans-serif';
 export const esc = (s) => String(s == null ? '' : s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const nl2br = (s) => esc(s).replace(/\r?\n/g, '<br>');
 
-export const logoAttachment = () => ({ filename: 'ricarti-drywall.png', content: LOGO_PNG_BASE64, content_id: LOGO_CID, content_type: 'image/png' });
+const LOGO_URL = () => { const u = String(process.env.RD_EMAIL_LOGO_URL || '').trim(); return /^https:\/\/[^\s"'<>]+\.png$/i.test(u) ? u : ''; };
+const LOGO_W = 220, LOGO_H = 43;   // lockup-plaster-refined.png is 895 x 176
+
+function wordmark() {
+  // Letter-spaced text echoing the lockup. padding-left equals the letter-spacing so the spaced word stays centred.
+  return '<table role="presentation" cellpadding="0" cellspacing="0" border="0" align="center"><tr><td align="center" style="padding:0 0 0 14px">'
+    + '<p style="margin:0;font-family:' + SANS + ';font-size:28px;line-height:32px;letter-spacing:14px;color:#EDE6DA;font-weight:normal;mso-line-height-rule:exactly">RICARTI</p>'
+    + '</td></tr><tr><td align="center" style="padding:10px 0 0 24px">'
+    + '<p style="margin:0;font-family:' + SANS + ';font-size:9px;line-height:11px;letter-spacing:24px;color:#EDE6DA;font-weight:bold;mso-line-height-rule:exactly">DRYWALL</p>'
+    + '</td></tr></table>';
+}
+function headerMark() {
+  const u = LOGO_URL();
+  if (!u) return wordmark();
+  return '<img src="' + esc(u) + '" width="' + LOGO_W + '" height="' + LOGO_H + '" alt="RICARTI DRYWALL" style="display:block;margin:0 auto;width:' + LOGO_W + 'px;height:' + LOGO_H
+    + 'px;border:0;outline:none;text-decoration:none;color:#EDE6DA;font-family:' + SANS + ';font-size:18px;line-height:43px;letter-spacing:6px;text-align:center">';
+}
 
 // Small uppercase bronze section label followed by a thin rule.
 export function sectionTitle(text) {
@@ -55,7 +76,7 @@ export function layout({ lang = 'en', title, preheader = '', body, footerNote = 
     + '<table role="presentation" class="rd-wrap" width="600" cellpadding="0" cellspacing="0" border="0" style="width:600px;max-width:600px">'
     // header
     + '<tr><td bgcolor="' + C.charcoal + '" align="center" style="background:' + C.charcoal + ';padding:30px 32px 26px 32px">'
-    + '<img src="cid:' + LOGO_CID + '" width="' + LOGO_W + '" height="' + LOGO_H + '" alt="RICARTI DRYWALL" style="display:block;width:' + LOGO_W + 'px;height:' + LOGO_H + 'px;border:0;outline:none;color:#EDE6DA;font-family:' + SERIF + ';font-size:22px;letter-spacing:6px">'
+    + headerMark()
     + '</td></tr>'
     + '<tr><td height="3" bgcolor="' + C.bronze + '" style="height:3px;line-height:3px;font-size:3px;background:' + C.bronze + '">&nbsp;</td></tr>'
     // body

@@ -1,7 +1,7 @@
 // Customer acknowledgement email in the visitor's language (EN, PT, ES, FR, IT). Kept deliberately short: it
 // confirms receipt and the reference, repeats no project details, makes no promise about response times, and
 // carries no links. The slogan stays in English in every language. Replies go to the office mailbox.
-import { C, SANS, SERIF, esc, layout, paragraph, logoAttachment } from './brand.js';
+import { C, SANS, SERIF, esc, layout, paragraph } from './brand.js';
 
 const T = {
   'en-CA': {
@@ -79,5 +79,5 @@ export function buildAck(rec) {
   h += paragraph(esc(lines[2]));
   const html = layout({ lang, title: fill(t.subject), preheader: lines[0], body: h, footerNote: esc(t.auto) });
   const text = [hello, '', ...lines, '', 'RICARTI DRYWALL', 'Perfection Starts Here!', '', t.auto].join('\n');
-  return { subject: fill(t.subject), html, text, attachments: [logoAttachment()] };
+  return { subject: fill(t.subject), html, text };
 }

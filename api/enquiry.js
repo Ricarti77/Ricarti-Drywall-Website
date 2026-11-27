@@ -52,7 +52,7 @@ export default async function handler(req, res, deps = {}) {
   const out = mailer === 'graph'
     ? await gsend({ subject: mail.subject, html: mail.html, replyTo: mail.replyTo, ref: data.id })
     : await rsend({ to: officeAddress(), subject: mail.subject, html: mail.html, text: mail.text, replyTo: mail.replyTo,
-        attachments: mail.attachments, key: 'owner/' + data.id, tags: [{ name: 'kind', value: 'owner' }] });
+        key: 'owner/' + data.id, tags: [{ name: 'kind', value: 'owner' }] });
   remember(data.id, out.outcome);
 
   // Customer acknowledgement: only after the office copy was accepted, never for spam-flagged enquiries, and with
@@ -61,7 +61,7 @@ export default async function handler(req, res, deps = {}) {
   if (out.outcome === 'accepted' && mailer === 'resend' && ackOn() && !flags.manyLinks && !flags.nameHasLink) {
     const a = buildAck(rec);
     try {
-      const r = await rsend({ to: rec.contact.email, subject: a.subject, html: a.html, text: a.text, replyTo: officeAddress(), attachments: a.attachments,
+      const r = await rsend({ to: rec.contact.email, subject: a.subject, html: a.html, text: a.text, replyTo: officeAddress(),
         key: 'ack/' + data.id, tags: [{ name: 'kind', value: 'ack' }] });
       ack = r.outcome + ':' + r.code;
     } catch { ack = 'error'; }
