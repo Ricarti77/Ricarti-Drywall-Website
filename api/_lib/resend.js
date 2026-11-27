@@ -19,12 +19,13 @@ export const officeAddress = () => env('RD_MAIL_TO') || TO_DEFAULT;
 // `key` is the Idempotency-Key. Owner notifications and customer acknowledgements use different prefixes
 // ('owner/<ref>', 'ack/<ref>') so one can never suppress the other; Resend ignores a repeat of the same key
 // for 24 hours, so a network retry cannot send a second copy.
-export async function send({ to, subject, html, text, replyTo, key, tags }, fetchImpl = fetch) {
+export async function send({ to, subject, html, text, replyTo, key, tags, attachments }, fetchImpl = fetch) {
   if (!configured()) return { outcome: 'failed', code: 'not-configured' };
   const body = { from: sender(), to: [].concat(to), subject, html };
   if (text) body.text = text;
   if (replyTo) body.reply_to = replyTo;
   if (tags) body.tags = tags;
+  if (attachments && attachments.length) body.attachments = attachments;   // inline logo only (content_id); never customer files
   let r;
   try {
     r = await fetchImpl(API, {

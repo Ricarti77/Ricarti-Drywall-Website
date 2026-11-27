@@ -185,3 +185,4 @@ Redirects go in `vercel.json` (`redirects`, permanent) at launch only, with owne
 - Privacy notice on /estimate (all 5 languages) now names Resend (United States) and the confirmation email.
 - Still pending (approved architecture): DynamoDB record-before-send with durable retries, Turnstile, Vercel WAF rate-limit rule, owner page with Microsoft sign-in. Uploads stay disabled (Task 010-B).
 - NOT complete until the owner confirms a real enquiry arrived in cris@ricartidrywall.ca.
+- 2026-11-26: first real enquiry delivered (RD-261126-GXY5A). Office email redesigned (Concept D, inline CID logo, sections, Reply to Customer button, plain-text part); raw CRM JSON removed from the email (record still built internally, not stored). Location status: ontario / ontario-unconfirmed / outside-ontario / requires-verification. Branded acknowledgement in 5 languages.

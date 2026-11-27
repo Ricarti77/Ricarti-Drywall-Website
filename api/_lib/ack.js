@@ -1,10 +1,11 @@
 // Customer acknowledgement email in the visitor's language (EN, PT, ES, FR, IT). Kept deliberately short: it
 // confirms receipt and the reference, repeats no project details, makes no promise about response times, and
 // carries no links. The slogan stays in English in every language. Replies go to the office mailbox.
-const esc = (s) => String(s == null ? '' : s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+import { C, SANS, SERIF, esc, layout, paragraph, logoAttachment } from './brand.js';
 
 const T = {
   'en-CA': {
+    refLabel: 'Your reference',
     subject: 'We received your estimate request — {ref}',
     hello: 'Hello {name},',
     body: [
@@ -15,6 +16,7 @@ const T = {
     auto: 'This is an automatic confirmation. If you did not send this request, you can ignore this email.',
   },
   'pt-BR': {
+    refLabel: 'Sua referência',
     subject: 'Recebemos seu pedido de orçamento — {ref}',
     hello: 'Olá, {name},',
     body: [
@@ -25,6 +27,7 @@ const T = {
     auto: 'Esta é uma confirmação automática. Se você não enviou este pedido, pode ignorar este e-mail.',
   },
   'es-419': {
+    refLabel: 'Su referencia',
     subject: 'Recibimos su solicitud de presupuesto — {ref}',
     hello: 'Hola, {name}:',
     body: [
@@ -35,6 +38,7 @@ const T = {
     auto: 'Esta es una confirmación automática. Si usted no envió esta solicitud, puede ignorar este correo.',
   },
   'fr-CA': {
+    refLabel: 'Votre référence',
     subject: 'Nous avons reçu votre demande de soumission — {ref}',
     hello: 'Bonjour {name},',
     body: [
@@ -45,6 +49,7 @@ const T = {
     auto: 'Ceci est une confirmation automatique. Si vous n’avez pas envoyé cette demande, vous pouvez ignorer ce courriel.',
   },
   'it-IT': {
+    refLabel: 'Il Suo riferimento',
     subject: 'Abbiamo ricevuto la Sua richiesta di preventivo — {ref}',
     hello: 'Gentile {name},',
     body: [
@@ -58,16 +63,21 @@ const T = {
 
 export function buildAck(rec) {
   const t = T[rec.preferred_language] || T['en-CA'];
-  const name = String(rec.contact.name || '').trim().split(/\s+/)[0].slice(0, 60) || '';
+  const name = String(rec.contact.name || '').trim().split(/\s+/)[0].slice(0, 60);
   const fill = (s) => s.replace('{ref}', rec.id).replace('{name}', name);
-  const hello = name ? fill(t.hello) : fill(t.hello).replace(/[ ,]+(?=[,:]?$)/, '').replace(/\s+[,:]$/, '');
+  const hello = fill(t.hello);
   const lines = t.body.map(fill);
-  const html = '<div style="font-family:Arial,Helvetica,sans-serif;font-size:15px;line-height:1.55;color:#161616;max-width:560px">'
-    + '<p style="margin:0 0 14px">' + esc(hello) + '</p>'
-    + lines.map((l) => '<p style="margin:0 0 14px">' + esc(l) + '</p>').join('')
-    + '<p style="margin:22px 0 2px;font-weight:bold;letter-spacing:.04em">RICARTI DRYWALL</p>'
-    + '<p style="margin:0 0 22px;color:#5A554E;font-style:italic">Perfection Starts Here!</p>'
-    + '<p style="margin:0;color:#8A847B;font-size:12px">' + esc(t.auto) + '</p></div>';
+  const lang = (rec.preferred_language || 'en').slice(0, 2);
+  let h = '<tr><td style="padding:34px 32px 0 32px"><p style="margin:0;font-family:' + SERIF + ';font-size:24px;line-height:30px;color:' + C.ink + '">' + esc(hello) + '</p></td></tr>';
+  h += paragraph(esc(lines[0]), { pad: '16px 32px 0 32px' });
+  h += '<tr><td style="padding:22px 32px 0 32px"><table role="presentation" cellpadding="0" cellspacing="0" border="0"><tr>'
+    + '<td bgcolor="#FFFFFF" style="background:#FFFFFF;border:1px solid ' + C.line + ';border-left:3px solid ' + C.bronze + ';padding:14px 20px">'
+    + '<p style="margin:0 0 4px 0;font-family:' + SANS + ';font-size:11px;letter-spacing:2px;text-transform:uppercase;color:' + C.bronze + ';font-weight:bold">' + esc(t.refLabel) + '</p>'
+    + '<p style="margin:0;font-family:' + SERIF + ';font-size:22px;line-height:28px;color:' + C.ink + '">' + esc(rec.id) + '</p></td></tr></table></td></tr>';
+  const afterRef = lines[1].includes(rec.id + '. ') ? lines[1].split(rec.id + '. ').slice(1).join(rec.id + '. ') : lines[1];   // the box already shows the reference
+  h += paragraph(esc(afterRef), { pad: '22px 32px 0 32px' });
+  h += paragraph(esc(lines[2]));
+  const html = layout({ lang, title: fill(t.subject), preheader: lines[0], body: h, footerNote: esc(t.auto) });
   const text = [hello, '', ...lines, '', 'RICARTI DRYWALL', 'Perfection Starts Here!', '', t.auto].join('\n');
-  return { subject: fill(t.subject), html, text };
+  return { subject: fill(t.subject), html, text, attachments: [logoAttachment()] };
 }

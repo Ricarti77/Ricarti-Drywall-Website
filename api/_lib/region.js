@@ -28,5 +28,8 @@ export function parseLocation(text) {
 
 export function route(loc) {
   const region = loc.province === 'ON' ? 'ontario' : loc.province === 'BC' ? 'british-columbia' : loc.province ? 'other-canada' : 'unknown';
-  return { region, served: region === 'ontario', needs_review: region !== 'ontario' };
+  // location_status keeps "we could not tell" apart from "outside Ontario": an incomplete address only needs verifying.
+  const location_status = loc.province === 'ON' ? (loc.city || loc.postal_code ? 'ontario' : 'ontario-unconfirmed')
+    : loc.province ? 'outside-ontario' : 'requires-verification';
+  return { region, location_status, served: region === 'ontario' ? true : region === 'unknown' ? null : false, needs_review: location_status !== 'ontario' };
 }
