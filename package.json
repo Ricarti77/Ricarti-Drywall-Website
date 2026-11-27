@@ -2,7 +2,7 @@
   "name": "ricarti-drywall-website",
   "private": true,
   "type": "module",
-  "description": "Static site plus two Vercel Functions for private enquiry uploads (api/uploads). No build step.",
+  "description": "Static site plus Vercel Functions: /api/enquiry (Resend email) and dormant private-upload functions (api/uploads). No build step.",
   "dependencies": {
     "@vercel/blob": "^2.3.0"
   },

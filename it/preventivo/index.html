@@ -418,7 +418,7 @@
 </div>
 <fieldset class="rd-ef-consent">
 <legend class="rd-vh">Privacy e consenso</legend>
-<p class="rd-privacy" id="rd-privacy">Usiamo i dati che inviate solo per rispondere alla richiesta e preparare il preventivo. La richiesta viene inviata tramite il server sicuro del nostro sito all’email aziendale di Ricarti Drywall (Microsoft 365); i file caricati sono conservati in un archivio privato e non sono accessibili pubblicamente. Non vendiamo i vostri dati. Per consultarli, correggerli o cancellarli, scrivete a <a href="mailto:cris@ricartidrywall.ca">cris@ricartidrywall.ca</a>.</p>
+<p class="rd-privacy" id="rd-privacy">Usiamo i dati che inviate solo per rispondere alla richiesta e preparare il preventivo. La richiesta viene inviata tramite il server sicuro del nostro sito e il nostro servizio di invio email (Resend, Stati Uniti) all’email aziendale di Ricarti Drywall, e vi inviamo una conferma; i file caricati sono conservati in un archivio privato e non sono accessibili pubblicamente. Non vendiamo i vostri dati. Per consultarli, correggerli o cancellarli, scrivete a <a href="mailto:cris@ricartidrywall.ca">cris@ricartidrywall.ca</a>.</p>
 <label class="rd-check"><input name="marketing_opt_in" type="checkbox" value="yes"/><span>Facoltativo: desidero ricevere di tanto in tanto via email novità sui progetti e consigli stagionali da Ricarti Drywall. Posso annullare l'iscrizione in qualsiasi momento.</span></label>
 </fieldset>
 <div aria-hidden="true" class="rd-hp"><label for="f-hp">Lasciate vuoto questo campo</label><input autocomplete="off" id="f-hp" name="_honey" tabindex="-1" type="text"/></div>
@@ -644,7 +644,7 @@
     };
     payload._honey = form.elements._honey.value;
     payload.elapsed_ms = Date.now() - T0;
-    // Our own server function validates it and emails it to the office through Microsoft 365.
+    // Our own server function validates it and emails it to the office through our email provider (Resend).
     var ctl = window.AbortController ? new AbortController() : null, to = setTimeout(function () { ctl && ctl.abort(); }, 30000);
     return fetch('/api/enquiry', { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify(payload), signal: ctl && ctl.signal })
       .catch(function (e) { clearTimeout(to); throw { net: true, detail: (e && e.name) || '' }; })

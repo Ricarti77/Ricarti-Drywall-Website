@@ -209,7 +209,7 @@
     };
     payload._honey = form.elements._honey.value;
     payload.elapsed_ms = Date.now() - T0;
-    // Our own server function validates it and emails it to the office through Microsoft 365.
+    // Our own server function validates it and emails it to the office through our email provider (Resend).
     var ctl = window.AbortController ? new AbortController() : null, to = setTimeout(function () { ctl && ctl.abort(); }, 30000);
     return fetch('/api/enquiry', { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify(payload), signal: ctl && ctl.signal })
       .catch(function (e) { clearTimeout(to); throw { net: true, detail: (e && e.name) || '' }; })

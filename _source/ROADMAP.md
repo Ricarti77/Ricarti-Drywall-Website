@@ -175,3 +175,13 @@ Redirects go in `vercel.json` (`redirects`, permanent) at launch only, with owne
 - Exchange Online: RBAC for Applications, role "Application Mail.Send" scoped to the one mailbox; no Mail.Send consent in Entra.
 - CRM prep: api/_lib/crm.js builds ricarti.enquiry.v2 (classification, province/city/postal code, ON/BC routing,
   consent) and GoHighLevel / JobTread shapes. dispatch() does nothing until CRM_PROVIDER is set in Task 012+.
+
+
+## Task 010-A — Resend integration (2026-11-27)
+- /api/enquiry now sends through Resend (server-side RESEND_API_KEY only). From: Ricarti Drywall <estimates@notifications.ricartidrywall.ca>; To: cris@ricartidrywall.ca (RD_MAIL_TO overrides); Reply-To: the customer's validated email.
+- Customer acknowledgement in EN/PT/ES/FR/IT after the office copy is accepted; skipped for spam-flagged enquiries; RD_ACK_ENABLED=false turns it off.
+- Separate idempotency keys: owner/<ref> and ack/<ref>.
+- Enabled automatically when RESEND_API_KEY is present; RD_ENQUIRY_ENABLED=false is the kill switch (needs a redeploy). Microsoft Graph kept, used only if MAIL_PROVIDER=graph.
+- Privacy notice on /estimate (all 5 languages) now names Resend (United States) and the confirmation email.
+- Still pending (approved architecture): DynamoDB record-before-send with durable retries, Turnstile, Vercel WAF rate-limit rule, owner page with Microsoft sign-in. Uploads stay disabled (Task 010-B).
+- NOT complete until the owner confirms a real enquiry arrived in cris@ricartidrywall.ca.

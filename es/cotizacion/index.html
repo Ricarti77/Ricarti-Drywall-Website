@@ -418,7 +418,7 @@
 </div>
 <fieldset class="rd-ef-consent">
 <legend class="rd-vh">Privacidad y consentimiento</legend>
-<p class="rd-privacy" id="rd-privacy">Usamos los datos que envía solo para responder a su solicitud y preparar su cotización. Su solicitud se envía a través del servidor seguro de nuestro sitio al correo empresarial de Ricarti Drywall (Microsoft 365); los archivos que sube se guardan en un almacenamiento privado y no son accesibles públicamente. No vendemos su información. Para consultarla, corregirla o eliminarla, escriba a <a href="mailto:cris@ricartidrywall.ca">cris@ricartidrywall.ca</a>.</p>
+<p class="rd-privacy" id="rd-privacy">Usamos los datos que envía solo para responder a su solicitud y preparar su cotización. Su solicitud se envía a través del servidor seguro de nuestro sitio y de nuestro servicio de envío de correo (Resend, Estados Unidos) al correo empresarial de Ricarti Drywall, y le enviamos una confirmación; los archivos que sube se guardan en un almacenamiento privado y no son accesibles públicamente. No vendemos su información. Para consultarla, corregirla o eliminarla, escriba a <a href="mailto:cris@ricartidrywall.ca">cris@ricartidrywall.ca</a>.</p>
 <label class="rd-check"><input name="marketing_opt_in" type="checkbox" value="yes"/><span>Opcional: deseo recibir por correo electrónico novedades de proyectos y consejos de temporada de Ricarti Drywall de vez en cuando. Puedo darme de baja en cualquier momento.</span></label>
 </fieldset>
 <div aria-hidden="true" class="rd-hp"><label for="f-hp">Deje este campo vacío</label><input autocomplete="off" id="f-hp" name="_honey" tabindex="-1" type="text"/></div>
@@ -644,7 +644,7 @@
     };
     payload._honey = form.elements._honey.value;
     payload.elapsed_ms = Date.now() - T0;
-    // Our own server function validates it and emails it to the office through Microsoft 365.
+    // Our own server function validates it and emails it to the office through our email provider (Resend).
     var ctl = window.AbortController ? new AbortController() : null, to = setTimeout(function () { ctl && ctl.abort(); }, 30000);
     return fetch('/api/enquiry', { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify(payload), signal: ctl && ctl.signal })
       .catch(function (e) { clearTimeout(to); throw { net: true, detail: (e && e.name) || '' }; })

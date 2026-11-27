@@ -418,7 +418,7 @@
 </div>
 <fieldset class="rd-ef-consent">
 <legend class="rd-vh">Confidentialité et consentement</legend>
-<p class="rd-privacy" id="rd-privacy">Nous utilisons les renseignements que vous envoyez uniquement pour répondre à votre demande et préparer votre soumission. Votre demande est transmise par le serveur sécurisé de notre site au courriel d’affaires de Ricarti Drywall (Microsoft 365); les fichiers que vous téléversez sont conservés dans un stockage privé et ne sont pas accessibles au public. Nous ne vendons pas vos renseignements. Pour les consulter, les corriger ou les supprimer, écrivez à <a href="mailto:cris@ricartidrywall.ca">cris@ricartidrywall.ca</a>.</p>
+<p class="rd-privacy" id="rd-privacy">Nous utilisons les renseignements que vous envoyez uniquement pour répondre à votre demande et préparer votre soumission. Votre demande est transmise par le serveur sécurisé de notre site et notre service d’envoi de courriels (Resend, États-Unis) au courriel d’affaires de Ricarti Drywall, et nous vous envoyons une confirmation; les fichiers que vous téléversez sont conservés dans un stockage privé et ne sont pas accessibles au public. Nous ne vendons pas vos renseignements. Pour les consulter, les corriger ou les supprimer, écrivez à <a href="mailto:cris@ricartidrywall.ca">cris@ricartidrywall.ca</a>.</p>
 <label class="rd-check"><input name="marketing_opt_in" type="checkbox" value="yes"/><span>Facultatif : j'aimerais recevoir à l'occasion, par courriel, des nouvelles de projets et des conseils saisonniers de Ricarti Drywall. Je peux me désabonner en tout temps.</span></label>
 </fieldset>
 <div aria-hidden="true" class="rd-hp"><label for="f-hp">Laissez ce champ vide</label><input autocomplete="off" id="f-hp" name="_honey" tabindex="-1" type="text"/></div>
@@ -644,7 +644,7 @@
     };
     payload._honey = form.elements._honey.value;
     payload.elapsed_ms = Date.now() - T0;
-    // Our own server function validates it and emails it to the office through Microsoft 365.
+    // Our own server function validates it and emails it to the office through our email provider (Resend).
     var ctl = window.AbortController ? new AbortController() : null, to = setTimeout(function () { ctl && ctl.abort(); }, 30000);
     return fetch('/api/enquiry', { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify(payload), signal: ctl && ctl.signal })
       .catch(function (e) { clearTimeout(to); throw { net: true, detail: (e && e.name) || '' }; })
