@@ -214,12 +214,20 @@ Redirects go in `vercel.json` (`redirects`, permanent) at launch only, with owne
   - WhatsApp Business — click-to-chat (wa.me) with pre-filled message. EN source: "Hello Ricarti Drywall! I would like to discuss an upcoming project." Translated per page language (PT/ES/FR/IT), brand name unchanged.
   - Instagram — official business profile.
   - Facebook — official business page.
-  - LinkedIn — official company page.
+  - LinkedIn — founder's professional profile (Cris Ricarti), chosen for its professional history, credibility and industry network. The new Ricarti Drywall company page will be developed gradually and may be added later.
 - Placement: footer, contact section/estimate page, mobile navigation; plus a discreet floating WhatsApp button (desktop + mobile; must not cover the cookie notice, form buttons or the mobile call bar; hidden while the estimate form is focused on small screens).
 - Design: elegant monochrome icons (inline SVG, no third-party scripts or icon fonts) in Concept D charcoal/bronze; bronze on hover/focus; 44×44 px minimum touch targets.
 - Accessibility: accessible names per language (e.g. "Ricarti Drywall on Instagram (opens in a new tab)"), visible focus states, decorative SVGs aria-hidden, rel="noopener noreferrer".
-- Single source of truth: one central config (e.g. `_source/content/social.json`) read by chrome.py and every page template; also feeds Organization `sameAs` structured data.
-- Verified URLs only — owner must confirm each before publishing. Currently in the site (unverified): Instagram https://www.instagram.com/ricarti_drywall/, Facebook https://www.facebook.com/ricartidrywall, WhatsApp +1 647-482-1139 (confirm it is the WhatsApp Business number). LinkedIn: URL needed.
+- Single source of truth: one central config (`_source/content/social.json`) read by chrome.py and every page template. Each entry carries: id, url, owner type (company | founder), label key (translated in all 5 languages), icon, and whether it appears in structured data.
+- Approved destinations (owner, 2026-11-27) — use only these:
+  | Channel | URL | Owner type | Structured data | Status |
+  |---|---|---|---|---|
+  | WhatsApp | https://wa.me/16474821139 (+ ?text= pre-filled message, URL-encoded) | company | no (contact channel) | Approved; final conversation test pending |
+  | Instagram | https://www.instagram.com/ricarti_drywall/ | company | Organization `sameAs` | Approved and tested |
+  | Facebook | https://www.facebook.com/ricartidrywall | company | Organization `sameAs` | Approved and tested |
+  | LinkedIn | https://www.linkedin.com/in/cris-ricarti-59a49830/ | founder | NOT in Organization `sameAs`; never described as the company page. If used at all, only as the founder Person's own `sameAs` | Approved |
+- LinkedIn labelling: visible label and accessible name identify it as the founder's profile, e.g. "Cris Ricarti, Founder — LinkedIn" (translated: PT "Cris Ricarti, fundador", ES "Cris Ricarti, fundador", FR "Cris Ricarti, fondateur", IT "Cris Ricarti, fondatore"). Icon may sit with the others but with that label/tooltip.
+- Future: when the Ricarti Drywall company LinkedIn page is ready and approved, add it as a separate "company" entry (then eligible for Organization `sameAs`); the founder profile can remain.
 - Analytics: keep existing data-cta attributes (whatsapp, instagram, facebook, linkedin) for click tracking; no personal data.
 - Out of scope now: GoHighLevel, paid APIs (WhatsApp Cloud API), chat widgets, AI automation, automated replies. CRM integration and centralized communications come in a later phase (Task 012+).
 - Acceptance: links verified on desktop/iOS/Android in all 5 languages; WhatsApp opens the app (mobile) or WhatsApp Web (desktop) with the pre-filled message; no layout shift; Lighthouse accessibility unchanged or better.
