@@ -187,3 +187,39 @@ Redirects go in `vercel.json` (`redirects`, permanent) at launch only, with owne
 - NOT complete until the owner confirms a real enquiry arrived in cris@ricartidrywall.ca.
 - 2026-11-26: first real enquiry delivered (RD-261126-GXY5A). Office email redesigned (Concept D, inline CID logo, sections, Reply to Customer button, plain-text part); raw CRM JSON removed from the email (record still built internally, not stored). Location status: ontario / ontario-unconfirmed / outside-ontario / requires-verification. Branded acknowledgement in 5 languages.
 - 2026-11-26: logo showed broken in Outlook (inline CID image). Header is now an HTML wordmark (no image); RD_EMAIL_LOGO_URL can point to a public PNG later. Phones formatted 647-482-1139. Outlook's 3-hour difference = mailbox time zone set to Pacific (body time is correct Toronto time).
+
+---
+
+## Pre-launch sequence (owner, 2026-11-27)
+- 2026-11-28: exclusive priority — move ricartidrywall.ca from the brother's GoDaddy account to the Ricarti Drywall GoDaddy account (DNS records preserved; no nameserver or record changes).
+- Then: Task 014 (review original photographs), then Task 016 (after approval).
+- Task 010-A stays paused at Infrastructure Verification V1 (AWS Budget alerts). Launch-critical reliability/security items must still be completed before publication.
+- Targets: visually complete preview 2026-12-02; launch around 2026-12-10, subject to approval and testing.
+- No production changes, DNS changes, merges into main or paid services without explicit owner approval.
+
+## Task 014 — Photography & content (direction approved in principle, 2026-11-27)
+- Spec: "Task 014 — Creative Direction & Photography Checklist" (Claude doc), revision 2 + approved decisions.
+- Positioning: premium construction contractor; "our craftsmanship helps make those homes beautiful". Audience: custom home builders, architects, general contractors, discerning homeowners.
+- Balance: 50% construction process / 30% technical detail / 20% completed architecture.
+- Homepage hero: cinematic transition of the same space across construction stages where authentic matching photos exist; otherwise one exceptional authentic construction photo.
+- Preview targets: 30–40 authentic photos; 3–5 project galleries; 5–10 photos per project; Frame-to-Finish galleries wherever matching photos exist. Layouts must stay sophisticated with fewer images.
+- Never fabricate construction stages or alter photos to represent work not performed; no stock/AI images presented as Ricarti work.
+- Concept D, original logo, typography, palette and 5 languages unchanged.
+- After launch: full photo library, advanced before/after galleries, professional photography.
+- Future operational initiative: Project Documentation Standard (anchor views + stage photos on every job), potentially integrated with JobTread.
+
+## Task 016 — Social media & direct communication (documented 2026-11-27; implement after the domain transfer and owner approval)
+- Goal: visitors can reach the official profiles and contact Ricarti Drywall directly.
+- Channels:
+  - WhatsApp Business — click-to-chat (wa.me) with pre-filled message. EN source: "Hello Ricarti Drywall! I would like to discuss an upcoming project." Translated per page language (PT/ES/FR/IT), brand name unchanged.
+  - Instagram — official business profile.
+  - Facebook — official business page.
+  - LinkedIn — official company page.
+- Placement: footer, contact section/estimate page, mobile navigation; plus a discreet floating WhatsApp button (desktop + mobile; must not cover the cookie notice, form buttons or the mobile call bar; hidden while the estimate form is focused on small screens).
+- Design: elegant monochrome icons (inline SVG, no third-party scripts or icon fonts) in Concept D charcoal/bronze; bronze on hover/focus; 44×44 px minimum touch targets.
+- Accessibility: accessible names per language (e.g. "Ricarti Drywall on Instagram (opens in a new tab)"), visible focus states, decorative SVGs aria-hidden, rel="noopener noreferrer".
+- Single source of truth: one central config (e.g. `_source/content/social.json`) read by chrome.py and every page template; also feeds Organization `sameAs` structured data.
+- Verified URLs only — owner must confirm each before publishing. Currently in the site (unverified): Instagram https://www.instagram.com/ricarti_drywall/, Facebook https://www.facebook.com/ricartidrywall, WhatsApp +1 647-482-1139 (confirm it is the WhatsApp Business number). LinkedIn: URL needed.
+- Analytics: keep existing data-cta attributes (whatsapp, instagram, facebook, linkedin) for click tracking; no personal data.
+- Out of scope now: GoHighLevel, paid APIs (WhatsApp Cloud API), chat widgets, AI automation, automated replies. CRM integration and centralized communications come in a later phase (Task 012+).
+- Acceptance: links verified on desktop/iOS/Android in all 5 languages; WhatsApp opens the app (mobile) or WhatsApp Web (desktop) with the pre-filled message; no layout shift; Lighthouse accessibility unchanged or better.
